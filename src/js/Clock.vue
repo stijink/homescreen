@@ -34,7 +34,6 @@
             }.bind(this), 1000);
         }
     }
-
 </script>
 
 <style scoped>
