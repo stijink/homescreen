@@ -1,9 +1,27 @@
 <template>
     <div id="person">
-        <img src="http://graph.facebook.com/599401226/picture?type=large&width=50&height=50" class="not-home">
-        <h4 class="text-left">Sigrid ist nicht zuhause</h4>
+        <img v-bind:src="imageUrl">
+        <h4>{{ message }}</h4>
     </div>
 </template>
+
+<script>
+    export default {
+        props: ['name', 'fbid', 'ishome'],
+        computed: {
+            imageUrl() {
+                return 'http://graph.facebook.com/' + this.fbid + '/picture?type=large&width=50&height=50';
+            },
+            message() {
+                if (this.ishome === 'yes') {
+                    return this.name + ' ist zuhause';
+                }
+
+                return this.name + ' ist nicht zuhause';
+            }
+        }
+    }
+</script>
 
 <style scoped>
     #person {

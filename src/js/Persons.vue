@@ -1,6 +1,11 @@
 <template>
     <div id="persons">
-        <person></person>
+        <person
+            v-for="person in persons"
+            v-bind:name="person.name"
+            v-bind:fbid="person.fbid"
+            v-bind:ishome="person.ishome">
+        </person>
     </div>
 </template>
 
@@ -10,6 +15,14 @@
     export default {
         components: {
             'person': Person
+        },
+        data() {
+            return {
+                persons: [
+                    {name: 'Sigrid', fbid: '599401226', ishome: 'no'},
+                    {name: 'Stephan', fbid: '657226131', ishome: 'yes'},
+                ]
+            }
         }
     }
 </script>
