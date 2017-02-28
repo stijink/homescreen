@@ -102,9 +102,10 @@ class Calendar implements ApiInterface
                 $calendars[] = $event['calendar'];
 
                 $uniqueEvents[$checksum]['calendar'] = implode(', ', $calendars);
-            } else {
-                $uniqueEvents[$checksum] = $event;
+                continue;
             }
+
+            $uniqueEvents[$checksum] = $event;
         }
 
         return array_values($uniqueEvents);
