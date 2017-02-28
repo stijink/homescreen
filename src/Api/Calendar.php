@@ -37,6 +37,7 @@ class Calendar implements ApiInterface
      *
      * @param string $calendarName
      * @param string $calendarUrl
+     *
      * @return array
      */
     private function loadEvents(string $calendarName, string $calendarUrl): array
@@ -48,16 +49,16 @@ class Calendar implements ApiInterface
         $interval = $icalendar->eventsFromInterval('6 days');
         $iCalEvents = $icalendar->sortEventsWithOrder($interval);
 
-        foreach ((array)$iCalEvents as $iCalEvent) {
+        foreach ((array) $iCalEvents as $iCalEvent) {
             $timestampStart = strtotime($iCalEvent->dtstart);
             $checksum = md5($iCalEvent->summary.$iCalEvent->dtstart.$iCalEvent->dtend);
 
             $events[$timestampStart] = [
-                'name'      => $iCalEvent->summary,
-                'date'      => date('Y-m-d', $timestampStart),
-                'calendar'  => $calendarName,
+                'name' => $iCalEvent->summary,
+                'date' => date('Y-m-d', $timestampStart),
+                'calendar' => $calendarName,
                 'timestamp' => $timestampStart,
-                'checksum'  => $checksum,
+                'checksum' => $checksum,
             ];
         }
 
@@ -66,9 +67,10 @@ class Calendar implements ApiInterface
 
     /**
      * Sort the events.
-     * This is primarily nessasary if we check for multiple calendars
+     * This is primarily nessasary if we check for multiple calendars.
      *
      * @param array $events
+     *
      * @return array
      */
     private function sortEvents(array $events): array
@@ -86,6 +88,7 @@ class Calendar implements ApiInterface
      * get merged into one.
      *
      * @param array $events
+     *
      * @return array
      */
     private function mergeUniqueEvents(array $events): array

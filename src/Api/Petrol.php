@@ -23,14 +23,14 @@ class Petrol implements ApiInterface
             ['query' => ['stationId' => $this->config['station_id']]]
         );
 
-        $petrol = json_decode((string)$response->getBody(), true);
+        $petrol = json_decode((string) $response->getBody(), true);
 
         foreach ($petrol['response']['prices'] as $product) {
             if (!in_array($product['name'], $this->config['prefered_petrol'])) {
                 continue;
             }
 
-            $product['price'] = (float)$product['price'] / 100;
+            $product['price'] = (float) $product['price'] / 100;
             $products[] = $product;
         }
 

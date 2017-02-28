@@ -20,10 +20,10 @@ class WeatherForcastTest extends TestCase
                         'q' => 'Troisdorf',
                         'APPID' => 1234,
                         'units' => 'metric',
-                        'lang'  => 'de',
-                        'cnt'   => 5,
-                    ]
-                ]
+                        'lang' => 'de',
+                        'cnt' => 5,
+                    ],
+                ],
             ])
             ->andReturn($this->exampleResponse())
             ->getMock();
@@ -31,7 +31,7 @@ class WeatherForcastTest extends TestCase
         $weatherForcast = new WeatherForcast($mockedHttpClient, [
             'api_url' => 'http://example-api.com',
             'api_key' => 1234,
-            'city'    => 'Troisdorf'
+            'city' => 'Troisdorf',
         ]);
 
         $response = $weatherForcast->load();
@@ -42,7 +42,8 @@ class WeatherForcastTest extends TestCase
 
     private function exampleResponse()
     {
-        $body = file_get_contents(__DIR__ .'/Fixtures/weather-forcast.json');
+        $body = file_get_contents(__DIR__.'/Fixtures/weather-forcast.json');
+
         return new Response(200, [], $body);
     }
 }
