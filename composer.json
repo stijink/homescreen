@@ -6,11 +6,14 @@
         "johngrogg/ics-parser": "^2.0"
     },
     "autoload": {
-        "psr-4": {
-            "Api\\": "src/Api/"
-        }
+        "psr-4": { "Api\\": "src/Api/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\Api\\": "tests/" }
     },
     "require-dev": {
-        "symfony/var-dumper": "^3.2"
+        "symfony/var-dumper": "^3.2",
+        "phpunit/phpunit": "^5.7",
+        "mockery/mockery": "^0.9.9"
     }
 }
