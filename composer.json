@@ -1,5 +1,16 @@
 {
     "require": {
-        "silex/silex": "^2.0"
+        "silex/silex": "^2.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "dg/rss-php": "^1.2",
+        "johngrogg/ics-parser": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "src/Api/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.2"
     }
 }

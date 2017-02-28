@@ -1,38 +1,44 @@
 <template>
   <div id="app">
+
     <clock></clock>
+    <calendar></calendar>
+    <news></news>
+
     <weather></weather>
-    <persons></persons>
+    <weather-forcast></weather-forcast>
+
+    <petrol></petrol>
+    <traffic></traffic>
+
+    <error></error>
+
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-    }
-  }
-}
-</script>
-
-<style lang="scss">
+<style>
 body {
   background-color: #999;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+body, html {
+  height: 100%;
+}
+
 #app {
   margin: 40px;
   position: relative;
+  height: 100%;
+}
 
-  h1 {
+h1 {
     font-size: 3.5rem;
-  }
+}
 
-  h3 {
+h3 {
     font-size: 2rem;
-  }
 }
 
 </style>

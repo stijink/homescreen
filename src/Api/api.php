@@ -1,0 +1,98 @@
+<?php
+
+namespace Api;
+
+use Api\Exception\ApiException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
+use Silex\Application;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
+$config = require __DIR__.'/../../config.php';
+setlocale(LC_ALL, $config['locale']);
+
+$app = new Application();
+
+$app['http_client'] = function () {
+    return new Client(['timeout' => 2]);
+};
+
+$app['weather'] = function () use ($app, $config) {
+    return new Weather($app['http_client'], $config['weather']);
+};
+
+$app['weather_forcast'] = function () use ($app, $config) {
+    return new WeatherForcast($app['http_client'], $config['weather_forcast']);
+};
+
+$app['traffic'] = function () use ($app, $config) {
+    return new Traffic($app['http_client'], $config['traffic']);
+};
+
+$app['news'] = function () use ($config) {
+    return new News($config['news']);
+};
+
+$app['petrol'] = function () use ($app, $config) {
+    return new Petrol($app['http_client'], $config['petrol']);
+};
+
+$app['calendar'] = function () use ($config) {
+    return new Calendar($config['calendar']);
+};
+
+$app->get('/weather', function (Request $request) use ($app) {
+    $weather = $app['weather']->load();
+
+    return new JsonResponse($weather);
+});
+
+$app->get('/weather-forcast', function (Request $request) use ($app) {
+    $forcast = $app['weather_forcast']->load();
+
+    return new JsonResponse($forcast);
+});
+
+$app->get('/traffic', function (Request $request) use ($app) {
+    $traffic = $app['traffic']->load();
+
+    return new JsonResponse($traffic);
+});
+
+$app->get('/news', function () use ($app) {
+    $news = $app['news']->load();
+
+    return new JsonResponse($news);
+});
+
+$app->get('/petrol', function () use ($app, $config) {
+    $petrol = $app['petrol']->load();
+
+    return new JsonResponse($petrol);
+});
+
+$app->get('/calendar', function () use ($app) {
+    $events = $app['calendar']->load();
+
+    return new JsonResponse($events);
+});
+
+$app->error(function (\Exception $exception, Request $request, $code) {
+    $message = 'Unbekannter Fehler';
+    $description = 'Ein unbekannter Fehler ist aufgetreten. Die Anwendung muss neu gestartet werden.';
+
+    if ($exception instanceof ConnectException) {
+        $message = 'Keine Internetverbindung';
+        $description = 'Es besteht keine Verbindung zum Internet. Sobald die Verbindung wieder da ist, werden die Inhalte automatisch neu geladen.';
+    }
+
+    if ($exception instanceof ApiException) {
+        $message = $exception->getMessage();
+        $description = $exception->getDescription();
+    }
+
+    return new JsonResponse(['message' => $message, 'description' => $description], 500);
+});
+
+return $app;

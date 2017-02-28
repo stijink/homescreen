@@ -1,0 +1,64 @@
+<?php
+
+$config = [
+    'locale' => 'de_DE',
+
+    'weather' => [
+        'city' => 'Troisdorf',
+        'api_url' => 'http://api.openweathermap.org/data/2.5/weather',
+        'api_key' => null,
+    ],
+
+    'weather_forcast' => [
+        'city' => 'Troisdorf',
+        'api_url' => 'http://api.openweathermap.org/data/2.5/forecast/daily',
+        'api_key' => null,
+    ],
+
+    'traffic' => [
+        'api_url' => 'https://maps.googleapis.com/maps/api/directions/json',
+        'api_key' => null,
+        'locale' => 'de',
+        'routes' => [
+            [
+                'origin' => 'Köln',
+                'destination' => 'Bonn',
+            ],
+            [
+                'origin' => 'Köln',
+                'destination' => 'Aachen',
+            ],
+            [
+                'origin' => 'Köln',
+                'destination' => 'Siegburg',
+            ],
+        ],
+    ],
+
+    'petrol' => [
+        'api_url' => 'http://ap.aral.de/api/v2/getStationPricesById.php',
+        'location' => 'Aral - Moselstraße 2, Troisdorf',
+        'station_id' => 20141300,
+        'prefered_petrol' => ['Aral Super 95', 'Aral Ultimate 102'],
+    ],
+
+    'news' => [
+        'feeds' => [
+            'http://t3n.de/feed/feed.rss',
+            'http://www.spiegel.de/schlagzeilen/tops/index.rss',
+        ],
+    ],
+
+    'calendar' => [
+        'max_events' => 10,
+
+        'calendars' => [
+            [
+                'name' => 'Example',
+                'url' => 'https://example.com/basic.ics',
+            ],
+        ],
+    ],
+];
+
+return $config;

@@ -19,18 +19,18 @@
             }
         },
         methods: {
-            updateDateTime() {
+            update() {
                 this.day  = Moment().format('dddd');
                 this.date = Moment().format('Do MMMM YYYY');
-                this.time = Moment().format('hh:mm:ss');
+                this.time = Moment().format('HH:mm:ss');
             }
         },
         mounted() {
-            this.updateDateTime();
+            this.update();
 
             // Make sure the time is updated every second
             setInterval(function () {
-                this.updateDateTime();
+                this.update();
             }.bind(this), 1000);
         }
     }
