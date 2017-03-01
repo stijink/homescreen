@@ -3,4 +3,8 @@ php:
   - '7.0'
   - '7.1'
   - 'nightly'
+allow_failures:
+  php: 'nightly'
+
 install: composer install
+
