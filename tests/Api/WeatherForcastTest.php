@@ -47,6 +47,13 @@ class WeatherForcastTest extends TestCase
 
         $this->assertInternalType('array', $response);
         $this->assertCount(5, $response);
+
+        $firstResult = $response[0];
+
+        $this->assertArrayHasKey('day', $firstResult);
+        $this->assertArrayHasKey('temperature', $firstResult);
+        $this->assertArrayHasKey('description', $firstResult);
+        $this->assertArrayHasKey('icon_code', $firstResult);
     }
 
     private function exampleResponse()
