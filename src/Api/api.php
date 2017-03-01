@@ -80,11 +80,15 @@ $app->get('/calendar', function () use ($app) {
 
 $app->error(function (\Exception $exception, Request $request, $code) {
     $message = 'Unbekannter Fehler';
-    $description = 'Ein unbekannter Fehler ist aufgetreten. Die Anwendung muss neu gestartet werden.';
+    $description = '
+        Ein unbekannter Fehler ist aufgetreten. 
+        Die Anwendung muss neu gestartet werden.';
 
     if ($exception instanceof ConnectException) {
         $message = 'Keine Internetverbindung';
-        $description = 'Es besteht keine Verbindung zum Internet. Sobald die Verbindung wieder da ist, werden die Inhalte automatisch neu geladen.';
+        $description = '
+            Es besteht keine Verbindung zum Internet. 
+            Sobald die Verbindung wieder da ist, werden die Inhalte automatisch neu geladen.';
     }
 
     if ($exception instanceof ApiException) {
