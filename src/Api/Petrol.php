@@ -19,7 +19,8 @@ class Petrol implements ApiInterface
     {
         $products = [];
 
-        $response = $this->httpClient->get($this->config['api_url'],
+        $response = $this->httpClient->get(
+            $this->config['api_url'],
             ['query' => ['stationId' => $this->config['station_id']]]
         );
 
