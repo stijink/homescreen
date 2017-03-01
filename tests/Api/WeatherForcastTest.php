@@ -8,6 +8,15 @@ use PHPUnit\Framework\TestCase;
 
 class WeatherForcastTest extends TestCase
 {
+    /**
+     * @expectedException \Api\Exception\ApiKeyException
+     */
+    public function testApiyKeyException()
+    {
+        $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client');
+        $weatherForcast = new WeatherForcast($mockedHttpClient, ['api_key' => null]);
+    }
+
     public function testLoad()
     {
         $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client')
