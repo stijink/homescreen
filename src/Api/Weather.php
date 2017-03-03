@@ -38,7 +38,7 @@ class Weather implements ApiInterface
             'city' => $this->config['city'],
             'temperature' => round($weather['main']['temp'], 1),
             'description' => $weather['weather'][0]['description'],
-            'icon' => 'owf owf-lg owf-'.$weather['weather'][0]['id'],
+            'icon_code' => $weather['weather'][0]['id'],
         ];
     }
 }

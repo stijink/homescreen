@@ -22,10 +22,10 @@
                 this.$http.get('/api.php/weather-forcast').then(response => {
                     this.forcast = response.body;
 
-                        this.forcast.forEach(function (day, index, forcast) {
-                            day.icon = 'owf-' + day.icon_code;
-                            forcast[index] = day;
-                        });
+                    this.forcast.forEach(function (day, index, forcast) {
+                        day.icon = 'owf-' + day.icon_code;
+                        forcast[index] = day;
+                    });
                 },
                 response => {
                     ErrorEvent.$emit('error', response.body);

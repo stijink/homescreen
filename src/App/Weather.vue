@@ -1,7 +1,7 @@
 <template>
     <div id="weather">
         <h1 class="pull-right"><i class="fa fa-thermometer-three-quarters"></i>&nbsp; {{ temperature }} °</h1>
-        <h4><i v-bind:class="icon"></i> {{ description }}</h4>
+        <h4><i class="owf owf-lg" v-bind:class="icon"></i> {{ description }}</h4>
     </div>
 </template>
 
@@ -20,7 +20,7 @@
                 this.$http.get('/api.php/weather').then(response => {
                     this.temperature = response.body.temperature;
                     this.description = response.body.description;
-                    this.icon = response.body.icon;
+                    this.icon = 'owf-' + response.body.icon_code;
                 },
                 response => {
                     ErrorEvent.$emit('error', response.body);
