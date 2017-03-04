@@ -6,9 +6,6 @@ use Api\WeatherForcast;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @coversDefaultClass Api\WeatherForcast
- */
 class WeatherForcastTest extends TestCase
 {
     /**
