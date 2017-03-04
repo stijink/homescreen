@@ -19,11 +19,12 @@
 
     <filter>
         <whitelist>
-            <directory>./src/Api</directory>
+            <directory suffix=".php">./src/</directory>
         </whitelist>
     </filter>
 
     <logging>
+        <log type="coverage-text"   target="build/logs/coverage.txt"/>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>
 
