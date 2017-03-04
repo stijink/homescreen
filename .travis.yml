@@ -4,3 +4,9 @@ php:
   - '7.1'
 install: composer install
 
+after_success:
+  - vendor/bin/test-reporter
+
+addons:
+  code_climate:
+    repo_token: $CODECLIMATE_TOKEN
