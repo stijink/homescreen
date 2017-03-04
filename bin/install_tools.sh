@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install the latest version of yarn
-curl -o- -L https://yarnpkg.com/install.sh | bash
+sudo curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # install composer if not already installed
 if [ ! -f /usr/local/bin/composer ]
