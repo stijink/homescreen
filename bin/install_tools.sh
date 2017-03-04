@@ -7,7 +7,7 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 if [ ! -f /usr/local/bin/composer ]
   then
 	curl -sS https://getcomposer.org/installer | php
-	mv composer.phar /usr/local/bin/composer
+	sudo mv composer.phar /usr/local/bin/composer
   else
 	composer self-update
 fi
