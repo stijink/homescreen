@@ -3,6 +3,11 @@
 $config = [
     'locale' => 'de_DE',
 
+    'persons' => [
+        'john_doe' => ['name' => 'John Doe', 'image_url' => 'http://graph.facebook.com/4/picture?type=square'],
+        'jane_doe' => ['name' => 'Jane Doe', 'image_url' => 'http://graph.facebook.com/4/picture?type=square'],
+    ],
+
     'weather' => [
         'city' => 'Troisdorf',
         'api_url' => 'http://api.openweathermap.org/data/2.5/weather',
@@ -56,6 +61,7 @@ $config = [
             [
                 'name' => 'Example',
                 'url' => 'https://example.com/basic.ics',
+                'person' => 'john_doe'
             ],
         ],
     ],

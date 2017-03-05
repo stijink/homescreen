@@ -39,7 +39,7 @@ $app['petrol'] = function () use ($app, $config) {
 };
 
 $app['calendar'] = function () use ($config) {
-    return new Calendar($config['calendar']);
+    return new Calendar($config['calendar'], $config['persons']);
 };
 
 $app->get('/weather', function (Request $request) use ($app) {

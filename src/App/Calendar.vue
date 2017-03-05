@@ -1,18 +1,10 @@
 <template>
     <table id="calendar">
         <tr v-for="event in events">
-            <td v-if="event.calendar === 'Stephan'">
-                <img src="http://graph.facebook.com/657226131/picture?type=large&width=20&height=20" />
+            <td>
+                <img v-for="person in event.persons" v-bind:src="person['image_url']" width="20" height="20"/>
             </td>
-            <td v-else-if="event.calendar === 'Sigrid'">
-                <img src="http://graph.facebook.com/599401226/picture?type=large&width=20&height=20" />
-            </td>
-            <td v-else>
-                <img src="http://graph.facebook.com/599401226/picture?type=large&width=20&height=20" />
-                <img src="http://graph.facebook.com/657226131/picture?type=large&width=20&height=20" />
-            </td>
-
-            <td>{{ event.name }}</td>
+            <td>{{ event.description }}</td>
             <td class="pull-right">{{ event.time }}</td>
         </tr>
     </table>
@@ -64,7 +56,7 @@
         mounted() {
             this.update();
 
-            // Make sure the weather is updated every 60 minutes
+            // Make sure the calendar is updated every 60 minutes
             setInterval(function () {
                 this.update();
             }.bind(this), 60000 * 60);
@@ -83,7 +75,8 @@
 
     IMG {
         border-radius: 50%;
-        margin-bottom: 5px;
+        margin-bottom: 7px;
+        margin-right: 3px;
     }
 
     td:first-child {

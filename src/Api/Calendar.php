@@ -7,10 +7,12 @@ use ICal\ICal;
 class Calendar implements ApiInterface
 {
     private $config;
+    private $persons;
 
-    public function __construct(array $config)
+    public function __construct(array $config, array $persons)
     {
         $this->config = $config;
+        $this->persons = $persons;
     }
 
     public function load(): array
@@ -18,7 +20,7 @@ class Calendar implements ApiInterface
         $events = [];
 
         foreach ($this->config['calendars'] as $calendar) {
-            $events = array_merge($events, $this->loadEvents($calendar['name'], $calendar['url']));
+            $events = array_merge($events, $this->loadEvents($calendar));
         }
 
         $events = $this->sortEvents($events);
@@ -35,16 +37,15 @@ class Calendar implements ApiInterface
      * We need to create a fresh ICal instance every time.
      * Otherwise we would run into timeout issues.
      *
-     * @param string $calendarName
-     * @param string $calendarUrl
+     * @param array $calendar
      *
      * @return array
      */
-    private function loadEvents(string $calendarName, string $calendarUrl): array
+    private function loadEvents(array $calendar): array
     {
         $events = [];
 
-        $icalendar = new ICal($calendarUrl);
+        $icalendar = new ICal($calendar['url']);
 
         $interval = $icalendar->eventsFromInterval('6 days');
         $iCalEvents = $icalendar->sortEventsWithOrder($interval);
@@ -54,12 +55,22 @@ class Calendar implements ApiInterface
             $checksum = md5($iCalEvent->summary.$iCalEvent->dtstart.$iCalEvent->dtend);
 
             $events[$timestampStart] = [
-                'name' => $iCalEvent->summary,
+                'description' => $iCalEvent->summary,
                 'date' => date('Y-m-d', $timestampStart),
-                'calendar' => $calendarName,
                 'timestamp' => $timestampStart,
                 'checksum' => $checksum,
             ];
+
+            // If a spcific person is bound to a calendar we add the person
+            if (isset($calendar['person'])) {
+                $events[$timestampStart]['persons'] = [$this->persons[$calendar['person']]];
+            }
+
+            // If no person is specified for the calendar we add all persons.
+            // We assume the events for this calendar are of general interest.
+            if (!isset($calendar['person'])) {
+                $events[$timestampStart]['persons'] = $this->persons;
+            }
         }
 
         return $events;
@@ -87,6 +98,8 @@ class Calendar implements ApiInterface
      * in multiple calendars. In this case these events
      * get merged into one.
      *
+     * Also the persons from both calendars are added
+     *
      * @param array $events
      *
      * @return array
@@ -98,13 +111,11 @@ class Calendar implements ApiInterface
 
         foreach ($events as $event) {
             $checksum = $event['checksum'];
-            $calendars = [];
+            $persons = [];
 
             if (array_key_exists($checksum, $uniqueEvents)) {
-                $calendars[] = $uniqueEvents[$checksum]['calendar'];
-                $calendars[] = $event['calendar'];
-
-                $uniqueEvents[$checksum]['calendar'] = implode(', ', $calendars);
+                $persons = array_merge($uniqueEvents[$checksum]['persons'], $event['persons']);
+                $uniqueEvents[$checksum]['persons'] = $persons;
                 continue;
             }
 
