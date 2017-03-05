@@ -3,7 +3,8 @@
         "silex/silex": "^2.0",
         "guzzlehttp/guzzle": "^6.2",
         "dg/rss-php": "^1.2",
-        "johngrogg/ics-parser": "^2.0"
+        "johngrogg/ics-parser": "^2.0",
+        "monolog/monolog": "^1.22"
     },
     "autoload": {
         "psr-4": { "Api\\": "src/Api/" }

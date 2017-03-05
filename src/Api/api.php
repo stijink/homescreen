@@ -6,6 +6,7 @@ use Api\Exception\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use Silex\Application;
+use Silex\Provider\MonologServiceProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,6 +14,12 @@ $config = require __DIR__.'/../../config.php';
 setlocale(LC_ALL, $config['locale']);
 
 $app = new Application();
+
+$app->register(new MonologServiceProvider(), [
+    'monolog.name' => 'api',
+    'monolog.level' => 'error',
+    'monolog.logfile' => __DIR__.'/../../logs/api.log',
+]);
 
 $app['http_client'] = function () {
     return new Client(['timeout' => 2]);
@@ -78,7 +85,9 @@ $app->get('/calendar', function () use ($app) {
     return new JsonResponse($events);
 });
 
-$app->error(function (\Exception $exception, Request $request, $code) {
+$app->error(function (\Exception $exception, Request $request, $code) use ($app) {
+    $app['monolog']->error($exception->getMessage());
+
     $message = 'Unbekannter Fehler';
     $description = '
         Ein unbekannter Fehler ist aufgetreten. 

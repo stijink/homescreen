@@ -3,4 +3,5 @@ node_modules/
 vendor/
 web/assets/
 build/
+logs/
 config.php
