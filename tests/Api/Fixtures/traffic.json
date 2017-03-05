@@ -1,0 +1,509 @@
+{
+  "geocoded_waypoints":[
+    {
+      "geocoder_status":"OK",
+      "place_id":"ChIJSdrLfJ_hvkcRF5ZcaMb424Y",
+      "types":[
+        "locality",
+        "political"
+      ]
+    },
+    {
+      "geocoder_status":"OK",
+      "place_id":"ChIJ5S-raZElv0cR8HcqSvxgJwQ",
+      "types":[
+        "locality",
+        "political"
+      ]
+    }
+  ],
+  "routes":[
+    {
+      "bounds":{
+        "northeast":{
+          "lat":50.9376195,
+          "lng":7.0981941
+        },
+        "southwest":{
+          "lat":50.7374565,
+          "lng":6.9579669
+        }
+      },
+      "copyrights":"Kartendaten \u00a9 2017 GeoBasis-DE\/BKG (\u00a92009), Google",
+      "legs":[
+        {
+          "distance":{
+            "text":"28,6 km",
+            "value":28632
+          },
+          "duration":{
+            "text":"34 Minuten",
+            "value":2038
+          },
+          "duration_in_traffic":{
+            "text":"31 Minuten",
+            "value":1887
+          },
+          "end_address":"K\u00f6ln, Deutschland",
+          "end_location":{
+            "lat":50.937513,
+            "lng":6.9594315
+          },
+          "start_address":"Bonn, Deutschland",
+          "start_location":{
+            "lat":50.7374891,
+            "lng":7.0981941
+          },
+          "steps":[
+            {
+              "distance":{
+                "text":"19 m",
+                "value":19
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":5
+              },
+              "end_location":{
+                "lat":50.7374565,
+                "lng":7.097925099999999
+              },
+              "html_instructions":"Auf Oxfordstra\u00dfe<\/b>\/B56<\/b> nach Westen<\/b> Richtung Wilhelmstra\u00dfe<\/b> starten",
+              "polyline":{
+                "points":"itttHujij@@X@L@H?@"
+              },
+              "start_location":{
+                "lat":50.7374891,
+                "lng":7.0981941
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,1 km",
+                "value":107
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":22
+              },
+              "end_location":{
+                "lat":50.7384055,
+                "lng":7.0980992
+              },
+              "html_instructions":"Rechts<\/b> abbiegen auf Wilhelmstra\u00dfe<\/b>",
+              "maneuver":"turn-right",
+              "polyline":{
+                "points":"ctttHaiij@M?iACSAOAMACAMEMESI"
+              },
+              "start_location":{
+                "lat":50.7374565,
+                "lng":7.097925099999999
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,2 km",
+                "value":159
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":42
+              },
+              "end_location":{
+                "lat":50.7388342,
+                "lng":7.0959476
+              },
+              "html_instructions":"Links<\/b> abbiegen auf Alexanderstra\u00dfe<\/b>",
+              "maneuver":"turn-left",
+              "polyline":{
+                "points":"azttHcjij@?Dm@|Ee@hE"
+              },
+              "start_location":{
+                "lat":50.7384055,
+                "lng":7.0980992
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"50 m",
+                "value":50
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":16
+              },
+              "end_location":{
+                "lat":50.7384186,
+                "lng":7.0956872
+              },
+              "html_instructions":"Bei Breite Str.<\/b> links<\/b> abbiegen",
+              "maneuver":"turn-left",
+              "polyline":{
+                "points":"u|ttHu|hj@`@Rn@^"
+              },
+              "start_location":{
+                "lat":50.7388342,
+                "lng":7.0959476
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"1,3 km",
+                "value":1327
+              },
+              "duration":{
+                "text":"4 Minuten",
+                "value":242
+              },
+              "end_location":{
+                "lat":50.74299569999999,
+                "lng":7.0785085
+              },
+              "html_instructions":"Rechts<\/b> abbiegen auf Dorotheenstra\u00dfe<\/b>",
+              "maneuver":"turn-right",
+              "polyline":{
+                "points":"czttHa{hj@Sz@iAlCCFGNERCHGVEVo@bEe@lCwAbFCHOh@WfAwA~FAF_@zAa@|BCLANyAlHUnAk@nCS`Ae@rBCPOn@Mr@Kp@CPMr@Kr@Ir@EVQ|AOzAIlAInAEtACv@CvACtCAh@Gb@CPAFKZ"
+              },
+              "start_location":{
+                "lat":50.7384186,
+                "lng":7.0956872
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"18,6 km",
+                "value":18647
+              },
+              "duration":{
+                "text":"11 Minuten",
+                "value":664
+              },
+              "end_location":{
+                "lat":50.8800118,
+                "lng":6.9689369
+              },
+              "html_instructions":"Im Kreisverkehr zweite<\/b> Ausfahrt A555<\/b> Richtung K\u00f6ln<\/b>\/Siegburg<\/b>\/A565<\/b>\/K\u00f6ln\/Bonn Flughafen<\/b> nehmen",
+              "maneuver":"roundabout-right",
+              "polyline":{
+                "points":"wvutHuoej@A?A@A?A@A?A?A@EBEDEDEDCFCDCHEHCHCLAHCJ?F?H?L?J@LK\\AFCDWV_@\\{@r@cAbAq@v@[^s@~@cAxA{@rAuAlCe@bAg@nAa@dAYv@EJe@`B_@rAWfA]xAWjAShAQjA_@vBm@bEwAxJyB~OeGrc@m@`Eq@tDq@bDc@lBQp@W~@Uz@Uv@Uv@Ql@Sj@e@xACJSl@Sl@GNy@`Cu@xBy@`Ce@tA}BzG{@bCq@pBQf@Od@aBpE{A|D_@~@Sh@Uj@uFrMwClGmBxDmCfFmFlJEDa@p@a@r@u@jAcBjCk@~@s@bAEHi@t@q@bAkA~Aq@`AqAdBu@`As@~@cCxCq@v@y@`Ao@t@c@d@m@p@IHo@r@EBgDlDaA`AcB~AwArAmBbBiB|AqCzBqB|AeBpAiJxGyCvB{AfA_@XYPiHfF{AhAgHfFgExCm@b@uK|H_DzBGFOJgBnAwLvI{FfEuIdGa@XGFYP_GfEcDbCgHdFyB|As@f@}AfAa@Zc@\\gHdFeR|M_@XGDWPcJvGsAbAm@^w@j@oAfAm@l@y@t@g@d@o@r@YXWXyAbBcBzBcBdCkAdBuA|BA@wAjCkBxD_@v@U`@s@|Ay@hBcAzBMX}@jBqBtEk@nAm@nAi@jA_@v@qFjLO`@aG|Ly@dBeE~IqCbGGJO\\OZgA~BeCrF{BzEsHhPkCtF?@MT}G`OMT_BbDMXm@lAo@jAo@fAm@dA[h@Y`@g@t@m@z@o@z@QTY^e@h@a@b@]`@YV_@\\YXq@j@aAt@}@j@g@Z[P]R]P]Nu@Z_@Nc@N_@Ls@Ri@Na@HYFWBa@Fe@HwALk@BqADm@?aA?a@Ao@Ai@CYCaAG_@E_AImBSa@GSCi@IWEk@Ik@KaDg@uCe@GA{Dy@EAyB]mASwAWyCe@wB]eB[kBYmB[i@KWC}@Q[E}@OiB[}B]{B]y@Kg@Gk@Gq@I[Ce@GKAq@Gq@Ek@GUAkEWq@Ey@Em@Cg@CS?c@C}BKm@C{Jc@UAEAI?C?IAQAwAEqAGsGYuBIi@CWAWAwaAcEqBKKAiKa@m@CgBIy@EqESG?gAEgBIs@Cs@Ae@Ao@Ae@?e@?w@?uBDsBFmBJyAHgADk@Dk@B_BJiFX{EVmDRcDPI@cHj@mET"
+              },
+              "start_location":{
+                "lat":50.74299569999999,
+                "lng":7.0785085
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"1,3 km",
+                "value":1254
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":64
+              },
+              "end_location":{
+                "lat":50.89126470000001,
+                "lng":6.9678635
+              },
+              "html_instructions":"Links<\/b> halten und auf A555<\/b> bleiben",
+              "maneuver":"keep-left",
+              "polyline":{
+                "points":"aopuH{bpi@w@J}H`@{ADaBFcCBeCDcEPU@y@Dy@DgHZG?a@AgCL_BH{AJaFZ]BQ@S@aCN"
+              },
+              "start_location":{
+                "lat":50.8800118,
+                "lng":6.9689369
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,1 km",
+                "value":145
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":11
+              },
+              "end_location":{
+                "lat":50.8923972,
+                "lng":6.9685279
+              },
+              "html_instructions":"Rechts<\/b> halten und weiter Richtung Milit\u00e4rringstra\u00dfe<\/b>\/B51<\/b>",
+              "maneuver":"keep-right",
+              "polyline":{
+                "points":"kuruHc|oi@QEQ?O?M?MCQAe@K[GKEKGGGGIGOAGCMAMAGEI"
+              },
+              "start_location":{
+                "lat":50.89126470000001,
+                "lng":6.9678635
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"5,6 km",
+                "value":5552
+              },
+              "duration":{
+                "text":"9 Minuten",
+                "value":563
+              },
+              "end_location":{
+                "lat":50.9334766,
+                "lng":6.963266699999999
+              },
+              "html_instructions":"Leicht rechts",
+              "maneuver":"turn-slight-right",
+              "polyline":{
+                "points":"o|ruHi`pi@AYCqAGeHM_FE{@Eq@Go@Iq@Ki@Kk@ESIYI_@K]K[GQQc@Ug@Sa@Wc@KQKQKMOUg@w@IOGG_BeCk@}@oAoBq@eAoAoBmLwQCCc@u@c@y@Ua@e@aAWk@MYQc@Wo@Qa@cAcCYs@O]GMIOGIAAGGKKEEMIMGKCQCOAM?M@KB]HE@MFOFEDCBKHmA|AQ^MNILEDoCrDsA`Bm@v@c@n@KNOPGJGFE@EDCBEBCBGDCDCBa@b@IJm@r@m@p@s@x@Y\\q@j@ML_@^o@n@]^g@f@c@b@[R]\\a@`@eAbAYXq@l@u@l@qD~CaEfD_@Z}EzD}@r@QNKJa@X]R_@VmCnBeChBw@d@yC|AYRcEdCgAn@w@^KDmAj@WLIB[JA?GBIDEBC@CBA?a@TSJaB~@wEzBOFIBKDGBIDoBx@GB{B|@yAj@sIzC_@RoAj@o@RMFQHSJQHSLWLiBn@GDg@VMHGDGDKHKJQNKLOLQN[V}@p@oAjAo@j@yBnBONcDhCm@d@SJA@QFQHMDSFQFMBYDMDUDMDKBMBM@Q?wABcA@i@@oA@i@@cCD]@S?S?UASCOEQCOGSGo@Sm@Qc@Mi@Ig@GGAK?g@EK?"
+              },
+              "start_location":{
+                "lat":50.8923972,
+                "lng":6.9685279
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,3 km",
+                "value":285
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":79
+              },
+              "end_location":{
+                "lat":50.9335949,
+                "lng":6.9594298
+              },
+              "html_instructions":"Links<\/b> abbiegen auf Filzengraben<\/b>",
+              "maneuver":"turn-left",
+              "polyline":{
+                "points":"g}zuHm_oi@c@ZGPCLCLAN?J?N?N?l@@j@@XBf@B|@@t@@p@@j@@\\?l@@d@Ah@?T@^BZD\\"
+              },
+              "start_location":{
+                "lat":50.9334766,
+                "lng":6.963266699999999
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"76 m",
+                "value":76
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":36
+              },
+              "end_location":{
+                "lat":50.9342338,
+                "lng":6.9597758
+              },
+              "html_instructions":"Rechts<\/b> abbiegen auf An der Malzm\u00fchle<\/b>",
+              "maneuver":"turn-right",
+              "polyline":{
+                "points":"}}zuHmgni@GGGKGGGEGCGCoA["
+              },
+              "start_location":{
+                "lat":50.9335949,
+                "lng":6.9594298
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"69 m",
+                "value":69
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":16
+              },
+              "end_location":{
+                "lat":50.9347688,
+                "lng":6.9601808
+              },
+              "html_instructions":"Weiter auf Am Malzb\u00fcchel<\/b>",
+              "polyline":{
+                "points":"}a{uHsini@WEQGSEGCGCEGEGCIEIGO"
+              },
+              "start_location":{
+                "lat":50.9342338,
+                "lng":6.9597758
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,1 km",
+                "value":100
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":31
+              },
+              "end_location":{
+                "lat":50.9348719,
+                "lng":6.9615877
+              },
+              "html_instructions":"Leicht rechts<\/b> abbiegen auf Heumarkt<\/b>",
+              "maneuver":"turn-slight-right",
+              "polyline":{
+                "points":"ie{uHclni@Ei@CK?GAM@S?O?SCeAEoA"
+              },
+              "start_location":{
+                "lat":50.9347688,
+                "lng":6.9601808
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,4 km",
+                "value":372
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":89
+              },
+              "end_location":{
+                "lat":50.9360121,
+                "lng":6.9609451
+              },
+              "html_instructions":"Links",
+              "maneuver":"turn-left",
+              "polyline":{
+                "points":"}e{uH}tni@EMCW?k@AYAYKM[F}DLQ@I@E@I@WBGBGDEDCDCDEHADADAD?FAF?H?F?f@@h@?F?F@F@F@DBDBDDBDDD?B?J?T?LAH@H?HBD@DB"
+              },
+              "start_location":{
+                "lat":50.9348719,
+                "lng":6.9615877
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"21 m",
+                "value":21
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":10
+              },
+              "end_location":{
+                "lat":50.9359464,
+                "lng":6.9606669
+              },
+              "html_instructions":"Rechts<\/b> abbiegen auf Deutzer Br\u00fccke<\/b>",
+              "maneuver":"turn-right",
+              "polyline":{
+                "points":"am{uH}pni@Jv@"
+              },
+              "start_location":{
+                "lat":50.9360121,
+                "lng":6.9609451
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,2 km",
+                "value":209
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":75
+              },
+              "end_location":{
+                "lat":50.9362808,
+                "lng":6.9580723
+              },
+              "html_instructions":"Rechts<\/b> abbiegen auf G\u00fcrzenichstra\u00dfe<\/b>",
+              "maneuver":"turn-right",
+              "polyline":{
+                "points":"ul{uHeoni@?LAJAHCJCDCDCDEDa@A@`D?rB@~A@V?RAHAHCDCD"
+              },
+              "start_location":{
+                "lat":50.9359464,
+                "lng":6.9606669
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"0,2 km",
+                "value":152
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":40
+              },
+              "end_location":{
+                "lat":50.9376195,
+                "lng":6.9581859
+              },
+              "html_instructions":"G\u00fcrzenichstra\u00dfe<\/b> verl\u00e4uft nach rechts<\/b> und wird zu Quatermarkt<\/b>",
+              "polyline":{
+                "points":"wn{uH}~mi@CBEBEBE?mAFK?Q?U?[CE?k@OKCAAEAGEII"
+              },
+              "start_location":{
+                "lat":50.9362808,
+                "lng":6.9580723
+              },
+              "travel_mode":"DRIVING"
+            },
+            {
+              "distance":{
+                "text":"88 m",
+                "value":88
+              },
+              "duration":{
+                "text":"1 Minute",
+                "value":33
+              },
+              "end_location":{
+                "lat":50.937513,
+                "lng":6.9594315
+              },
+              "html_instructions":"Rechts<\/b> abbiegen auf Marspl.<\/b>",
+              "maneuver":"turn-right",
+              "polyline":{
+                "points":"cw{uHu_ni@?CHqBBy@FgA"
+              },
+              "start_location":{
+                "lat":50.9376195,
+                "lng":6.9581859
+              },
+              "travel_mode":"DRIVING"
+            }
+          ],
+          "traffic_speed_entry":[
+
+          ],
+          "via_waypoint":[
+
+          ]
+        }
+      ],
+      "overview_polyline":{
+        "points":"itttHujij@Dr@{BGm@OSI?DsAfLpAr@Sz@iAlCKVI\\cB`K{AlFg@pByAfGaAxEuBzKiBvIm@fDi@rDa@xDS|CIlCGlFIlAEXMZC@GBQNQ\\Oj@Cj@@XMd@[\\{ApAuBzBoA~A_ClD{BpEiBxEeAtDu@`Dk@tCq@bEeC|P_Krt@_BvJuApGuAdFaBjFs@vBmMl_@qBvF{B|Fi@tAuFrMwClG{F`LsFrJ}E|HoCbEaGjI_HrI{DnEgFnFeD`DeEvD{FxEwEnD_SrNsn@bd@_CbBsT~OwJ~GeMdJsPrLwj@fa@aCbBgCrB_E|Dq@r@}D~EoDjFwA~ByF~K_E|IiG`NkIpQsSfc@oBdE{^~w@kEvIsCxEuApBaApA_CnCeCzB_C`BcAl@{@d@sAj@wC`A}Bd@gAPcCP_CDcBAuDQoFk@aC]kJ{AaE{@gEq@oMwB{GeAaGcAyF{@aBS_D]{CWmIe@mCK{Qy@_T{@a_B{GkFSoDE}A?iFL{H`@qQ`AqId@mHl@mETw@JyKf@eFJeCDcEPoAFaJ`@i@AgFVmJl@uCPc@E]?_@EaASWMOQIWMm@EkBGeHM_FKmBQaBg@cCi@kBg@kAk@eAs@gAwKyPqL{QgAoBaBiD_CyF{@oB]_@SOYKa@E[@i@LSHULOLmA|AQ^W\\wGrIgA|Am@f@}AfBaBjBY\\q@j@m@l@mAnAkAjA[R]\\gBdBkAfAiMpKyHjG_Al@mDfC}DnCsDpBkGtDcAd@eBx@e@NYLk@ZuBjAgFbCg@RmIfDsIzC_@RoAj@o@R_@Pe@Tk@ZqBt@eAl@u@r@{BfBiGvFqEnDULeA^gAV}@R{DFgHJq@@i@Ac@Ia@KuC{@qAQSAs@Ec@ZGPGZAZ@xBJtDDhD@dCHx@OSOMOGmCo@OGKOISGOEi@CS?a@?c@IuCIe@AeAAYKM[F}DL[BOB_@FMJOZEZ@bBB^DJHHJDN?v@?NDDBJv@AXETQVa@A@`D@rE@j@CRQRKByAFiAC_AWQOHuBJaC"
+      },
+      "summary":"A555",
+      "warnings":[
+
+      ],
+      "waypoint_order":[
+
+      ]
+    }
+  ],
+  "status":"OK"
+}

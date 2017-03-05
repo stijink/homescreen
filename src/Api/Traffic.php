@@ -39,6 +39,8 @@ class Traffic implements ApiInterface
                 'language' => $this->config['locale'],
                 'origin' => $origin,
                 'destination' => $destination,
+                'departure_time' => 'now',
+                'traffic_model' => 'best_guess',
             ],
         ]);
 
@@ -48,7 +50,7 @@ class Traffic implements ApiInterface
             'origin' => $origin,
             'destination' => $destination,
             'distance' => $traffic['routes'][0]['legs'][0]['distance']['text'],
-            'duration' => $traffic['routes'][0]['legs'][0]['duration']['text'],
+            'duration' => $traffic['routes'][0]['legs'][0]['duration_in_traffic']['text'],
         ];
     }
 }
