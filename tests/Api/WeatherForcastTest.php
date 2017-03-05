@@ -19,6 +19,39 @@ class WeatherForcastTest extends TestCase
 
     public function testLoad()
     {
+        $exprectedResponse = [
+            [
+                "day" => "Tuesday",
+                "temperature" => 4.0,
+                "description" => "mäßiger Schnee",
+                "icon_code" => 600,
+            ],
+            [
+                "day" => "Wednesday",
+                "temperature" => 4.8,
+                "description" => "sehr starker Regen",
+                "icon_code" => 502,
+            ],
+            [
+                "day" => "Thursday",
+                "temperature" => 7.7,
+                "description" => "leichter Regen",
+                "icon_code" => 500,
+            ],
+            [
+                "day" => "Friday",
+                "temperature" => 9.0,
+                "description" => "mäßiger Regen",
+                "icon_code" => 501,
+            ],
+            [
+                "day" => "Saturday",
+                "temperature" => 11.5,
+                "description" => "mäßiger Regen",
+                "icon_code" => 501,
+            ]
+        ];
+
         $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('get')
             ->once()
@@ -44,16 +77,7 @@ class WeatherForcastTest extends TestCase
         ]);
 
         $response = $weatherForcast->load();
-
-        $this->assertInternalType('array', $response);
-        $this->assertCount(5, $response);
-
-        $firstResult = $response[0];
-
-        $this->assertArrayHasKey('day', $firstResult);
-        $this->assertArrayHasKey('temperature', $firstResult);
-        $this->assertArrayHasKey('description', $firstResult);
-        $this->assertArrayHasKey('icon_code', $firstResult);
+        $this->assertEquals($exprectedResponse, $response);
     }
 
     private function exampleResponse()
