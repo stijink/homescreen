@@ -19,6 +19,13 @@ class WeatherTest extends TestCase
 
     public function testLoad()
     {
+        $expectedResponse = [
+            'city' => 'Troisdorf',
+            'temperature' => 10.4,
+            'description' => 'klarer Himmel',
+            'icon_code' => 800,
+        ];
+
         $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('get')
             ->once()
@@ -43,13 +50,7 @@ class WeatherTest extends TestCase
         ]);
 
         $response = $weather->load();
-
-        $this->assertInternalType('array', $response);
-
-        $this->assertArrayHasKey('city', $response);
-        $this->assertArrayHasKey('temperature', $response);
-        $this->assertArrayHasKey('description', $response);
-        $this->assertArrayHasKey('icon_code', $response);
+        $this->assertEquals($expectedResponse, $response);
     }
 
     private function exampleResponse()

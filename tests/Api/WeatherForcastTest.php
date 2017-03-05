@@ -19,37 +19,37 @@ class WeatherForcastTest extends TestCase
 
     public function testLoad()
     {
-        $exprectedResponse = [
+        $expectedResponse = [
             [
-                "day" => "Tuesday",
-                "temperature" => 4.0,
-                "description" => "mäßiger Schnee",
-                "icon_code" => 600,
+                'day' => 'Tuesday',
+                'temperature' => 4.0,
+                'description' => 'mäßiger Schnee',
+                'icon_code' => 600,
             ],
             [
-                "day" => "Wednesday",
-                "temperature" => 4.8,
-                "description" => "sehr starker Regen",
-                "icon_code" => 502,
+                'day' => 'Wednesday',
+                'temperature' => 4.8,
+                'description' => 'sehr starker Regen',
+                'icon_code' => 502,
             ],
             [
-                "day" => "Thursday",
-                "temperature" => 7.7,
-                "description" => "leichter Regen",
-                "icon_code" => 500,
+                'day' => 'Thursday',
+                'temperature' => 7.7,
+                'description' => 'leichter Regen',
+                'icon_code' => 500,
             ],
             [
-                "day" => "Friday",
-                "temperature" => 9.0,
-                "description" => "mäßiger Regen",
-                "icon_code" => 501,
+                'day' => 'Friday',
+                'temperature' => 9.0,
+                'description' => 'mäßiger Regen',
+                'icon_code' => 501,
             ],
             [
-                "day" => "Saturday",
-                "temperature" => 11.5,
-                "description" => "mäßiger Regen",
-                "icon_code" => 501,
-            ]
+                'day' => 'Saturday',
+                'temperature' => 11.5,
+                'description' => 'mäßiger Regen',
+                'icon_code' => 501,
+            ],
         ];
 
         $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client')
@@ -77,7 +77,7 @@ class WeatherForcastTest extends TestCase
         ]);
 
         $response = $weatherForcast->load();
-        $this->assertEquals($exprectedResponse, $response);
+        $this->assertEquals($expectedResponse, $response);
     }
 
     private function exampleResponse()
