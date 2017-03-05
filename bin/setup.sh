@@ -7,4 +7,4 @@ composer install
 yarn install
 
 # Build app.js
-webpack -p
+node_modules/webpack/bin/webpack.js -p
