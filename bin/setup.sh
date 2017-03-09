@@ -10,4 +10,4 @@ yarn install
 node_modules/webpack/bin/webpack.js -p
 
 # Create log directory
-mkdir logs
+mkdir -m 777 logs
