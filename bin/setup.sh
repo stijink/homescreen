@@ -8,3 +8,6 @@ yarn install
 
 # Build app.js
 node_modules/webpack/bin/webpack.js -p
+
+# Create log directory
+mkdir logs
