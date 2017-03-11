@@ -23,8 +23,12 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-body, html {
+html {
   height: 100%;
+}
+
+body {
+  height: calc(100% - 80px);
 }
 
 #app {

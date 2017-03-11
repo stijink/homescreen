@@ -41,7 +41,7 @@
 <style scoped>
     #traffic {
         position: absolute;
-        bottom: 70px;
+        bottom: 20px;
         right: 0;
     }
 
