@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Api;
+namespace Tests\Api\Component;
 
-use Api\Weather;
+use Api\Component\Weather;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
@@ -55,7 +55,7 @@ class WeatherTest extends TestCase
 
     private function exampleResponse()
     {
-        $body = file_get_contents(__DIR__.'/Fixtures/weather.json');
+        $body = file_get_contents(__DIR__.'/../Fixtures/weather.json');
 
         return new Response(200, [], $body);
     }

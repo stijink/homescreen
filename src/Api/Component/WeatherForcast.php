@@ -1,12 +1,12 @@
 <?php
 
-namespace Api;
+namespace Api\Component;
 
 use Api\Exception\ApiKeyException;
 use GuzzleHttp\Client;
 use function GuzzleHttp\json_decode;
 
-class Weather implements ApiInterface
+class WeatherForcast implements ComponentInterface
 {
     private $httpClient;
     private $config;
@@ -23,22 +23,29 @@ class Weather implements ApiInterface
 
     public function load(): array
     {
+        $forcast = [];
+
         $response = $this->httpClient->get($this->config['api_url'], [
             'query' => [
                 'q' => $this->config['city'],
                 'APPID' => $this->config['api_key'],
                 'units' => 'metric',
                 'lang' => 'de',
+                'cnt' => 5,
             ],
         ]);
 
-        $weather = json_decode((string) $response->getBody(), true);
+        $answer = json_decode((string) $response->getBody(), true);
 
-        return [
-            'city' => $this->config['city'],
-            'temperature' => round($weather['main']['temp'], 1),
-            'description' => $weather['weather'][0]['description'],
-            'icon_code' => $weather['weather'][0]['id'],
-        ];
+        foreach ($answer['list'] as $day) {
+            $forcast[] = [
+                'day' => strftime('%A', (int) $day['dt']),
+                'temperature' => round($day['temp']['day'], 1),
+                'description' => $day['weather'][0]['description'],
+                'icon_code' => $day['weather'][0]['id'],
+            ];
+        }
+
+        return $forcast;
     }
 }

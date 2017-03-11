@@ -1,8 +1,8 @@
 <?php
 
-namespace Api;
+namespace Api\Component;
 
-interface ApiInterface
+interface ComponentInterface
 {
     /**
      * @return array

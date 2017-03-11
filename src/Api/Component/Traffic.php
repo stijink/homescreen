@@ -1,11 +1,11 @@
 <?php
 
-namespace Api;
+namespace Api\Component;
 
 use Api\Exception\ApiKeyException;
 use GuzzleHttp\Client;
 
-class Traffic implements ApiInterface
+class Traffic implements ComponentInterface
 {
     private $httpClient;
     private $config;

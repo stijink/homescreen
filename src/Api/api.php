@@ -2,6 +2,12 @@
 
 namespace Api;
 
+use Api\Component\Calendar;
+use Api\Component\News;
+use Api\Component\Petrol;
+use Api\Component\Traffic;
+use Api\Component\Weather;
+use Api\Component\WeatherForcast;
 use Api\Exception\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;

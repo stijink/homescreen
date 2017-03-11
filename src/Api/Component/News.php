@@ -1,8 +1,8 @@
 <?php
 
-namespace Api;
+namespace Api\Component;
 
-class News implements ApiInterface
+class News implements ComponentInterface
 {
     private $config;
 

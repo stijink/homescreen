@@ -1,10 +1,10 @@
 <?php
 
-namespace Api;
+namespace Api\Component;
 
 use GuzzleHttp\Client;
 
-class Petrol implements ApiInterface
+class Petrol implements ComponentInterface
 {
     private $httpClient;
     private $config;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Api;
+namespace Tests\Api\Component;
 
-use Api\WeatherForcast;
+use Api\Component\WeatherForcast;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
@@ -82,7 +82,7 @@ class WeatherForcastTest extends TestCase
 
     private function exampleResponse()
     {
-        $body = file_get_contents(__DIR__.'/Fixtures/weather-forcast.json');
+        $body = file_get_contents(__DIR__.'/../Fixtures/weather-forcast.json');
 
         return new Response(200, [], $body);
     }

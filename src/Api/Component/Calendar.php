@@ -1,10 +1,10 @@
 <?php
 
-namespace Api;
+namespace Api\Component;
 
 use ICal\ICal;
 
-class Calendar implements ApiInterface
+class Calendar implements ComponentInterface
 {
     private $config;
     private $persons;
