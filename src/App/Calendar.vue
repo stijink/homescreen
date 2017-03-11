@@ -67,7 +67,7 @@
 <style scoped>
     #calendar {
         position: absolute;
-        top: 185px;
+        top: 200px;
         left: 0;
         width: 400px;
         font-size: 16px;

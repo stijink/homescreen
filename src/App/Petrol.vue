@@ -45,7 +45,7 @@
 
     TABLE {
         position: absolute;
-        top: 395px;
+        top: 410px;
         right: 0;
         width: 370px;
     }
