@@ -69,7 +69,7 @@
         position: absolute;
         top: 145px;
         left: 0;
-        width: 500px;
+        width: 400px;
         font-size: 16px;
     }
 

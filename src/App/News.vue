@@ -65,7 +65,7 @@
         position: absolute;
         bottom: 20px;
         left: 0;
-        width: 500px;
+        width: 400px;
         font-size: 14px;
     }
 </style>
