@@ -42,6 +42,14 @@
         top: 0;
         left: 0;
     }
+
+    H3 {
+        font-size: 3rem;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+    }
 </style>
 
 

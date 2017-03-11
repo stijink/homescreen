@@ -52,7 +52,7 @@
 
     H4>i {
         position: absolute;
-        top: 74px;
+        top: 87px;
         left: -42px;
     }
 </style>

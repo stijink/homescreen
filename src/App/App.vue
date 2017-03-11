@@ -37,12 +37,12 @@ body {
   height: 100%;
 }
 
-h1 {
-    font-size: 3.5rem;
+H3 {
+  font-size: 3rem;
 }
 
-h3 {
-    font-size: 2rem;
+h1 {
+  font-size: 4.5rem;
 }
 
 </style>
