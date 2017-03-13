@@ -11,6 +11,7 @@ use Api\Component\WeatherForcast;
 use Api\Exception\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
+use PicoFeed\Reader\Reader;
 use Silex\Application;
 use Silex\Provider\MonologServiceProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -31,6 +32,10 @@ $app['http_client'] = function () {
     return new Client(['timeout' => 2]);
 };
 
+$app['feed_reader'] = function () {
+    return new Reader();
+};
+
 $app['weather'] = function () use ($app, $config) {
     return new Weather($app['http_client'], $config['weather']);
 };
@@ -43,8 +48,8 @@ $app['traffic'] = function () use ($app, $config) {
     return new Traffic($app['http_client'], $config['traffic']);
 };
 
-$app['news'] = function () use ($config) {
-    return new News($config['news']);
+$app['news'] = function () use ($app, $config) {
+    return new News($app['feed_reader'], $config['news']);
 };
 
 $app['petrol'] = function () use ($app, $config) {

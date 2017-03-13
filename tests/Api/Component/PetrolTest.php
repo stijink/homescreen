@@ -18,23 +18,23 @@ class PetrolTest extends TestCase
         ];
 
         $expectedResponse = [
-            "location" => "Aral - Moselstraße 2, Troisdorf",
-            "products" => [
+            'location' => 'Aral - Moselstraße 2, Troisdorf',
+            'products' => [
                 [
-                    "name" => "Aral Super 95",
-                    "price" => 1.32,
-                    "currency" => "EUR",
-                    "id" => "001040",
-                    "sort" => "21",
+                    'name' => 'Aral Super 95',
+                    'price' => 1.32,
+                    'currency' => 'EUR',
+                    'id' => '001040',
+                    'sort' => '21',
                 ],
                 [
-                    "name" => "Aral Ultimate 102",
-                    "price" => 1.46,
-                    "currency" => "EUR",
-                    "id" => "001255",
-                    "sort" => "24",
+                    'name' => 'Aral Ultimate 102',
+                    'price' => 1.46,
+                    'currency' => 'EUR',
+                    'id' => '001255',
+                    'sort' => '24',
                 ],
-            ]
+            ],
         ];
 
         $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client')
