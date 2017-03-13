@@ -6,7 +6,7 @@ use Api\Component\Petrol;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
-class TrafficTest extends TestCase
+class PetrolTest extends TestCase
 {
     public function testLoad()
     {
