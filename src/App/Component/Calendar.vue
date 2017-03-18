@@ -12,11 +12,13 @@
 
 <script>
     import ApiRequest from '../ApiRequest.js';
+    import DataUpdater from '../DataUpdater.js';
+
     import Moment from 'moment';
     Moment.locale('de');
 
     export default {
-        mixins: [ApiRequest],
+        mixins: [ApiRequest, DataUpdater],
         data() {
             return {
                 api_url: '/api.php/calendar',
@@ -47,18 +49,7 @@
 
                     events[index] = event;
                 });
-            },
-            update() {
-                this.apiRequest(this.api_url, this.process);
-            },
-        },
-        mounted() {
-            this.update();
-
-            // Make sure the calendar is updated every 60 minutes
-            setInterval(function () {
-                this.update();
-            }.bind(this), 60000 * this.api_update_interval);
+            }
         }
     }
 </script>

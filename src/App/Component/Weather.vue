@@ -7,9 +7,10 @@
 
 <script>
     import ApiRequest from '../ApiRequest.js';
+    import DataUpdater from '../DataUpdater.js';
 
     export default {
-        mixins: [ApiRequest],
+        mixins: [ApiRequest, DataUpdater],
         data() {
             return {
                 api_url: '/api.php/weather',
@@ -25,18 +26,7 @@
                 this.temperature = data.temperature;
                 this.description = data.description;
                 this.icon = 'owf-' + data.icon_code;
-            },
-            update() {
-                this.apiRequest(this.api_url, this.process);
             }
-        },
-        mounted() {
-            this.update();
-
-            // Make sure the weather is updated every five minutes
-            setInterval(function () {
-                this.update();
-            }.bind(this), 60000 * this.api_update_interval);
         }
     }
 </script>

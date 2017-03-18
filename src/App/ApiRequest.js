@@ -1,5 +1,4 @@
 let ApiRequest = {
-
     methods: {
         apiRequest: function (url, callback) {
             this.$http.get(url).then(response => {

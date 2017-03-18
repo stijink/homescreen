@@ -12,9 +12,10 @@
 
 <script>
     import ApiRequest from '../ApiRequest.js';
+    import DataUpdater from '../DataUpdater.js';
 
     export default {
-        mixins: [ApiRequest],
+        mixins: [ApiRequest, DataUpdater],
         data() {
             return {
                 api_url: '/api.php/petrol',
@@ -28,18 +29,7 @@
             process(data) {
                 this.location = data.location;
                 this.products = data.products;
-            },
-            update() {
-                this.apiRequest(this.api_url, this.process);
             }
-        },
-        mounted() {
-            this.update();
-
-            // Make sure the data is updated every 10 Minutes
-            setInterval(function () {
-                this.update();
-            }.bind(this), 60000 * this.api_update_interval);
         }
     }
 </script>
