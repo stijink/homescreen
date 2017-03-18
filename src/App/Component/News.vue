@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import ApiRequest from './ApiRequest.js';
+    import ApiRequest from '../ApiRequest.js';
 
     export default {
         mixins: [ApiRequest],

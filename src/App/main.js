@@ -1,16 +1,16 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 
-import App from './App.vue';
-import Error from './Error.vue';
+import App from './Component/App.vue';
+import Error from './Component/Error.vue';
 
-import Clock from './Clock.vue';
-import Weather from './Weather.vue';
-import WeatherForcast from './WeatherForcast.vue';
-import Traffic from './Traffic.vue';
-import News from './News.vue';
-import Calendar from './Calendar.vue';
-import Petrol from './Petrol.vue';
+import Clock from './Component/Clock.vue';
+import Weather from './Component/Weather.vue';
+import WeatherForcast from './Component/WeatherForcast.vue';
+import Traffic from './Component/Traffic.vue';
+import News from './Component/News.vue';
+import Calendar from './Component/Calendar.vue';
+import Petrol from './Component/Petrol.vue';
 
 Vue.use(VueResource);
 
