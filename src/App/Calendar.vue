@@ -25,6 +25,7 @@
             update() {
 
                 this.$http.get('/api.php/calendar').then(response => {
+                    ErrorEvent.$emit('reset');
                     this.events = response.body;
 
                     this.events.forEach(function (event, index, events) {

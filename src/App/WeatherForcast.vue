@@ -20,6 +20,7 @@
             update() {
 
                 this.$http.get('/api.php/weather-forcast').then(response => {
+                    ErrorEvent.$emit('reset');
                     this.forcast = response.body;
 
                     this.forcast.forEach(function (day, index, forcast) {

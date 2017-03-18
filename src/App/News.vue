@@ -20,6 +20,7 @@
             update() {
 
                 this.$http.get('/api.php/news').then(response => {
+                    ErrorEvent.$emit('reset');
                     this.news = response.body;
                     this.startNewsRotation();
                 },

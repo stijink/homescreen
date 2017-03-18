@@ -22,6 +22,7 @@
             update() {
 
                 this.$http.get('/api.php/petrol').then(response => {
+                    ErrorEvent.$emit('reset');
                     this.location = response.body.location;
                     this.products = response.body.products;
                 },

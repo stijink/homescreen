@@ -18,6 +18,7 @@
             update() {
 
                 this.$http.get('/api.php/weather').then(response => {
+                    ErrorEvent.$emit('reset');
                     this.temperature = response.body.temperature;
                     this.description = response.body.description;
                     this.icon = 'owf-' + response.body.icon_code;

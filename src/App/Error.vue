@@ -38,6 +38,11 @@ export default {
           this.message = response.message;
           this.description = response.description;
       }.bind(this));
+
+      ErrorEvent.$on('reset', function (response) {
+          this.message = null;
+          this.description = null;
+      }.bind(this));
   }
 }
 </script>
