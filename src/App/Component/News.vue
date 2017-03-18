@@ -23,19 +23,18 @@
             }
         },
         methods: {
-            update() {
-                this.apiRequest(this.api_url, function (data) {
-                    this.news = data;
-                    this.startNewsRotation();
-                }.bind(this));
-            },
-            startNewsRotation() {
+            process(data) {
+                this.news = data;
 
-                this.news[0].visible = true;
+                // Make first article visible
+                this.news[0].visible = true
 
                 setInterval(function () {
                     this.rotateNews();
                 }.bind(this), 1000 * this.displayForSeconds);
+            },
+            update() {
+                this.apiRequest(this.api_url, this.process);
             },
             rotateNews() {
 

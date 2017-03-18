@@ -25,11 +25,12 @@
             }
         },
         methods: {
+            process(data) {
+                this.location = data.location;
+                this.products = data.products;
+            },
             update() {
-                this.apiRequest(this.api_url, function (data) {
-                    this.location = data.location;
-                    this.products = data.products;
-                }.bind(this));
+                this.apiRequest(this.api_url, this.process);
             }
         },
         mounted() {

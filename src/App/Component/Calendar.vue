@@ -25,30 +25,31 @@
             }
         },
         methods: {
+            process(data) {
+                this.events = data;
+
+                this.events.forEach(function (event, index, events) {
+                    let now  = Moment().startOf('day');
+                    let eventDate = Moment(event.date);
+                    let diffInDays = eventDate.diff(now, 'days');
+
+                    if (diffInDays === 0) {
+                        event.time = 'heute';
+                    }
+
+                    if (diffInDays === 1) {
+                        event.time = 'morgen';
+                    }
+
+                    if (diffInDays > 1) {
+                        event.time = 'in ' + diffInDays + ' Tagen';
+                    }
+
+                    events[index] = event;
+                });
+            },
             update() {
-                this.apiRequest(this.api_url, function (data) {
-                    this.events = data;
-
-                    this.events.forEach(function (event, index, events) {
-                        let now  = Moment().startOf('day');
-                        let eventDate = Moment(event.date);
-                        let diffInDays = eventDate.diff(now, 'days');
-
-                        if (diffInDays === 0) {
-                            event.time = 'heute';
-                        }
-
-                        if (diffInDays === 1) {
-                            event.time = 'morgen';
-                        }
-
-                        if (diffInDays > 1) {
-                            event.time = 'in ' + diffInDays + ' Tagen';
-                        }
-
-                        events[index] = event;
-                    });
-                }.bind(this));
+                this.apiRequest(this.api_url, this.process);
             },
         },
         mounted() {

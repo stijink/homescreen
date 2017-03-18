@@ -21,10 +21,11 @@
             }
         },
         methods: {
+            process(data) {
+              this.routes = data;
+            },
             update() {
-                this.apiRequest(this.api_url, function (data) {
-                    this.routes = data;
-                }.bind(this));
+                this.apiRequest(this.api_url, this.process);
             }
         },
         mounted() {

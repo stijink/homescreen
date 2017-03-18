@@ -21,12 +21,13 @@
             }
         },
         methods: {
+            process(data) {
+                this.temperature = data.temperature;
+                this.description = data.description;
+                this.icon = 'owf-' + data.icon_code;
+            },
             update() {
-                this.apiRequest(this.api_url, function (data) {
-                    this.temperature = data.temperature;
-                    this.description = data.description;
-                    this.icon = 'owf-' + data.icon_code;
-                }.bind(this));
+                this.apiRequest(this.api_url, this.process);
             }
         },
         mounted() {

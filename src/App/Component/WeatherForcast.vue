@@ -23,15 +23,16 @@
             }
         },
         methods: {
-            update() {
-                this.apiRequest(this.api_url, function (data) {
-                    this.forcast = data;
+            process(data) {
+                this.forcast = data;
 
-                    this.forcast.forEach(function (day, index, forcast) {
-                        day.icon = 'owf-' + day.icon_code;
-                        forcast[index] = day;
-                    });
-                }.bind(this));
+                this.forcast.forEach(function (day, index, forcast) {
+                    day.icon = 'owf-' + day.icon_code;
+                    forcast[index] = day;
+                });
+            },
+            update() {
+                this.apiRequest(this.api_url, this.process);
             }
         },
         mounted() {
