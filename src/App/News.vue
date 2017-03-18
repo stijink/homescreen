@@ -8,9 +8,13 @@
 </template>
 
 <script>
+    import ApiRequest from './ApiRequest.js';
+
     export default {
+        mixins: [ApiRequest],
         data() {
             return {
+                api_url: '/api.php/news',
                 displayForSeconds: 12,
                 currentlyOnDisplay: 0,
                 news: null,
@@ -18,15 +22,10 @@
         },
         methods: {
             update() {
-
-                this.$http.get('/api.php/news').then(response => {
-                    ErrorEvent.$emit('reset');
-                    this.news = response.body;
+                this.apiRequest(this.api_url, function (data) {
+                    this.news = data;
                     this.startNewsRotation();
-                },
-                response => {
-                    ErrorEvent.$emit('error', response.body);
-                });
+                }.bind(this));
             },
             startNewsRotation() {
 

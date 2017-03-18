@@ -11,24 +11,23 @@
 </template>
 
 <script>
+    import ApiRequest from './ApiRequest.js';
+
     export default {
+        mixins: [ApiRequest],
         data() {
             return {
+                api_url: '/api.php/petrol',
                 location: null,
                 products: null
             }
         },
         methods: {
             update() {
-
-                this.$http.get('/api.php/petrol').then(response => {
-                    ErrorEvent.$emit('reset');
-                    this.location = response.body.location;
-                    this.products = response.body.products;
-                },
-                response => {
-                    ErrorEvent.$emit('error', response.body);
-                });
+                this.apiRequest(this.api_url, function (data) {
+                    this.location = data.location;
+                    this.products = data.products;
+                }.bind(this));
             }
         },
         mounted() {
@@ -43,7 +42,6 @@
 </script>
 
 <style scoped>
-
     TABLE {
         position: absolute;
         top: 410px;

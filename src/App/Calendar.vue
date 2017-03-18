@@ -11,25 +11,24 @@
 </template>
 
 <script>
-
+    import ApiRequest from './ApiRequest.js';
     import Moment from 'moment';
     Moment.locale('de');
 
     export default {
+        mixins: [ApiRequest],
         data() {
             return {
+                api_url: '/api.php/calendar',
                 events: null,
             }
         },
         methods: {
             update() {
-
-                this.$http.get('/api.php/calendar').then(response => {
-                    ErrorEvent.$emit('reset');
-                    this.events = response.body;
+                this.apiRequest(this.api_url, function (data) {
+                    this.events = data;
 
                     this.events.forEach(function (event, index, events) {
-
                         let now  = Moment().startOf('day');
                         let eventDate = Moment(event.date);
                         let diffInDays = eventDate.diff(now, 'days');
@@ -48,10 +47,7 @@
 
                         events[index] = event;
                     });
-                },
-                response => {
-                    ErrorEvent.$emit('error', response.body);
-                });
+                }.bind(this));
             },
         },
         mounted() {

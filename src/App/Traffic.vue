@@ -8,24 +8,21 @@
 </template>
 
 <script>
+    import ApiRequest from './ApiRequest.js';
 
     export default {
+        mixins: [ApiRequest],
         data() {
             return {
+                api_url: '/api.php/traffic',
                 routes: null,
             }
         },
         methods: {
             update() {
-
-                this.$http.get('/api.php/traffic').then(response => {
-                        ErrorEvent.$emit('reset');
-                        this.routes = response.body;
-                    },
-                    response => {
-                        ErrorEvent.$emit('error', response.body);
-                    });
-
+                this.apiRequest(this.api_url, function (data) {
+                    this.routes = data;
+                }.bind(this));
             }
         },
         mounted() {

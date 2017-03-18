@@ -10,28 +10,26 @@
 </template>
 
 <script>
+    import ApiRequest from './ApiRequest.js';
+
     export default {
+        mixins: [ApiRequest],
         data() {
             return {
+                api_url: '/api.php/weather-forcast',
                 forcast: null,
             }
         },
         methods: {
             update() {
-
-                this.$http.get('/api.php/weather-forcast').then(response => {
-                    ErrorEvent.$emit('reset');
-                    this.forcast = response.body;
+                this.apiRequest(this.api_url, function (data) {
+                    this.forcast = data;
 
                     this.forcast.forEach(function (day, index, forcast) {
                         day.icon = 'owf-' + day.icon_code;
                         forcast[index] = day;
                     });
-                },
-                response => {
-                    ErrorEvent.$emit('error', response.body);
-                });
-
+                }.bind(this));
             }
         },
         mounted() {

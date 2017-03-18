@@ -6,9 +6,13 @@
 </template>
 
 <script>
+    import ApiRequest from './ApiRequest.js';
+
     export default {
+        mixins: [ApiRequest],
         data() {
             return {
+                api_url: '/api.php/weather',
                 temperature: null,
                 description: null,
                 icon: null,
@@ -16,17 +20,11 @@
         },
         methods: {
             update() {
-
-                this.$http.get('/api.php/weather').then(response => {
-                    ErrorEvent.$emit('reset');
-                    this.temperature = response.body.temperature;
-                    this.description = response.body.description;
-                    this.icon = 'owf-' + response.body.icon_code;
-                },
-                response => {
-                    ErrorEvent.$emit('error', response.body);
-                });
-
+                this.apiRequest(this.api_url, function (data) {
+                    this.temperature = data.temperature;
+                    this.description = data.description;
+                    this.icon = 'owf-' + data.icon_code;
+                }.bind(this));
             }
         },
         mounted() {
