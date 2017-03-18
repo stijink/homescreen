@@ -17,6 +17,8 @@
         data() {
             return {
                 api_url: '/api.php/weather-forcast',
+                api_update_interval: 5,
+
                 forcast: null,
             }
         },
@@ -38,7 +40,7 @@
             // Make sure the weather is updated every five minutes
             setInterval(function () {
                 this.update();
-            }.bind(this), 60000 * 5);
+            }.bind(this), 60000 * this.api_update_interval);
         }
     }
 </script>

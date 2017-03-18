@@ -18,6 +18,8 @@
         data() {
             return {
                 api_url: '/api.php/petrol',
+                api_update_interval: 10,
+
                 location: null,
                 products: null
             }
@@ -36,7 +38,7 @@
             // Make sure the data is updated every 10 Minutes
             setInterval(function () {
                 this.update();
-            }.bind(this), 60000 * 10);
+            }.bind(this), 60000 * this.api_update_interval);
         }
     }
 </script>

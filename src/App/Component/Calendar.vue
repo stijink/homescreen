@@ -20,6 +20,7 @@
         data() {
             return {
                 api_url: '/api.php/calendar',
+                api_update_interval: 10,
                 events: null,
             }
         },
@@ -56,7 +57,7 @@
             // Make sure the calendar is updated every 60 minutes
             setInterval(function () {
                 this.update();
-            }.bind(this), 60000 * 60);
+            }.bind(this), 60000 * this.api_update_interval);
         }
     }
 </script>
