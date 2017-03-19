@@ -22,6 +22,15 @@
       </div>
     </div>
 
+    <div class="row row-2">
+      <div class="col-md-6 col-left width-400">
+        &nbsp;
+      </div>
+      <div class="col-md-6 col-right width-400">
+        <presence></presence>
+      </div>
+    </div>
+
     <!-- Bottom row: Fixed to the bottom -->
 
     <div class="row row-bottom width-400">
