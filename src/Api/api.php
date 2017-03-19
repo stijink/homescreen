@@ -5,6 +5,7 @@ namespace Api;
 use Api\Component\Calendar;
 use Api\Component\News;
 use Api\Component\Petrol;
+use Api\Component\Presence;
 use Api\Component\Traffic;
 use Api\Component\Weather;
 use Api\Component\WeatherForcast;
@@ -60,6 +61,11 @@ $app['calendar'] = function () use ($config) {
     return new Calendar($config['calendar'], $config['persons']);
 };
 
+$app['presence'] = function () use ($config) {
+    return new Presence($config['presence'], $config['persons']);
+};
+
+
 $app->get('/weather', function (Request $request) use ($app) {
     $weather = $app['weather']->load();
 
@@ -94,6 +100,12 @@ $app->get('/calendar', function () use ($app) {
     $events = $app['calendar']->load();
 
     return new JsonResponse($events);
+});
+
+$app->get('/presence', function () use ($app) {
+    $presence = $app['presence']->load();
+
+    return new JsonResponse($presence);
 });
 
 $app->error(function (\Exception $exception, Request $request, $code) use ($app) {
