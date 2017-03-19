@@ -38,13 +38,6 @@
 
 <style scoped>
 
-    TABLE {
-        position: absolute;
-        top: 200px;
-        right: 0;
-        width: 370px;
-    }
-
     td {
         position: relative;
     }

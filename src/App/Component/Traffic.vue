@@ -30,11 +30,6 @@
 </script>
 
 <style scoped>
-    #traffic {
-        position: absolute;
-        bottom: 20px;
-        right: 0;
-    }
 
     h5 {
         font-size: 16px;

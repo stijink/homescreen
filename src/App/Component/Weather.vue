@@ -32,11 +32,6 @@
 </script>
 
 <style scoped>
-    #weather {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
 
     h4 {
         position: relative;

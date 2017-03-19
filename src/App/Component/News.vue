@@ -53,10 +53,6 @@
 
 <style scoped>
     .story {
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        width: 400px;
         font-size: 14px;
     }
 </style>

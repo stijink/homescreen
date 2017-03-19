@@ -34,13 +34,3 @@
     }
 </script>
 
-<style scoped>
-    TABLE {
-        position: absolute;
-        top: 410px;
-        right: 0;
-        width: 370px;
-    }
-</style>
-
-

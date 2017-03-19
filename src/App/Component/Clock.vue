@@ -37,12 +37,6 @@
 </script>
 
 <style scoped>
-    #clock {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
     H3 {
         font-size: 3rem;
     }
