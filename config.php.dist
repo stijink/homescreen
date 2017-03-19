@@ -4,8 +4,22 @@ $config = [
     'locale' => 'de_DE',
 
     'persons' => [
-        'john_doe' => ['name' => 'John Doe', 'image_url' => 'http://graph.facebook.com/4/picture?type=square'],
-        'jane_doe' => ['name' => 'Jane Doe', 'image_url' => 'http://graph.facebook.com/4/picture?type=square'],
+        'john_doe' => [
+            'name'        => 'John Doe',
+            'type'        => 'resedent',
+            'image_url'   => 'http://graph.facebook.com/4/picture?type=square',
+            'mac_address' => '',
+        ],
+        'jane_doe' => [
+            'name'        => 'Jane Doe',
+            'type'        => 'visitor',
+            'image_url'   => 'http://graph.facebook.com/4/picture?type=square',
+            'mac_address' => '',
+        ],
+    ],
+
+    'presence' => [
+        'api_url' => 'http://fritz.box:49000/upnp/control/hosts',
     ],
 
     'weather' => [
