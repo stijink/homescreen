@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="row row-2">
+    <div class="row row-3">
       <div class="col-md-6 col-left width-400">
         &nbsp;
       </div>
