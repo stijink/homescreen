@@ -28,24 +28,56 @@ class Presence implements ComponentInterface
         $presence = [];
 
         foreach ($this->persons as $person) {
-            $presence[] = $this->personPresence($person);
+            $isPresent = $this->isPersonPresent($person);
+
+            // Do not add visitors that are not present
+            if ($person['type'] == 'visitor' && $isPresent === false) {
+                continue;
+            }
+
+            $presence[] = [
+                'person' => $person,
+                'is_present' => $isPresent,
+                'status_text' => $this->getStatusText($person, $isPresent),
+            ];
         }
+
+        return $this->sortByPresence($presence);
+    }
+
+    /**
+     * Sort Persons by presence
+     *
+     * @param  array $presence
+     * @return array
+     */
+    private function sortByPresence(array $presence) : array
+    {
+        usort($presence, function (array $a, array $b) : int {
+            return (int)$b['is_present'];
+        });
 
         return $presence;
     }
 
     /**
+     * Assamble the status text
+     *
      * @param  array $person
-     * @return array
+     * @param  bool $isPresent
+     * @return string
      */
-    private function personPresence(array $person) : array
+    private function getStatusText(array $person, bool $isPresent) : string
     {
-        $isPresent = $this->isPersonPresent($person);
+        if ($person['type'] == 'visitor') {
+            return $person['name'] . ' ist zu Besuch';
+        }
 
-        return [
-            'person' => $person,
-            'is_present' => $isPresent,
-        ];
+        if ($isPresent === true) {
+            return $person['name'] . ' ist zuhause';
+        }
+
+        return $person['name'] . ' ist nicht zuhause';
     }
 
     /**
@@ -88,6 +120,10 @@ class Presence implements ComponentInterface
 
         $NewActive_h = $parser->xpath('//NewActive/text()');
 
-        return  (bool)$NewActive_h[0]->__toString();
+        if (isset($NewActive_h[0])) {
+            return  (bool)$NewActive_h[0]->__toString();
+        }
+
+        return false;
     }
 }
