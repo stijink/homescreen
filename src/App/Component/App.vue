@@ -24,10 +24,10 @@
 
     <div class="row row-3">
       <div class="col-md-6 col-left width-400">
-        &nbsp;
+        <presence></presence>
       </div>
       <div class="col-md-6 col-right width-400">
-        <presence></presence>
+        &nbsp;
       </div>
     </div>
 
