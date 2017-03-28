@@ -53,8 +53,8 @@ class Presence implements ComponentInterface
      */
     private function sortByPresence(array $presence) : array
     {
-        usort($presence, function (array $a, array $b) : int {
-            return (int)$b['is_present'];
+        usort($presence, function (array $presence1, array $presence2) : int {
+            return (int)$presence2['is_present'];
         });
 
         return $presence;
@@ -86,8 +86,9 @@ class Presence implements ComponentInterface
      */
     private function isPersonPresent(array $person) : bool
     {
-        $xml_post_string = '<?xml version="1.0" encoding="utf-8"?>
-        <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
+        $xmlPostString = '<?xml version="1.0" encoding="utf-8"?>
+        <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+          xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
           <s:Body>
             <u:GetSpecificHostEntry xmlns:u="urn:dslforum-org:service:Hosts:1">
               <NewMACAddress>' . $person['mac_address'] . '</NewMACAddress>
@@ -101,27 +102,32 @@ class Presence implements ComponentInterface
             "Cache-Control: no-cache",
             "Pragma: no-cache",
             "SoapAction:urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry",
-            "Content-length: ".strlen($xml_post_string),
+            "Content-length: ".strlen($xmlPostString),
         );
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->config['api_url']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_post_string);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $this->config['api_url']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 2);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $xmlPostString);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        // We return in case we cannot connect
+        if ($response === false) {
+            return false;
+        }
 
         $parser = simplexml_load_string($response);
         $parser->registerXPathNamespace("a", "urn:dslforum-org:service:Hosts:1");
 
-        $NewActive_h = $parser->xpath('//NewActive/text()');
+        $newActive = $parser->xpath('//NewActive/text()');
 
-        if (isset($NewActive_h[0])) {
-            return  (bool)$NewActive_h[0]->__toString();
+        if (isset($newActive[0])) {
+            return  (bool)$newActive[0]->__toString();
         }
 
         return false;
