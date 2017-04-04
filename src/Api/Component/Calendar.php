@@ -66,10 +66,14 @@ class Calendar implements ComponentInterface
                 $events[$timestampStart]['persons'] = [$this->persons[$calendar['person']]];
             }
 
-            // If no person is specified for the calendar we add all persons.
-            // We assume the events for this calendar are of general interest.
+            // If no person is specified for the calendar we add all persons that are marked
+            // as "residents". We assume the events for this calendar are of general interest.
             if (!isset($calendar['person'])) {
-                $events[$timestampStart]['persons'] = $this->persons;
+                foreach ($this->persons as $person) {
+                    if ($person['type'] == 'resident') {
+                        $events[$timestampStart]['persons'][] = $person;
+                    }
+                }
             }
         }
 
