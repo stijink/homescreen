@@ -20,6 +20,7 @@
 
                 displayForSeconds: 12,
                 currentlyOnDisplay: 0,
+                rotationInterval: null,
                 news: null,
             }
         },
@@ -28,9 +29,11 @@
                 this.news = data;
 
                 // Make first article visible
-                this.news[0].visible = true
+                this.news[0].visible = true;
 
-                setInterval(function () {
+                clearInterval(this.rotationInterval);
+
+                this.rotationInterval = setInterval(function () {
                     this.rotateNews();
                 }.bind(this), 1000 * this.displayForSeconds);
             },
