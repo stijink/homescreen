@@ -30,9 +30,14 @@
 
                 // Make first article visible
                 this.news[0].visible = true;
+                
+                // Reset the news display iteratior
+                this.currentlyOnDisplay = 0;
 
+                // Stop the current interval for news rotation
                 clearInterval(this.rotationInterval);
 
+                // Start/Restart news rotation
                 this.rotationInterval = setInterval(function () {
                     this.rotateNews();
                 }.bind(this), 1000 * this.displayForSeconds);
