@@ -2,9 +2,6 @@
 
 namespace Api\Component;
 
-use Api\Exception\ApiKeyException;
-use GuzzleHttp\Client;
-
 class Presence implements ComponentInterface
 {
     private $config;
@@ -16,7 +13,7 @@ class Presence implements ComponentInterface
      */
     public function __construct(array $config, array $persons)
     {
-        $this->config  = $config;
+        $this->config = $config;
         $this->persons = $persons;
     }
 
@@ -46,63 +43,66 @@ class Presence implements ComponentInterface
     }
 
     /**
-     * Sort Persons by presence
+     * Sort Persons by presence.
      *
-     * @param  array $presence
+     * @param array $presence
+     *
      * @return array
      */
-    private function sortByPresence(array $presence) : array
+    private function sortByPresence(array $presence): array
     {
-        usort($presence, function (array $presence1, array $presence2) : int {
-            return (int)$presence2['is_present'];
+        usort($presence, function (array $presence1, array $presence2): int {
+            return (int) $presence2['is_present'];
         });
 
         return $presence;
     }
 
     /**
-     * Assamble the status text
+     * Assamble the status text.
      *
-     * @param  array $person
-     * @param  bool $isPresent
+     * @param array $person
+     * @param bool  $isPresent
+     *
      * @return string
      */
-    private function getStatusText(array $person, bool $isPresent) : string
+    private function getStatusText(array $person, bool $isPresent): string
     {
         if ($person['type'] == 'visitor') {
-            return $person['name'] . ' ist zu Besuch';
+            return $person['name'].' ist zu Besuch';
         }
 
         if ($isPresent === true) {
-            return $person['name'] . ' ist zuhause';
+            return $person['name'].' ist zuhause';
         }
 
-        return $person['name'] . ' ist nicht zuhause';
+        return $person['name'].' ist nicht zuhause';
     }
 
     /**
-     * @param  array $person
+     * @param array $person
+     *
      * @return bool
      */
-    private function isPersonPresent(array $person) : bool
+    private function isPersonPresent(array $person): bool
     {
         $xmlPostString = '<?xml version="1.0" encoding="utf-8"?>
         <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
           xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
           <s:Body>
             <u:GetSpecificHostEntry xmlns:u="urn:dslforum-org:service:Hosts:1">
-              <NewMACAddress>' . $person['mac_address'] . '</NewMACAddress>
+              <NewMACAddress>'.$person['mac_address'].'</NewMACAddress>
             </u:GetSpecificHostEntry>
           </s:Body>
         </s:Envelope>';
 
         $headers = array(
-            "Content-type: text/xml;charset=\"utf-8\"",
-            "Accept: text/xml",
-            "Cache-Control: no-cache",
-            "Pragma: no-cache",
-            "SoapAction:urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry",
-            "Content-length: ".strlen($xmlPostString),
+            'Content-type: text/xml;charset="utf-8"',
+            'Accept: text/xml',
+            'Cache-Control: no-cache',
+            'Pragma: no-cache',
+            'SoapAction:urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
+            'Content-length: '.strlen($xmlPostString),
         );
 
         $curl = curl_init();
@@ -122,12 +122,12 @@ class Presence implements ComponentInterface
         }
 
         $parser = simplexml_load_string($response);
-        $parser->registerXPathNamespace("a", "urn:dslforum-org:service:Hosts:1");
+        $parser->registerXPathNamespace('a', 'urn:dslforum-org:service:Hosts:1');
 
         $newActive = $parser->xpath('//NewActive/text()');
 
         if (isset($newActive[0])) {
-            return  (bool)$newActive[0]->__toString();
+            return  (bool) $newActive[0]->__toString();
         }
 
         return false;

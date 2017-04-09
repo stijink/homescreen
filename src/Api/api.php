@@ -65,7 +65,6 @@ $app['presence'] = function () use ($config) {
     return new Presence($config['presence'], $config['persons']);
 };
 
-
 $app->get('/weather', function (Request $request) use ($app) {
     $weather = $app['weather']->load();
 
