@@ -77,25 +77,25 @@ class PresenceTest extends TestCase
                 ->with(\Mockery::on(function ($arg) {
                     return stripos((string) $arg->getBody(), '48:43:7C:6B:F4:33') !== false;
                 }))
-                ->andReturn($this->expectedApiResponse('1'))
+                ->andReturn($this->expectSuccessResponse('1'))
             ->shouldReceive('send')
                 ->once()
                 ->with(\Mockery::on(function ($arg) {
                     return stripos((string) $arg->getBody(), '18:65:90:2D:66:55') !== false;
                 }))
-                ->andReturn($this->expectedApiResponse('0'))
+                ->andReturn($this->expectSuccessResponse('0'))
             ->shouldReceive('send')
                 ->once()
                 ->with(\Mockery::on(function ($arg) {
                     return stripos((string) $arg->getBody(), 'F0:43:47:00:90:FF') !== false;
                 }))
-                ->andReturn($this->expectedApiResponse('1'))
+                ->andReturn($this->expectSuccessResponse('1'))
             ->shouldReceive('send')
                 ->once()
                 ->with(\Mockery::on(function ($arg) {
                     return stripos((string) $arg->getBody(), '4C:57:CA:0F:C5:EE') !== false;
                 }))
-                ->andReturn($this->expectedApiResponse('0'))
+                ->andReturn($this->expectErrorResponse())
             ->getMock();
 
         $presence = new Presence($mockedHttpClient, $config, $persons);
@@ -109,7 +109,7 @@ class PresenceTest extends TestCase
      *
      * @return Response
      */
-    private function expectedApiResponse(string $isOnline) : Response
+    private function expectSuccessResponse(string $isOnline) : Response
     {
         $body = '<?xml version="1.0"?>
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -126,5 +126,10 @@ class PresenceTest extends TestCase
         </s:Envelope>';
 
         return new Response(200, [], $body);
+    }
+
+    private function expectErrorResponse() : Response
+    {
+        return new Response(500, [], '');
     }
 }

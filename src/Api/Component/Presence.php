@@ -136,6 +136,10 @@ class Presence implements ComponentInterface
             $request = new Request('POST', $this->config['api_url'], $headers, $body);
             $response = $this->httpClient->send($request);
 
+            if ($response->getStatusCode() == 500) {
+                throw new ServerException('error', $request, $response);
+            }
+
             preg_match(
                 '/<NewActive>([0|1])<\/NewActive>/',
                 (string) $response->getBody(),
