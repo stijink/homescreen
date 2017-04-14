@@ -24,7 +24,7 @@
         data() {
             return {
                 api_url: '/api.php/presence',
-                api_update_interval: 1,
+                api_update_interval: 0.5,
                 presence: null,
             }
         },
