@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install API Dependencies
-composer install --no-dev --optimize-autoloader
+composer install --no-dev --optimize-autoloader --no-suggest
 
 # Install App Dependencies
 yarn install
