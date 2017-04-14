@@ -49,7 +49,10 @@ class Presence implements ComponentInterface
             ];
         }
 
-        return $this->sortByPresence($presence);
+        $presence = $this->sortByPresence($presence);
+        $presence = $this->sortByPersonType($presence);
+
+        return $presence;
     }
 
     /**
@@ -63,6 +66,22 @@ class Presence implements ComponentInterface
     {
         usort($presence, function (array $presence1, array $presence2): int {
             return (int) $presence2['is_present'];
+        });
+
+        return $presence;
+    }
+
+    /**
+     * Sort Persons by presence.
+     *
+     * @param array $presence
+     *
+     * @return array
+     */
+    private function sortByPersonType(array $presence): array
+    {
+        usort($presence, function (array $presence1, array $presence2): int {
+            return (int) $presence2['person']['type'] == 'resident';
         });
 
         return $presence;
@@ -111,7 +130,7 @@ class Presence implements ComponentInterface
 
             $headers = [
                 'Content-type' => 'text/xml;charset="utf-8',
-                'SoapAction' => 'urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
+                'SoapAction'   => 'urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
             ];
 
             $request = new Request('POST', $this->config['api_url'], $headers, $body);
