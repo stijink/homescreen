@@ -2,17 +2,24 @@
 
 namespace Api\Component;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Psr7\Request;
+
 class Presence implements ComponentInterface
 {
+    private $httpClient;
     private $config;
     private $persons;
 
     /**
-     * @param array $config
-     * @param array $persons
+     * @param Client $httpClient
+     * @param array  $config
+     * @param array  $persons
      */
-    public function __construct(array $config, array $persons)
+    public function __construct(Client $httpClient, array $config, array $persons)
     {
+        $this->httpClient = $httpClient;
         $this->config = $config;
         $this->persons = $persons;
     }
@@ -83,56 +90,42 @@ class Presence implements ComponentInterface
     }
 
     /**
+     * Check against the API if a person is currently present.
+     *
      * @param array $person
      *
      * @return bool
      */
     private function isPersonPresent(array $person): bool
     {
-        $xmlPostString = '<?xml version="1.0" encoding="utf-8"?>
-        <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
-          xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
-          <s:Body>
-            <u:GetSpecificHostEntry xmlns:u="urn:dslforum-org:service:Hosts:1">
-              <NewMACAddress>'.$person['mac_address'].'</NewMACAddress>
-            </u:GetSpecificHostEntry>
-          </s:Body>
-        </s:Envelope>';
+        try {
+            $body = '<?xml version="1.0" encoding="utf-8"?>
+            <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+              xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
+              <s:Body>
+                <u:GetSpecificHostEntry xmlns:u="urn:dslforum-org:service:Hosts:1">
+                  <NewMACAddress>'.$person['mac_address'].'</NewMACAddress>
+                </u:GetSpecificHostEntry>
+              </s:Body>
+            </s:Envelope>';
 
-        $headers = array(
-            'Content-type: text/xml;charset="utf-8"',
-            'Accept: text/xml',
-            'Cache-Control: no-cache',
-            'Pragma: no-cache',
-            'SoapAction:urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
-            'Content-length: '.strlen($xmlPostString),
-        );
+            $headers = [
+                'Content-type' => 'text/xml;charset="utf-8',
+                'SoapAction' => 'urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
+            ];
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $this->config['api_url']);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 2);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $xmlPostString);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            $request = new Request('POST', $this->config['api_url'], $headers, $body);
+            $response = $this->httpClient->send($request);
 
-        $response = curl_exec($curl);
-        curl_close($curl);
+            preg_match(
+                '/<NewActive>([0|1])<\/NewActive>/',
+                (string) $response->getBody(),
+                $matches
+            );
 
-        // We return in case we cannot connect
-        if ($response === false) {
+            return boolval($matches[1]);
+        } catch (ServerException $e) {
             return false;
         }
-
-        $parser = simplexml_load_string($response);
-        $parser->registerXPathNamespace('a', 'urn:dslforum-org:service:Hosts:1');
-
-        $newActive = $parser->xpath('//NewActive/text()');
-
-        if (isset($newActive[0])) {
-            return  (bool) $newActive[0]->__toString();
-        }
-
-        return false;
     }
 }

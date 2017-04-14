@@ -61,8 +61,8 @@ $app['calendar'] = function () use ($config) {
     return new Calendar($config['calendar'], $config['persons']);
 };
 
-$app['presence'] = function () use ($config) {
-    return new Presence($config['presence'], $config['persons']);
+$app['presence'] = function () use ($app, $config) {
+    return new Presence($app['http_client'], $config['presence'], $config['persons']);
 };
 
 $app->get('/weather', function (Request $request) use ($app) {
