@@ -3,43 +3,18 @@
 namespace Tests\Api\Component;
 
 use Api\Component\News;
-use InterNations\Component\HttpMock\PHPUnit\HttpMockTrait;
 use PicoFeed\Reader\Reader;
+use Tests\Api\MyHttpMockTrait;
 
 class NewsTest extends \PHPUnit_Framework_TestCase
 {
-    use HttpMockTrait;
-
-    public static function setUpBeforeClass()
-    {
-        static::setUpHttpMockBeforeClass('9012', 'localhost');
-    }
-
-    public static function tearDownAfterClass()
-    {
-        static::tearDownHttpMockAfterClass();
-    }
-
-    public function setUp()
-    {
-        $this->setUpHttpMock();
-    }
-
-    public function tearDown()
-    {
-        $this->tearDownHttpMock();
-    }
+    use MyHttpMockTrait;
 
     public function testLoad()
     {
-        $this->http->mock
-            ->when()
-            ->methodIs('GET')
-            ->pathIs('/')
-            ->then()
-            ->body(file_get_contents(__DIR__.'/../Fixtures/news.rss'))
-            ->end();
-        $this->http->setUp();
+        $this->setExpectedHttpResponse(
+            file_get_contents(__DIR__ . '/../Fixtures/news.rss')
+        );
 
         $config = [
             'feeds' => [
@@ -49,5 +24,14 @@ class NewsTest extends \PHPUnit_Framework_TestCase
 
         $news = new News(new Reader(), $config);
         $response = $news->load();
+
+        $this->assertCount(10, $response);
+
+        foreach ($response as $news) {
+            $this->assertArrayHasKey('title', $news);
+            $this->assertArrayHasKey('description', $news);
+            $this->assertArrayHasKey( 'date', $news);
+            $this->assertArrayHasKey('visible', $news);
+        }
     }
 }

@@ -11,7 +11,7 @@
         "psr-4": { "Api\\": "src/Api/" }
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\Api\\": "tests/" }
+        "psr-4": { "Tests\\Api\\": "tests/Api/" }
     },
     "require-dev": {
         "symfony/var-dumper": "^3.2",
