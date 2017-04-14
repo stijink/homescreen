@@ -32,6 +32,9 @@ class Presence implements ComponentInterface
                 continue;
             }
 
+            // Unset the mac_address to not expose it into the frontend
+            unset($person['mac_address']);
+
             $presence[] = [
                 'person' => $person,
                 'is_present' => $isPresent,
