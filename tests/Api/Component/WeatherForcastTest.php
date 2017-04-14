@@ -80,7 +80,7 @@ class WeatherForcastTest extends TestCase
         $this->assertEquals($expectedResponse, $response);
     }
 
-    private function exampleResponse()
+    private function exampleResponse() : Response
     {
         $body = file_get_contents(__DIR__.'/../Fixtures/weather-forcast.json');
 
