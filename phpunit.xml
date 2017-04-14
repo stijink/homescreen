@@ -24,8 +24,9 @@
     </filter>
 
     <logging>
-        <log type="coverage-text"   target="build/logs/coverage.txt"/>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-text"   target="logs/coverage.txt"/>
+        <log type="coverage-html"   target="logs/coverage.html"/>
     </logging>
 
     <listeners>
