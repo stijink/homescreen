@@ -2,6 +2,9 @@
 
 namespace Api\Component;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface ComponentInterface
 {
     /**

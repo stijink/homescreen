@@ -4,6 +4,8 @@ namespace Api\Exception;
 
 /**
  * We throw this exception if we're missing an Api-Key.
+ *
+ * @codeCoverageIgnore
  */
 class ApiKeyException extends ApiException
 {

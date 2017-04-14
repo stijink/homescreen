@@ -2,6 +2,9 @@
 
 namespace Api\Exception;
 
+/**
+ * @codeCoverageIgnore
+ */
 abstract class ApiException extends \Exception
 {
     protected $description;
