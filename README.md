@@ -43,4 +43,4 @@ bin/setup_prod.sh
 
 ## License
 
-This project is licensed 
+This project is licensed under the MIT license.
