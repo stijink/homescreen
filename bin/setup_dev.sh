@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 
+# Ensure image is built
+docker-compose build
+
 # Install API Dependencies
-composer install --no-suggest
+docker-compose run homescreen-dev \
+  composer install --no-suggest
 
 # Install App Dependencies
-yarn install
+docker-compose run homescreen-dev \
+  yarn install
 
 # Build app.js
-node_modules/webpack/bin/webpack.js
+docker-compose run homescreen-dev \
+  node_modules/webpack/bin/webpack.js
 
 # Create log directory
-mkdir -p -m 777 logs
+docker-compose run homescreen-dev \
+  mkdir -p -m 777 logs
+
+# Create html symlink for apache
+docker-compose run homescreen-dev \
+  ln -s web html
