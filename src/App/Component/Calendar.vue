@@ -65,7 +65,13 @@
         margin-right: 3px;
     }
 
+    /* Person Icons */
     td:first-child {
+        width: 70px;
+    }
+
+    /* Date */
+    td:nth-child(3) {
         width: 70px;
     }
 
