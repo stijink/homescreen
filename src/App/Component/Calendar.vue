@@ -1,13 +1,15 @@
 <template>
-    <table id="calendar">
-        <tr v-for="event in events">
-            <td>
-                <img v-for="person in event.persons" v-bind:src="person['image_url']" width="20" height="20"/>
-            </td>
-            <td>{{ event.description }}</td>
-            <td class="pull-right">{{ event.time }}</td>
-        </tr>
-    </table>
+    <div id="calendar">
+        <table>
+            <tr v-for="event in events">
+                <td>
+                    <img v-for="person in event.persons" v-bind:src="person['image_url']" width="20" height="20"/>
+                </td>
+                <td>{{ event.description }}</td>
+                <td class="pull-right">{{ event.time }}</td>
+            </tr>
+        </table>
+    </div>
 </template>
 
 <script>
@@ -57,6 +59,7 @@
 <style scoped>
     #calendar {
         font-size: 16px;
+        min-height: 300px;
     }
 
     IMG {
