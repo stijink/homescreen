@@ -73,9 +73,14 @@
         width: 70px;
     }
 
+    /* Description */
+    td:nth-child(2) {
+        width: calc(100% - 145px);
+    }
+
     /* Date */
     td:nth-child(3) {
-        width: 70px;
+        width: 75px;
     }
 
 </style>

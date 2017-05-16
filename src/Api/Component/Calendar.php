@@ -47,7 +47,8 @@ class Calendar implements ComponentInterface
 
         $icalendar = new ICal($calendar['url']);
 
-        $interval = $icalendar->eventsFromInterval('6 days');
+        $intervalInDays = $this->config['max_days'] . ' days';
+        $interval = $icalendar->eventsFromInterval($intervalInDays);
         $iCalEvents = $icalendar->sortEventsWithOrder($interval);
 
         foreach ((array) $iCalEvents as $iCalEvent) {

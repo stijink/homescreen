@@ -69,8 +69,8 @@ $config = [
     ],
 
     'calendar' => [
+        'max_days'   => 21,
         'max_events' => 10,
-
         'calendars' => [
             [
                 'name' => 'Example',
