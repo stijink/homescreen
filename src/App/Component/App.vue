@@ -48,7 +48,7 @@
 <style>
 
 body {
-  background-color: #999;
+  background-color: #000;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
 }
