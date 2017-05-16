@@ -1,7 +1,11 @@
 <template>
     <div id="weather">
         <h1 class="pull-right"><i class="fa fa-thermometer-three-quarters"></i>&nbsp; {{ temperature }} °</h1>
-        <h4><i class="owf owf-lg" v-bind:class="icon"></i> {{ description }}</h4>
+        <h4>
+            <span>
+                <i class="owf owf-lg" v-bind:class="icon"></i> {{ description }}
+            </span>
+        </h4>
     </div>
 </template>
 
@@ -37,11 +41,12 @@
         position: relative;
     }
 
-    H4>i {
+    H4>span {
         position: absolute;
-        top: 87px;
-        left: -42px;
+        top: 85px;
+        right: 47px;
     }
+
 </style>
 
 
