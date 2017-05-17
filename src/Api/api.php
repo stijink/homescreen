@@ -6,6 +6,7 @@ use Api\Component\Calendar;
 use Api\Component\News;
 use Api\Component\Petrol;
 use Api\Component\Presence;
+use Api\Component\RoomTemperature;
 use Api\Component\Traffic;
 use Api\Component\Weather;
 use Api\Component\WeatherForcast;
@@ -35,6 +36,10 @@ $app['http_client'] = function () {
 
 $app['feed_reader'] = function () {
     return new Reader();
+};
+
+$app['room_temperature'] = function () use ($app, $config) {
+    return new RoomTemperature($app['http_client'], $config['room_temperature']);
 };
 
 $app['weather'] = function () use ($app, $config) {
@@ -103,6 +108,12 @@ $app->get('/calendar', function () use ($app) {
 
 $app->get('/presence', function () use ($app) {
     $presence = $app['presence']->load();
+
+    return new JsonResponse($presence);
+});
+
+$app->get('/room-temperature', function () use ($app) {
+    $presence = $app['room_temperature']->load();
 
     return new JsonResponse($presence);
 });

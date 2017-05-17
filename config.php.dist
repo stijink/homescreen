@@ -22,6 +22,10 @@ $config = [
         'api_url' => 'http://fritz.box:49000/upnp/control/hosts',
     ],
 
+    'room_temperature' => [
+        'api_url' => 'http://localhost:9321/',
+    ],
+
     'weather' => [
         'city' => 'Troisdorf',
         'api_url' => 'http://api.openweathermap.org/data/2.5/weather',
