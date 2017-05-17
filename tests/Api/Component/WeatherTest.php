@@ -24,6 +24,8 @@ class WeatherTest extends TestCase
             'temperature' => 10.4,
             'description' => 'klarer Himmel',
             'icon_code' => 800,
+            'sunrise' => 1488521392,
+            'sunset' => 1488561428,
         ];
 
         $mockedHttpClient = \Mockery::mock('GuzzleHttp\Client')
