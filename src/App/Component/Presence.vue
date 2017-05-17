@@ -39,6 +39,7 @@
 <style scoped>
     #presence {
         font-size: 16px;
+        margin-left: 3px;
     }
 
     IMG {

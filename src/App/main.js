@@ -6,6 +6,7 @@ import Error from './Component/Error.vue';
 
 import Clock from './Component/Clock.vue';
 import Weather from './Component/Weather.vue';
+import Temperature from './Component/Temperature.vue';
 import WeatherForcast from './Component/WeatherForcast.vue';
 import Traffic from './Component/Traffic.vue';
 import News from './Component/News.vue';
@@ -21,6 +22,7 @@ window.ErrorEvent = new Vue();
 Vue.component('error', Error);
 Vue.component('clock', Clock);
 Vue.component('weather', Weather);
+Vue.component('temperature', Temperature);
 Vue.component('weather-forcast', WeatherForcast);
 Vue.component('traffic', Traffic);
 Vue.component('news', News);

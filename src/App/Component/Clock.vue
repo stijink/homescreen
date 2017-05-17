@@ -1,7 +1,7 @@
 <template>
     <div id="clock">
-        <h3>{{ day }}, {{ date }} </h3>
-        <h1>{{ time }} Uhr</h1>
+        <div class="date">{{ day }}, {{ date }}</div>
+        <div class="time">{{ time }} Uhr</div>
     </div>
 </template>
 
@@ -37,12 +37,13 @@
 </script>
 
 <style scoped>
-    H3 {
+    .date {
         font-size: 3rem;
     }
 
-    h1 {
-        font-size: 4.5rem;
+    .time {
+        font-size: 3.1rem;
+        line-height: 1.0;
     }
 </style>
 

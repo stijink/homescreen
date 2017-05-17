@@ -8,7 +8,7 @@
         <clock></clock>
       </div>
       <div class="col-md-6 col-right">
-        <weather></weather>
+        <temperature></temperature>
       </div>
     </div>
 
@@ -92,6 +92,7 @@ body {
 .col-right > * {
   position: absolute;
   right: 0;
+  margin-right: -15px;
 }
 
 /* The first Component should be placed at the top */

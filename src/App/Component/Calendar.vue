@@ -60,6 +60,7 @@
     #calendar {
         font-size: 16px;
         min-height: 300px;
+        margin-left: 3px;
     }
 
     IMG {
@@ -76,7 +77,7 @@
     td:first-child {
         width: 70px;
     }
-    
+
     /* Date */
     td:nth-child(3) {
         width: 75px;
