@@ -33,12 +33,14 @@ class Weather implements ComponentInterface
         ]);
 
         $weather = json_decode((string) $response->getBody(), true);
-
+        
         return [
-            'city' => $this->config['city'],
+            'city'        => $this->config['city'],
             'temperature' => round($weather['main']['temp'], 1),
             'description' => $weather['weather'][0]['description'],
-            'icon_code' => $weather['weather'][0]['id'],
+            'sunrise'     => $weather['sys']['sunrise'],
+            'sunset'      => $weather['sys']['sunset'],
+            'icon_code'   => $weather['weather'][0]['id'],
         ];
     }
 }
