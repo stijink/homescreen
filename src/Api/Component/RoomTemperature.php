@@ -21,7 +21,7 @@ class RoomTemperature implements ComponentInterface
         $temperature = (string)$response->getBody();
 
         return [
-            'temperature' => $temperature,
+            'temperature' => floatval($temperature),
         ];
     }
 }

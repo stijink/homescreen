@@ -22,6 +22,6 @@ class RoomTemperatureTest extends \PHPUnit_Framework_TestCase
         $response = $roomTemperature->load();
 
         $this->assertCount(1, $response);
-        $this->assertSame('22.5', $response['temperature']);
+        $this->assertSame(22.5, $response['temperature']);
     }
 }

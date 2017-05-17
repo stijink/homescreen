@@ -7,6 +7,7 @@ use Api\Component\News;
 use Api\Component\Petrol;
 use Api\Component\Presence;
 use Api\Component\RoomTemperature;
+use Api\Component\Temperature;
 use Api\Component\Traffic;
 use Api\Component\Weather;
 use Api\Component\WeatherForcast;
@@ -23,6 +24,8 @@ $config = require __DIR__.'/../../config.php';
 setlocale(LC_ALL, $config['locale']);
 
 $app = new Application();
+
+// --- Service definitions ---
 
 $app->register(new MonologServiceProvider(), [
     'monolog.name' => 'api',
@@ -44,6 +47,10 @@ $app['room_temperature'] = function () use ($app, $config) {
 
 $app['weather'] = function () use ($app, $config) {
     return new Weather($app['http_client'], $config['weather']);
+};
+
+$app['temperature'] = function () use ($app) {
+    return new Temperature($app['weather'], $app['room_temperature']);
 };
 
 $app['weather_forcast'] = function () use ($app, $config) {
@@ -70,52 +77,61 @@ $app['presence'] = function () use ($app, $config) {
     return new Presence($app['http_client'], $config['presence'], $config['persons']);
 };
 
-$app->get('/weather', function (Request $request) use ($app) {
-    $weather = $app['weather']->load();
 
-    return new JsonResponse($weather);
+// --- Route definitions ---
+
+$app->get('/weather', function (Request $request) use ($app) {
+    $response = $app['weather']->load();
+
+    return new JsonResponse($response);
 });
 
 $app->get('/weather-forcast', function (Request $request) use ($app) {
-    $forcast = $app['weather_forcast']->load();
+    $response = $app['weather_forcast']->load();
 
-    return new JsonResponse($forcast);
+    return new JsonResponse($response);
 });
 
 $app->get('/traffic', function (Request $request) use ($app) {
-    $traffic = $app['traffic']->load();
+    $response = $app['traffic']->load();
 
-    return new JsonResponse($traffic);
+    return new JsonResponse($response);
 });
 
 $app->get('/news', function () use ($app) {
-    $news = $app['news']->load();
+    $response = $app['news']->load();
 
-    return new JsonResponse($news);
+    return new JsonResponse($response);
 });
 
 $app->get('/petrol', function () use ($app, $config) {
-    $petrol = $app['petrol']->load();
+    $response = $app['petrol']->load();
 
-    return new JsonResponse($petrol);
+    return new JsonResponse($response);
 });
 
 $app->get('/calendar', function () use ($app) {
-    $events = $app['calendar']->load();
+    $response = $app['calendar']->load();
 
-    return new JsonResponse($events);
+    return new JsonResponse($response);
 });
 
 $app->get('/presence', function () use ($app) {
-    $presence = $app['presence']->load();
+    $response = $app['presence']->load();
 
-    return new JsonResponse($presence);
+    return new JsonResponse($response);
 });
 
 $app->get('/room-temperature', function () use ($app) {
-    $presence = $app['room_temperature']->load();
+    $response = $app['room_temperature']->load();
 
-    return new JsonResponse($presence);
+    return new JsonResponse($response);
+});
+
+$app->get('/temperature', function () use ($app) {
+    $response = $app['temperature']->load();
+
+    return new JsonResponse($response);
 });
 
 $app->error(function (\Exception $exception, Request $request, $code) use ($app) {
