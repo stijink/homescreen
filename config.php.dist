@@ -83,6 +83,12 @@ $config = [
             ],
         ],
     ],
+
+    // See: https://github.com/stijink/raspberry-status-server
+    'raspberries' => [
+        'http://raspberry1:9360/',
+        'http://raspberry2:9360/',
+    ],
 ];
 
 return $config;

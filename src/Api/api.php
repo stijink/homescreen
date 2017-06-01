@@ -6,6 +6,7 @@ use Api\Component\Calendar;
 use Api\Component\News;
 use Api\Component\Petrol;
 use Api\Component\Presence;
+use Api\Component\Raspberries;
 use Api\Component\RoomTemperature;
 use Api\Component\Temperature;
 use Api\Component\Traffic;
@@ -77,6 +78,9 @@ $app['presence'] = function () use ($app, $config) {
     return new Presence($app['http_client'], $config['presence'], $config['persons']);
 };
 
+$app['raspberries'] = function () use ($app, $config) {
+    return new Raspberries($app['http_client'], $config['raspberries']);
+};
 
 // --- Route definitions ---
 
@@ -130,6 +134,12 @@ $app->get('/room-temperature', function () use ($app) {
 
 $app->get('/temperature', function () use ($app) {
     $response = $app['temperature']->load();
+
+    return new JsonResponse($response);
+});
+
+$app->get('/raspberries', function () use ($app) {
+    $response = $app['raspberries']->load();
 
     return new JsonResponse($response);
 });

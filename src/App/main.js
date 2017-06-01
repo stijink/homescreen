@@ -13,6 +13,7 @@ import News from './Component/News.vue';
 import Calendar from './Component/Calendar.vue';
 import Petrol from './Component/Petrol.vue';
 import Presence from './Component/Presence.vue';
+import Raspberries from './Component/Raspberries.vue';
 
 Vue.use(VueResource);
 
@@ -29,6 +30,7 @@ Vue.component('news', News);
 Vue.component('calendar', Calendar);
 Vue.component('petrol', Petrol);
 Vue.component('presence', Presence);
+Vue.component('raspberries', Raspberries);
 
 new Vue({
   el: '#app',

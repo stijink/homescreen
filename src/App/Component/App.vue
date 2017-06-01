@@ -27,7 +27,7 @@
         <presence></presence>
       </div>
       <div class="col-md-6 col-right width-400">
-        &nbsp;
+        &nbsp;<raspberries></raspberries>
       </div>
     </div>
 
