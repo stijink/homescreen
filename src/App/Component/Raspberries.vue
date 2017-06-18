@@ -6,9 +6,17 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{ raspberry.hostname }}</h4>
-                Load: {{ raspberry.load }}
-                &#8211; Uptime {{ raspberry.uptime }} Tage
-                &#8211; {{ raspberry.temperature }} &deg;C
+                <div>
+                    <i class="fa fa-heartbeat"></i>
+                    &nbsp; {{ raspberry.cpu.cores }}x {{ raspberry.cpu.speed }} MHz
+                    &#8211; Load: {{ raspberry.load }}
+                </div>
+                <div>
+                    <i class="fa fa-microchip"></i>
+                    &nbsp; {{ raspberry.memory.percent }}% RAM
+                    &#8211; {{ raspberry.uptime }} Tage Uptime
+                    &#8211; {{ raspberry.temperature }} &deg;C
+                </div>
             </div>
         </div>
     </div>
