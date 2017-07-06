@@ -1,48 +1,53 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app">
+
+    <div class="container-fluid app-container">
+
+      <div class="row row-1">
+        <div class="col-md-6 col-left">
+          <clock></clock>
+        </div>
+        <div class="col-md-6 col-right">
+          <temperature></temperature>
+        </div>
+      </div>
+
+      <div class="row row-2">
+        <div class="col-md-6 col-left width-400">
+          <calendar></calendar>
+        </div>
+        <div class="col-md-6 col-right width-400">
+          <weather-forcast></weather-forcast>
+          <petrol></petrol>
+        </div>
+      </div>
+
+      <div class="row row-3">
+        <div class="col-md-6 col-left width-400">
+          <presence></presence>
+        </div>
+        <div class="col-md-6 col-right width-400">
+          &nbsp;<raspberries></raspberries>
+        </div>
+      </div>
+
+      <!-- Bottom row: Fixed to the bottom -->
+
+      <div class="row row-bottom width-400">
+        <div class="col-md-6 col-left">
+          <news></news>
+        </div>
+        <div class="col-md-6 col-right width-400">
+          <traffic></traffic>
+        </div>
+      </div>
+
+    </div>
 
     <error></error>
 
-    <div class="row row-1">
-      <div class="col-md-6 col-left">
-        <clock></clock>
-      </div>
-      <div class="col-md-6 col-right">
-        <temperature></temperature>
-      </div>
-    </div>
-
-    <div class="row row-2">
-      <div class="col-md-6 col-left width-400">
-        <calendar></calendar>
-      </div>
-      <div class="col-md-6 col-right width-400">
-        <weather-forcast></weather-forcast>
-        <petrol></petrol>
-      </div>
-    </div>
-
-    <div class="row row-3">
-      <div class="col-md-6 col-left width-400">
-        <presence></presence>
-      </div>
-      <div class="col-md-6 col-right width-400">
-        &nbsp;<raspberries></raspberries>
-      </div>
-    </div>
-
-    <!-- Bottom row: Fixed to the bottom -->
-
-    <div class="row row-bottom width-400">
-      <div class="col-md-6 col-left">
-        <news></news>
-      </div>
-      <div class="col-md-6 col-right width-400">
-        <traffic></traffic>
-      </div>
-    </div>
-
   </div>
+
 </template>
 
 <style>
@@ -61,7 +66,7 @@ body {
   height: calc(100% - 80px);
 }
 
-#app {
+.app-container {
   margin: 40px;
   height: 100%;
 }
@@ -72,7 +77,7 @@ body {
 
 .row-bottom {
   position: fixed;
-  bottom: 0;
+  bottom: 50px;
   width: calc(100% - 80px);
 }
 

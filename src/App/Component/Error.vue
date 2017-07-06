@@ -1,21 +1,6 @@
 <template>
-  <div id="error-dialog">
-    <div class="modal fade" v-bind:class="{ show:hasError }">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-danger">
-              <i class="fa fa-exclamation-triangle"></i>
-              &nbsp; {{ message }}
-            </h5>
-          </div>
-          <div class="modal-body">
-            <p>{{ description }} </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-backdrop fade" v-bind:class="{ show:hasError }"></div>
+  <div id="error" v-bind:class="{ 'sr-only': hasNoError }">
+      <strong>{{ message }}</strong> - {{ description }}
   </div>
 </template>
 
@@ -28,8 +13,8 @@ export default {
     }
   },
   computed: {
-    hasError: function() {
-        return this.message !== null;
+    hasNoError: function() {
+        return this.message === null;
     }
   },
   mounted() {
@@ -47,19 +32,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-  .modal {
-    color: black;
-    top: 25%;
-  }
+  #error {
+    background-color: #bd4147;
+    color: #fff;
 
-  .modal.show {
-    display: block;
-  }
+    position: absolute;
+    left: 0;
+    bottom: 0;
 
-  .modal-backdrop.show {
-    opacity: .7;
+    height: 40px;
+    width: 100%;
+
+    padding: 6px 0px 5px 15px;
   }
 
 </style>
