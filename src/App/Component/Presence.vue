@@ -23,7 +23,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api.php/presence',
+                api_url: '/api/presence',
                 api_update_interval: 0.5,
                 presence: null,
             }
@@ -66,5 +66,3 @@
     }
 
 </style>
-
-
