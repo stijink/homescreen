@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "description": "A Vue.js project",
+  "name": "homescreen",
+  "description": "Personal smart mirror project",
   "version": "1.0.0",
   "author": "Stephan Tijink <stijink@googlemail.com>",
   "private": true,
