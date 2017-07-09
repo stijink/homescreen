@@ -15,7 +15,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/news',
+                api_url: '/api.php/news',
                 api_update_interval: 5,
 
                 displayForSeconds: 12,
@@ -30,7 +30,7 @@
 
                 // Make first article visible
                 this.news[0].visible = true;
-
+                
                 // Reset the news display iteratior
                 this.currentlyOnDisplay = 0;
 
@@ -64,3 +64,5 @@
         font-size: 14px;
     }
 </style>
+
+

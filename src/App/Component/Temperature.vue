@@ -25,7 +25,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/temperature',
+                api_url: '/api.php/temperature',
                 api_update_interval: 2,
 
                 temperature_inside: null,
@@ -71,3 +71,5 @@
     }
 
 </style>
+
+

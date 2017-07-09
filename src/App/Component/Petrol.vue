@@ -18,7 +18,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/petrol',
+                api_url: '/api.php/petrol',
                 api_update_interval: 10,
 
                 location: null,
@@ -33,3 +33,4 @@
         }
     }
 </script>
+

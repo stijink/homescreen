@@ -15,7 +15,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/traffic',
+                api_url: '/api.php/traffic',
                 api_update_interval: 5,
 
                 routes: null,
@@ -36,3 +36,5 @@
         width:     370px;
     }
 </style>
+
+

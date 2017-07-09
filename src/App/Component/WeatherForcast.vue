@@ -17,7 +17,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/weather-forcast',
+                api_url: '/api.php/weather-forcast',
                 api_update_interval: 5,
 
                 forcast: null,
@@ -52,3 +52,5 @@
         left: 0px;
     }
 </style>
+
+

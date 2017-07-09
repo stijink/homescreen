@@ -23,7 +23,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/calendar',
+                api_url: '/api.php/calendar',
                 api_update_interval: 10,
                 events: null,
             }
@@ -84,3 +84,5 @@
     }
 
 </style>
+
+

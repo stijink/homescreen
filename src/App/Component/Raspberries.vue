@@ -33,7 +33,7 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api/raspberries',
+                api_url: '/api.php/raspberries',
                 api_update_interval: 2,
                 raspberries: null,
             }
@@ -70,3 +70,5 @@
     }
 
 </style>
+
+
