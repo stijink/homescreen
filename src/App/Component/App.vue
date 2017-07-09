@@ -77,7 +77,7 @@ body {
 
 .row-bottom {
   position: fixed;
-  bottom: 50px;
+  bottom: 10px;
   width: calc(100% - 80px);
 }
 
