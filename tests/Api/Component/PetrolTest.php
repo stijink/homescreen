@@ -4,9 +4,9 @@ namespace Tests\Api\Component;
 
 use Api\Component\Petrol;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class PetrolTest extends TestCase
+class PetrolTest extends MockeryTestCase
 {
     public function testLoad()
     {

@@ -4,9 +4,9 @@ namespace Tests\Api\Component;
 
 use Api\Component\Traffic;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class TrafficTest extends TestCase
+class TrafficTest extends MockeryTestCase
 {
     /**
      * @expectedException \Api\Exception\ApiKeyException

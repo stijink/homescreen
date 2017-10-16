@@ -29,8 +29,4 @@
         <log type="coverage-html"   target="logs/coverage.html"/>
     </logging>
 
-    <listeners>
-        <listener class="\Mockery\Adapter\Phpunit\TestListener"></listener>
-    </listeners>
-
 </phpunit>

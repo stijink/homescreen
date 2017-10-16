@@ -4,8 +4,9 @@ namespace Tests\Api\Component;
 
 use Api\Component\RoomTemperature;
 use GuzzleHttp\Psr7\Response;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class RoomTemperatureTest extends \PHPUnit_Framework_TestCase
+class RoomTemperatureTest extends MockeryTestCase
 {
     public function testLoad()
     {

@@ -4,9 +4,9 @@ namespace Tests\Api\Component;
 
 use Api\Component\Weather;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class WeatherTest extends TestCase
+class WeatherTest extends MockeryTestCase
 {
     /**
      * @expectedException \Api\Exception\ApiKeyException

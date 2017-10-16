@@ -3,8 +3,9 @@
 namespace Tests\Api\Component;
 
 use Api\Component\Temperature;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class TemperatureTest extends \PHPUnit_Framework_TestCase
+class TemperatureTest extends MockeryTestCase
 {
     public function testLoad()
     {

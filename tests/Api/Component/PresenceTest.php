@@ -4,9 +4,9 @@ namespace Tests\Api\Component;
 
 use Api\Component\Presence;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class PresenceTest extends TestCase
+class PresenceTest extends MockeryTestCase
 {
     public function testLoad()
     {

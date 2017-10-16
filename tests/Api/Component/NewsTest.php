@@ -3,10 +3,11 @@
 namespace Tests\Api\Component;
 
 use Api\Component\News;
+use PHPUnit\Framework\TestCase;
 use PicoFeed\Reader\Reader;
 use Tests\Api\MyHttpMockTrait;
 
-class NewsTest extends \PHPUnit_Framework_TestCase
+class NewsTest extends TestCase
 {
     use MyHttpMockTrait;
 
