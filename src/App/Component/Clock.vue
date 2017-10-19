@@ -38,7 +38,7 @@
 
 <style scoped>
     .date {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
     }
 
     .time {
