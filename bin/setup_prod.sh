@@ -4,7 +4,7 @@
 composer install --no-dev --optimize-autoloader --no-suggest
 
 # Install App Dependencies
-yarn install
+npm install
 
 # Build app.js
 node_modules/webpack/bin/webpack.js -p
