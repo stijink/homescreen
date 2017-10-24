@@ -23,6 +23,8 @@ class WeatherForcast implements ComponentInterface
 
     public function load(): array
     {
+        setlocale(LC_TIME, "de_DE");
+        
         $forcast = [];
 
         $response = $this->httpClient->get($this->config['api_url'], [
