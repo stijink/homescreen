@@ -80,7 +80,7 @@
 
     /* Date */
     td:nth-child(3) {
-        width: 75px;
+        width: 80px;
     }
 
 </style>
