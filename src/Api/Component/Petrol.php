@@ -9,6 +9,10 @@ class Petrol implements ComponentInterface
     private $httpClient;
     private $config;
 
+    /**
+     * @param Client $httpClient
+     * @param array $config
+     */
     public function __construct(Client $httpClient, array $config)
     {
         $this->httpClient = $httpClient;
@@ -32,6 +36,8 @@ class Petrol implements ComponentInterface
             }
 
             $product['price'] = (float) $product['price'] / 100;
+            $product['price'] = number_format($$product['price'], 2, '.', ',');
+            
             $products[] = $product;
         }
 
