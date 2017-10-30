@@ -36,7 +36,7 @@ class Petrol implements ComponentInterface
             }
 
             $product['price'] = (float) $product['price'] / 100;
-            $product['price'] = number_format($$product['price'], 2, '.', ',');
+            $product['price'] = number_format($product['price'], 2, '.', ',');
             
             $products[] = $product;
         }
