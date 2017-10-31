@@ -3,8 +3,6 @@
 namespace Api\Component;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Psr7\Request;
 
 class Raspberries implements ComponentInterface
 {
@@ -26,18 +24,42 @@ class Raspberries implements ComponentInterface
      */
     public function load(): array
     {
-        $raspberry   = [];
         $raspberries = [];
 
-        foreach ($this->config as $url) {
-            $response  = $this->httpClient->get($url);
+        foreach ($this->config as $raspberryConfig) {
+            $response  = $this->httpClient->get($raspberryConfig['url']);
             $raspberry = json_decode((string)$response->getBody(), true);
 
-            $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
+            if ($raspberryConfig['diskinfo'] !== null) {
+                $raspberry['disk'] = $raspberry['disks'][$raspberryConfig['diskinfo']['volume']];
 
+                $raspberry['disk']['label']    = $raspberryConfig['diskinfo']['label'];
+                $raspberry['disk']['free']     = $this->convertDiskSize($raspberry['disk']['free']);
+                $raspberry['disk']['size']     = $this->convertDiskSize($raspberry['disk']['size']);
+                $raspberry['disk']['used']     = $this->convertDiskSize($raspberry['disk']['used']);
+                $raspberry['disk']['percent']  = floatval(number_format($raspberry['disk']['percent'] * 100, 0));
+            }
+
+            unset($raspberry['disks']);
+
+            $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
             $raspberries[] = $raspberry;
         }
 
         return $raspberries;
+    }
+
+    /**
+     * Convert the disk size from bytes to gigabytes
+     *
+     * @param   string $sizeInBytes
+     * @return  float
+     */
+    private function convertDiskSize(string $sizeInBytes): float
+    {
+        $sizeInGigaBytes = $sizeInBytes / (1024 * 1014);
+        $sizeInGigaBytes = number_format($sizeInGigaBytes, 0, '.', '');
+
+        return floatval($sizeInGigaBytes);
     }
 }

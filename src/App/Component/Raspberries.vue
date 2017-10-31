@@ -17,6 +17,19 @@
                     &#8211; {{ raspberry.uptime }} Tage Uptime
                     &#8211; {{ raspberry.temperature }} &deg;C
                 </div>
+                <div class="disk-info" v-if="raspberry.disk">
+                    <div>
+                        <i class="fa fa-database"></i>
+                        &nbsp;
+                        {{ raspberry.disk.label }}
+                        &#8211; {{ raspberry.disk.free }} GB / {{ raspberry.disk.size }} GB available
+                    </div>
+
+                    <div class="disk-total">
+                        <div class="disk-used" v-bind:style="{ width: raspberry.disk.percent + '%' }"></div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -57,6 +70,10 @@
         margin-left: -6px;
     }
 
+    i.fa {
+        margin-bottom: 5px;
+    }
+
     .media {
         margin-bottom: 30px;
     }
@@ -67,6 +84,21 @@
 
     .media-heading {
         font-size: 16px;
+    }
+
+    .disk-info {
+        margin-top: 15px;
+    }
+
+    .disk-total {
+        background-color: #333333;
+        width: 210px;
+        display: inline-block;
+    }
+
+    .disk-used {
+        background-color: #666666;
+        height:10px;
     }
 
 </style>
