@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 
+import Vuetify from 'vuetify'
+import '../../node_modules/vuetify/dist/vuetify.min.css';
+
 import App from './Component/App.vue';
 import Error from './Component/Error.vue';
 
@@ -15,6 +18,7 @@ import Petrol from './Component/Petrol.vue';
 import Presence from './Component/Presence.vue';
 import Raspberries from './Component/Raspberries.vue';
 
+Vue.use(Vuetify);
 Vue.use(VueResource);
 
 // Instance to communicate Errors between components
