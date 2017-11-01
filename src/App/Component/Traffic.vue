@@ -1,8 +1,8 @@
 <template>
     <div id="traffic">
         <h5 v-for="route in routes">
-            <i class="fa fa-car"></i>
-            &nbsp; {{ route.duration }} für {{ route.distance }} zur {{ route.destination }}
+            <v-icon class="mr-1">directions_car</v-icon>
+            {{ route.duration }} für {{ route.distance }} zur {{ route.destination }}
         </h5>
     </div>
 </template>

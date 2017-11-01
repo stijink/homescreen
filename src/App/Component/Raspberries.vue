@@ -6,20 +6,26 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{ raspberry.hostname }}</h4>
-                <div>
-                    <i class="fa fa-heartbeat"></i>
+
+                <!-- CPU / Speed -->
+                <div class="mb-1">
+                    <v-icon>timeline</v-icon>
                     &nbsp; {{ raspberry.cpu.cores }}x {{ raspberry.cpu.speed }} MHz
                     &#8211; Load: {{ raspberry.load }}
                 </div>
-                <div>
-                    <i class="fa fa-microchip"></i>
+
+                <!-- Memory -->
+                <div class="mb-1">
+                    <v-icon>memory</v-icon>
                     &nbsp; {{ raspberry.memory.percent }}% RAM
                     &#8211; {{ raspberry.uptime }} Tage Uptime
                     &#8211; {{ raspberry.temperature }} &deg;C
                 </div>
-                <div class="disk-info" v-if="raspberry.disk">
+
+                <!-- Disk -->
+                <div class="mt-3" v-if="raspberry.disk">
                     <div>
-                        <i class="fa fa-database"></i>
+                        <v-icon>storage</v-icon>
                         &nbsp;
                         {{ raspberry.disk.label }}
                         &#8211; {{ raspberry.disk.free }} GB / {{ raspberry.disk.size }} GB available
@@ -61,6 +67,10 @@
 
 <style scoped>
 
+    .icon {
+        font-size: 1.0rem;
+    }
+
     .pi-icon {
         -webkit-filter: invert(100%);
         filter: invert(100%);
@@ -68,10 +78,6 @@
         height: 43px;
         margin-right: 10px;
         margin-left: -6px;
-    }
-
-    i.fa {
-        margin-bottom: 5px;
     }
 
     .media {
@@ -84,10 +90,6 @@
 
     .media-heading {
         font-size: 16px;
-    }
-
-    .disk-info {
-        margin-top: 15px;
     }
 
     .disk-total {

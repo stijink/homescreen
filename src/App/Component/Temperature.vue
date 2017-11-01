@@ -6,11 +6,11 @@
         </tr>
         <tr>
             <td>
-                <i class="fa fa-thermometer-half"></i>
+                <v-icon>terrain</v-icon>
                 &nbsp; Aussentemperatur
             </td>
             <td>
-                <i class="fa fa-home"></i>
+                <v-icon>home</v-icon>
                 &nbsp; Innentemperatur
             </td>
         </tr>

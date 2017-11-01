@@ -66,6 +66,10 @@ body {
   height: calc(100% - 80px);
 }
 
+.icon {
+    font-size: 1.3rem;
+}
+
 .app-container {
   margin: 40px;
   height: 100%;

@@ -1,7 +1,10 @@
 <template>
     <table id="petrol">
         <tr>
-            <th><i class="fa fa-tachometer"></i> &nbsp;{{ location }}</th>
+            <th>
+                <v-icon class="pr-1">local_gas_station</v-icon>
+                {{ location }}
+            </th>
         </tr>
         <tr v-for="product in products">
             <td>{{ product.name }}</td>
