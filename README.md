@@ -13,38 +13,36 @@ The backend was build using the PHP Framework [Silex](https://silex.sensiolabs.o
 * Node.js
 * PHP 7+
 
+## Configuration
+
+The API requires a configuration file called `config.php`. This is not included with this repository. But to get started you can copy the existing template `config.php.dist` over to `config.php`. From there on you can start to modify the configuration to your needs.
+
 ## Development Setup
 
-This repository comes with a Docker Container for development. You can setup the container by running:
+This repository comes with Docker containers for development. You can build the containers by running:
 
 ```
-bin/setup_dev.sh
+bin/build-dev.sh
 ``` 
 
-You can start the webserver and `webpatch --watch` by running the following script:
+You can start the development stack by running the following script:
 
 ```
-bin/run_dev.sh
+bin/start-dev.sh
 ``` 
 
 Now you should be able to access the magic mirror at the following url:
 
 ```
-http://localhost:8000
+http://localhost:5000
 ```
 
 ## Production Setup
 
-If not already installed you can install `yarn` und `composer` using the following script:
-
-```
-bin/install_tools.sh
-```
-
 To install all the required libraries for Node.js and PHP you can use the following script. This will **NOT** include the development requirements.
 
 ```
-bin/setup_prod.sh
+bin/build-prod.sh
 ``` 
 
 ## License

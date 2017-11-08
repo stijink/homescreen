@@ -1,10 +1,25 @@
 version: '3'
 services:
-  homescreen-dev:
-    build: .
-    image: stijink/homescreen-dev
+
+  homescreen-api:
+    build:
+      context: ./build
+      dockerfile: Dockerfile-api
+    image: stijink/homescreen-api
+    container_name: homescreen-api
     working_dir: /var/www/
     ports:
-      - "8000:80"
+      - "5000:80"
+    volumes:
+      - .:/var/www/
+
+  homescreen-app:
+    build:
+      context: ./build
+      dockerfile: Dockerfile-app
+    image: stijink/homescreen-app
+    working_dir: /var/www/
+    container_name: homescreen-app
+    command: node_modules/webpack/bin/webpack.js --watch
     volumes:
       - .:/var/www/

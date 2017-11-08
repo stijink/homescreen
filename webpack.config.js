@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/App/main.js',
   output: {
-    path: path.resolve(__dirname, 'web/assets'),
+    path: path.resolve(__dirname, 'html/assets'),
     publicPath: "/assets/",
     filename: 'app.js'
   },
@@ -48,7 +48,7 @@ module.exports = {
     }
   },
   devServer: {
-    contentBase: path.join(__dirname, "web"),
+    contentBase: path.join(__dirname, "html"),
     historyApiFallback: true,
     noInfo: true
   },
