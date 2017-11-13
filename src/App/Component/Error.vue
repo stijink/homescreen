@@ -1,7 +1,7 @@
 <template>
-  <div id="error" v-bind:class="{ 'sr-only': hasNoError }">
-      <strong>{{ message }}</strong> - {{ description }}
-  </div>
+  <v-snackbar color="error" bottom timeout="100000" v-model="hasError" multi-line>
+      {{ description }}
+    </v-snackbar>
 </template>
 
 <script>
@@ -13,8 +13,8 @@ export default {
     }
   },
   computed: {
-    hasNoError: function() {
-        return this.message === null;
+    hasError: function() {
+        return this.message !== null;
     }
   },
   mounted() {
@@ -31,21 +31,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-  #error {
-    background-color: #bd4147;
-    color: #fff;
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
-    height: 40px;
-    width: 100%;
-
-    padding: 6px 0px 5px 15px;
-  }
-
-</style>

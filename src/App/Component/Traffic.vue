@@ -1,10 +1,11 @@
 <template>
-    <div id="traffic">
+
+    <v-container fluid class="pa-0">
         <h5 v-for="route in routes">
             <v-icon class="mr-1">directions_car</v-icon>
             {{ route.duration }} für {{ route.distance }} zur {{ route.destination }}
         </h5>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -30,10 +31,9 @@
 </script>
 
 <style scoped>
-
     h5 {
         font-size: 16px;
-        width:     370px;
+        margin: 0;
     }
 </style>
 

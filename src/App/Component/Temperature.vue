@@ -1,20 +1,37 @@
 <template>
-    <table id="temperature">
-        <tr>
-            <td><span class="temperature-outside">{{ temperature_outside }} °</span></td>
-            <td><span class="temperature-inside">{{ temperature_inside }} °</span></td>
-        </tr>
-        <tr>
-            <td>
-                <v-icon>terrain</v-icon>
-                &nbsp; Aussentemperatur
-            </td>
-            <td>
-                <v-icon>home</v-icon>
-                &nbsp; Innentemperatur
-            </td>
-        </tr>
-    </table>
+    <v-container class="pa-0" id="temperature">
+
+        <v-layout row>
+
+            <v-flex xs6 class="text-xs-right">
+                <h2>{{ temperature_outside }} °</h2>
+                <div>
+                    <v-icon>terrain</v-icon>
+                    Aussentemperatur
+                </div>
+            </v-flex>
+
+            <v-flex xs6 class="text-xs-right">
+                <h2>{{ temperature_inside }} °</h2>
+            </v-flex>
+
+        </v-layout>
+
+        <!--<tr>-->
+            <!--<td><span class="temperature-outside"></span></td>-->
+            <!--<td><span class="temperature-inside">{{ temperature_inside }} °</span></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<v-icon>terrain</v-icon>-->
+                <!--&nbsp; Aussentemperatur-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<v-icon>home</v-icon>-->
+                <!--&nbsp; Innentemperatur-->
+            <!--</td>-->
+        <!--</tr>-->
+    </v-container>
 </template>
 
 <script>
@@ -40,36 +57,3 @@
         },
     }
 </script>
-
-<style scoped>
-
-    #temperature {
-        margin-top: 8px;
-    }
-
-    .temperature-outside {
-        font-size: 5.0rem;
-        line-height: 1.0;
-    }
-
-    .temperature-inside {
-        font-size: 4.3rem;
-        line-height: 1.0;
-    }
-
-    td {
-        font-size: 18px;
-        text-align: left;
-    }
-
-    tr td:first-child {
-        padding-right: 40px;
-    }
-
-    tr:nth-child(2) {
-        margin-top: -10px;
-    }
-
-</style>
-
-

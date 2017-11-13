@@ -1,117 +1,58 @@
 <template>
-  <div id="app">
+  <v-app class="black white--text" id="app">
 
-    <div class="container-fluid app-container">
+    <v-container fluid class="pl-4 pr-4">
 
-      <div class="row row-1">
-        <div class="col-md-6 col-left">
-          <clock></clock>
-        </div>
-        <div class="col-md-6 col-right">
-          <temperature></temperature>
-        </div>
-      </div>
+      <!-- First row -->
+      <v-layout row justify-space-between>
+        <v-flex xs6><clock></clock></v-flex>
+        <v-flex xs6><temperature></temperature></v-flex>
+      </v-layout>
 
-      <div class="row row-2">
-        <div class="col-md-6 col-left width-400">
-          <calendar></calendar>
+        <!-- <div class="row row-2">
+          <div class="col-md-6 col-left width-400">
+            <calendar></calendar>
+          </div>
+          <div class="col-md-6 col-right width-400">
+            <weather-forcast></weather-forcast>
+            <petrol></petrol>
+          </div>
         </div>
-        <div class="col-md-6 col-right width-400">
-          <weather-forcast></weather-forcast>
-          <petrol></petrol>
-        </div>
-      </div>
 
-      <div class="row row-3">
-        <div class="col-md-6 col-left width-400">
-          <presence></presence>
-        </div>
-        <div class="col-md-6 col-right width-400">
-          &nbsp;<raspberries></raspberries>
-        </div>
-      </div>
+        <div class="row row-3">
+          <div class="col-md-6 col-left width-400">
+            <presence></presence>
+          </div>
+          <div class="col-md-6 col-right width-400">
+            &nbsp;<raspberries></raspberries>
+          </div>
+        </div> -->
 
-      <!-- Bottom row: Fixed to the bottom -->
+        <!-- Bottom row: Fixed to the bottom -->
+        <v-footer fixed class="mb-3 black pl-4 pr-4">
+          <v-layout row justify-space-between>
+            <v-flex xs6><news></news></v-flex>
+            <v-flex xs5 offset-xs-1><traffic></traffic></v-flex>
+          </v-layout>
+        </v-footer>
 
-      <div class="row row-bottom width-400">
-        <div class="col-md-6 col-left">
-          <news></news>
-        </div>
-        <div class="col-md-6 col-right width-400">
-          <traffic></traffic>
-        </div>
-      </div>
-
-    </div>
+    </v-container>
 
     <error></error>
 
-  </div>
+  </v-app>
 
 </template>
 
 <style>
 
-body {
-  background-color: #000;
-  color: white;
+html, body {
   font-family: 'Roboto Condensed', sans-serif;
-}
-
-html {
   height: 100%;
-}
-
-body {
-  height: calc(100% - 80px);
 }
 
 .icon {
     font-size: 1.3rem;
-}
-
-.app-container {
-  margin: 40px;
-  height: 100%;
-}
-
-.row {
-  margin-bottom: 80px;
-}
-
-.row-bottom {
-  position: fixed;
-  bottom: 10px;
-  width: calc(100% - 80px);
-}
-
-.col-right, .col-left {
-  position: relative;
-}
-
-.col-left {
-  padding-left: 0;
-}
-
-/* Every Component with this class should be 400px in width */
-.width-400 > * {
-  width: 400px;
-}
-
-.col-right > * {
-  position: absolute;
-  right: 0;
-  margin-right: -15px;
-}
-
-/* The first Component should be placed at the top */
-.col-right > *:first-child, .col-left > *:first-child {
-  top: 0;
-}
-
-/* The last Component should be placed at the bottom */
-.col-right > *:last-child, .col-left > *:last-child {
-  bottom: 0;
 }
 
 H3 {
