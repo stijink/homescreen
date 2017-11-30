@@ -2,7 +2,7 @@
     <v-container class="pa-0" id="temperature">
         <v-layout row>
             <v-flex xs7>
-                <h2 class="mb-1">{{ temperature_outside }} °</h2>
+                <h2 class="display-3 mb-1">{{ temperature_outside }} °</h2>
                 <div>
                     <v-icon dark>terrain</v-icon>
                     Aussentemperatur
@@ -10,7 +10,7 @@
             </v-flex>
 
             <v-flex xs5>
-                <h2 class="mb-1">{{ temperature_inside }} °</h2>
+                <h2 class="display-3 mb-1">{{ temperature_inside }} °</h2>
                 <div>
                     <v-icon dark>home</v-icon>
                     Innentemperatur
