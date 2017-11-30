@@ -1,23 +1,25 @@
 <template>
-    <div id="raspberryies">
-        <div v-for="raspberry in raspberries" class="media">
-            <div class="media-left">
-                <img class="media-object pi-icon" src="/fa-raspberry-pi.svg">
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading">{{ raspberry.hostname }}</h4>
+    <v-container fluid class="pa-0">
+        <v-layout row v-for="raspberry in raspberries" :key="raspberry.hostname" class="mb-5">
+
+            <v-flex xs2>
+                <img class="pi-icon" src="/fa-raspberry-pi.svg">
+            </v-flex>
+
+            <v-flex xs10 class="raspberry-meta">
+                <h4 class="mb-1">{{ raspberry.hostname }}</h4>
 
                 <!-- CPU / Speed -->
                 <div class="mb-1">
-                    <v-icon>timeline</v-icon>
-                    &nbsp; {{ raspberry.cpu.cores }}x {{ raspberry.cpu.speed }} MHz
+                    <v-icon dark class="icon mr-1">timeline</v-icon>
+                    {{ raspberry.cpu.cores }}x {{ raspberry.cpu.speed }} MHz
                     &#8211; Load: {{ raspberry.load }}
                 </div>
 
                 <!-- Memory -->
                 <div class="mb-1">
-                    <v-icon>memory</v-icon>
-                    &nbsp; {{ raspberry.memory.percent }}% RAM
+                    <v-icon dark class="icon mr-1">memory</v-icon>
+                    {{ raspberry.memory.percent }}% RAM
                     &#8211; {{ raspberry.uptime }} Tage Uptime
                     &#8211; {{ raspberry.temperature }} &deg;C
                 </div>
@@ -25,8 +27,7 @@
                 <!-- Disk -->
                 <div class="mt-3" v-if="raspberry.disk">
                     <div>
-                        <v-icon>storage</v-icon>
-                        &nbsp;
+                        <v-icon dark class="icon mr-1">storage</v-icon>
                         {{ raspberry.disk.label }}
                         &#8211; {{ raspberry.disk.free }} GB / {{ raspberry.disk.size }} GB available
                     </div>
@@ -36,9 +37,10 @@
                     </div>
 
                 </div>
-            </div>
-        </div>
-    </div>
+            </v-flex>
+
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -71,6 +73,14 @@
         font-size: 1.0rem;
     }
 
+    h4 {
+        font-size: 17px;
+    }
+
+    .raspberry-meta {
+        font-size: 0.85rem;
+    }
+
     .pi-icon {
         -webkit-filter: invert(100%);
         filter: invert(100%);
@@ -78,18 +88,6 @@
         height: 43px;
         margin-right: 10px;
         margin-left: -6px;
-    }
-
-    .media {
-        margin-bottom: 30px;
-    }
-
-    .media-body {
-        font-size: 12px;
-    }
-
-    .media-heading {
-        font-size: 16px;
     }
 
     .disk-total {

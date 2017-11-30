@@ -4,7 +4,7 @@
             <td><i class="owf owf-lg" v-bind:class="day.icon"></i></td>
             <td>{{ day.day }}</td>
             <td>{{ day.description }}</td>
-            <td class="pull-right">{{ day.temperature }} °</td>
+            <td class="text-xs-right">{{ day.temperature }} °</td>
         </tr>
     </table>
 </template>
@@ -37,6 +37,10 @@
 </script>
 
 <style scoped>
+
+    #weather-forcast {
+        width: 100%;
+    }
 
     td {
         position: relative;

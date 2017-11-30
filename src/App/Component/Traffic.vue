@@ -1,11 +1,12 @@
 <template>
 
     <v-container fluid class="pa-0">
-        <h5 v-for="route in routes">
-            <v-icon class="mr-1">directions_car</v-icon>
+        <h5 v-for="route in routes" :key="route.destination">
+            <v-icon dark class="mr-1">directions_car</v-icon>
             {{ route.duration }} für {{ route.distance }} zur {{ route.destination }}
         </h5>
     </v-container>
+    
 </template>
 
 <script>

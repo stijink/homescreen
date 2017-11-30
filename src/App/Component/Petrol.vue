@@ -2,7 +2,7 @@
     <table id="petrol">
         <tr>
             <th>
-                <v-icon class="pr-1">local_gas_station</v-icon>
+                <v-icon dark class="pr-1">local_gas_station</v-icon>
                 {{ location }}
             </th>
         </tr>

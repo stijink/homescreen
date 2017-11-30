@@ -1,36 +1,23 @@
 <template>
     <v-container class="pa-0" id="temperature">
-
         <v-layout row>
-
-            <v-flex xs6 class="text-xs-right">
-                <h2>{{ temperature_outside }} °</h2>
+            <v-flex xs7>
+                <h2 class="mb-1">{{ temperature_outside }} °</h2>
                 <div>
-                    <v-icon>terrain</v-icon>
+                    <v-icon dark>terrain</v-icon>
                     Aussentemperatur
                 </div>
             </v-flex>
 
-            <v-flex xs6 class="text-xs-right">
-                <h2>{{ temperature_inside }} °</h2>
+            <v-flex xs5>
+                <h2 class="mb-1">{{ temperature_inside }} °</h2>
+                <div>
+                    <v-icon dark>home</v-icon>
+                    Innentemperatur
+                </div>
             </v-flex>
 
         </v-layout>
-
-        <!--<tr>-->
-            <!--<td><span class="temperature-outside"></span></td>-->
-            <!--<td><span class="temperature-inside">{{ temperature_inside }} °</span></td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>-->
-                <!--<v-icon>terrain</v-icon>-->
-                <!--&nbsp; Aussentemperatur-->
-            <!--</td>-->
-            <!--<td>-->
-                <!--<v-icon>home</v-icon>-->
-                <!--&nbsp; Innentemperatur-->
-            <!--</td>-->
-        <!--</tr>-->
     </v-container>
 </template>
 

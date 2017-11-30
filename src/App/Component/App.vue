@@ -5,34 +5,40 @@
 
       <!-- First row -->
       <v-layout row justify-space-between>
-        <v-flex xs6><clock></clock></v-flex>
-        <v-flex xs6><temperature></temperature></v-flex>
+        <v-flex xs8>
+          <clock></clock>
+        </v-flex>
+        <v-flex xs4>
+          <temperature></temperature>
+        </v-flex>
       </v-layout>
 
-        <!-- <div class="row row-2">
-          <div class="col-md-6 col-left width-400">
-            <calendar></calendar>
-          </div>
-          <div class="col-md-6 col-right width-400">
-            <weather-forcast></weather-forcast>
-            <petrol></petrol>
-          </div>
-        </div>
+      <!-- Second row -->
+      <v-layout row justify-space-between class="pt-5 pb-5">
+        <v-flex xs8>
+          <calendar></calendar>
+        </v-flex>
+        <v-flex xs4>
+            <weather-forcast class="pb-5"></weather-forcast>
+            <petrol class="pt-5"></petrol>
+        </v-flex>
+      </v-layout>
 
-        <div class="row row-3">
-          <div class="col-md-6 col-left width-400">
-            <presence></presence>
-          </div>
-          <div class="col-md-6 col-right width-400">
-            &nbsp;<raspberries></raspberries>
-          </div>
-        </div> -->
+      <!-- Third row -->
+      <v-layout row justify-space-between class="pt-5">
+        <v-flex xs8>
+          <presence></presence>
+        </v-flex>
+        <v-flex xs4>
+            <raspberries></raspberries>
+        </v-flex>
+      </v-layout>
 
         <!-- Bottom row: Fixed to the bottom -->
-        <v-footer fixed class="mb-3 black pl-4 pr-4">
+        <v-footer fixed class="mb-5 black">
           <v-layout row justify-space-between>
-            <v-flex xs6><news></news></v-flex>
-            <v-flex xs5 offset-xs-1><traffic></traffic></v-flex>
+            <v-flex xs7 class="pl-3"><news></news></v-flex>
+            <v-flex xs5 class="pl-5"><traffic></traffic></v-flex>
           </v-layout>
         </v-footer>
 

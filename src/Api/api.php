@@ -15,6 +15,8 @@ use Api\Component\WeatherForcast;
 use Api\Exception\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use PicoFeed\Reader\Reader;
 use Silex\Application;
 use Silex\Provider\MonologServiceProvider;
@@ -30,9 +32,16 @@ $app = new Application();
 
 $app->register(new MonologServiceProvider(), [
     'monolog.name' => 'api',
-    'monolog.level' => 'error',
+    'monolog.level' => 'debug',
     'monolog.logfile' => __DIR__.'/../../logs/api.log',
 ]);
+
+// Also log to stdout
+// https://silex.sensiolabs.org/doc/2.0/providers/monolog.html#customization
+$app->extend('monolog', function (Logger $monolog, Application $app) {
+    $monolog->pushHandler(new StreamHandler('php://stdout', 'debug'));
+    return $monolog;
+});
 
 $app['http_client'] = function () {
     return new Client(['timeout' => 2]);

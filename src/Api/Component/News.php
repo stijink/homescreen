@@ -9,12 +9,21 @@ class News implements ComponentInterface
     private $feedReader;
     private $config;
 
+    /**
+     * @param Reader $feedReader
+     * @param array $config
+     */
     public function __construct(Reader $feedReader, array $config)
     {
         $this->feedReader = $feedReader;
         $this->config = $config;
     }
 
+    /**
+     * @return  array
+     * @throws  \PicoFeed\Parser\MalformedXmlException
+     * @throws  \PicoFeed\Reader\UnsupportedFeedFormatException
+     */
     public function load(): array
     {
         $news = [];
@@ -28,6 +37,14 @@ class News implements ComponentInterface
         return $news;
     }
 
+    /**
+     * Load the news from a single news source
+     *
+     * @param   string $feed
+     * @return  array
+     * @throws  \PicoFeed\Parser\MalformedXmlException
+     * @throws  \PicoFeed\Reader\UnsupportedFeedFormatException
+     */
     private function loadFeed(string $feed): array
     {
         $news = [];
@@ -44,7 +61,7 @@ class News implements ComponentInterface
         foreach ($feed->items as $item) {
             $news[] = [
                 'title' => $item->getTitle(),
-                'description' => $this->getSummary($item->getContent()),
+                'description' => $this->getExcerpt($item->getContent()),
                 'date' => $item->getPublishedDate()->format('d.m.Y H:m'),
                 'visible' => false,
             ];
@@ -53,15 +70,19 @@ class News implements ComponentInterface
         return $news;
     }
 
-    private function getSummary(string $description, int $maxLength = 250): string
+    /**
+     * Get an excerpt of the news
+     *
+     * @param   string $description
+     * @param   int $maxLength
+     * @return  string
+     */
+    private function getExcerpt(string $description, int $maxLength = 250): string
     {
         $description = strip_tags($description);
         $description = str_replace('\n', '', $description);
         $description = trim($description);
-
-        if (strlen($description) > $maxLength) {
-            $description = substr($description, 0, $maxLength).'...';
-        }
+        $description = mb_strimwidth($description, 0, $maxLength, "...");
 
         return $description;
     }
