@@ -4663,9 +4663,9 @@ vue@^2.5.0:
   version "2.5.9"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.9.tgz#b2380cd040915dca69881dafd121d760952e65f7"
 
-vuetify@^0.16.9:
-  version "0.16.9"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-0.16.9.tgz#fd61f219e4a40d7afe5e24a803df5658a40b38e4"
+vuetify@^0.17:
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-0.17.3.tgz#66280c5532b12d80c0ce75f4574d1d5a8c2955b9"
 
 watchpack@^1.4.0:
   version "1.4.0"
