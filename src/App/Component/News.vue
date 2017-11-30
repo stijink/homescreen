@@ -1,7 +1,7 @@
 <template>
     <div id="news">
         <div class="story" v-for="story in news" v-show="story.visible">
-            <h5>{{ story.title }}</h5>
+            <h5 class="headline mb-2">{{ story.title }}</h5>
             <article>{{ story.description }}</article>
         </div>
     </div>
@@ -30,7 +30,7 @@
 
                 // Make first article visible
                 this.news[0].visible = true;
-                
+
                 // Reset the news display iteratior
                 this.currentlyOnDisplay = 0;
 
@@ -60,9 +60,15 @@
 </script>
 
 <style scoped>
+
+    #news {
+        max-width: 580px;
+    }
+
     .story {
         font-size: 14px;
     }
+
 </style>
 
 

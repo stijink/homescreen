@@ -35,12 +35,12 @@
       </v-layout>
 
         <!-- Bottom row: Fixed to the bottom -->
-        <v-footer fixed class="mb-5 black">
+        <!--<v-footer fixed class="mb-5 black">-->
           <v-layout row justify-space-between>
-            <v-flex xs7 class="pl-3"><news></news></v-flex>
-            <v-flex xs5 class="pl-5"><traffic></traffic></v-flex>
+            <v-flex xs8 class="ml-3"><news></news></v-flex>
+            <v-flex xs4><traffic></traffic></v-flex>
           </v-layout>
-        </v-footer>
+        <!--</v-footer>-->
 
     </v-container>
 

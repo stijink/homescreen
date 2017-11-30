@@ -6,7 +6,7 @@
             {{ route.duration }} für {{ route.distance }} zur {{ route.destination }}
         </h5>
     </v-container>
-    
+
 </template>
 
 <script>
@@ -33,7 +33,9 @@
 
 <style scoped>
     h5 {
-        font-size: 16px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 2rem;
         margin: 0;
     }
 </style>

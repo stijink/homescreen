@@ -74,7 +74,7 @@
     }
 
     h4 {
-        font-size: 17px;
+        font-size: 1.0rem;
     }
 
     .raspberry-meta {
