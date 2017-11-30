@@ -4,7 +4,7 @@
     <v-container fluid class="pl-4 pr-4">
 
       <!-- First row -->
-      <v-layout row justify-space-between>
+      <v-layout row justify-space-between class="pb-4">
         <v-flex xs8>
           <clock></clock>
         </v-flex>
