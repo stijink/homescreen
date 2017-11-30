@@ -29,7 +29,7 @@
                     <div>
                         <v-icon dark class="icon mr-1">storage</v-icon>
                         {{ raspberry.disk.label }}
-                        &#8211; {{ raspberry.disk.free }} GB / {{ raspberry.disk.size }} GB available
+                        &#8211; {{ raspberry.disk.free }} GB / {{ raspberry.disk.size }} GB verfügbar
                     </div>
 
                     <div class="disk-total">
