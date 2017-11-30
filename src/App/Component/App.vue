@@ -53,9 +53,12 @@
 <style>
 
 html, body {
-  font-family: 'Roboto Condensed', sans-serif;
   height: 100%;
   overflow: hidden;
+}
+
+html, body, .application {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .icon {
