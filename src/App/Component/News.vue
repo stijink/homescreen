@@ -62,7 +62,7 @@
 <style scoped>
 
     #news {
-        max-width: 580px;
+        max-width: 550px;
     }
 
     .story {
