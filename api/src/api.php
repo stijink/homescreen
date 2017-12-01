@@ -23,7 +23,7 @@ use Silex\Provider\MonologServiceProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-$config = require __DIR__.'/../../config.php';
+$config = require __DIR__ . '/../config.php';
 setlocale(LC_ALL, $config['locale']);
 
 $app = new Application();
@@ -33,7 +33,7 @@ $app = new Application();
 $app->register(new MonologServiceProvider(), [
     'monolog.name' => 'api',
     'monolog.level' => 'debug',
-    'monolog.logfile' => __DIR__.'/../../logs/api.log',
+    'monolog.logfile' => __DIR__ . '/../logs/api.log',
 ]);
 
 // Also log to stdout

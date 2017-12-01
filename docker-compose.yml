@@ -7,19 +7,24 @@ services:
       dockerfile: Dockerfile-api
     image: stijink/homescreen-api
     container_name: homescreen-api
-    working_dir: /var/www/
+    working_dir: ${WORKDIR}
     ports:
-      - "5000:80"
+      - "${PORT}:80"
     volumes:
-      - .:/var/www/
+      - ./api/:${WORKDIR}
+      - app-assets:${WORKDIR}/html/assets
 
   homescreen-app:
     build:
       context: ./build
       dockerfile: Dockerfile-app
     image: stijink/homescreen-app
-    working_dir: /var/www/
+    working_dir: ${WORKDIR}
     container_name: homescreen-app
     command: node_modules/webpack/bin/webpack.js --watch
     volumes:
-      - .:/var/www/
+      - ./app/:${WORKDIR}
+      - app-assets:${WORKDIR}/assets
+
+volumes:
+  app-assets:

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 
 import Vuetify from 'vuetify'
-import '../../node_modules/vuetify/dist/vuetify.min.css';
+import '../node_modules/vuetify/dist/vuetify.min.css';
 
 import App from './Component/App.vue';
 import Error from './Component/Error.vue';

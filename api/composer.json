@@ -7,10 +7,10 @@
         "fguillot/picofeed": "^0.1.31"
     },
     "autoload": {
-        "psr-4": { "Api\\": "src/Api/" }
+        "psr-4": { "Api\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\Api\\": "tests/Api/" }
+        "psr-4": { "Tests\\Api\\": "tests/" }
     },
     "require-dev": {
         "symfony/var-dumper": "^3.2",

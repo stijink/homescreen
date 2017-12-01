@@ -9,13 +9,13 @@ engines:
     enabled: true
     config:
       file_extensions: "php"
-      rulesets: "phpmd.xml"
+      rulesets: "api/phpmd.xml"
   phpcodesniffer:
     enabled: true
 ratings:
   paths:
   - "**.php"
 exclude_paths:
-- node_modules/
-- tests/
-- vendor/
+- app/node_modules/
+- api/tests/
+- api/vendor/

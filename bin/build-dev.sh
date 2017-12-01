@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Copy configuration template if no config is given
-if [ ! -f config.php ]; then
-    cp config.php.dist config.php
+if [ ! -f api/config.php ]; then
+    cp api/config.php.dist api/config.php
 fi
 
 # Ensure images are built

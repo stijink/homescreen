@@ -1,7 +1,4 @@
 .DS_Store
-node_modules/
-vendor/
+.idea
+
 build/logs/
-logs/
-html/assets/
-config.php
