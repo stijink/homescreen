@@ -6,7 +6,7 @@ if [ ! -f api/config.php ]; then
 fi
 
 # Pull latest versions of docker dependencies
-docker pull php:7.1-apache
+docker pull php:7.2-apache
 docker pull node:8
 
 # Ensure images are built
