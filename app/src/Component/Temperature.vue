@@ -32,8 +32,8 @@
                 api_url: '/api.php/temperature',
                 api_update_interval: 2,
 
-                temperature_inside: null,
-                temperature_outside: null,
+                temperature_inside: 0,
+                temperature_outside: 0,
             }
         },
         methods: {
