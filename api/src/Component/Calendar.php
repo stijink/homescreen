@@ -67,30 +67,44 @@ class Calendar implements ComponentInterface
             $timestampStart = strtotime($iCalEvent->dtstart);
             $checksum = md5($iCalEvent->summary.$iCalEvent->dtstart.$iCalEvent->dtend);
 
-            $events[$timestampStart] = [
+            $event = [
                 'description' => $iCalEvent->summary,
-                'date' => date('Y-m-d', $timestampStart),
-                'timestamp' => $timestampStart,
-                'checksum' => $checksum,
+                'date'        => date('Y-m-d', $timestampStart),
+                'timestamp'   => $timestampStart,
+                'checksum'    => $checksum,
             ];
 
-            // If a spcific person is bound to a calendar we add the person
-            if ($calendar['person'] !== null) {
-                $events[$timestampStart]['persons'] = [$this->persons[$calendar['person']]];
-            }
-
-            // If no person is specified for the calendar we add all persons that are marked
-            // as "residents". We assume the events for this calendar are of general interest.
-            if ($calendar['person'] === null) {
-                foreach ($this->persons as $person) {
-                    if ($person['type'] == 'resident') {
-                        $events[$timestampStart]['persons'][] = $person;
-                    }
-                }
-            }
+            $event['persons'] = $this->getEventParticipants($calendar);
+            $events[$timestampStart] = $event;
         }
 
         return $events;
+    }
+
+    /**
+     * Determine which persons should be associated with an event
+     *
+     * @param   array $calendar
+     * @return  array
+     */
+    private function getEventParticipants(array $calendar): array
+    {
+        // If a spcific person is bound to a calendar we add the person
+        if ($calendar['person'] !== null) {
+            return [$this->persons[$calendar['person']]];
+        }
+
+        $participants = [];
+
+        // If no person is specified for the calendar we add all persons that are marked
+        // as "residents". We assume the events for this calendar are of general interest.
+        foreach ($this->persons as $person) {
+            if ($person['type'] == 'resident') {
+                $participants[] = $person;
+            }
+        }
+
+        return $participants;
     }
 
     /**
