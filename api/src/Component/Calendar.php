@@ -10,6 +10,10 @@ class Calendar implements ComponentInterface
     private $config;
     private $persons;
 
+    /**
+     * @param array $config
+     * @param array $persons
+     */
     public function __construct(array $config, array $persons)
     {
         $this->config = $config;
@@ -46,9 +50,8 @@ class Calendar implements ComponentInterface
      * We need to create a fresh ICal instance every time.
      * Otherwise we would run into timeout issues.
      *
-     * @param array $calendar
-     *
-     * @return array
+     * @param   array $calendar
+     * @return  array
      */
     private function loadEvents(array $calendar): array
     {
@@ -72,13 +75,13 @@ class Calendar implements ComponentInterface
             ];
 
             // If a spcific person is bound to a calendar we add the person
-            if (isset($calendar['person'])) {
+            if ($calendar['person'] !== null) {
                 $events[$timestampStart]['persons'] = [$this->persons[$calendar['person']]];
             }
 
             // If no person is specified for the calendar we add all persons that are marked
             // as "residents". We assume the events for this calendar are of general interest.
-            if (!isset($calendar['person'])) {
+            if ($calendar['person'] === null) {
                 foreach ($this->persons as $person) {
                     if ($person['type'] == 'resident') {
                         $events[$timestampStart]['persons'][] = $person;
