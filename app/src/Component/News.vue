@@ -18,7 +18,7 @@
                 api_url: '/api.php/news',
                 api_update_interval: 5,
 
-                displayForSeconds: 12,
+                displayForSeconds: 15,
                 currentlyOnDisplay: 0,
                 rotationInterval: null,
                 news: null,
