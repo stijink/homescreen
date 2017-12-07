@@ -6,6 +6,7 @@ import '../node_modules/vuetify/dist/vuetify.min.css';
 
 import App from './Component/App.vue';
 import Error from './Component/Error.vue';
+import LoadingIndicator from './Component/LoadingIndicator.vue';
 
 import Clock from './Component/Clock.vue';
 import Weather from './Component/Weather.vue';
@@ -22,9 +23,10 @@ Vue.use(Vuetify);
 Vue.use(VueResource);
 
 // Instance to communicate Errors between components
-window.ErrorEvent = new Vue();
+window.EventBus = new Vue();
 
 Vue.component('error', Error);
+Vue.component('loading-indicator', LoadingIndicator);
 Vue.component('clock', Clock);
 Vue.component('weather', Weather);
 Vue.component('temperature', Temperature);

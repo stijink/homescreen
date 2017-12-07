@@ -2,6 +2,7 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
 use GuzzleHttp\Client;
 
 class Petrol implements ComponentInterface
@@ -21,29 +22,33 @@ class Petrol implements ComponentInterface
 
     public function load(): array
     {
-        $products = [];
+        try {
+            $products = [];
 
-        $response = $this->httpClient->get(
-            $this->config['api_url'],
-            ['query' => ['stationId' => $this->config['station_id']]]
-        );
+            $response = $this->httpClient->get(
+                $this->config['api_url'],
+                ['query' => ['stationId' => $this->config['station_id']]]
+            );
 
-        $petrol = json_decode((string) $response->getBody(), true);
+            $petrol = json_decode((string)$response->getBody(), true);
 
-        foreach ($petrol['response']['prices'] as $product) {
-            if (!in_array($product['name'], $this->config['prefered_petrol'])) {
-                continue;
+            foreach ($petrol['response']['prices'] as $product) {
+                if (!in_array($product['name'], $this->config['prefered_petrol'])) {
+                    continue;
+                }
+
+                $product['price'] = (float)$product['price'] / 100;
+                $product['price'] = number_format($product['price'], 2, '.', ',');
+
+                $products[] = $product;
             }
 
-            $product['price'] = (float) $product['price'] / 100;
-            $product['price'] = number_format($product['price'], 2, '.', ',');
-            
-            $products[] = $product;
+            return [
+                'location' => $this->config['location'],
+                'products' => $products,
+            ];
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Spritpreise konnten nicht bezogen werden');
         }
-
-        return [
-            'location' => $this->config['location'],
-            'products' => $products,
-        ];
     }
 }

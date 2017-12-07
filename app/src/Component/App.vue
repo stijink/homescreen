@@ -45,6 +45,7 @@
     </v-container>
 
     <error></error>
+    <loading-indicator id="loading-indicator"></loading-indicator>
 
   </v-app>
 
@@ -71,6 +72,13 @@ H3 {
 
 h1 {
   font-size: 4.5rem;
+}
+
+#loading-indicator {
+  z-index: 12;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 </style>

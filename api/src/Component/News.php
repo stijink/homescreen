@@ -2,6 +2,7 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
 use PicoFeed\Reader\Reader;
 
 class News implements ComponentInterface
@@ -21,20 +22,23 @@ class News implements ComponentInterface
 
     /**
      * @return  array
-     * @throws  \PicoFeed\Parser\MalformedXmlException
-     * @throws  \PicoFeed\Reader\UnsupportedFeedFormatException
+     * @throws  ApiComponentException
      */
     public function load(): array
     {
-        $news = [];
+        try {
+            $news = [];
 
-        foreach ($this->config['feeds'] as $feed) {
-            $news = array_merge($news, $this->loadFeed($feed));
+            foreach ($this->config['feeds'] as $feed) {
+                $news = array_merge($news, $this->loadFeed($feed));
+            }
+
+            shuffle($news);
+
+            return $news;
+        } catch (\Exception $e) {
+            throw new ApiComponentException('News konnten nicht bezogen werden');
         }
-
-        shuffle($news);
-
-        return $news;
     }
 
     /**

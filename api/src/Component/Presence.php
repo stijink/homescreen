@@ -2,6 +2,7 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
@@ -26,33 +27,38 @@ class Presence implements ComponentInterface
 
     /**
      * @return array
+     * @throws ApiComponentException
      */
     public function load(): array
     {
-        $presence = [];
+        try {
+            $presence = [];
 
-        foreach ($this->persons as $person) {
-            $isPresent = $this->isPersonPresent($person);
+            foreach ($this->persons as $person) {
+                $isPresent = $this->isPersonPresent($person);
 
-            // Do not add visitors that are not present
-            if ($person['type'] == 'visitor' && $isPresent === false) {
-                continue;
+                // Do not add visitors that are not present
+                if ($person['type'] == 'visitor' && $isPresent === false) {
+                    continue;
+                }
+
+                // Unset the mac_address to not expose it into the frontend
+                unset($person['mac_address']);
+
+                $presence[] = [
+                    'person'      => $person,
+                    'is_present'  => $isPresent,
+                    'status_text' => $this->getStatusText($person, $isPresent),
+                ];
             }
 
-            // Unset the mac_address to not expose it into the frontend
-            unset($person['mac_address']);
+            $presence = $this->sortByPresence($presence);
+            $presence = $this->sortByPersonType($presence);
 
-            $presence[] = [
-                'person' => $person,
-                'is_present' => $isPresent,
-                'status_text' => $this->getStatusText($person, $isPresent),
-            ];
+            return $presence;
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Anwesende/Abwesende Personen konnten nicht bestimmt werden');
         }
-
-        $presence = $this->sortByPresence($presence);
-        $presence = $this->sortByPersonType($presence);
-
-        return $presence;
     }
 
     /**

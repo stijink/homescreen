@@ -2,6 +2,8 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
+
 class Temperature implements ComponentInterface
 {
     private $weather;
@@ -13,10 +15,23 @@ class Temperature implements ComponentInterface
         $this->roomTemperature = $roomTemperature;
     }
 
+    /**
+     * @return array
+     * @throws ApiComponentException
+     */
     public function load(): array
     {
-        $weatherResponse = $this->weather->load();
-        $roomTemperatureResponse = $this->roomTemperature->load();
+        try {
+            $weatherResponse = $this->weather->load();
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Die Aussentemperatur konnte nicht bestimmt werden');
+        }
+
+        try {
+            $roomTemperatureResponse = $this->roomTemperature->load();
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Die Zimmertemperatur konnte nicht bestimmt werden');
+        }
 
         return [
             'temperature_outside' => $weatherResponse['temperature'],

@@ -2,6 +2,7 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
 use GuzzleHttp\Client;
 
 class Raspberries implements ComponentInterface
@@ -21,32 +22,37 @@ class Raspberries implements ComponentInterface
 
     /**
      * @return array
+     * @throws ApiComponentException
      */
     public function load(): array
     {
-        $raspberries = [];
+        try {
+            $raspberries = [];
 
-        foreach ($this->config as $raspberryConfig) {
-            $response  = $this->httpClient->get($raspberryConfig['url']);
-            $raspberry = json_decode((string)$response->getBody(), true);
+            foreach ($this->config as $raspberryConfig) {
+                $response = $this->httpClient->get($raspberryConfig['url']);
+                $raspberry = json_decode((string)$response->getBody(), true);
 
-            if ($raspberryConfig['diskinfo'] !== null) {
-                $raspberry['disk'] = $raspberry['disks'][$raspberryConfig['diskinfo']['volume']];
+                if ($raspberryConfig['diskinfo'] !== null) {
+                    $raspberry['disk'] = $raspberry['disks'][$raspberryConfig['diskinfo']['volume']];
 
-                $raspberry['disk']['label']    = $raspberryConfig['diskinfo']['label'];
-                $raspberry['disk']['free']     = $this->convertDiskSize($raspberry['disk']['free']);
-                $raspberry['disk']['size']     = $this->convertDiskSize($raspberry['disk']['size']);
-                $raspberry['disk']['used']     = $this->convertDiskSize($raspberry['disk']['used']);
-                $raspberry['disk']['percent']  = floatval(number_format($raspberry['disk']['percent'] * 100, 0));
+                    $raspberry['disk']['label'] = $raspberryConfig['diskinfo']['label'];
+                    $raspberry['disk']['free'] = $this->convertDiskSize($raspberry['disk']['free']);
+                    $raspberry['disk']['size'] = $this->convertDiskSize($raspberry['disk']['size']);
+                    $raspberry['disk']['used'] = $this->convertDiskSize($raspberry['disk']['used']);
+                    $raspberry['disk']['percent'] = floatval(number_format($raspberry['disk']['percent'] * 100, 0));
+                }
+
+                unset($raspberry['disks']);
+
+                $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
+                $raspberries[] = $raspberry;
             }
 
-            unset($raspberry['disks']);
-
-            $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
-            $raspberries[] = $raspberry;
+            return $raspberries;
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Der Status der Raspberries konnte nicht bestimmt werden');
         }
-
-        return $raspberries;
     }
 
     /**

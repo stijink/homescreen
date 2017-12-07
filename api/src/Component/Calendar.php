@@ -2,6 +2,7 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
 use ICal\ICal;
 
 class Calendar implements ComponentInterface
@@ -15,21 +16,29 @@ class Calendar implements ComponentInterface
         $this->persons = $persons;
     }
 
+    /**
+     * @return array
+     * @throws ApiComponentException
+     */
     public function load(): array
     {
-        $events = [];
+        try {
+            $events = [];
 
-        foreach ($this->config['calendars'] as $calendar) {
-            $events = array_merge($events, $this->loadEvents($calendar));
+            foreach ($this->config['calendars'] as $calendar) {
+                $events = array_merge($events, $this->loadEvents($calendar));
+            }
+
+            $events = $this->sortEvents($events);
+            $events = $this->mergeUniqueEvents($events);
+
+            // Reduce to a maximum number of events
+            $events = array_slice($events, 0, $this->config['max_events']);
+
+            return $events;
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Kalender-Einträge konnten nicht bezogen werden');
         }
-
-        $events = $this->sortEvents($events);
-        $events = $this->mergeUniqueEvents($events);
-
-        // Reduce to a maximum number of events
-        $events = array_slice($events, 0, $this->config['max_events']);
-
-        return $events;
     }
 
     /**

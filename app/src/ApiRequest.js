@@ -1,12 +1,16 @@
 let ApiRequest = {
     methods: {
         apiRequest: function (url, callback) {
+
+            EventBus.$emit('start-loading');
+
             this.$http.get(url).then(response => {
-                ErrorEvent.$emit('reset');
+                EventBus.$emit('stop-loading', { success: true });
                 callback(response.body);
             },
             response => {
-                ErrorEvent.$emit('error', response.body);
+                EventBus.$emit('error', response.body);
+                EventBus.$emit('stop-loading', { success: false });
             });
         }
     }

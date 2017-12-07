@@ -12,6 +12,7 @@ use Api\Component\Temperature;
 use Api\Component\Traffic;
 use Api\Component\Weather;
 use Api\Component\WeatherForcast;
+use Api\Exception\ApiComponentException;
 use Api\Exception\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
@@ -156,24 +157,17 @@ $app->get('/raspberries', function () use ($app) {
 $app->error(function (\Exception $exception, Request $request, $code) use ($app) {
     $app['monolog']->error($exception->getMessage());
 
-    $message = 'Unbekannter Fehler';
-    $description = '
-        Ein unbekannter Fehler ist aufgetreten. 
-        Die Anwendung muss neu gestartet werden.';
-
-    if ($exception instanceof ConnectException) {
-        $message = 'Keine Internetverbindung';
-        $description = '
-            Es besteht keine Verbindung zum Internet. 
-            Sobald die Verbindung wieder da ist, werden die Inhalte automatisch neu geladen.';
-    }
+    $message = 'Ein unbekannter Fehler ist aufgetreten';
 
     if ($exception instanceof ApiException) {
         $message = $exception->getMessage();
-        $description = $exception->getDescription();
     }
 
-    return new JsonResponse(['message' => $message, 'description' => $description], 500);
+    if ($exception instanceof ApiComponentException) {
+        $message = $exception->getMessage();
+    }
+
+    return new JsonResponse(['message' => $message], 500);
 });
 
 return $app;

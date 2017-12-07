@@ -2,6 +2,7 @@
 
 namespace Api\Component;
 
+use Api\Exception\ApiComponentException;
 use Api\Exception\ApiKeyException;
 use GuzzleHttp\Client;
 
@@ -10,6 +11,11 @@ class Traffic implements ComponentInterface
     private $httpClient;
     private $config;
 
+    /**
+     * @param   Client $httpClient
+     * @param   array $config
+     * @throws  ApiKeyException
+     */
     public function __construct(Client $httpClient, array $config)
     {
         if ($config['api_key'] === null) {
@@ -20,15 +26,23 @@ class Traffic implements ComponentInterface
         $this->config = $config;
     }
 
+    /**
+     * @return array
+     * @throws ApiComponentException
+     */
     public function load(): array
     {
-        $traffic = [];
+        try {
+            $traffic = [];
 
-        foreach ($this->config['routes'] as $route) {
-            $traffic[] = $this->loadRoute($route['origin'], $route['destination']);
+            foreach ($this->config['routes'] as $route) {
+                $traffic[] = $this->loadRoute($route['origin'], $route['destination']);
+            }
+
+            return $traffic;
+        } catch (\Exception $e) {
+            throw new ApiComponentException('Verkehrsinformationen konnten nicht bestimmt werden');
         }
-
-        return $traffic;
     }
 
     private function loadRoute(string $origin, string $destination)
