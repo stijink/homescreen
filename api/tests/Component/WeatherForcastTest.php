@@ -21,31 +21,31 @@ class WeatherForcastTest extends MockeryTestCase
     {
         $expectedResponse = [
             [
-                'day' => 'Tuesday',
+                'day' => 'Dienstag',
                 'temperature' => 4.0,
                 'description' => 'mäßiger Schnee',
                 'icon_code' => 600,
             ],
             [
-                'day' => 'Wednesday',
+                'day' => 'Mittwoch',
                 'temperature' => 4.8,
                 'description' => 'sehr starker Regen',
                 'icon_code' => 502,
             ],
             [
-                'day' => 'Thursday',
+                'day' => 'Donnerstag',
                 'temperature' => 7.7,
                 'description' => 'leichter Regen',
                 'icon_code' => 500,
             ],
             [
-                'day' => 'Friday',
+                'day' => 'Freitag',
                 'temperature' => 9.0,
                 'description' => 'mäßiger Regen',
                 'icon_code' => 501,
             ],
             [
-                'day' => 'Saturday',
+                'day' => 'Samstag',
                 'temperature' => 11.5,
                 'description' => 'mäßiger Regen',
                 'icon_code' => 501,
