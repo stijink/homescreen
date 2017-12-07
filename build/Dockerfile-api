@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
   unzip \
   curl \
   git \
-  wget
+  wget \
+  locales \
+  locales-all
 
 # Common PHP Extensions
 RUN docker-php-ext-install opcache
