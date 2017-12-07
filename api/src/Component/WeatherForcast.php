@@ -36,24 +36,10 @@ class WeatherForcast implements ComponentInterface
         try {
             setlocale(LC_TIME, "de_DE");
 
-            $forcast = [];
+            $forcast  = [];
+            $response = $this->loadWeatherForcast();
 
-            $response = $this->httpClient->get(
-                $this->config['api_url'],
-                [
-                    'query' => [
-                        'q'     => $this->config['city'],
-                        'APPID' => $this->config['api_key'],
-                        'units' => 'metric',
-                        'lang'  => 'de',
-                        'cnt'   => 5,
-                    ],
-                ]
-            );
-
-            $answer = json_decode((string)$response->getBody(), true);
-
-            foreach ($answer['list'] as $day) {
+            foreach ($response['list'] as $day) {
                 $forcast[] = [
                     'day'         => strftime('%A', (int)$day['dt']),
                     'temperature' => round($day['temp']['day'], 1),
@@ -66,5 +52,25 @@ class WeatherForcast implements ComponentInterface
         } catch (\Exception $e) {
             throw new ApiComponentException('Wettervorhersage konnte nicht bestimmt werden');
         }
+    }
+
+    /**
+     * Load the weather forcast from the web service
+     *
+     * @return array
+     */
+    private function loadWeatherForcast(): array
+    {
+        $response = $this->httpClient->get($this->config['api_url'], [
+            'query' => [
+                'q'     => $this->config['city'],
+                'APPID' => $this->config['api_key'],
+                'units' => 'metric',
+                'lang'  => 'de',
+                'cnt'   => 5,
+            ],
+        ]);
+
+        return json_decode((string)$response->getBody(), true);
     }
 }
