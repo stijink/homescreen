@@ -88,7 +88,7 @@ class News implements ComponentInterface
         $description = trim($description);
 
         // Remove html entities
-        $description = preg_replace("/&#?[a-z0-9]{2,8};/i","",$description);
+        $description = preg_replace("/&#?[a-z0-9]{2,8};/i", "", $description);
 
         $description = mb_strimwidth($description, 0, $maxLength, "...");
 

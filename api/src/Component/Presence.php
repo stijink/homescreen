@@ -36,7 +36,7 @@ class Presence implements ComponentInterface
 
             foreach ($this->persons as $person) {
                 $presentPerson = $this->handlePerson($person);
-                
+
                 if (is_array($presentPerson)) {
                     $presentPersons[] = $presentPerson;
                 }
@@ -57,10 +57,10 @@ class Presence implements ComponentInterface
      * @param  array $person
      * @return array|null
      */
-    private function handlePerson(array $person): ?array 
+    private function handlePerson(array $person): ?array
     {
         $isPresent = $this->isPersonPresent($person);
-        
+
         // Do not add visitors that are not present
         if ($person['type'] == 'visitor' && $isPresent === false) {
             return null;
