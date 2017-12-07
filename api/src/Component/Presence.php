@@ -68,7 +68,7 @@ class Presence implements ComponentInterface
      * @param  array $person
      * @return array|null
      */
-    private function handlePerson(array $person): ?array
+    private function handlePerson(array $person)
     {
         $isPresent = $this->isPersonPresent($person);
 
