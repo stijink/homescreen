@@ -42,7 +42,7 @@
 
             EventBus.$on('stop-loading', function (payload) {
                 // Stop loading after a brief delay
-                setTimeout(this.stopLoading, 1500, payload);
+                setTimeout(this.stopLoading, 1000, payload);
             }.bind(this));
         }
     }
