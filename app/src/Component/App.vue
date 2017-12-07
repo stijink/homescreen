@@ -1,6 +1,8 @@
 <template>
   <v-app class="black white--text" id="app">
 
+    <snow></snow>    
+
     <v-container fluid class="pl-4 pr-4">
 
       <!-- First row -->

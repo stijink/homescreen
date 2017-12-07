@@ -8,6 +8,8 @@ import App from './Component/App.vue';
 import Error from './Component/Error.vue';
 import LoadingIndicator from './Component/LoadingIndicator.vue';
 
+import Snow from './Component/Snow.vue';
+
 import Clock from './Component/Clock.vue';
 import Weather from './Component/Weather.vue';
 import Temperature from './Component/Temperature.vue';
@@ -25,6 +27,7 @@ Vue.use(VueResource);
 // Instance to communicate Errors between components
 window.EventBus = new Vue();
 
+Vue.component('snow', Snow);
 Vue.component('error', Error);
 Vue.component('loading-indicator', LoadingIndicator);
 Vue.component('clock', Clock);
