@@ -32,33 +32,48 @@ class Presence implements ComponentInterface
     public function load(): array
     {
         try {
-            $presence = [];
+            $presentPersons = [];
 
             foreach ($this->persons as $person) {
-                $isPresent = $this->isPersonPresent($person);
-
-                // Do not add visitors that are not present
-                if ($person['type'] == 'visitor' && $isPresent === false) {
-                    continue;
+                $presentPerson = $this->handlePerson($person);
+                
+                if (is_array($presentPerson)) {
+                    $presentPersons[] = $presentPerson;
                 }
-
-                // Unset the mac_address to not expose it into the frontend
-                unset($person['mac_address']);
-
-                $presence[] = [
-                    'person'      => $person,
-                    'is_present'  => $isPresent,
-                    'status_text' => $this->getStatusText($person, $isPresent),
-                ];
             }
 
-            $presence = $this->sortByPresence($presence);
-            $presence = $this->sortByPersonType($presence);
+            $presentPersons = $this->sortByPresence($presentPersons);
+            $presentPersons = $this->sortByPersonType($presentPersons);
 
-            return $presence;
+            return $presentPersons;
         } catch (\Exception $e) {
             throw new ApiComponentException('Anwesende/Abwesende Personen konnten nicht bestimmt werden');
         }
+    }
+
+    /**
+     * Handle the presence for a single person
+     *
+     * @param  array $person
+     * @return array|null
+     */
+    private function handlePerson(array $person): ?array 
+    {
+        $isPresent = $this->isPersonPresent($person);
+        
+        // Do not add visitors that are not present
+        if ($person['type'] == 'visitor' && $isPresent === false) {
+            return null;
+        }
+
+        // Unset the mac_address to not expose it into the frontend
+        unset($person['mac_address']);
+
+        return [
+            'person'      => $person,
+            'is_present'  => $isPresent,
+            'status_text' => $this->getStatusText($person, $isPresent),
+        ];
     }
 
     /**
