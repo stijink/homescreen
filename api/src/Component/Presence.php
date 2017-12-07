@@ -13,6 +13,17 @@ class Presence implements ComponentInterface
     private $config;
     private $persons;
 
+    // Used in "isPersonPresent"
+    private $soapBodyTemplate = '<?xml version="1.0" encoding="utf-8"?>
+            <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+              xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
+              <s:Body>
+                <u:GetSpecificHostEntry xmlns:u="urn:dslforum-org:service:Hosts:1">
+                  <NewMACAddress>%mac_address%</NewMACAddress>
+                </u:GetSpecificHostEntry>
+              </s:Body>
+            </s:Envelope>';
+
     /**
      * @param Client $httpClient
      * @param array  $config
@@ -139,15 +150,7 @@ class Presence implements ComponentInterface
     private function isPersonPresent(array $person): bool
     {
         try {
-            $body = '<?xml version="1.0" encoding="utf-8"?>
-            <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-              xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
-              <s:Body>
-                <u:GetSpecificHostEntry xmlns:u="urn:dslforum-org:service:Hosts:1">
-                  <NewMACAddress>'.$person['mac_address'].'</NewMACAddress>
-                </u:GetSpecificHostEntry>
-              </s:Body>
-            </s:Envelope>';
+            $body = str_replace('%mac_address%', $person['mac_address'], $this->soapBodyTemplate);
 
             $headers = [
                 'Content-type' => 'text/xml;charset="utf-8',
