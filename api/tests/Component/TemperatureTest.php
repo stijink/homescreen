@@ -18,14 +18,14 @@ class TemperatureTest extends MockeryTestCase
         $mockedRoomTemperature = \Mockery::mock('Api\Component\RoomTemperature')
             ->shouldReceive('load')
             ->once()
-            ->andReturn(['temperature' => 23.5])
+            ->andReturn(['temperature' => 22])
             ->getMock();
 
         $temperature = new Temperature($mockedWeather, $mockedRoomTemperature);
         $response = $temperature->load();
 
         $this->assertCount(2, $response);
-        $this->assertSame(23.5, $response['temperature_inside']);
         $this->assertSame(27.5, $response['temperature_outside']);
+        $this->assertSame(22.0, $response['temperature_inside']);
     }
 }

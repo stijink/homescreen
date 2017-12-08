@@ -23,19 +23,21 @@ class Temperature implements ComponentInterface
     {
         try {
             $weatherResponse = $this->weather->load();
+            $temperatureOutside = number_format($weatherResponse['temperature'], 1);
         } catch (\Exception $e) {
             throw new ApiComponentException('Die Aussentemperatur konnte nicht bestimmt werden');
         }
 
         try {
             $roomTemperatureResponse = $this->roomTemperature->load();
+            $temperatureInside  = number_format($roomTemperatureResponse['temperature'], 1);
         } catch (\Exception $e) {
             throw new ApiComponentException('Die Zimmertemperatur konnte nicht bestimmt werden');
         }
 
         return [
-            'temperature_outside' => $weatherResponse['temperature'],
-            'temperature_inside'  => $roomTemperatureResponse['temperature'],
+            'temperature_outside' => floatval($temperatureOutside),
+            'temperature_inside'  => floatval($temperatureInside),
         ];
     }
 }
