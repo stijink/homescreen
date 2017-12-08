@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose run homescreen-api vendor/bin/phpunit
+docker-compose run homescreen-api vendor/bin/phpunit --debug $1

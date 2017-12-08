@@ -53,21 +53,21 @@ class PresenceTest extends MockeryTestCase
             ],
             [
                 'person' => [
-                    'name'      => 'Resident 2',
-                    'type'      => 'resident',
-                    'image_url' => 'http://graph.facebook.com/2/picture?type=square'
-                ],
-                'is_present' => false,
-                'status_text' => 'Resident 2 ist nicht zuhause',
-            ],
-            [
-                'person' => [
                     'name'      => 'Visitor 1',
                     'type'      => 'visitor',
                     'image_url' => 'http://graph.facebook.com/2/picture?type=square'
                 ],
                 'is_present' => true,
                 'status_text' => 'Visitor 1 ist zu Besuch',
+            ],
+            [
+                'person' => [
+                    'name'      => 'Resident 2',
+                    'type'      => 'resident',
+                    'image_url' => 'http://graph.facebook.com/2/picture?type=square'
+                ],
+                'is_present' => false,
+                'status_text' => 'Resident 2 ist nicht zuhause',
             ],
         ];
 

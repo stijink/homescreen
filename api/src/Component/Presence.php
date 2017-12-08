@@ -53,8 +53,8 @@ class Presence implements ComponentInterface
                 }
             }
 
-            $presentPersons = $this->sortByPresence($presentPersons);
             $presentPersons = $this->sortByPersonType($presentPersons);
+            $presentPersons = $this->sortByPresence($presentPersons);
 
             return $presentPersons;
         } catch (\Exception $e) {
@@ -91,13 +91,12 @@ class Presence implements ComponentInterface
      * Sort Persons by presence.
      *
      * @param array $presence
-     *
      * @return array
      */
     private function sortByPresence(array $presence): array
     {
-        usort($presence, function (array $presence1, array $presence2): int {
-            return (int) $presence2['is_present'];
+        usort($presence, function (array $personToCompare): int {
+            return intval(! $personToCompare['is_present']);
         });
 
         return $presence;
@@ -107,13 +106,12 @@ class Presence implements ComponentInterface
      * Sort Persons by presence.
      *
      * @param array $presence
-     *
      * @return array
      */
     private function sortByPersonType(array $presence): array
     {
-        usort($presence, function (array $presence1, array $presence2): int {
-            return (int) $presence2['person']['type'] == 'resident';
+        usort($presence, function (array $personToCompare): int {
+            return intval($personToCompare['person']['type'] !== 'resident');
         });
 
         return $presence;
@@ -122,10 +120,9 @@ class Presence implements ComponentInterface
     /**
      * Assamble the status text.
      *
-     * @param array $person
-     * @param bool  $isPresent
-     *
-     * @return string
+     * @param   array $person
+     * @param   bool  $isPresent
+     * @return  string
      */
     private function getStatusText(array $person, bool $isPresent): string
     {
@@ -143,9 +140,8 @@ class Presence implements ComponentInterface
     /**
      * Check against the API if a person is currently present.
      *
-     * @param array $person
-     *
-     * @return bool
+     * @param   array $person
+     * @return  bool
      */
     private function isPersonPresent(array $person): bool
     {
