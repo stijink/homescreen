@@ -1,12 +1,14 @@
 <template>
     <v-container fluid class="pa-0">
+
         <v-layout row v-for="raspberry in raspberries" :key="raspberry.hostname" class="mb-5">
 
             <v-flex xs2>
                 <img class="pi-icon" src="/fa-raspberry-pi.svg">
             </v-flex>
 
-            <v-flex xs10 class="raspberry-meta">
+            <!-- Raspberry is online -->
+            <v-flex xs10 class="raspberry-meta-online" v-if="raspberry.is_online === true">
                 <h4 class="mb-1">{{ raspberry.hostname }}</h4>
 
                 <!-- CPU / Speed -->
@@ -37,6 +39,18 @@
                     </div>
 
                 </div>
+            </v-flex>
+
+            <!-- Raspberry is offline -->
+            <v-flex xs10 class="raspberry-meta-offline" v-if="raspberry.is_online === false">
+                <h4 class="mb-1">{{ raspberry.hostname }}</h4>
+
+                <!-- CPU / Speed -->
+                <div class="mb-1">
+                    <v-icon dark class="icon mr-1">warning</v-icon>
+                    Das Gerät ist zur Zeit nicht erreichbar
+                </div>
+
             </v-flex>
 
         </v-layout>
@@ -77,8 +91,12 @@
         font-size: 1.0rem;
     }
 
-    .raspberry-meta {
+    .raspberry-meta-online {
         font-size: 0.85rem;
+    }
+
+    .raspberry-meta-offline {
+        font-size: 1rem;
     }
 
     .pi-icon {
