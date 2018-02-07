@@ -5,6 +5,7 @@ services:
     build:
       context: ./build
       dockerfile: Dockerfile-api
+    restart: always
     image: stijink/homescreen-api
     container_name: homescreen-api
     working_dir: ${WORKDIR}
