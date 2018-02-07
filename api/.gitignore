@@ -1,4 +1,5 @@
-vendor/
-config.php
-logs/
-html/assets/
+.env
+/public/assets/
+/var/
+/vendor/
+

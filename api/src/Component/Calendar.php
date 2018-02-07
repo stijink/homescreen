@@ -1,24 +1,32 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
+use App\Configuration;
+use App\ApiComponentException;
 use ICal\ICal;
+use Psr\Log\LoggerInterface;
 
 class Calendar implements ComponentInterface
 {
-    private $config;
-    private $persons;
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
+    private $calendarCache;
 
     /**
-     * @param array $config
-     * @param array $persons
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
+     * @param CalendarCache $calendarCache
      */
-    public function __construct(array $config, array $persons)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, CalendarCache $calendarCache)
     {
-        $this->config = $config;
-        $this->persons = $persons;
+        $this->configuration = $configuration;
+        $this->logger = $logger;
+        $this->calendarCache = $calendarCache;
     }
+
 
     /**
      * @return array
@@ -29,7 +37,7 @@ class Calendar implements ComponentInterface
         try {
             $events = [];
 
-            foreach ($this->config['calendars'] as $calendar) {
+            foreach ($this->configuration['calendar']['calendars'] as $calendar) {
                 $events = array_merge($events, $this->loadEvents($calendar));
             }
 
@@ -37,11 +45,11 @@ class Calendar implements ComponentInterface
             $events = $this->mergeUniqueEvents($events);
 
             // Reduce to a maximum number of events
-            $events = array_slice($events, 0, $this->config['max_events']);
+            $events = array_slice($events, 0, $this->configuration['calendar']['max_events']);
 
             return $events;
         } catch (\Exception $e) {
-            throw new ApiComponentException('Kalender-Einträge konnten nicht bezogen werden');
+            $this->handleException($e, 'Kalender-Einträge konnten nicht bezogen werden');
         }
     }
 
@@ -57,9 +65,12 @@ class Calendar implements ComponentInterface
     {
         $events = [];
 
-        $icalendar = new ICal($calendar['url']);
+        $content = $this->calendarCache->get($calendar);
 
-        $intervalInDays = $this->config['max_days'] . ' days';
+        $icalendar = new ICal();
+        $icalendar->initString($content);
+
+        $intervalInDays = $this->configuration['calendar']['max_days'] . ' days';
         $interval = $icalendar->eventsFromInterval($intervalInDays);
         $iCalEvents = $icalendar->sortEventsWithOrder($interval);
 
@@ -89,22 +100,34 @@ class Calendar implements ComponentInterface
      */
     private function getEventParticipants(array $calendar): array
     {
-        // If a spcific person is bound to a calendar we add the person
-        if ($calendar['person'] !== null) {
-            return [$this->persons[$calendar['person']]];
-        }
-
         $participants = [];
 
-        // If no person is specified for the calendar we add all persons that are marked
-        // as "residents". We assume the events for this calendar are of general interest.
-        foreach ($this->persons as $person) {
-            if ($person['type'] == 'resident') {
+        foreach ($this->configuration['persons'] as $person) {
+            // If a spcific person is bound to a calendar we add the person
+            if (array_key_exists('person', $calendar) && $person['name'] == $calendar['person']) {
                 $participants[] = $person;
+                break;
             }
         }
 
+        if (count($participants) === 0) {
+            $participants = $this->filterResidentPersons($this->configuration['persons']);
+        }
+
         return $participants;
+    }
+
+    /**
+     * Filter only that persons that are of type "resident"
+     *
+     * @param   array $persons
+     * @return  array
+     */
+    private function filterResidentPersons(array $persons): array
+    {
+        return array_filter($persons, function ($person) {
+            return $person['type'] == 'resident';
+       });
     }
 
     /**

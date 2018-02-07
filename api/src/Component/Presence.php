@@ -1,17 +1,21 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
+use App\Configuration;
+use App\ApiComponentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
+use Psr\Log\LoggerInterface;
 
 class Presence implements ComponentInterface
 {
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
     private $httpClient;
-    private $config;
-    private $persons;
 
     // Used in "isPersonPresent"
     private $soapBodyTemplate = '<?xml version="1.0" encoding="utf-8"?>
@@ -25,16 +29,17 @@ class Presence implements ComponentInterface
             </s:Envelope>';
 
     /**
-     * @param Client $httpClient
-     * @param array  $config
-     * @param array  $persons
+     * @param $configuration
+     * @param $logger
+     * @param $httpClient
      */
-    public function __construct(Client $httpClient, array $config, array $persons)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
     {
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->httpClient = $httpClient;
-        $this->config = $config;
-        $this->persons = $persons;
     }
+
 
     /**
      * @return array
@@ -45,7 +50,7 @@ class Presence implements ComponentInterface
         try {
             $presentPersons = [];
 
-            foreach ($this->persons as $person) {
+            foreach ($this->configuration['persons'] as $person) {
                 $presentPerson = $this->handlePerson($person);
 
                 if (is_array($presentPerson)) {
@@ -58,7 +63,7 @@ class Presence implements ComponentInterface
 
             return $presentPersons;
         } catch (\Exception $e) {
-            throw new ApiComponentException('Anwesende/Abwesende Personen konnten nicht bestimmt werden');
+            $this->handleException($e, 'Anwesende/Abwesende Personen konnten nicht bestimmt werden');
         }
     }
 
@@ -153,7 +158,7 @@ class Presence implements ComponentInterface
                 'SoapAction'   => 'urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
             ];
 
-            $request = new Request('POST', $this->config['api_url'], $headers, $body);
+            $request = new Request('POST', $this->configuration['presence']['api_url'], $headers, $body);
             $response = $this->httpClient->send($request);
 
             if ($response->getStatusCode() == 500) {

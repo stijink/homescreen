@@ -1,30 +1,30 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
-use Api\Exception\ApiKeyException;
+use App\Configuration;
+use App\ApiComponentException;
 use GuzzleHttp\Client;
-use function GuzzleHttp\json_decode;
+use Psr\Log\LoggerInterface;
 
 class WeatherForcast implements ComponentInterface
 {
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
     private $httpClient;
-    private $config;
 
     /**
-     * @param   Client $httpClient
-     * @param   array $config
-     * @throws  ApiKeyException
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
+     * @param Client $httpClient
      */
-    public function __construct(Client $httpClient, array $config)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
     {
-        if ($config['api_key'] === null) {
-            throw new ApiKeyException();
-        }
-
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->httpClient = $httpClient;
-        $this->config = $config;
     }
 
     /**
@@ -34,7 +34,7 @@ class WeatherForcast implements ComponentInterface
     public function load(): array
     {
         try {
-            setlocale(LC_TIME, "de_DE");
+            setlocale(LC_TIME, $this->configuration['locale']);
 
             $forcast  = [];
             $response = $this->loadWeatherForcast();
@@ -42,7 +42,7 @@ class WeatherForcast implements ComponentInterface
             foreach ($response['list'] as $day) {
                 $forcast[] = [
                     'day'         => strftime('%A', (int)$day['dt']),
-                    'temperature' => round($day['temp']['day'], 1),
+                    'temperature' => sprintf('%.1f', $day['temp']['day']),
                     'description' => $day['weather'][0]['description'],
                     'icon_code'   => $day['weather'][0]['id'],
                 ];
@@ -50,7 +50,7 @@ class WeatherForcast implements ComponentInterface
 
             return $forcast;
         } catch (\Exception $e) {
-            throw new ApiComponentException('Wettervorhersage konnte nicht bestimmt werden');
+            $this->handleException($e, 'Wettervorhersage konnte nicht bestimmt werden');
         }
     }
 
@@ -61,13 +61,13 @@ class WeatherForcast implements ComponentInterface
      */
     private function loadWeatherForcast(): array
     {
-        $response = $this->httpClient->get($this->config['api_url'], [
+        $response = $this->httpClient->get($this->configuration['weather_forcast']['api_url'], [
             'query' => [
-                'q'     => $this->config['city'],
-                'APPID' => $this->config['api_key'],
+                'q'     => $this->configuration['weather_forcast']['city'],
+                'APPID' => $this->configuration['weather_forcast']['api_key'],
                 'units' => 'metric',
-                'lang'  => 'de',
-                'cnt'   => 5,
+                'lang'  => $this->configuration['language'],
+                'cnt'   => 7,
             ],
         ]);
 

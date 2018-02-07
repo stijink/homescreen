@@ -12,7 +12,7 @@ services:
       - "${PORT}:80"
     volumes:
       - ./api/:${WORKDIR}
-      - app-assets:${WORKDIR}/html/assets
+      - app-assets:${WORKDIR}/public/assets
 
   homescreen-app:
     build:

@@ -1,23 +1,32 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
+use App\Configuration;
 use GuzzleHttp\Client;
+use Psr\Log\LoggerInterface;
 
 class RoomTemperature implements ComponentInterface
 {
+    private $configuration;
+    private $logger;
     private $httpClient;
-    private $config;
 
-    public function __construct(Client $httpClient, array $config)
+    /**
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
+     * @param Client $httpClient
+     */
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
     {
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->httpClient = $httpClient;
-        $this->config = $config;
     }
 
     public function load(): array
     {
-        $response    = $this->httpClient->get($this->config['api_url']);
+        $response    = $this->httpClient->get($this->configuration['room_temperature']['api_url']);
         $temperature = (string)$response->getBody();
 
         return [

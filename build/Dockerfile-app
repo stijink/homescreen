@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:9
 
 # Configure yarn
 ENV YARN_CACHE='/var/cache/yarn'

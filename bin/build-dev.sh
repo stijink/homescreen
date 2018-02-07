@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 
-# Copy configuration template if no config is given
-if [ ! -f api/config.php ]; then
-    cp api/config.php.dist api/config.php
-fi
-
 # Pull latest versions of docker dependencies
 docker pull php:7.2-apache
-docker pull node:8
+docker pull node:9
 
 # Ensure images are built
 docker-compose build
@@ -19,7 +14,3 @@ docker-compose run homescreen-api \
 # Install App Dependencies
 docker-compose run homescreen-app \
   yarn install
-
-# Create logs directory
-docker-compose run homescreen-api \
-  mkdir -p -m 777 logs

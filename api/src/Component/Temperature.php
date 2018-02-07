@@ -1,18 +1,28 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
+use App\ApiComponentException;
+use Psr\Log\LoggerInterface;
 
 class Temperature implements ComponentInterface
 {
+    use ComponentTrait;
+
     private $weather;
     private $roomTemperature;
+    private $logger;
 
-    public function __construct(Weather $weather, RoomTemperature $roomTemperature)
+    /**
+     * @param Weather $weather
+     * @param RoomTemperature $roomTemperature
+     * @param LoggerInterface $logger
+     */
+    public function __construct(Weather $weather, RoomTemperature $roomTemperature, LoggerInterface $logger)
     {
         $this->weather = $weather;
         $this->roomTemperature = $roomTemperature;
+        $this->logger = $logger;
     }
 
     /**
@@ -25,14 +35,14 @@ class Temperature implements ComponentInterface
             $weatherResponse = $this->weather->load();
             $temperatureOutside = number_format($weatherResponse['temperature'], 1);
         } catch (\Exception $e) {
-            throw new ApiComponentException('Die Aussentemperatur konnte nicht bestimmt werden');
+            $this->handleException($e, 'Die Aussentemperatur konnte nicht bestimmt werden');
         }
 
         try {
             $roomTemperatureResponse = $this->roomTemperature->load();
             $temperatureInside  = number_format($roomTemperatureResponse['temperature'], 1);
         } catch (\Exception $e) {
-            throw new ApiComponentException('Die Zimmertemperatur konnte nicht bestimmt werden');
+            $this->handleException($e, 'Die Zimmertemperatur konnte nicht bestimmt werden');
         }
 
         return [

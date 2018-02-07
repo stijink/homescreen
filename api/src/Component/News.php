@@ -1,23 +1,30 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
+use App\Configuration;
+use App\ApiComponentException;
 use PicoFeed\Reader\Reader;
+use Psr\Log\LoggerInterface;
 
 class News implements ComponentInterface
 {
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
     private $feedReader;
-    private $config;
 
     /**
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
      * @param Reader $feedReader
-     * @param array $config
      */
-    public function __construct(Reader $feedReader, array $config)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Reader $feedReader)
     {
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->feedReader = $feedReader;
-        $this->config = $config;
     }
 
     /**
@@ -29,7 +36,7 @@ class News implements ComponentInterface
         try {
             $news = [];
 
-            foreach ($this->config['feeds'] as $feed) {
+            foreach ($this->configuration['news'] as $feed) {
                 $news = array_merge($news, $this->loadFeed($feed));
             }
 
@@ -37,7 +44,7 @@ class News implements ComponentInterface
 
             return $news;
         } catch (\Exception $e) {
-            throw new ApiComponentException('News konnten nicht bezogen werden');
+            $this->handleException($e, 'Nachrichten konnten nicht bezogen werden');
         }
     }
 
@@ -46,8 +53,6 @@ class News implements ComponentInterface
      *
      * @param   string $feed
      * @return  array
-     * @throws  \PicoFeed\Parser\MalformedXmlException
-     * @throws  \PicoFeed\Reader\UnsupportedFeedFormatException
      */
     private function loadFeed(string $feed): array
     {
@@ -87,9 +92,7 @@ class News implements ComponentInterface
         $description = str_replace('\n', '', $description);
         $description = trim($description);
 
-        // Remove html entities
         $description = preg_replace("/&#?[a-z0-9]{2,8};/i", "", $description);
-
         $description = mb_strimwidth($description, 0, $maxLength, "...");
 
         return $description;

@@ -1,39 +1,49 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
+use App\Configuration;
 use GuzzleHttp\Client;
+use Psr\Log\LoggerInterface;
 
 class Petrol implements ComponentInterface
 {
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
     private $httpClient;
-    private $config;
 
     /**
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
      * @param Client $httpClient
-     * @param array $config
      */
-    public function __construct(Client $httpClient, array $config)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
     {
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->httpClient = $httpClient;
-        $this->config = $config;
     }
 
+    /**
+     * @return array
+     * @throws \App\ApiComponentException
+     */
     public function load(): array
     {
         try {
             $products = [];
 
             $response = $this->httpClient->get(
-                $this->config['api_url'],
-                ['query' => ['stationId' => $this->config['station_id']]]
+                $this->configuration['petrol']['api_url'],
+                ['query' => ['stationId' => $this->configuration['petrol']['station_id']]]
             );
 
             $petrol = json_decode((string)$response->getBody(), true);
 
             foreach ($petrol['response']['prices'] as $product) {
-                if (!in_array($product['name'], $this->config['prefered_petrol'])) {
+                if (!in_array($product['name'], $this->configuration['petrol']['prefered_petrol'])) {
                     continue;
                 }
 
@@ -44,11 +54,11 @@ class Petrol implements ComponentInterface
             }
 
             return [
-                'location' => $this->config['location'],
+                'location' => $this->configuration['petrol']['location'],
                 'products' => $products,
             ];
         } catch (\Exception $e) {
-            throw new ApiComponentException('Spritpreise konnten nicht bezogen werden');
+            $this->handleException($e, 'Spritpreise konnten nicht bezogen werden');
         }
     }
 }

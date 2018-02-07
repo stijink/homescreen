@@ -1,0 +1,137 @@
+{
+  "locale": "de_DE",
+  "language": "de",
+
+  "persons": [
+    {
+      "name": "Stephan",
+      "type": "resident",
+      "image_url": "http://graph.facebook.com/657226131/picture?type=square",
+      "mac_address": "18:65:90:2D:66:99"
+    },
+    {
+      "name": "Sigrid",
+      "type": "resident",
+      "image_url": "http://graph.facebook.com/599401226/picture?type=square",
+      "mac_address": "48:43:7C:6B:F4:A2"
+    },
+    {
+      "name": "Alica",
+      "type": "visitor",
+      "image_url": "http://graph.facebook.com/100000866479085/picture?type=square",
+      "mac_address": "F0:43:47:00:90:3F"
+    },
+    {
+      "name": "Alex",
+      "type": "visitor",
+      "image_url": "http://graph.facebook.com/1736633619/picture?type=square",
+      "mac_address": "4C:57:CA:0F:C5:E3"
+    },
+    {
+      "name": "Linda",
+      "type": "visitor",
+      "image_url": "http://graph.facebook.com/1841508667/picture?type=square",
+      "mac_address": "5C:8D:4E:47:E8:11"
+    },
+    {
+      "name": "Leonie",
+      "type": "visitor",
+      "image_url": "http://graph.facebook.com/4/picture?type=square",
+      "mac_address": "28:65:90:2D:66:99"
+    },
+    {
+      "name": "Ruth",
+      "type": "visitor",
+      "image_url": "http://graph.facebook.com/100000035631345/picture?type=square",
+      "mac_address": "00:61:71:DF:30:15"
+    }
+  ],
+
+  "presence": {
+    "api_url": "http://fritz.box:49000/upnp/control/hosts"
+  },
+
+  "room_temperature": {
+    "api_url": "http://homescreen:9321/"
+  },
+
+  "weather": {
+    "city": "Troisdorf",
+    "api_url": "http://api.openweathermap.org/data/2.5/weather",
+    "api_key": "96c3c8512e7440aa8102ac082c07b1d7"
+  },
+
+  "weather_forcast": {
+    "city": "Troisdorf",
+    "api_url": "http://api.openweathermap.org/data/2.5/forecast/daily",
+    "api_key": "96c3c8512e7440aa8102ac082c07b1d7"
+  },
+
+  "traffic": {
+    "api_url": "https://maps.googleapis.com/maps/api/directions/json",
+    "api_key": "AIzaSyBRVeIzZZT8MW-2s5CK-Ub1dJGls5DV43g",
+    "routes": [
+      {
+        "origin": "Friedrich-Ebert-Straße 12, Troisdorf",
+        "destination": "Brügelmannstraße 5"
+      },
+      {
+        "origin": "Friedrich-Ebert-Straße 12, Troisdorf",
+        "destination": "Ampèrestraße 1, Köln"
+      },
+      {
+        "origin": "Friedrich-Ebert-Straße 12, Troisdorf",
+        "destination": "Rochusstraße 476, Köln"
+      }
+    ]
+  },
+
+  "petrol": {
+    "api_url": "http://ap.aral.de/api/v2/getStationPricesById.php",
+    "location": "Aral - Moselstraße 2, Troisdorf",
+    "station_id": 20141300,
+    "prefered_petrol": ["Aral Super 95", "Aral Ultimate 102"]
+  },
+
+  "news": [
+    "https://t3n.de/rss.xml",
+    "http://www.spiegel.de/schlagzeilen/tops/index.rss"
+  ],
+
+  "raspberries": [
+    {
+      "name": "homescreen",
+      "url": "http://homescreen:9360/",
+      "volumes": null
+    },
+    {
+      "name": "backup-pi",
+      "url": "http://backup-pi:9360/",
+      "volumes": {
+        "device": "/mnt/backups",
+        "label": "Backups"
+      }
+    }
+  ],
+
+  "calendar": {
+    "max_days": 21,
+    "max_events": 14,
+    "calendars": [
+      {
+        "name": "sigrid",
+        "person": "Sigrid",
+        "url": "https://calendar.google.com/calendar/ical/sigrid.dahlhaus%40googlemail.com/private-8d4ebea813689e966f4f240be444f786/basic.ics"
+      },
+      {
+        "name": "stephan",
+        "person": "Stephan",
+        "url": "https://calendar.google.com/calendar/ical/stijink%40googlemail.com/private-61dc64e7d418045f9e2fd8295f01c413/basic.ics"
+      },
+      {
+        "name": "feiertage",
+        "url": "https://calendar.google.com/calendar/ical/de.german%23holiday%40group.v.calendar.google.com/public/basic.ics"
+      }
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
+use App\ApiComponentException;
 
 /**
  * @codeCoverageIgnore

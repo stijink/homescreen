@@ -1,29 +1,30 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
-use Api\Exception\ApiKeyException;
+use App\Configuration;
+use App\ApiComponentException;
 use GuzzleHttp\Client;
+use Psr\Log\LoggerInterface;
 
 class Traffic implements ComponentInterface
 {
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
     private $httpClient;
-    private $config;
 
     /**
-     * @param   Client $httpClient
-     * @param   array $config
-     * @throws  ApiKeyException
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
+     * @param Client $httpClient
      */
-    public function __construct(Client $httpClient, array $config)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
     {
-        if ($config['api_key'] === null) {
-            throw new ApiKeyException();
-        }
-
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->httpClient = $httpClient;
-        $this->config = $config;
     }
 
     /**
@@ -35,22 +36,22 @@ class Traffic implements ComponentInterface
         try {
             $traffic = [];
 
-            foreach ($this->config['routes'] as $route) {
+            foreach ($this->configuration['traffic']['routes'] as $route) {
                 $traffic[] = $this->loadRoute($route['origin'], $route['destination']);
             }
 
             return $traffic;
         } catch (\Exception $e) {
-            throw new ApiComponentException('Verkehrsinformationen konnten nicht bestimmt werden');
+            $this->handleException($e, 'Verkehrsinformationen konnten nicht bestimmt werden');
         }
     }
 
     private function loadRoute(string $origin, string $destination)
     {
-        $response = $this->httpClient->get($this->config['api_url'], [
+        $response = $this->httpClient->get($this->configuration['traffic']['api_url'], [
             'query' => [
-                'key' => $this->config['api_key'],
-                'language' => $this->config['locale'],
+                'key' => $this->configuration['traffic']['api_key'],
+                'language' => $this->configuration['locale'],
                 'origin' => $origin,
                 'destination' => $destination,
                 'departure_time' => 'now',

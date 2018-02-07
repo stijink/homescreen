@@ -1,25 +1,31 @@
 <?php
 
-namespace Api\Component;
+namespace App\Component;
 
-use Api\Exception\ApiComponentException;
-use Api\Exception\ApiKeyException;
+use App\Configuration;
+use App\ApiComponentException;
 use GuzzleHttp\Client;
 use function GuzzleHttp\json_decode;
+use Psr\Log\LoggerInterface;
 
 class Weather implements ComponentInterface
 {
+    use ComponentTrait;
+
+    private $configuration;
+    private $logger;
     private $httpClient;
-    private $config;
 
-    public function __construct(Client $httpClient, array $config)
+    /**
+     * @param Configuration $configuration
+     * @param LoggerInterface $logger
+     * @param Client $httpClient
+     */
+    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
     {
-        if ($config['api_key'] === null) {
-            throw new ApiKeyException();
-        }
-
+        $this->configuration = $configuration;
+        $this->logger = $logger;
         $this->httpClient = $httpClient;
-        $this->config = $config;
     }
 
     /**
@@ -29,14 +35,16 @@ class Weather implements ComponentInterface
     public function load(): array
     {
         try {
+            $weatherConfiguration = $this->configuration['weather'];
+
             $response = $this->httpClient->get(
-                $this->config['api_url'],
+                $weatherConfiguration['api_url'],
                 [
                     'query' => [
-                        'q'     => $this->config['city'],
-                        'APPID' => $this->config['api_key'],
+                        'q'     => $weatherConfiguration['city'],
+                        'APPID' => $weatherConfiguration['api_key'],
                         'units' => 'metric',
-                        'lang'  => 'de',
+                        'lang'  => $this->configuration['language'],
                     ],
                 ]
             );
@@ -44,15 +52,15 @@ class Weather implements ComponentInterface
             $weather = json_decode((string)$response->getBody(), true);
 
             return [
-                'city'        => $this->config['city'],
-                'temperature' => round($weather['main']['temp'], 1),
+                'city'        => $weatherConfiguration['city'],
+                'temperature' => sprintf('%.1f', $weather['main']['temp']),
                 'description' => $weather['weather'][0]['description'],
                 'sunrise'     => $weather['sys']['sunrise'],
                 'sunset'      => $weather['sys']['sunset'],
                 'icon_code'   => $weather['weather'][0]['id'],
             ];
         } catch (\Exception $e) {
-            throw new ApiComponentException('Wetterinformationen konnten nicht bestimmt werden');
+            $this->handleException($e, 'Wetterinformationen konnten nicht bestimmt werden');
         }
     }
 }

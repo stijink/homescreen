@@ -1,0 +1,34 @@
+parameters:
+    locale: 'de'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Component\:
+        resource: '../src/Component/*'
+
+    App\Command\:
+        resource: '../src/Command/*'
+
+    App\Configuration:
+      arguments: ['%kernel.project_dir%/config/config.json']
+
+    App\ExceptionListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.exception }
+
+    # Third party services we want to use with autowiring
+    PicoFeed\Reader\Reader: ~
+    GuzzleHttp\Client: ~
+
+    # Cache (Using PSR-16 SimpleCache)
+    Symfony\Component\Cache\Simple\FilesystemCache:
+      arguments: ['homescreen', 0, '%kernel.project_dir%/var/cache']
+
