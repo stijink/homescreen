@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Ensure .env exists
+if [ ! -f .env ]; then
+    cp .env.dist .env
+fi
+
 # Pull latest versions of docker dependencies
 docker pull php:7.2-apache
 docker pull node:9

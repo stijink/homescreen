@@ -1,6 +1,6 @@
 .DS_Store
 .idea
 
+.env
 build/logs/
-
 api/config/config.json
