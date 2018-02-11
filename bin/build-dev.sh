@@ -5,6 +5,9 @@ if [ ! -f .env ]; then
     cp .env.dist .env
 fi
 
+# Ensure API var/ directory exists
+mkdir -p api/var/
+
 # Pull latest versions of docker dependencies
 docker pull php:7.2-apache
 docker pull node:9
