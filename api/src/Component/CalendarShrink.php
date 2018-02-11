@@ -34,8 +34,8 @@ END:VCALENDAR";
     public function shrink()
     {
         foreach ($this->calendarConfig['calendars'] as $calendar) {
-            $schrinked = $this->shrinkCalendar($calendar);
-            $this->calendarCache->set($calendar, $schrinked);
+            $shrinked = $this->shrinkCalendar($calendar);
+            $this->calendarCache->set($calendar, $shrinked);
         }
     }
 

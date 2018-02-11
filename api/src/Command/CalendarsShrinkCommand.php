@@ -31,7 +31,7 @@ class CalendarsShrinkCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        $this->caledarSchrink->schrink();
+        $this->caledarShrink->shrink();
         $io->success('Calendars have been shrinked');
     }
 }
