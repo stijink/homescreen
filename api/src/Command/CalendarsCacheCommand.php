@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Component\CalendarCache;
-use App\Component\CalendarSchrink;
+use App\Component\CalendarShrink;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -13,17 +13,17 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class CalendarsCacheCommand extends Command
 {
     private $calendarCache;
-    private $calendarSchrink;
+    private $calendarShrink;
 
     /**
      * @param CalendarCache $calendarCache
-     * @param CalendarSchrink $calendarSchrink
+     * @param CalendarShrink $calendarShrink
      */
-    public function __construct(CalendarCache $calendarCache, CalendarSchrink $calendarSchrink)
+    public function __construct(CalendarCache $calendarCache, CalendarShrink $calendarShrink)
     {
         parent::__construct();
         $this->calendarCache    = $calendarCache;
-        $this->calendarSchrink  = $calendarSchrink;
+        $this->calendarShrink  = $calendarShrink;
     }
 
     protected function configure()
@@ -32,10 +32,10 @@ class CalendarsCacheCommand extends Command
              ->setDescription('Populate the cache for the calendars');
 
         $this->addOption(
-            'schrink',
+            'shrink',
             null,
             InputOption::VALUE_NONE,
-            'optionally schrink the calendars by removing past events'
+            'optionally shrink the calendars by removing past events'
         );
     }
 
@@ -46,9 +46,9 @@ class CalendarsCacheCommand extends Command
         $this->calendarCache->populate();
         $io->success('Calendars have been populated to cache');
 
-        if ($input->getOption('schrink')) {
-            $this->calendarSchrink->schrink();
-            $io->success('Calendars have been schrinked');
+        if ($input->getOption('shrink')) {
+            $this->calendarShrink->shrink();
+            $io->success('Calendars have been shrinked');
         }
     }
 }

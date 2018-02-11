@@ -6,7 +6,7 @@ use App\Configuration;
 use ICal\Event;
 use ICal\ICal;
 
-class CalendarSchrink
+class CalendarShrink
 {
     private $calendarConfig;
     private $calendarCache;
@@ -29,12 +29,12 @@ END:VCALENDAR";
     }
 
     /**
-     * Schrink all calendars by removing past events
+     * Shrink all calendars by removing past events
      */
-    public function schrink()
+    public function shrink()
     {
         foreach ($this->calendarConfig['calendars'] as $calendar) {
-            $schrinked = $this->schrinkCalendar($calendar);
+            $schrinked = $this->shrinkCalendar($calendar);
             $this->calendarCache->set($calendar, $schrinked);
         }
     }
@@ -45,9 +45,9 @@ END:VCALENDAR";
      * @param   array $calendar
      * @return  string
      */
-    private function schrinkCalendar(array $calendar): string
+    private function shrinkCalendar(array $calendar): string
     {
-        $schrinked = null;
+        $shrinked = null;
         $content = $this->calendarCache->get($calendar);
 
         $ical = new ICal();
@@ -57,10 +57,10 @@ END:VCALENDAR";
         $events = $ical->sortEventsWithOrder($interval);
 
         foreach ($events as $event) {
-            $schrinked .= "\nBEGIN:VEVENT\n" . $this->formatEvent($event) . "END:VEVENT";
+            $shrinked .= "\nBEGIN:VEVENT\n" . $this->formatEvent($event) . "END:VEVENT";
         }
 
-        return trim(str_replace('%events%', $schrinked, $this->icalTemplate));
+        return trim(str_replace('%events%', $shrinked, $this->icalTemplate));
     }
 
     /**

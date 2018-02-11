@@ -2,36 +2,36 @@
 
 namespace App\Command;
 
-use App\Component\CalendarSchrink;
+use App\Component\CalendarShrink;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class CalendarsSchrinkCommand extends Command
+class CalendarsShrinkCommand extends Command
 {
-    private $caledarSchrink;
+    private $caledarShrink;
 
     /**
-     * @param CalendarSchrink $caledarSchrink
+     * @param CalendarShrink $calendarShrink
      */
-    public function __construct(CalendarSchrink $caledarSchrink)
+    public function __construct(CalendarShrink $calendarShrink)
     {
         parent::__construct();
-        $this->caledarSchrink = $caledarSchrink;
+        $this->caledarShrink = $calendarShrink;
     }
 
 
     protected function configure()
     {
-        $this->setName('calendars:schrink')
-             ->setDescription('Schrink the cached calendar files by removing past events');
+        $this->setName('calendars:shrink')
+             ->setDescription('Shrink the cached calendar files by removing past events');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
         $this->caledarSchrink->schrink();
-        $io->success('Calendars have been schrinked');
+        $io->success('Calendars have been shrinked');
     }
 }

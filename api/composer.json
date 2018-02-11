@@ -49,7 +49,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "calendars:cache": "symfony-cmd",
-            "calendars:schrink": "symfony-cmd"
+            "calendars:shrink": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
