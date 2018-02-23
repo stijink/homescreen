@@ -20,6 +20,9 @@ RUN docker-php-ext-install opcache
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install PHP-CS-Fixer
+RUN composer global require "friendsofphp/php-cs-fixer"
+
 # Change document root
 ENV APACHE_DOCUMENT_ROOT=/var/www/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
