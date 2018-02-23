@@ -19,12 +19,11 @@ class RaspberriesController extends Controller
         $this->raspberriesComponent = $raspberriesComponent;
     }
 
-
     /**
      * @Route("/raspberries", name="raspberries")
      *
-     * @return JsonResponse
      * @throws \App\ApiException
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

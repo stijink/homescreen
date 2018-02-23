@@ -27,8 +27,8 @@ class Petrol implements ComponentInterface
     }
 
     /**
-     * @return array
      * @throws \App\ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -40,14 +40,14 @@ class Petrol implements ComponentInterface
                 ['query' => ['stationId' => $this->configuration['petrol']['station_id']]]
             );
 
-            $petrol = json_decode((string)$response->getBody(), true);
+            $petrol = json_decode((string) $response->getBody(), true);
 
             foreach ($petrol['response']['prices'] as $product) {
-                if (!in_array($product['name'], $this->configuration['petrol']['prefered_petrol'])) {
+                if (! in_array($product['name'], $this->configuration['petrol']['prefered_petrol'])) {
                     continue;
                 }
 
-                $product['price'] = (float)$product['price'] / 100;
+                $product['price'] = (float) $product['price'] / 100;
                 $product['price'] = number_format($product['price'], 2, '.', ',');
 
                 $products[] = $product;

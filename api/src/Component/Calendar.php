@@ -27,10 +27,9 @@ class Calendar implements ComponentInterface
         $this->calendarCache = $calendarCache;
     }
 
-
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -76,7 +75,7 @@ class Calendar implements ComponentInterface
 
         foreach ((array) $iCalEvents as $iCalEvent) {
             $timestampStart = strtotime($iCalEvent->dtstart);
-            $checksum = md5($iCalEvent->summary.$iCalEvent->dtstart.$iCalEvent->dtend);
+            $checksum = md5($iCalEvent->summary . $iCalEvent->dtstart . $iCalEvent->dtend);
 
             $event = [
                 'description' => $iCalEvent->summary,
@@ -127,7 +126,7 @@ class Calendar implements ComponentInterface
     {
         return array_filter($persons, function ($person) {
             return $person['type'] == 'resident';
-       });
+        });
     }
 
     /**

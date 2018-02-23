@@ -11,12 +11,12 @@ class CalendarShrink
     private $calendarConfig;
     private $calendarCache;
 
-    private $icalTemplate = "
+    private $icalTemplate = '
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:https://github.com/stijink/homescreen
 METHOD:PUBLISH%events%
-END:VCALENDAR";
+END:VCALENDAR';
 
     /**
      * @param Configuration $configuration
@@ -25,7 +25,7 @@ END:VCALENDAR";
     public function __construct(Configuration $configuration, CalendarCache $calendarCache)
     {
         $this->calendarConfig = $configuration['calendar'];
-        $this->calendarCache  = $calendarCache;
+        $this->calendarCache = $calendarCache;
     }
 
     /**
@@ -57,7 +57,7 @@ END:VCALENDAR";
         $events = $ical->sortEventsWithOrder($interval);
 
         foreach ($events as $event) {
-            $shrinked .= "\nBEGIN:VEVENT\n" . $this->formatEvent($event) . "END:VEVENT";
+            $shrinked .= "\nBEGIN:VEVENT\n" . $this->formatEvent($event) . 'END:VEVENT';
         }
 
         return trim(str_replace('%events%', $shrinked, $this->icalTemplate));
@@ -69,9 +69,9 @@ END:VCALENDAR";
      * @param   Event $event
      * @return  string
      */
-    private function formatEvent(Event $event) : string
+    private function formatEvent(Event $event): string
     {
-        $data = array(
+        $data = [
             'SUMMARY'       => $event->summary,
             'DTSTART'       => $event->dtstart,
             'DTEND'         => $event->dtend,
@@ -87,10 +87,10 @@ END:VCALENDAR";
             'TRANSP'        => $event->transp,
             'ORGANIZER'     => $event->organizer,
             'ATTENDEE'      => $event->attendee,
-        );
+        ];
 
-        $data   = array_map('trim', $data); // Trim all values
-        $data   = array_filter($data);      // Remove any blank values
+        $data = array_map('trim', $data); // Trim all values
+        $data = array_filter($data);      // Remove any blank values
         $output = '';
 
         foreach ($data as $key => $value) {

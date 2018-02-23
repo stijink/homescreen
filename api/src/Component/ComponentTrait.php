@@ -13,7 +13,7 @@ trait ComponentTrait
      */
     public function handleException(\Exception $e, string $message)
     {
-        $logMessage = $e->getMessage() . ' ('.get_class($e).')';
+        $logMessage = $e->getMessage() . ' (' . get_class($e) . ')';
 
         $this->logger->error($logMessage);
         throw new ApiException($message);

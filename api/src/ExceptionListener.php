@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\ApiException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
@@ -26,7 +25,7 @@ class ExceptionListener
      */
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
-        $exception     = $event->getException();
+        $exception = $event->getException();
         $publicMessage = 'Ein unbekannter Fehler ist aufgetreten';
 
         if ($exception instanceof ApiException) {

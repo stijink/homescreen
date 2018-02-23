@@ -28,8 +28,8 @@ class News implements ComponentInterface
     }
 
     /**
-     * @return  array
      * @throws  ApiException
+     * @return  array
      */
     public function load(): array
     {
@@ -69,10 +69,10 @@ class News implements ComponentInterface
 
         foreach ($feed->items as $item) {
             $news[] = [
-                'title' => $item->getTitle(),
+                'title'       => $item->getTitle(),
                 'description' => $this->getExcerpt($item->getContent()),
-                'date' => $item->getPublishedDate()->format('d.m.Y H:m'),
-                'visible' => false,
+                'date'        => $item->getPublishedDate()->format('d.m.Y H:m'),
+                'visible'     => false,
             ];
         }
 
@@ -92,8 +92,8 @@ class News implements ComponentInterface
         $description = str_replace('\n', '', $description);
         $description = trim($description);
 
-        $description = preg_replace("/&#?[a-z0-9]{2,8};/i", "", $description);
-        $description = mb_strimwidth($description, 0, $maxLength, "...");
+        $description = preg_replace('/&#?[a-z0-9]{2,8};/i', '', $description);
+        $description = mb_strimwidth($description, 0, $maxLength, '...');
 
         return $description;
     }

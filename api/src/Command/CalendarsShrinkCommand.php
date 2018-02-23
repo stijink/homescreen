@@ -21,7 +21,6 @@ class CalendarsShrinkCommand extends Command
         $this->caledarShrink = $calendarShrink;
     }
 
-
     protected function configure()
     {
         $this->setName('calendars:shrink')

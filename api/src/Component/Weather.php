@@ -29,8 +29,8 @@ class Weather implements ComponentInterface
     }
 
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -49,7 +49,7 @@ class Weather implements ComponentInterface
                 ]
             );
 
-            $weather = json_decode((string)$response->getBody(), true);
+            $weather = json_decode((string) $response->getBody(), true);
 
             return [
                 'city'        => $weatherConfiguration['city'],

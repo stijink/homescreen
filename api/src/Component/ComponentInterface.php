@@ -10,8 +10,8 @@ use App\ApiException;
 interface ComponentInterface
 {
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array;
 }

@@ -29,8 +29,7 @@ class CalendarCache
      */
     public function populate()
     {
-        foreach ($this->calendarConfig['calendars'] as $calendar)
-        {
+        foreach ($this->calendarConfig['calendars'] as $calendar) {
             $content = $this->load($calendar);
             $this->set($calendar, $content);
         }
@@ -61,7 +60,6 @@ class CalendarCache
 
         return $this->cache->get($cacheName);
     }
-
 
     /**
      * Populate one calendar to the cache

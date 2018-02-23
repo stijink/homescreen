@@ -22,8 +22,8 @@ class NewsController extends Controller
     /**
      * @Route("/news", name="news")
      *
-     * @return JsonResponse
      * @throws \App\ApiException
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

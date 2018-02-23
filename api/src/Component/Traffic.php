@@ -28,8 +28,8 @@ class Traffic implements ComponentInterface
     }
 
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -50,22 +50,22 @@ class Traffic implements ComponentInterface
     {
         $response = $this->httpClient->get($this->configuration['traffic']['api_url'], [
             'query' => [
-                'key' => $this->configuration['traffic']['api_key'],
-                'language' => $this->configuration['locale'],
-                'origin' => $origin,
-                'destination' => $destination,
+                'key'            => $this->configuration['traffic']['api_key'],
+                'language'       => $this->configuration['locale'],
+                'origin'         => $origin,
+                'destination'    => $destination,
                 'departure_time' => 'now',
-                'traffic_model' => 'best_guess',
+                'traffic_model'  => 'best_guess',
             ],
         ]);
 
         $traffic = json_decode((string) $response->getBody(), true);
 
         return [
-            'origin' => $origin,
+            'origin'      => $origin,
             'destination' => $destination,
-            'distance' => $traffic['routes'][0]['legs'][0]['distance']['text'],
-            'duration' => $traffic['routes'][0]['legs'][0]['duration_in_traffic']['text'],
+            'distance'    => $traffic['routes'][0]['legs'][0]['distance']['text'],
+            'duration'    => $traffic['routes'][0]['legs'][0]['duration_in_traffic']['text'],
         ];
     }
 }

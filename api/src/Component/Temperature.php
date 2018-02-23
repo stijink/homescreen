@@ -26,8 +26,8 @@ class Temperature implements ComponentInterface
     }
 
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -40,7 +40,7 @@ class Temperature implements ComponentInterface
 
         try {
             $roomTemperatureResponse = $this->roomTemperature->load();
-            $temperatureInside  = number_format($roomTemperatureResponse['temperature'], 1);
+            $temperatureInside = number_format($roomTemperatureResponse['temperature'], 1);
         } catch (\Exception $e) {
             $this->handleException($e, 'Die Zimmertemperatur konnte nicht bestimmt werden');
         }

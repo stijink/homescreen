@@ -28,20 +28,20 @@ class WeatherForcast implements ComponentInterface
     }
 
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
         try {
             setlocale(LC_TIME, $this->configuration['locale']);
 
-            $forcast  = [];
+            $forcast = [];
             $response = $this->loadWeatherForcast();
 
             foreach ($response['list'] as $day) {
                 $forcast[] = [
-                    'day'         => strftime('%A', (int)$day['dt']),
+                    'day'         => strftime('%A', (int) $day['dt']),
                     'temperature' => sprintf('%.1f', $day['temp']['day']),
                     'description' => $day['weather'][0]['description'],
                     'icon_code'   => $day['weather'][0]['id'],
@@ -71,6 +71,6 @@ class WeatherForcast implements ComponentInterface
             ],
         ]);
 
-        return json_decode((string)$response->getBody(), true);
+        return json_decode((string) $response->getBody(), true);
     }
 }

@@ -22,8 +22,8 @@ class TemperatureController extends Controller
     /**
      * @Route("/temperature", name="temperature")
      *
-     * @return JsonResponse
      * @throws \App\ApiException
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

@@ -22,8 +22,8 @@ class TrafficController extends Controller
     /**
      * @Route("/traffic", name="traffic")
      *
-     * @return JsonResponse
      * @throws \App\ApiException
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

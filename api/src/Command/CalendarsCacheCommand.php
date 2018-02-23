@@ -22,8 +22,8 @@ class CalendarsCacheCommand extends Command
     public function __construct(CalendarCache $calendarCache, CalendarShrink $calendarShrink)
     {
         parent::__construct();
-        $this->calendarCache    = $calendarCache;
-        $this->calendarShrink  = $calendarShrink;
+        $this->calendarCache = $calendarCache;
+        $this->calendarShrink = $calendarShrink;
     }
 
     protected function configure()

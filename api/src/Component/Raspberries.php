@@ -28,8 +28,8 @@ class Raspberries implements ComponentInterface
     }
 
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -53,9 +53,8 @@ class Raspberries implements ComponentInterface
     private function handleDevice(array $device)
     {
         try {
-
             $response = $this->httpClient->get($device['url']);
-            $raspberry = json_decode((string)$response->getBody(), true);
+            $raspberry = json_decode((string) $response->getBody(), true);
 
             $raspberry['is_online'] = true;
 
@@ -74,9 +73,7 @@ class Raspberries implements ComponentInterface
             $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
 
             return $raspberry;
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return [
                 'hostname'  => $device['name'],
                 'is_online' => false,

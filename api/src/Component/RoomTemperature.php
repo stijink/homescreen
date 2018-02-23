@@ -26,8 +26,8 @@ class RoomTemperature implements ComponentInterface
 
     public function load(): array
     {
-        $response    = $this->httpClient->get($this->configuration['room_temperature']['api_url']);
-        $temperature = (string)$response->getBody();
+        $response = $this->httpClient->get($this->configuration['room_temperature']['api_url']);
+        $temperature = (string) $response->getBody();
 
         return [
             'temperature' => floatval($temperature),

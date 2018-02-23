@@ -19,12 +19,11 @@ class PresenceController extends Controller
         $this->presenceComponent = $presenceComponent;
     }
 
-
     /**
      * @Route("/presence", name="presence")
      *
-     * @return JsonResponse
      * @throws \App\ApiException
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

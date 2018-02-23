@@ -12,7 +12,6 @@ return PhpCsFixer\Config::create()
         'new_with_braces'                             => true,
         'short_scalar_cast'                           => true,
         'semicolon_after_instruction'                 => true,
-        'self_accessor'                               => true,
         'include'                                     => true,
         'no_short_echo_tag'                           => true,
         'no_useless_return'                           => true,
@@ -97,4 +96,4 @@ return PhpCsFixer\Config::create()
         'general_phpdoc_annotation_remove'            => ['author', 'since', 'version', 'group'],
         'array_syntax'                                => ['syntax' => 'short'],
     ])
-    ->setFinder(PhpCsFixer\Finder::create()->in('/src'));
+    ->setFinder(PhpCsFixer\Finder::create()->in('./src'));

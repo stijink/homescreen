@@ -22,8 +22,8 @@ class WeatherForcastController extends Controller
     /**
      * @Route("/weather-forcast", name="weather_forcast")
      *
-     * @return JsonResponse
      * @throws \App\ApiException
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

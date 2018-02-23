@@ -40,10 +40,9 @@ class Presence implements ComponentInterface
         $this->httpClient = $httpClient;
     }
 
-
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     public function load(): array
     {
@@ -132,14 +131,14 @@ class Presence implements ComponentInterface
     private function getStatusText(array $person, bool $isPresent): string
     {
         if ($person['type'] == 'visitor') {
-            return $person['name'].' ist zu Besuch';
+            return $person['name'] . ' ist zu Besuch';
         }
 
         if ($isPresent === true) {
-            return $person['name'].' ist zuhause';
+            return $person['name'] . ' ist zuhause';
         }
 
-        return $person['name'].' ist nicht zuhause';
+        return $person['name'] . ' ist nicht zuhause';
     }
 
     /**
