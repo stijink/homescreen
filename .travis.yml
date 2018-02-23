@@ -4,15 +4,11 @@ php:
   - '7.1'
   - '7.2'
 
-matrix:
-  allow_failures:
-  - php: '7.2'  
-
 install: composer install
-script: vendor/bin/phpunit
+script: api/vendor/bin/phpunit
 
 after_success:
-  - vendor/bin/test-reporter
+  - api/vendor/bin/test-reporter
 
 addons:
   code_climate:
