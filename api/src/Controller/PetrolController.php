@@ -23,7 +23,7 @@ class PetrolController extends Controller
      * @Route("/petrol", name="petrol")
      *
      * @return JsonResponse
-     * @throws \App\ApiComponentException
+     * @throws \App\ApiException
      */
     public function index(): JsonResponse
     {

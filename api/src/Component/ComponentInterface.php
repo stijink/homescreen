@@ -2,7 +2,7 @@
 
 namespace App\Component;
 
-use App\ApiComponentException;
+use App\ApiException;
 
 /**
  * @codeCoverageIgnore
@@ -11,7 +11,7 @@ interface ComponentInterface
 {
     /**
      * @return array
-     * @throws ApiComponentException
+     * @throws ApiException
      */
     public function load(): array;
 }

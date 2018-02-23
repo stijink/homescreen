@@ -23,7 +23,7 @@ class CalendarController extends Controller
      * @Route("/calendar", name="calendar")
      *
      * @return JsonResponse
-     * @throws \App\ApiComponentException
+     * @throws \App\ApiException
      */
     public function index(): JsonResponse
     {

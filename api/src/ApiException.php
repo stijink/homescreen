@@ -5,6 +5,6 @@ namespace App;
 /**
  * @codeCoverageIgnore
  */
-class ApiComponentException extends \Exception
+class ApiException extends \Exception
 {
 }

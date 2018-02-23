@@ -3,7 +3,7 @@
 namespace App\Component;
 
 use App\Configuration;
-use App\ApiComponentException;
+use App\ApiException;
 use PicoFeed\Reader\Reader;
 use Psr\Log\LoggerInterface;
 
@@ -29,7 +29,7 @@ class News implements ComponentInterface
 
     /**
      * @return  array
-     * @throws  ApiComponentException
+     * @throws  ApiException
      */
     public function load(): array
     {

@@ -2,7 +2,7 @@
 
 namespace App\Component;
 
-use App\ApiComponentException;
+use App\ApiException;
 use Psr\Log\LoggerInterface;
 
 class Temperature implements ComponentInterface
@@ -27,7 +27,7 @@ class Temperature implements ComponentInterface
 
     /**
      * @return array
-     * @throws ApiComponentException
+     * @throws ApiException
      */
     public function load(): array
     {

@@ -24,7 +24,7 @@ class RaspberriesController extends Controller
      * @Route("/raspberries", name="raspberries")
      *
      * @return JsonResponse
-     * @throws \App\ApiComponentException
+     * @throws \App\ApiException
      */
     public function index(): JsonResponse
     {

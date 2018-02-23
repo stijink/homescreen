@@ -3,7 +3,7 @@
 namespace App\Component;
 
 use App\Configuration;
-use App\ApiComponentException;
+use App\ApiException;
 use GuzzleHttp\Client;
 use function GuzzleHttp\json_decode;
 use Psr\Log\LoggerInterface;
@@ -30,7 +30,7 @@ class Weather implements ComponentInterface
 
     /**
      * @return array
-     * @throws ApiComponentException
+     * @throws ApiException
      */
     public function load(): array
     {

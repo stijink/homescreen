@@ -11,12 +11,12 @@ class Configuration implements \ArrayAccess
 
     /**
      * @param   string $configurationFile
-     * @throws  ApiComponentException
+     * @throws  ApiException
      */
     public function __construct(string $configurationFile)
     {
         if (! file_exists($configurationFile)) {
-            throw new ApiComponentException('Configuration file not found: ' . $configurationFile);
+            throw new ApiException('Configuration file not found: ' . $configurationFile);
         }
 
         $this->configuration = json_decode(file_get_contents($configurationFile), true);

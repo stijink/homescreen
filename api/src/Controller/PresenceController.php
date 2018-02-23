@@ -24,7 +24,7 @@ class PresenceController extends Controller
      * @Route("/presence", name="presence")
      *
      * @return JsonResponse
-     * @throws \App\ApiComponentException
+     * @throws \App\ApiException
      */
     public function index(): JsonResponse
     {

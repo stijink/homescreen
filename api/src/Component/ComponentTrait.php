@@ -2,20 +2,20 @@
 
 namespace App\Component;
 
-use App\ApiComponentException;
+use App\ApiException;
 
 trait ComponentTrait
 {
     /**
      * @param  \Exception $e
      * @param  string $message
-     * @throws ApiComponentException
+     * @throws ApiException
      */
     public function handleException(\Exception $e, string $message)
     {
         $logMessage = $e->getMessage() . ' ('.get_class($e).')';
 
         $this->logger->error($logMessage);
-        throw new ApiComponentException($message);
+        throw new ApiException($message);
     }
 }

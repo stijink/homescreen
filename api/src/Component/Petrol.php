@@ -28,7 +28,7 @@ class Petrol implements ComponentInterface
 
     /**
      * @return array
-     * @throws \App\ApiComponentException
+     * @throws \App\ApiException
      */
     public function load(): array
     {
