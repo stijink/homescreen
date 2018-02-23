@@ -1,0 +1,103 @@
+{
+  "locale": "de_DE",
+  "language": "de",
+
+  "persons": [
+    {
+      "name": "Max Mustermann",
+      "type": "resident",
+      "image_url": "https://gph.is/1v6FYQX",
+      "mac_address": "XX:XX:XX:XX:XX:XX"
+    },
+    {
+      "name": "Henry Zimmermann",
+      "type": "visitor",
+      "image_url": "https://gph.is/1DPNcfT",
+      "mac_address": "XX:XX:XX:XX:XX:XX"
+    }
+  ],
+
+  "presence": {
+    "api_url": "http://fritz.box:49000/upnp/control/hosts"
+  },
+
+  "room_temperature": {
+    "api_url": "http://homescreen:9321/"
+  },
+
+  "weather": {
+    "city": "New York",
+    "api_url": "http://api.openweathermap.org/data/2.5/weather",
+    "api_key": "your_openweathermap_api_key"
+  },
+
+  "weather_forcast": {
+    "city": "New York",
+    "api_url": "http://api.openweathermap.org/data/2.5/forecast/daily",
+    "api_key": "your_openweathermap_api_key"
+  },
+
+  "traffic": {
+    "api_url": "https://maps.googleapis.com/maps/api/directions/json",
+    "api_key": "your_google_api_key",
+    "routes": [
+      {
+        "origin": "New York",
+        "destination": "San Francisco"
+      },
+      {
+        "origin": "Paris",
+        "destination": "Brussels"
+      }
+    ]
+  },
+
+  "petrol": {
+    "api_url": "http://ap.aral.de/api/v2/getStationPricesById.php",
+    "location": "Aral - Moselstraße 2, Troisdorf",
+    "station_id": 20141300,
+    "prefered_petrol": ["Aral Super 95", "Aral Ultimate 102"]
+  },
+
+  "news": [
+    "https://t3n.de/rss.xml",
+    "http://www.spiegel.de/schlagzeilen/tops/index.rss"
+  ],
+
+  "raspberries": [
+    {
+      "name": "My first Raspberry Pi",
+      "url": "http://first-pi:9360/",
+      "volumes": null
+    },
+    {
+      "name": "My second Raspberry Pi",
+      "url": "http://second-pi:9360/",
+      "volumes": {
+        "device": "/mnt/backups",
+        "label": "Backups"
+      }
+    }
+  ],
+
+  "calendar": {
+    "max_days": 21,
+    "max_events": 14,
+    "calendars": [
+      {
+        "name": "calendar_of_person1",
+        "person": "Max Mustermann",
+        "url": "url_to_ics_file"
+      },
+      {
+        "name": "calendar_of_person2",
+        "person": "Henry Zimmermann",
+        "url": "url_to_ics_file"
+      },
+      {
+        "name": "feiertage",
+        "url": "https://calendar.google.com/calendar/ical/de.german%23holiday%40group.v.calendar.google.com/public/basic.ics"
+      }
+    ]
+  }
+}
