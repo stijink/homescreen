@@ -1,11 +1,11 @@
-version: '3'
+version: '2'
 services:
 
   homescreen-api:
     build:
       context: ./build
       dockerfile: Dockerfile-api
-    restart: ${RESTART_POLICY}
+    restart: always
     image: stijink/homescreen-api
     container_name: homescreen-api
     working_dir: ${WORKDIR}
