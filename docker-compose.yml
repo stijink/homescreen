@@ -5,7 +5,7 @@ services:
     build:
       context: ./build
       dockerfile: Dockerfile-api
-    restart: always
+    restart: ${RESTART_POLICY}
     image: stijink/homescreen-api
     container_name: homescreen-api
     working_dir: ${WORKDIR}
