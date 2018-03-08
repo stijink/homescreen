@@ -94,7 +94,7 @@ class CalendarCache
      * @param   array $calendar
      * @return  string|null
      */
-    private function load(array $calendar): ?string
+    public function load(array $calendar): ?string
     {
         return file_get_contents($calendar['url']);
     }

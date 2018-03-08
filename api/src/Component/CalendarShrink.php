@@ -48,7 +48,7 @@ END:VCALENDAR';
     private function shrinkCalendar(array $calendar): string
     {
         $shrinked = null;
-        $content = $this->calendarCache->get($calendar);
+        $content = $this->calendarCache->load($calendar);
 
         $ical = new ICal();
         $ical->initString($content);
