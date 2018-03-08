@@ -63,7 +63,6 @@ class Calendar implements ComponentInterface
     private function loadEvents(array $calendar): array
     {
         $events = [];
-
         $content = $this->calendarCache->get($calendar);
 
         $icalendar = new ICal();
