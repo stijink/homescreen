@@ -32,3 +32,4 @@ services:
     Symfony\Component\Cache\Simple\FilesystemCache:
       arguments: ['homescreen', 0, '%kernel.project_dir%/var/cache']
 
+    Psr\SimpleCache\CacheInterface: '@Symfony\Component\Cache\Simple\FilesystemCache'

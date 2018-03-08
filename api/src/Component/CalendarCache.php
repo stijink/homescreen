@@ -4,7 +4,7 @@ namespace App\Component;
 
 use App\Configuration;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+use Psr\SimpleCache\CacheInterface;
 
 class CalendarCache
 {
@@ -14,10 +14,10 @@ class CalendarCache
 
     /**
      * @param Configuration $configuration
-     * @param FilesystemCache $cache
+     * @param CacheInterface $cache
      * @param LoggerInterface $logger
      */
-    public function __construct(Configuration $configuration, FilesystemCache $cache, LoggerInterface $logger)
+    public function __construct(Configuration $configuration, CacheInterface $cache, LoggerInterface $logger)
     {
         $this->calendarConfig = $configuration['calendar'];
         $this->cache = $cache;
@@ -36,12 +36,20 @@ class CalendarCache
     }
 
     /**
+     * Clear the cache
+     */
+    public function clear()
+    {
+        $this->cache->clear();
+    }
+
+    /**
      * Get the contents of one calendar from the cache
      *
      * @param   array $calendar
-     * @return  string
+     * @return  string|null
      */
-    public function get(array $calendar): string
+    public function get(array $calendar): ?string
     {
         $cacheName = 'calendar_' . $calendar['name'];
 
@@ -84,9 +92,9 @@ class CalendarCache
      * Load the content of one calendar
      *
      * @param   array $calendar
-     * @return  string
+     * @return  string|null
      */
-    private function load(array $calendar): string
+    private function load(array $calendar): ?string
     {
         return file_get_contents($calendar['url']);
     }

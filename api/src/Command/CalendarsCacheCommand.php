@@ -43,7 +43,9 @@ class CalendarsCacheCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
+        $this->calendarCache->clear();
         $this->calendarCache->populate();
+
         $io->success('Calendars have been populated to cache');
 
         if ($input->getOption('shrink')) {
