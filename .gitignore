@@ -1,6 +1,6 @@
 .DS_Store
 .idea
-.vscode
+.vscode/
 
 .env
 build/logs/
