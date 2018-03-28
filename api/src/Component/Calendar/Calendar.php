@@ -72,13 +72,15 @@ class Calendar implements ComponentInterface
 
         foreach ((array) $icalendar->events() as $iCalEvent) {
             $timestampStart = strtotime($iCalEvent->dtstart);
+            $timestampEnd   = strtotime($iCalEvent->dtend);
             $checksum = md5($iCalEvent->summary . $iCalEvent->dtstart . $iCalEvent->dtend);
 
             $event = [
                 'description' => $iCalEvent->summary,
-                'date'        => date('Y-m-d', $timestampStart),
-                'timestamp'   => $timestampStart,
-                'checksum'    => $checksum,
+                'date'              => date('Y-m-d', $timestampStart),
+                'timestamp_start'   => $timestampStart,
+                'timestamp_end'     => $timestampEnd,
+                'checksum'          => $checksum,
             ];
 
             $event['persons'] = $this->getEventParticipants($calendar);
@@ -137,7 +139,7 @@ class Calendar implements ComponentInterface
     private function sortEvents(array $events): array
     {
         usort($events, function ($first, $second) {
-            return $first['timestamp'] - $second['timestamp'];
+            return $first['timestamp_start'] - $second['timestamp_start'];
         });
 
         return $events;

@@ -35,6 +35,11 @@
                     let eventDate = Moment(event.date);
                     let diffInDays = eventDate.diff(now, 'days');
 
+                    if (diffInDays < 0) {
+                        let endDate = Moment.unix(event.timestamp_end);
+                        event.time = 'noch ' + endDate.diff(now, 'days') + ' Tage';
+                    }
+
                     if (diffInDays === 0) {
                         event.time = 'heute';
                     }
@@ -59,7 +64,7 @@
         font-size:   16px;
         min-height:  300px;
         margin-left: 3px;
-        width:       450px;
+        width:       480px;
     }
 
     IMG {
@@ -74,7 +79,7 @@
 
     /* Date */
     td:nth-child(3) {
-        width: 80px;
+        width: 100px;
     }
 
 </style>
