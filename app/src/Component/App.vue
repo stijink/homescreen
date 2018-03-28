@@ -36,7 +36,7 @@
 
         <!-- Bottom row: Fixed to the bottom -->
         <v-footer fixed class="mb-5 black white--text">
-          <v-layout row justify-space-between>
+          <v-layout row justify-space-between class="mb-5">
             <v-flex xs8 class="ml-3"><news></news></v-flex>
             <v-flex xs4><traffic></traffic></v-flex>
           </v-layout>
