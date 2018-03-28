@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Component\Calendar;
+use App\Component\Calendar\Calendar;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,7 +12,7 @@ class CalendarController extends Controller
     private $calendarComponent;
 
     /**
-     * @param $calendarComponent
+     * @param Calendar $calendarComponent
      */
     public function __construct(Calendar $calendarComponent)
     {

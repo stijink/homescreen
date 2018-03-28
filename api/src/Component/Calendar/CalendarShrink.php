@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Component;
+namespace App\Component\Calendar;
 
-use App\Configuration;
 use ICal\Event;
 use ICal\ICal;
 
 class CalendarShrink
 {
-    private $calendarConfig;
-    private $calendarCache;
-
     private $icalTemplate = '
 BEGIN:VCALENDAR
 VERSION:2.0
@@ -19,41 +15,24 @@ METHOD:PUBLISH%events%
 END:VCALENDAR';
 
     /**
-     * @param Configuration $configuration
-     * @param CalendarCache $calendarCache
-     */
-    public function __construct(Configuration $configuration, CalendarCache $calendarCache)
-    {
-        $this->calendarConfig = $configuration['calendar'];
-        $this->calendarCache = $calendarCache;
-    }
-
-    /**
-     * Shrink all calendars by removing past events
-     */
-    public function shrink()
-    {
-        foreach ($this->calendarConfig['calendars'] as $calendar) {
-            $shrinked = $this->shrinkCalendar($calendar);
-            $this->calendarCache->set($calendar, $shrinked);
-        }
-    }
-
-    /**
-     * Process a single calendar
+     * Shrink the contents of a calendar by removing past events
      *
-     * @param   array $calendar
+     * @param   string $content
+     * @param   int $maxdays
      * @return  string
      */
-    private function shrinkCalendar(array $calendar): string
+    public function shrink(string $content, int $maxdays): string
     {
-        $shrinked = null;
-        $content = $this->calendarCache->load($calendar);
+        $shrinked = '';
 
         $ical = new ICal();
         $ical->initString($content);
 
-        $interval = $ical->eventsFromRange(date('Y-m-d'), false);
+        $endDate = new \DateTime();
+        $endDate->add(new \DateInterval('P' . $maxdays . 'D'));
+
+        // Remove past events and  pnly keep future events of the upcoming x days
+        $interval = $ical->eventsFromRange(date('Y-m-d'), $endDate->format('Y-m-d'));
         $events = $ical->sortEventsWithOrder($interval);
 
         foreach ($events as $event) {

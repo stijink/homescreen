@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Component;
+namespace App\Component\Calendar;
 
+use App\Component\ComponentInterface;
+use App\Component\ComponentTrait;
 use App\Configuration;
 use App\ApiException;
 use ICal\ICal;
@@ -18,9 +20,9 @@ class Calendar implements ComponentInterface
     /**
      * @param Configuration $configuration
      * @param LoggerInterface $logger
-     * @param CalendarCache $calendarCache
+     * @param CalendarLoader $calendarCache
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, CalendarCache $calendarCache)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, CalendarLoader $calendarCache)
     {
         $this->configuration = $configuration;
         $this->logger = $logger;
@@ -68,11 +70,7 @@ class Calendar implements ComponentInterface
         $icalendar = new ICal();
         $icalendar->initString($content);
 
-        $intervalInDays = $this->configuration['calendar']['max_days'] . ' days';
-        $interval = $icalendar->eventsFromInterval($intervalInDays);
-        $iCalEvents = $icalendar->sortEventsWithOrder($interval);
-
-        foreach ((array) $iCalEvents as $iCalEvent) {
+        foreach ((array) $icalendar->events() as $iCalEvent) {
             $timestampStart = strtotime($iCalEvent->dtstart);
             $checksum = md5($iCalEvent->summary . $iCalEvent->dtstart . $iCalEvent->dtend);
 

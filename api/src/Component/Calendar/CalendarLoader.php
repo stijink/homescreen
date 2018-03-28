@@ -1,36 +1,44 @@
 <?php
 
-namespace App\Component;
+namespace App\Component\Calendar;
 
 use App\Configuration;
 use Psr\Log\LoggerInterface;
 use Psr\SimpleCache\CacheInterface;
 
-class CalendarCache
+class CalendarLoader
 {
     private $calendarConfig;
+    private $calendarShrink;
     private $cache;
     private $logger;
 
     /**
      * @param Configuration $configuration
+     * @param CalendarShrink $calendarShrink
      * @param CacheInterface $cache
      * @param LoggerInterface $logger
      */
-    public function __construct(Configuration $configuration, CacheInterface $cache, LoggerInterface $logger)
-    {
+    public function __construct(
+        Configuration $configuration,
+        CalendarShrink $calendarShrink,
+        CacheInterface $cache,
+        LoggerInterface $logger
+    ) {
         $this->calendarConfig = $configuration['calendar'];
+        $this->calendarShrink = $calendarShrink;
         $this->cache = $cache;
         $this->logger = $logger;
     }
 
     /**
-     * Populate all calendars to the cache
+     * Download and cache the contents of all calendars
      */
-    public function populate()
+    public function load()
     {
         foreach ($this->calendarConfig['calendars'] as $calendar) {
-            $content = $this->load($calendar);
+            $content = $this->download($calendar);
+            $content = $this->calendarShrink->shrink($content, $this->calendarConfig['max_days']);
             $this->set($calendar, $content);
         }
     }
@@ -38,7 +46,7 @@ class CalendarCache
     /**
      * Clear the cache
      */
-    public function clear()
+    public function clearCaches()
     {
         $this->cache->clear();
     }
@@ -89,12 +97,12 @@ class CalendarCache
     }
 
     /**
-     * Load the content of one calendar
+     * Download the content of one calendar
      *
      * @param   array $calendar
      * @return  string|null
      */
-    public function load(array $calendar): ?string
+    public function download(array $calendar): ?string
     {
         return file_get_contents($calendar['url']);
     }

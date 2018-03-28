@@ -22,7 +22,7 @@
         data() {
             return {
                 api_url: '/api.php/calendar',
-                api_update_interval: 10,
+                api_update_interval: 2,
                 events: null,
             }
         },
