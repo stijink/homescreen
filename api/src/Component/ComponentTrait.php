@@ -7,9 +7,9 @@ use App\ApiException;
 trait ComponentTrait
 {
     /**
-     * @param  \Exception $e
-     * @param  string $message
-     * @throws ApiException
+     * @param   \Exception $e
+     * @param   string $message
+     * @throws  ApiException
      */
     public function handleException(\Exception $e, string $message)
     {
