@@ -1,0 +1,33 @@
+---
+
+- name: Activate 1wire and change screen rotation in /boot/config.txt
+  template:
+    src: boot-config.txt
+    dest: /boot/config.txt
+
+- name: Disable mouse cursor in /etc/lightdm/lightdm.conf
+  template:
+    src: lightdm.conf
+    dest: /etc/lightdm/lightdm.conf
+
+- name: Configure chrome autostart and disable screensaver
+  template:
+    src: lxsession-autostart
+    dest: /home/pi/.config/lxsession/LXDE-pi/autostart
+
+- name: Add homescreen startup in /etc/rc.local
+  template:
+    src: rc.local
+    dest: /etc/rc.local
+
+- name: Change Hostname
+  hostname: name=homescreen
+
+- name: Change Timezone
+  timezone: name=Europe/Berlin
+
+- name: Change ownership of /opt to user "pi"
+  file:
+    path: /opt
+    owner: pi
+    group: pi

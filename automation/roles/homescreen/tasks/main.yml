@@ -1,0 +1,12 @@
+---
+
+- name: Clone "stijink/homescreen" from GitHub
+  git:
+    repo: 'https://github.com/stijink/homescreen.git'
+    dest: /opt/homescreen
+
+- name: Build Production setup
+  command: bin/build-prod.sh
+  become: true
+  args:
+    chdir: /opt/homescreen

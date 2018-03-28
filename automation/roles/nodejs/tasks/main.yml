@@ -1,0 +1,15 @@
+---
+
+- name: Uninstall old nodejs
+  apt:
+    name=nodered state=absent
+    name=nodejs state=absent
+    name=nodejs-legacy state=absent
+
+- name: Get latest version of nodejs
+  shell: curl -sL https://deb.nodesource.com/setup_9.x | sudo bash -
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list
+
+- name: Install latest version of nodejs
+  apt: name=nodejs state=latest

@@ -1,0 +1,21 @@
+---
+
+- name: Clone "stijink/hue-raspberry-hdmi" from GitHub
+  git:
+    repo: 'https://github.com/stijink/hue-raspberry-hdmi.git'
+    dest: /opt/hue-raspberry-hdmi
+
+- name: Install node dependencies
+  command: npm install
+  args:
+    chdir: /opt/hue-raspberry-hdmi
+    creates: /opt/hue-raspberry-hdmi/node_modules
+
+- name: Add to pm2 start list
+  command: pm2 start /opt/hue-raspberry-hdmi/hue-raspberry-hdmi.js --name="hue-raspberry-hdmi" --watch
+  environment:
+    HUE_HOST: 192.168.178.23
+    HUE_USER: VR-6dmxibhe0V3EHI9WFaZrR9peCSc9oht1qB9LX
+    HUE_LIGHT_ID: 7
+  become: false
+  ignore_errors: yes
