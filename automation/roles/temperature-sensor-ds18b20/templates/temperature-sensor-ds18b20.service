@@ -1,0 +1,11 @@
+[Unit]
+Description=temperature-sensor-ds18b20
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/temperature-sensor-ds18b20/server.js
+WorkingDirectory=/opt/temperature-sensor-ds18b20
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

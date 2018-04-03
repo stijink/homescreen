@@ -4,10 +4,7 @@
   roles:
     - { role: base-configuration, become: true }
     - { role: nodejs, become: true }
-    - { role: homescreen, become: false }
-    - { role: clanedars-cronjob, become: true }
-    - { role: pm2-install, become: true }
-    - { role: hue-raspberry-hdmi, become: false }
-    - { role: raspberry-status-server, become: false }
-    - { role: temperature-sensor-ds18b20, become: false }
-    - { role: pm2-rebootable, become: true }
+    - { role: homescreen, become: true }
+    - { role: calendars-cronjob, become: true }
+    - { role: hue-raspberry-hdmi, become: true }
+    - { role: temperature-sensor-ds18b20, become: true }

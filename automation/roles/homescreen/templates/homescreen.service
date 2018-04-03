@@ -1,0 +1,11 @@
+[Unit]
+Description=homescreen
+
+[Service]
+Type=simple
+ExecStart=/opt/homescreen/bin/start-prod.sh
+WorkingDirectory=/opt/homescreen
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

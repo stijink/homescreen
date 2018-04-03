@@ -1,0 +1,15 @@
+[Unit]
+Description=Hue Raspberry HDMI
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/hue-raspberry-hdmi/hue-raspberry-hdmi.js
+WorkingDirectory=/opt/hue-raspberry-hdmi
+Restart=on-failure
+
+Environment="HUE_HOST=192.168.178.23"
+Environment="HUE_USER=VR-6dmxibhe0V3EHI9WFaZrR9peCSc9oht1qB9LX"
+Environment="HUE_LIGHT_ID=7"
+
+[Install]
+WantedBy=multi-user.target

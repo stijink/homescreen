@@ -1,7 +1,0 @@
----
-
-- name: Install "pm2" package globally.
-  npm:
-    name: pm2
-    global: yes
-    

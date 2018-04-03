@@ -11,11 +11,14 @@
     chdir: /opt/hue-raspberry-hdmi
     creates: /opt/hue-raspberry-hdmi/node_modules
 
-- name: Add to pm2 start list
-  command: pm2 start /opt/hue-raspberry-hdmi/hue-raspberry-hdmi.js --name="hue-raspberry-hdmi" --watch
-  environment:
-    HUE_HOST: 192.168.178.23
-    HUE_USER: VR-6dmxibhe0V3EHI9WFaZrR9peCSc9oht1qB9LX
-    HUE_LIGHT_ID: 7
-  become: false
-  ignore_errors: yes
+- name: Create "systemd" service file for hue-raspberry-hdmi
+  template:
+    src: hue-raspberry-hdmi.service
+    dest: /etc/systemd/system/hue-raspberry-hdmi.service
+    owner: root
+
+- name: Start service "hue-raspberry-hdmi" and enable at bootup
+  service:
+    name: hue-raspberry-hdmi
+    state: started
+    enabled: yes

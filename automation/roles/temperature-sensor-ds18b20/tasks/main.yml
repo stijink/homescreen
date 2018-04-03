@@ -11,7 +11,14 @@
     chdir: /opt/temperature-sensor-ds18b20
     creates: /opt/temperature-sensor-ds18b20/node_modules
 
-- name: Add to pm2 start list
-  command: pm2 start /opt/temperature-sensor-ds18b20/server.js --name="temperature-sensor-ds18b20" --watch
-  become: false
-  ignore_errors: yes
+- name: Create "systemd" service file for temperature-sensor-ds18b20
+  template:
+    src: temperature-sensor-ds18b20.service
+    dest: /etc/systemd/system/temperature-sensor-ds18b20.service
+    owner: root
+
+- name: Start service "temperature-sensor-ds18b20" and enable at bootup
+  service:
+    name: temperature-sensor-ds18b20
+    state: started
+    enabled: yes

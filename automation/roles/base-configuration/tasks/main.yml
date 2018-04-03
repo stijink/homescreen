@@ -15,11 +15,6 @@
     src: lxsession-autostart
     dest: /home/pi/.config/lxsession/LXDE-pi/autostart
 
-- name: Add homescreen startup in /etc/rc.local
-  template:
-    src: rc.local
-    dest: /etc/rc.local
-
 - name: Change Hostname
   hostname: name=homescreen
 

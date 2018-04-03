@@ -1,7 +1,0 @@
----
-- name: Freeze process list
-  command: pm2 save
-  become: false
-
-- name: pm2 startup config
-  command: pm2 startup systemd -u pi --hp /home/pi

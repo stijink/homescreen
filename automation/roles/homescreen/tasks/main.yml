@@ -10,3 +10,15 @@
   become: true
   args:
     chdir: /opt/homescreen
+
+- name: Create "systemd" service file for homescreen
+  template:
+    src: homescreen.service
+    dest: /etc/systemd/system/homescreen.service
+    owner: root
+
+- name: Start service "homescreen" and enable at bootup
+  service:
+    name: homescreen
+    state: started
+    enabled: yes
