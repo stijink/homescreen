@@ -257,6 +257,9 @@
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
     },
+    "symfony/thanks": {
+        "version": "v1.0.7"
+    },
     "symfony/translation": {
         "version": "3.3",
         "recipe": {

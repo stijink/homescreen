@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
-bin/build-dev.sh
+export APP_ENV=prod
 
-# Optimize API Dependencies for production
+# Make sure config files exists
+bin/ensure-configuration.sh
+
+# Pull latest versions of our docker images
+docker pull stijink/homescreen-api
+docker pull stijink/homescreen-app
+
+# Install and Optimize API Dependencies for production
 docker-compose run homescreen-api \
-  composer install --no-suggest --optimize-autoloader --no-dev --classmap-authoritative
+  composer install --classmap-authoritative --no-dev --no-suggest
+
+# Install App Dependencies
+docker-compose run homescreen-app \
+  yarn install
 
 # Build app.js in production mode
 docker-compose run homescreen-app \
