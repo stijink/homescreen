@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker-compose run homescreen-api \
+docker-compose run --rm homescreen-api \
     bin/console calendars:load

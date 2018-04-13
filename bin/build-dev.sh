@@ -13,9 +13,9 @@ docker pull node:9
 docker-compose build
 
 # Install API Dependencies
-docker-compose run homescreen-api \
+docker-compose run --rm homescreen-api \
   composer install --no-suggest
 
 # Install App Dependencies
-docker-compose run homescreen-app \
+docker-compose run --rm homescreen-app \
   yarn install

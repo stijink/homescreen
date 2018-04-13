@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose run homescreen-api composer update --with-dependencies
+docker-compose run --rm homescreen-api composer update --with-dependencies
