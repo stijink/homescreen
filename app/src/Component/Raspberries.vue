@@ -21,7 +21,7 @@
                 <!-- Memory -->
                 <div class="mb-1">
                     <v-icon dark class="icon mr-1">memory</v-icon>
-                    {{ raspberry.memory.percent }}% RAM
+                    {{ raspberry.memory.percent.toFixed(2) }}% RAM
                     &#8211; {{ raspberry.uptime }} Tage Uptime
                     &#8211; {{ raspberry.temperature }} &deg;C
                 </div>
