@@ -6,7 +6,7 @@
                 {{ location }}
             </th>
         </tr>
-        <tr v-for="product in products">
+        <tr v-for="product in products" :key="product.name">
             <td>{{ product.name }}</td>
             <td class="pull-right">{{ product.price }} €</td>
         </tr>

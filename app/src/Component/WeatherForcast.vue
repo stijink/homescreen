@@ -1,6 +1,6 @@
 <template>
     <table id="weather-forcast">
-        <tr v-for="day in forcast">
+        <tr v-for="day in forcast" :key="day.day">
             <td><i class="owf owf-lg" v-bind:class="day.icon"></i></td>
             <td>{{ day.day }}</td>
             <td>{{ day.description }}</td>
