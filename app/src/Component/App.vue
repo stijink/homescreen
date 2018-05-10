@@ -18,7 +18,7 @@
 
         <v-flex xs8>
           <calendar class="pb-5"></calendar>
-          <presence class="pt-2"></presence>
+          <presence class="pt-3"></presence>
         </v-flex>
 
         <v-flex xs4>
