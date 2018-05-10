@@ -3,7 +3,7 @@
 
     <v-container fluid class="pl-4 pr-4">
 
-      <!-- First row -->
+      <!-- Top row -->
       <v-layout row justify-space-between class="pb-4">
         <v-flex xs8>
           <clock></clock>
@@ -13,26 +13,21 @@
         </v-flex>
       </v-layout>
 
-      <!-- Second row -->
+      <!-- Middle row -->
       <v-layout row justify-space-between class="pt-5 pb-5">
+
         <v-flex xs8>
-          <calendar></calendar>
+          <calendar class="pb-5"></calendar>
+          <presence class="pt-2"></presence>
         </v-flex>
+
         <v-flex xs4>
             <weather-forcast class="pb-5"></weather-forcast>
-            <opening-hours class="pt-3"></opening-hours>
-            <petrol class="pt-5"></petrol>
+            <opening-hours class="pt-3 pb-3"></opening-hours>
+            <petrol class="pb-5 pt-5"></petrol>
+            <raspberries class="pt-5"></raspberries>
         </v-flex>
-      </v-layout>
 
-      <!-- Third row -->
-      <v-layout row justify-space-between class="pt-5">
-        <v-flex xs8>
-          <presence></presence>
-        </v-flex>
-        <v-flex xs4>
-            <raspberries></raspberries>
-        </v-flex>
       </v-layout>
 
         <!-- Bottom row: Fixed to the bottom -->

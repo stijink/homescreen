@@ -6,7 +6,7 @@
             <tr v-for="place in places" :key="place.name">
                 <td><v-icon dark>{{ choose_icon(place) }}</v-icon></td>
                 <td>{{ place.name }}</td>
-                <td class="text-xs-right">{{ place.hours }}</td>
+                <td class="text-xs-right">{{ place.hours }} Uhr</td>
             </tr>
         </table>
     </v-container>
