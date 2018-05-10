@@ -1,14 +1,14 @@
 <template>
     <table id="petrol">
         <tr>
-            <th>
+            <th class="text-xs-left">
                 <v-icon dark class="pr-1">local_gas_station</v-icon>
                 {{ location }}
             </th>
         </tr>
         <tr v-for="product in products" :key="product.name">
             <td>{{ product.name }}</td>
-            <td class="pull-right">{{ product.price }} €</td>
+            <td class="text-xs-right">{{ product.price }} €</td>
         </tr>
     </table>
 </template>
@@ -37,3 +37,10 @@
     }
 </script>
 
+<style scoped>
+
+    table {
+        width: 100%;
+    }
+
+</style>
