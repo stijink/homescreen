@@ -20,6 +20,7 @@
         </v-flex>
         <v-flex xs4>
             <weather-forcast class="pb-5"></weather-forcast>
+            <opening-hours class="pt-3"></opening-hours>
             <petrol class="pt-5"></petrol>
         </v-flex>
       </v-layout>

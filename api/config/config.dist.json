@@ -99,5 +99,19 @@
         "url": "https://calendar.google.com/calendar/ical/de.german%23holiday%40group.v.calendar.google.com/public/basic.ics"
       }
     ]
-  }
+  },
+  "opening_hours": [
+    {
+      "name": "Your shop of interest",
+      "hours": {
+        "monday": "07:00 - 20:00",
+        "tuesday": "07:00 - 20:00",
+        "wednesday": "07:00 - 20:00",
+        "thursday": "07:00 - 20:00",
+        "friday": "07:00 - 20:00",
+        "saturday": "07:00 - 20:00",
+        "sunday": null
+      }
+    }
+  ]
 }
