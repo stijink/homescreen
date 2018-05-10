@@ -4,7 +4,7 @@
     <v-container fluid class="pl-4 pr-4">
 
       <!-- Top row -->
-      <v-layout row justify-space-between class="pb-4">
+      <v-layout row justify-space-between class="spacing-bottom">
         <v-flex xs8>
           <clock></clock>
         </v-flex>
@@ -14,18 +14,18 @@
       </v-layout>
 
       <!-- Middle row -->
-      <v-layout row justify-space-between class="pt-5 pb-5">
+      <v-layout row justify-space-between>
 
         <v-flex xs8>
-          <calendar class="pb-5"></calendar>
-          <presence class="pt-3"></presence>
+          <calendar class="spacing-bottom-2x"></calendar>
+          <presence></presence>
         </v-flex>
 
         <v-flex xs4>
-            <weather-forcast class="pb-5"></weather-forcast>
-            <opening-hours class="pt-3 pb-3"></opening-hours>
-            <petrol class="pb-5 pt-5"></petrol>
-            <raspberries class="pt-5"></raspberries>
+            <weather-forcast class="spacing-bottom"></weather-forcast>
+            <opening-hours class="spacing-bottom"></opening-hours>
+            <petrol class="spacing-bottom-2x"></petrol>
+            <raspberries></raspberries>
         </v-flex>
 
       </v-layout>
@@ -75,6 +75,14 @@ h1 {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+.spacing-bottom {
+  margin-bottom: 72px !important;
+}
+
+.spacing-bottom-2x {
+  margin-bottom: 120px !important;
 }
 
 </style>
