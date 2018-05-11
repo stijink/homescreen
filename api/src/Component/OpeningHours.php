@@ -34,7 +34,7 @@ class OpeningHours implements ComponentInterface
             $response[] = [
                 'name' => $place['name'],
                 'hours' => $place['hours'][$today] ?? "geschlossen",
-                'is_open' => $this->isOpen($place),
+                'is_open' => $this->isPlaceCurrentlyOpen($place),
             ];
         }
 
@@ -42,12 +42,12 @@ class OpeningHours implements ComponentInterface
     }
 
     /**
-     * Check if a place is currently opened
+     * Check if a place is currently open
      *
      * @param  array $place
      * @return boolean
      */
-    private function isOpen(array $place)
+    private function isPlaceCurrentlyOpen(array $place)
     {
         $today = strtolower(date('l'));
         $currentHour = date('H:00');
@@ -60,6 +60,6 @@ class OpeningHours implements ComponentInterface
         $openingHour = trim(substr($hoursToday, 0, 5));
         $closingHour = trim(substr($hoursToday, 8, 13));
 
-        return ($currentHour > $openingHour && $currentHour < $closingHour);
+        return ($currentHour >= $openingHour && $currentHour < $closingHour);
     }
 }
