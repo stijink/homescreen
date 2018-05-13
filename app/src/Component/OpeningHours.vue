@@ -6,7 +6,7 @@
             <tr v-for="place in places" :key="place.name">
                 <td><v-icon dark>{{ choose_icon(place) }}</v-icon></td>
                 <td>{{ place.name }}</td>
-                <td class="text-xs-right">{{ place.hours }} Uhr</td>
+                <td class="text-xs-right">{{ format_hours(place) }}</td>
             </tr>
         </table>
     </v-container>
@@ -37,7 +37,15 @@
                 }
 
                 return 'alarm_off'
+            },
+            format_hours (place) {
+                if (place.hours === null) {
+                    return 'geschlossen'
+                }
+
+                return place.hours + ' Uhr'
             }
+
         }
     }
 </script>

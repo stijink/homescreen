@@ -33,7 +33,7 @@ class OpeningHours implements ComponentInterface
         foreach ($this->configuration['opening_hours'] as $place) {
             $response[] = [
                 'name' => $place['name'],
-                'hours' => $place['hours'][$today] ?? "geschlossen",
+                'hours' => $place['hours'][$today],
                 'is_open' => $this->isPlaceCurrentlyOpen($place),
             ];
         }
