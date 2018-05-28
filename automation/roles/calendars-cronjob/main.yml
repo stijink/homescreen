@@ -4,4 +4,4 @@
     user: "root"
     minute: "2"
     hour: "0"
-    job: "/opt/homescreen/bin/load-calendars.sh"
+    job: "cd /opt/homescreen && bin/load-calendars.sh"
