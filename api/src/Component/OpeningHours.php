@@ -4,8 +4,6 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use GuzzleHttp\Client;
-use Psr\Log\LoggerInterface;
 
 class OpeningHours implements ComponentInterface
 {
@@ -32,8 +30,8 @@ class OpeningHours implements ComponentInterface
 
         foreach ($this->configuration['opening_hours'] as $place) {
             $response[] = [
-                'name' => $place['name'],
-                'hours' => $place['hours'][$today],
+                'name'    => $place['name'],
+                'hours'   => $place['hours'][$today],
                 'is_open' => $this->isPlaceCurrentlyOpen($place),
             ];
         }
@@ -45,7 +43,7 @@ class OpeningHours implements ComponentInterface
      * Check if a place is currently open
      *
      * @param  array $place
-     * @return boolean
+     * @return bool
      */
     private function isPlaceCurrentlyOpen(array $place)
     {
@@ -60,6 +58,6 @@ class OpeningHours implements ComponentInterface
         $openingHour = trim(substr($hoursToday, 0, 5));
         $closingHour = trim(substr($hoursToday, 8, 13));
 
-        return ($currentHour >= $openingHour && $currentHour < $closingHour);
+        return $currentHour >= $openingHour && $currentHour < $closingHour;
     }
 }
