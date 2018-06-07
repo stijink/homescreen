@@ -95,9 +95,6 @@
             "ref": "c276fa48d4713de91eb410289b3b1834acb7e403"
         }
     },
-    "phpunit/phpunit-mock-objects": {
-        "version": "6.0.0"
-    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -259,9 +256,6 @@
             "version": "4.0",
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
-    },
-    "symfony/thanks": {
-        "version": "v1.0.7"
     },
     "symfony/translation": {
         "version": "3.3",
