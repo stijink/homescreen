@@ -1,7 +1,7 @@
 <?php
 // See: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 return PhpCsFixer\Config::create()
-    ->setRiskyAllowed(false)
+    ->setRiskyAllowed(true)
     ->setUsingCache(false)
     ->setRules([
         'encoding'                                    => true,
