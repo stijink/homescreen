@@ -58,7 +58,7 @@ html, body, .application {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.icon {
+.v-icon {
     font-size: 1.3rem;
 }
 
