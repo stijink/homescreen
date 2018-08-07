@@ -25,8 +25,8 @@ services:
         - { name: kernel.event_listener, event: kernel.exception }
 
     # Third party services we want to use with autowiring
-    PicoFeed\Reader\Reader: ~
     GuzzleHttp\Client: ~
+    Zend\Feed\Reader\Reader: ~
 
     # Cache (Using PSR-16 SimpleCache)
     Symfony\Component\Cache\Simple\FilesystemCache:

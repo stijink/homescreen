@@ -4,8 +4,8 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use PicoFeed\Reader\Reader;
 use Psr\Log\LoggerInterface;
+use Zend\Feed\Reader\Reader;
 
 class News implements ComponentInterface
 {
@@ -51,27 +51,19 @@ class News implements ComponentInterface
     /**
      * Load the news from a single news source
      *
-     * @param   string $feed
+     * @param string $feedUrl
      * @return  array
      */
-    private function loadFeed(string $feed): array
+    private function loadFeed(string $feedUrl): array
     {
         $news = [];
+        $feed = Reader::importFile($feedUrl);
 
-        $resource = $this->feedReader->download($feed);
-        $parser = $this->feedReader->getParser(
-            $resource->getUrl(),
-            $resource->getContent(),
-            $resource->getEncoding()
-        );
-
-        $feed = $parser->execute();
-
-        foreach ($feed->items as $item) {
+        foreach ($feed as $item) {
             $news[] = [
                 'title'       => $item->getTitle(),
-                'description' => $this->getExcerpt($item->getContent()),
-                'date'        => $item->getPublishedDate()->format('d.m.Y H:m'),
+                'description' => $this->getExcerpt($item->getDescription()),
+                'date'        => $item->getDateModified()->format('d.m.Y H:m'),
                 'visible'     => false,
             ];
         }
