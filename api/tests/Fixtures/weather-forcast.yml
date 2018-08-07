@@ -1,0 +1,26 @@
+
+-
+    request:
+        method: GET
+        url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=Troisdorf&APPID=96c3c8512e7440aa8102ac082c07b1d7&units=metric&lang=de&cnt=7'
+        headers:
+            Host: api.openweathermap.org
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.3.3 curl/7.52.1 PHP/7.2.8'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Server: openresty
+            Date: 'Tue, 07 Aug 2018 10:09:35 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '1976'
+            Connection: keep-alive
+            X-Cache-Key: '/data/2.5/forecast/daily?APPID=96c3c8512e7440aa8102ac082c07b1d7&cnt=7&lang=de&q=troisdorf&units=metric'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Access-Control-Allow-Methods: 'GET, POST'
+        body: '{"city":{"id":2821029,"name":"Troisdorf","coord":{"lon":7.1593,"lat":50.8153},"country":"DE","population":74749},"cod":"200","message":0.0421412,"cnt":7,"list":[{"dt":1533639600,"temp":{"day":34.14,"min":22.13,"max":34.94,"night":22.13,"eve":32.59,"morn":31.77},"pressure":1001.34,"humidity":30,"weather":[{"id":800,"main":"Clear","description":"Klarer Himmel","icon":"01d"}],"speed":4.22,"deg":222,"clouds":0},{"dt":1533726000,"temp":{"day":30.68,"min":20.26,"max":30.68,"night":20.26,"eve":24.62,"morn":22.5},"pressure":1003.05,"humidity":42,"weather":[{"id":501,"main":"Rain","description":"Mäßiger Regen","icon":"10d"}],"speed":4.68,"deg":256,"clouds":0,"rain":5.74},{"dt":1533812400,"temp":{"day":29.14,"min":15.07,"max":29.14,"night":15.07,"eve":18.85,"morn":18.41},"pressure":999.77,"humidity":57,"weather":[{"id":501,"main":"Rain","description":"Mäßiger Regen","icon":"10d"}],"speed":9.28,"deg":202,"clouds":36,"rain":6.69},{"dt":1533898800,"temp":{"day":19.37,"min":12.8,"max":20.94,"night":12.8,"eve":19.36,"morn":14.2},"pressure":1016.04,"humidity":62,"weather":[{"id":801,"main":"Clouds","description":"Ein paar Wolken","icon":"02d"}],"speed":5.26,"deg":262,"clouds":24},{"dt":1533985200,"temp":{"day":17.47,"min":13.31,"max":17.47,"night":15.17,"eve":17.33,"morn":13.31},"pressure":1008.82,"humidity":0,"weather":[{"id":501,"main":"Rain","description":"Mäßiger Regen","icon":"10d"}],"speed":7.78,"deg":250,"clouds":48,"rain":5.23},{"dt":1534071600,"temp":{"day":19.85,"min":14.05,"max":20.87,"night":14.05,"eve":20.87,"morn":16.42},"pressure":1006.39,"humidity":0,"weather":[{"id":501,"main":"Rain","description":"Mäßiger Regen","icon":"10d"}],"speed":6.68,"deg":247,"clouds":34,"rain":8.05},{"dt":1534158000,"temp":{"day":27.72,"min":16.87,"max":27.72,"night":20.32,"eve":27.07,"morn":16.87},"pressure":1000.54,"humidity":0,"weather":[{"id":500,"main":"Rain","description":"Leichter Regen","icon":"10d"}],"speed":3.96,"deg":199,"clouds":45,"rain":0.73}]}'

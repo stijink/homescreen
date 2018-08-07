@@ -9,6 +9,9 @@ class RasperriesControllerTest extends WebTestCase
 {
     use FunctionalTestTrait;
 
+    /**
+     * @vcr raspberries.yml
+     */
     public function testIndex()
     {
         $this->makeGetRequest('/raspberries');

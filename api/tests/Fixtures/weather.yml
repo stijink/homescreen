@@ -1,0 +1,26 @@
+
+-
+    request:
+        method: GET
+        url: 'http://api.openweathermap.org/data/2.5/weather?q=Troisdorf&APPID=96c3c8512e7440aa8102ac082c07b1d7&units=metric&lang=de'
+        headers:
+            Host: api.openweathermap.org
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.3.3 curl/7.52.1 PHP/7.2.8'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Server: openresty
+            Date: 'Tue, 07 Aug 2018 10:06:47 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '439'
+            Connection: keep-alive
+            X-Cache-Key: '/data/2.5/weather?APPID=96c3c8512e7440aa8102ac082c07b1d7&lang=de&q=troisdorf&units=metric'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Access-Control-Allow-Methods: 'GET, POST'
+        body: '{"coord":{"lon":7.16,"lat":50.82},"weather":[{"id":800,"main":"Clear","description":"Klarer Himmel","icon":"01d"}],"base":"stations","main":{"temp":31.77,"pressure":1010,"humidity":26,"temp_min":28,"temp_max":34},"visibility":10000,"wind":{"speed":3.6,"deg":130},"clouds":{"all":0},"dt":1533635400,"sys":{"type":1,"id":4885,"message":0.003,"country":"DE","sunrise":1533614818,"sunset":1533668771},"id":2821029,"name":"Troisdorf","cod":200}'

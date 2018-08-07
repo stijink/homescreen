@@ -9,6 +9,9 @@ class TrafficControllerTest extends WebTestCase
 {
     use FunctionalTestTrait;
 
+    /**
+     * @vcr traffic.yml
+     */
     public function testIndex()
     {
         $this->makeGetRequest('/traffic');

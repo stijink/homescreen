@@ -9,6 +9,9 @@ class TemperatureControllerTest extends WebTestCase
 {
     use FunctionalTestTrait;
 
+    /**
+     * @vcr temperature.yml
+     */
     public function testIndex()
     {
         $this->makeGetRequest('/temperature');

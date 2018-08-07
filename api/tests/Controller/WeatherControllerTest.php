@@ -9,6 +9,9 @@ class WeatherControllerTest extends WebTestCase
 {
     use FunctionalTestTrait;
 
+    /**
+     * @vcr weather.yml
+     */
     public function testWeather()
     {
         $this->makeGetRequest('/weather');

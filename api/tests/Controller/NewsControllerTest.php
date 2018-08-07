@@ -9,6 +9,9 @@ class NewsControllerTest extends WebTestCase
 {
     use FunctionalTestTrait;
 
+    /**
+     * @vcr news.yml
+     */
     public function testIndex()
     {
         $this->makeGetRequest('/news');

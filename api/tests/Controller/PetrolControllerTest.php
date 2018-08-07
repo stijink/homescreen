@@ -9,6 +9,9 @@ class PetrolControllerTest extends WebTestCase
 {
     use FunctionalTestTrait;
 
+    /**
+     * @vcr petrol.yml
+     */
     public function testIndex()
     {
         $this->makeGetRequest('/petrol');
