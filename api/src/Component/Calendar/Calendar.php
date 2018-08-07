@@ -76,7 +76,7 @@ class Calendar implements ComponentInterface
             $checksum = md5($iCalEvent->summary . $iCalEvent->dtstart . $iCalEvent->dtend);
 
             $event = [
-                'description'       => $iCalEvent->summary,
+                'description'       => $this->sanitizeSummary($iCalEvent->summary),
                 'date'              => date('Y-m-d', $timestampStart),
                 'timestamp_start'   => $timestampStart,
                 'timestamp_end'     => $timestampEnd,
@@ -88,6 +88,15 @@ class Calendar implements ComponentInterface
         }
 
         return $events;
+    }
+
+    /**
+     * @param  string $summary
+     * @return string
+     */
+    private function sanitizeSummary(string $summary): string
+    {
+         return preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $summary);
     }
 
     /**
