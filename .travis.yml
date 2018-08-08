@@ -9,6 +9,9 @@ script: vendor/bin/phpunit
 after_success:
   - vendor/bin/test-reporter
 
+after_failure:
+  - cat api/var/log/test.log
+
 addons:
   code_climate:
     repo_token: $CODECLIMATE_TOKEN
