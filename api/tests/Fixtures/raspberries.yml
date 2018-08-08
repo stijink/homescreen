@@ -47,3 +47,51 @@
             Connection: keep-alive
             Content-Length: '938'
         body: '{"hostname":"backup-pi","model":"Raspberry Pi 2 Model B Rev 1.1","operatingsystem":"Raspbian GNU/Linux 9 (stretch)","uptime":71,"load":0.3,"processes":108,"temperature":53.53,"cpu":{"cores":4,"speed":600},"memory":{"total":968,"used":939,"free":28,"percent":97.05},"disks":{"/":{"free":1142484,"size":13860272,"used":12717788,"percent":0.9175713146177795},"/dev":{"free":468092,"size":468092,"used":0,"percent":0},"/dev/shm":{"free":472700,"size":472700,"used":0,"percent":0},"/run":{"free":424944,"size":472700,"used":47756,"percent":0.10102813623862915},"/run/lock":{"free":5116,"size":5120,"used":4,"percent":0.00078125},"/sys/fs/cgroup":{"free":472700,"size":472700,"used":0,"percent":0},"/boot":{"free":44890,"size":67434,"used":22544,"percent":0.3343120680962126},"/mnt/backups":{"free":3120960848,"size":5814215760,"used":2693254912,"percent":0.46321894872370545},"/run/user/1001":{"free":94540,"size":94540,"used":0,"percent":0}}}'
+-
+    request:
+        method: GET
+        url: 'http://homescreen:9360/'
+        headers:
+            Host: 'homescreen:9360'
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.3.3 curl/7.54.0 PHP/7.2.8'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Request-Method: '*'
+            Access-Control-Allow-Methods: 'OPTIONS, GET'
+            Access-Control-Allow-Headers: '*'
+            Content-Type: application/json
+            Date: 'Wed, 08 Aug 2018 09:27:49 GMT'
+            Connection: keep-alive
+            Content-Length: '1283'
+        body: '{"hostname":"homescreen","model":"Raspberry Pi 3 Model B Rev 1.2","operatingsystem":"Raspbian GNU/Linux 9 (stretch)","uptime":3,"load":0.39,"processes":153,"temperature":46.7,"cpu":{"cores":4,"speed":600},"memory":{"total":968,"used":847,"free":120,"percent":87.58},"disks":{"/":{"free":4943092,"size":13517920,"used":8574828,"percent":0.6343304295335377},"/dev":{"free":468088,"size":468088,"used":0,"percent":0},"/dev/shm":{"free":448428,"size":472696,"used":24268,"percent":0.051339550154856396},"/run":{"free":424888,"size":472696,"used":47808,"percent":0.10113899842604972},"/run/lock":{"free":5116,"size":5120,"used":4,"percent":0.00078125},"/sys/fs/cgroup":{"free":472696,"size":472696,"used":0,"percent":0},"/boot":{"free":47133,"size":69553,"used":22420,"percent":0.32234411168461463},"/run/user/1000":{"free":94536,"size":94536,"used":0,"percent":0},"/media/pi/SETTINGS":{"free":29121,"size":30701,"used":1580,"percent":0.051464121689847236},"/var/lib/docker/overlay2/5b278777015ac3e71427d41fbe4d095a4c8751241cf833041c8105e0d277d9b8/merged":{"free":4943092,"size":13517920,"used":8574828,"percent":0.6343304295335377},"/var/lib/docker/containers/f404d3682547d4918c2cea976077badf1477427e16e4bf569af68c318ec8c468/mounts/shm":{"free":65536,"size":65536,"used":0,"percent":0}}}'
+-
+    request:
+        method: GET
+        url: 'http://backup-pi:9360/'
+        headers:
+            Host: 'backup-pi:9360'
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.3.3 curl/7.54.0 PHP/7.2.8'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Request-Method: '*'
+            Access-Control-Allow-Methods: 'OPTIONS, GET'
+            Access-Control-Allow-Headers: '*'
+            Content-Type: application/json
+            Date: 'Wed, 08 Aug 2018 09:27:49 GMT'
+            Connection: keep-alive
+            Content-Length: '935'
+        body: '{"hostname":"backup-pi","model":"Raspberry Pi 2 Model B Rev 1.1","operatingsystem":"Raspbian GNU/Linux 9 (stretch)","uptime":72,"load":0,"processes":108,"temperature":49.77,"cpu":{"cores":4,"speed":600},"memory":{"total":968,"used":937,"free":30,"percent":96.82},"disks":{"/":{"free":1142340,"size":13860272,"used":12717932,"percent":0.9175817040242789},"/dev":{"free":468092,"size":468092,"used":0,"percent":0},"/dev/shm":{"free":472700,"size":472700,"used":0,"percent":0},"/run":{"free":424944,"size":472700,"used":47756,"percent":0.10102813623862915},"/run/lock":{"free":5116,"size":5120,"used":4,"percent":0.00078125},"/sys/fs/cgroup":{"free":472700,"size":472700,"used":0,"percent":0},"/boot":{"free":44890,"size":67434,"used":22544,"percent":0.3343120680962126},"/mnt/backups":{"free":3120746544,"size":5814215760,"used":2693469216,"percent":0.4632558073489863},"/run/user/1002":{"free":94540,"size":94540,"used":0,"percent":0}}}'

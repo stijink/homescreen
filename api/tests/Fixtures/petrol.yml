@@ -21,3 +21,25 @@
             Content-Length: '580'
             Content-Type: 'application/json; charset=UTF-8'
         body: '{"response":{"stationId":"20141300","prices":[{"name":"Aral Super E10","price":"154,90","currency":"EUR","id":"001131","sort":"21"},{"name":"Aral Super 95","price":"156,90","currency":"EUR","id":"001040","sort":"22"},{"name":"Aral Ultimate 102","price":"174,90","currency":"EUR","id":"001255","sort":"24"},{"name":"Aral Diesel","price":"134,90","currency":"EUR","id":"004002","sort":"30"},{"name":"Aral Ultimate Diesel","price":"152,90","currency":"EUR","id":"004267","sort":"31"}],"lastUpdate":"201808071200","disabled":"false","openNow":"Wir haben f\u00fcr Sie ge\u00f6ffnet."}}'
+-
+    request:
+        method: GET
+        url: 'http://ap.aral.de/api/v2/getStationPricesById.php?stationId=20141300'
+        headers:
+            Host: ap.aral.de
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.3.3 curl/7.54.0 PHP/7.2.8'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 08 Aug 2018 09:27:48 GMT'
+            Server: antwerpesWebserver
+            Access-Control-Allow-Headers: 'origin, x-requested-with, content-type'
+            Access-Control-Allow-Methods: 'GET, POST'
+            Content-Length: '580'
+            Content-Type: 'application/json; charset=UTF-8'
+        body: '{"response":{"stationId":"20141300","prices":[{"name":"Aral Super E10","price":"144,90","currency":"EUR","id":"001131","sort":"21"},{"name":"Aral Super 95","price":"146,90","currency":"EUR","id":"001040","sort":"22"},{"name":"Aral Ultimate 102","price":"164,90","currency":"EUR","id":"001255","sort":"24"},{"name":"Aral Diesel","price":"125,90","currency":"EUR","id":"004002","sort":"30"},{"name":"Aral Ultimate Diesel","price":"143,90","currency":"EUR","id":"004267","sort":"31"}],"lastUpdate":"201808081109","disabled":"false","openNow":"Wir haben f\u00fcr Sie ge\u00f6ffnet."}}'
