@@ -1,7 +1,0 @@
----
-
-- name: Enable the "calendars:load" cronjob to run every 2 minutes
-    user: "root"
-    minute: "2"
-    hour: "0"
-    job: "cd /opt/homescreen && bin/load-calendars.sh"
