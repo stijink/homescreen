@@ -23,3 +23,6 @@ docker-compose run --rm homescreen-app \
 # Build app.js in production mode
 docker-compose run --rm homescreen-app \
     node_modules/webpack/bin/webpack.js -p
+
+# Prefetch calendar contents
+bin/load-calendars.sh
