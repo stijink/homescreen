@@ -18,6 +18,7 @@
 
         <v-flex xs8>
           <calendar class="spacing-bottom-2x"></calendar>
+          <shopping-list class="spacing-bottom"></shopping-list>
           <presence></presence>
         </v-flex>
 

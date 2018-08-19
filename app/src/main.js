@@ -21,6 +21,7 @@ import Petrol from './Component/Petrol.vue';
 import Presence from './Component/Presence.vue';
 import Raspberries from './Component/Raspberries.vue';
 import OpeningHours from './Component/OpeningHours.vue';
+import ShoppingList from './Component/ShoppingList.vue';
 
 Vue.use(Vuetify);
 Vue.use(VueResource);
@@ -42,6 +43,7 @@ Vue.component('petrol', Petrol);
 Vue.component('presence', Presence);
 Vue.component('raspberries', Raspberries);
 Vue.component('opening-hours', OpeningHours);
+Vue.component('shopping-list', ShoppingList);
 
 new Vue({
   el: '#app',
