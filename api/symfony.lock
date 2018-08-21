@@ -1,4 +1,7 @@
 {
+    "beberlei/assert": {
+        "version": "v2.9.6"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -64,6 +67,12 @@
     },
     "phar-io/version": {
         "version": "1.0.1"
+    },
+    "php-vcr/php-vcr": {
+        "version": "1.4.4"
+    },
+    "php-vcr/phpunit-testlistener-vcr": {
+        "version": "3.2.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
