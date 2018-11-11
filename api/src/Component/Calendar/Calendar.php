@@ -91,12 +91,34 @@ class Calendar implements ComponentInterface
     }
 
     /**
+     * Remove Emoticons
+     *
      * @param  string $summary
      * @return string
      */
     private function sanitizeSummary(string $summary): string
     {
-         return preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $summary);
+        // Match Emoticons
+        $regexEmoticons = '/[\x{1F600}-\x{1F64F}]/u';
+        $summary = preg_replace($regexEmoticons, '', $summary);
+
+        // Match Miscellaneous Symbols and Pictographs
+        $regexSymbols = '/[\x{1F300}-\x{1F5FF}]/u';
+        $summary = preg_replace($regexSymbols, '', $summary);
+
+        // Match Transport And Map Symbols
+        $regexTransport = '/[\x{1F680}-\x{1F6FF}]/u';
+        $summary = preg_replace($regexTransport, '', $summary);
+
+        // Match Miscellaneous Symbols
+        $regexMisc = '/[\x{2600}-\x{26FF}]/u';
+        $summary = preg_replace($regexMisc, '', $summary);
+
+        // Match Dingbats
+        $regexDingbats = '/[\x{2700}-\x{27BF}]/u';
+        $summary = preg_replace($regexDingbats, '', $summary);
+
+        return $summary;
     }
 
     /**
