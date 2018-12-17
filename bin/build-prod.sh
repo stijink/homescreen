@@ -5,12 +5,8 @@ export APP_ENV=prod
 # Make sure config files exists
 bin/ensure-configuration.sh
 
-# Pull latest versions of docker dependencies
-docker pull php:7.2-apache
-docker pull node:9
-
-# Ensure images are built
-docker-compose build
+# Pull latest versions of docker dependencies and build them
+bin/build-containers.sh
 
 # Install and Optimize API Dependencies for production
 docker-compose run --rm homescreen-api \
