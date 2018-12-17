@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Component\Calendar\Calendar;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CalendarController extends Controller
+class CalendarController extends AbstractController
 {
     private $calendarComponent;
 

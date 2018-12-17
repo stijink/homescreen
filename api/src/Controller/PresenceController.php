@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Component\Presence;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PresenceController extends Controller
+class PresenceController extends AbstractController
 {
     private $presenceComponent;
 

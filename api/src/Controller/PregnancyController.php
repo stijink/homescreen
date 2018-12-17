@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 
-use App\Component\Calendar\Calendar;
 use App\Component\Pregnancy;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PregnancyController extends Controller
+class PregnancyController extends AbstractController
 {
     private $pregnancyComponent;
 

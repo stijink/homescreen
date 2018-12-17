@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Component\Raspberries;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RaspberriesController extends Controller
+class RaspberriesController extends AbstractController
 {
     private $raspberriesComponent;
 

@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Component\News;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class NewsController extends Controller
+class NewsController extends AbstractController
 {
     private $newsComponent;
 

@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Component\Traffic;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TrafficController extends Controller
+class TrafficController extends AbstractController
 {
     private $trafficComponent;
 
