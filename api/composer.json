@@ -11,10 +11,9 @@
         "guzzlehttp/guzzle": "^6.3",
         "johngrogg/ics-parser": "^2.1",
         "sensio/framework-extra-bundle": "^5.1",
-        "symfony/console": "^4.1",
+        "symfony/console": "^4.2",
         "symfony/flex": "^1.0",
-        "symfony/framework-bundle": "^4.1",
-        "symfony/lts": "^4@dev",
+        "symfony/framework-bundle": "^4.2",
         "symfony/monolog-bundle": "^3.2",
         "symfony/yaml": "^4.1",
         "zendframework/zend-feed": "^2.10"
@@ -23,11 +22,11 @@
         "php-vcr/php-vcr": "^1.4",
         "php-vcr/phpunit-testlistener-vcr": "^3.2",
         "phpunit/phpunit": "^7.3",
-        "symfony/browser-kit": "^4.1",
-        "symfony/dotenv": "^4.1",
+        "symfony/browser-kit": "^4.2",
+        "symfony/dotenv": "^4.2",
         "symfony/maker-bundle": "^1.5",
-        "symfony/phpunit-bridge": "^4.1",
-        "symfony/var-dumper": "^4.1"
+        "symfony/phpunit-bridge": "^4.2",
+        "symfony/var-dumper": "^4.2"
     },
     "config": {
         "preferred-install": {
