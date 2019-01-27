@@ -19,6 +19,7 @@
         "zendframework/zend-feed": "^2.10"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
         "php-vcr/php-vcr": "^1.4",
         "php-vcr/phpunit-testlistener-vcr": "^3.2",
         "phpunit/phpunit": "^7.3",

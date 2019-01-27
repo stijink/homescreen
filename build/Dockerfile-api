@@ -23,9 +23,6 @@ COPY php/*.ini /usr/local/etc/php/conf.d/
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install PHP-CS-Fixer
-RUN composer global require "friendsofphp/php-cs-fixer"
-
 # Apache configuration
 ENV APACHE_DOCUMENT_ROOT=/var/www/public
 COPY apache/virtualhost.conf /etc/apache2/sites-available/000-default.conf
