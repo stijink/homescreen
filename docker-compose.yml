@@ -1,12 +1,11 @@
 version: '2'
 services:
 
-  homescreen-api:
+  api:
     build:
       context: ./build
       dockerfile: Dockerfile-api
     image: stijink/homescreen-api
-    container_name: homescreen-api
     working_dir: ${WORKDIR}
     ports:
       - "${PORT}:80"
@@ -16,13 +15,12 @@ services:
     environment:
       - APP_ENV
 
-  homescreen-app:
+  app:
     build:
       context: ./build
       dockerfile: Dockerfile-app
     image: stijink/homescreen-app
     working_dir: ${WORKDIR}
-    container_name: homescreen-app
     command: node_modules/webpack/bin/webpack.js --watch
     volumes:
       - ./app/:${WORKDIR}
