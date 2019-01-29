@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
 
   api:
@@ -10,8 +10,8 @@ services:
     ports:
       - "${PORT}:80"
     volumes:
-      - ./api/:${WORKDIR}
-      - app-assets:${WORKDIR}/public/assets
+      - ./api/:${WORKDIR}:delegated
+      - app-assets:${WORKDIR}/public/assets:delegated
     environment:
       - APP_ENV
 
@@ -23,8 +23,8 @@ services:
     working_dir: ${WORKDIR}
     command: node_modules/webpack/bin/webpack.js --watch
     volumes:
-      - ./app/:${WORKDIR}
-      - app-assets:${WORKDIR}/assets
+      - ./app/:${WORKDIR}:delegated
+      - app-assets:${WORKDIR}/assets:delegated
 
 volumes:
   app-assets:
