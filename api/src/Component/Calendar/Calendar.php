@@ -15,18 +15,18 @@ class Calendar implements ComponentInterface
 
     private $configuration;
     private $logger;
-    private $calendarCache;
+    private $calendarLoader;
 
     /**
      * @param Configuration $configuration
      * @param LoggerInterface $logger
-     * @param CalendarLoader $calendarCache
+     * @param CalendarLoader $calendarLoader
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, CalendarLoader $calendarCache)
+    public function __construct(Configuration $configuration, LoggerInterface $logger, CalendarLoader $calendarLoader)
     {
         $this->configuration = $configuration;
         $this->logger = $logger;
-        $this->calendarCache = $calendarCache;
+        $this->calendarLoader = $calendarLoader;
     }
 
     /**
@@ -65,7 +65,7 @@ class Calendar implements ComponentInterface
     private function loadEvents(array $calendar): array
     {
         $events = [];
-        $content = $this->calendarCache->get($calendar);
+        $content = $this->calendarLoader->get($calendar);
 
         $icalendar = new ICal();
         $icalendar->initString($content);
