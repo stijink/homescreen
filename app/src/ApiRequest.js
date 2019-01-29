@@ -1,15 +1,17 @@
+import axios from 'axios';
+
 let ApiRequest = {
     methods: {
         apiRequest: function (url, callback) {
 
             EventBus.$emit('start-loading');
 
-            this.$http.get(url).then(response => {
+            axios.get(url).then(response => {
                 EventBus.$emit('stop-loading', { success: true });
-                callback(response.body);
-            },
-            response => {
-                EventBus.$emit('error', response.body);
+                callback(response.data);
+            })
+            .catch (error => {
+                EventBus.$emit('error', error.response.data);
                 EventBus.$emit('stop-loading', { success: false });
             });
         }

@@ -1,6 +1,4 @@
 import Vue from 'vue';
-import VueResource from 'vue-resource';
-
 import Vuetify from 'vuetify'
 import '../node_modules/vuetify/dist/vuetify.min.css';
 
@@ -24,9 +22,7 @@ import OpeningHours from './Component/OpeningHours.vue';
 import ShoppingList from './Component/ShoppingList.vue';
 import Pregnancy from './Component/Pregnancy.vue';
 
-
 Vue.use(Vuetify);
-Vue.use(VueResource);
 
 // Instance to communicate Errors between components
 window.EventBus = new Vue();
