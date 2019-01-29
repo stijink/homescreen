@@ -24,13 +24,13 @@ From there on you can start to modify the configuration to your needs.
 This repository comes with Docker containers for development. You can build the containers by running:
 
 ```
-bin/build-dev.sh
+make build-dev
 ```
 
 You can start the development stack by running the following script:
 
 ```
-bin/start-dev.sh
+make start-dev
 ```
 
 Now you should be able to access the magic mirror at the following url:
@@ -44,7 +44,7 @@ http://localhost:5000
 To install all the required libraries for Node.js and PHP you can use the following script. This will **NOT** include the development requirements.
 
 ```
-bin/build-prod.sh
+make build-prod
 ```
 
 ## License
