@@ -46,7 +46,7 @@ install-prod:
 
 update:
 	docker-compose run --rm api composer update --with-dependencies
-	docker-compose run --rm app yarn update
+	docker-compose run --rm app yarn upgrade
 
 require:
 	docker-compose run --rm api composer require
