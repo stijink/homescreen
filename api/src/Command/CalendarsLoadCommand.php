@@ -4,12 +4,15 @@ namespace App\Command;
 
 use App\Component\Calendar\CalendarLoader;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 class CalendarsLoadCommand extends Command
 {
+    use LockableTrait;
+
     private $calendarLoader;
 
     /**
@@ -32,9 +35,15 @@ class CalendarsLoadCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
+        if (!$this->lock()) {
+            $io->writeln('The command is already running in another process.');
+            return 0;
+        }
+
         $this->calendarLoader->clearCaches();
         $this->calendarLoader->load();
 
         $io->success('Successfully loaded the calendars contents');
+        $this->release();
     }
 }

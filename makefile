@@ -55,7 +55,7 @@ require-dev:
 	docker-compose run --rm api composer require --dev
 
 calendars:
-	docker-compose run --rm -e APP_ENV=prod api bin/console calendars:load
+	docker-compose exec api bin/console calendars:load --env=prod
 
 php-cs-fixer:
 	docker-compose run --rm api vendor/bin/php-cs-fixer fix --verbose
