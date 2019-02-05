@@ -12,7 +12,7 @@
     "axios": "^0.18.0",
     "moment": "^2.2",
     "style-loader": "^0.23",
-    "vue": "^2.5",
+    "vue": "^2.6",
     "vuetify": "^1.4"
   },
   "devDependencies": {

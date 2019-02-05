@@ -1104,14 +1104,14 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000934"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000934.tgz#583baf228ca2e8fbc9c08ce033a6487e3bb742a6"
-  integrity sha512-1mn1XkvJoJ6szzIpGUTCBti/SpBbIqP1xjjyCDksfUgEdfZz5IOPHmTZbHCkYGrMMcwKcevqHnoHkGEcWjbzOA==
+  version "1.0.30000935"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000935.tgz#0b4210ae207013c76bc1a2e0e903b15bec742a08"
+  integrity sha512-HFqvW9MZZcWD02F3J2GV2ggQyIXiDr7DRPlOWSKVIihu8J1dtsYFqtMjmFqiYamfOmY4NHyn7xFaWAHBtFWgjQ==
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000934"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000934.tgz#4f2d749f51e9e2d4e9b182f8f121d26ec4208e8d"
-  integrity sha512-o7yfZn0R9N+mWAuksDsdLsb1gu9o//XK0QSU0zSSReKNRsXsFc/n/psxi0YSPNiqlKxImp5h4DHnAPdwYJ8nNA==
+  version "1.0.30000935"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000935.tgz#d1b59df00b46f4921bb84a8a34c1d172b346df59"
+  integrity sha512-1Y2uJ5y56qDt3jsDTdBHL1OqiImzjoQcBG6Yl3Qizq8mcc2SgCFpi+ZwLLqkztYnk9l87IYqRlNBnPSOTbFkXQ==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -3481,7 +3481,12 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"mime-db@>= 1.36.0 < 2", mime-db@~1.37.0:
+"mime-db@>= 1.36.0 < 2":
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.38.0.tgz#1a2aab16da9eb167b49c6e4df2d9c68d63d8e2ad"
+  integrity sha512-bqVioMFFzc2awcdJZIzR3HjZFX20QhilVS7hytkKrv7xFAn8bM1gzc/FOX2awLISvWe0PV8ptFKcon+wZ5qYkg==
+
+mime-db@~1.37.0:
   version "1.37.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.37.0.tgz#0b6a0ce6fdbe9576e25f1f2d2fde8830dc0ad0d8"
   integrity sha512-R3C4db6bgQhlIhPU48fUtdVmKnflq+hRdad7IyKhtFj06VPNVdk2RhiYL3UjQIlso8L+YxAtFkobT0VK+S/ybg==
@@ -3793,9 +3798,9 @@ normalize-url@^1.4.0:
     sort-keys "^1.0.0"
 
 npm-bundled@^1.0.1:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.5.tgz#3c1732b7ba936b3a10325aef616467c0ccbcc979"
-  integrity sha512-m/e6jgWu8/v5niCUKQi9qQl8QdeEduFA96xHDDzFGqly0OOjI7c+60KM/2sppfnUU9JJagf+zs+yGhqSOFj71g==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.6.tgz#e7ba9aadcef962bb61248f91721cd932b3fe6bdd"
+  integrity sha512-8/JCaftHwbd//k6y2rEWp6k1wxVfpFzB6t1p825+cUb7Ym2XQfhwIC5KwhrvzZRJu+LtDE585zVaS32+CGtf0g==
 
 npm-packlist@^1.1.6:
   version "1.2.0"
@@ -5756,9 +5761,9 @@ vue-style-loader@^4.0.1:
     loader-utils "^1.0.2"
 
 vue-template-compiler@^2.5:
-  version "2.5.22"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.5.22.tgz#c3d3c02c65f1908205c4fbd3b0ef579e51239955"
-  integrity sha512-1VTw/NPTUeHNiwhkq6NkFzO7gYLjFCueBN0FX8NEiQIemd5EUMQ5hxrF7O0zCPo5tae+U9S/scETPea+hIz8Eg==
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.2.tgz#6230abf7ca92d565b7471c0cc3f54d5b12aa48e7"
+  integrity sha512-2dBKNCtBPdx1TFef7T4zwF8IjOx2xbMNryCtFzneP+XIonJwOtnkq4s1mhKv8W79gXcGINQWtuaxituGAcuSnA==
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -5768,15 +5773,15 @@ vue-template-es2015-compiler@^1.6.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.8.2.tgz#dd73e80ba58bb65dd7a8aa2aeef6089cf6116f2a"
   integrity sha512-cliV19VHLJqFUYbz/XeWXe5CO6guzwd0yrrqqp0bmjlMP3ZZULY7fu8RTC4+3lmHwo6ESVDHFDsvjB15hcR5IA==
 
-vue@^2.5:
-  version "2.5.22"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.22.tgz#3bf88041af08b8539c37b268b70ca79245e9cc30"
-  integrity sha512-pxY3ZHlXNJMFQbkjEgGVMaMMkSV1ONpz+4qB55kZuJzyJOhn6MSy/YZdzhdnumegNzVTL/Dn3Pp4UrVBYt1j/g==
+vue@^2.6:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.2.tgz#1cc9c9c8f7ba8df45e9b97c284947de78b76301c"
+  integrity sha512-NZAb0H+t3/99g2nygURcEJ+ncvzNLPiEiFI5MGhc1Cjsw5uYprF+Ol7SOd1RXPcmVVzK7jUBl0th2tNgt+VQDg==
 
 vuetify@^1.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.4.4.tgz#0a08d98e685a875e3d7fd035235932d9abf3fd5b"
-  integrity sha512-i0fNciTrzP+U6NinB2kmNMC5vWXtrTy5QcVFLOxv4dhhqTiMTyHj7rV1B2lwBTZYoDhimmSAYRfqHeKdCMx+Gg==
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.4.6.tgz#908cbe4e39e842a23e26fe0d25f059dc39b7eef6"
+  integrity sha512-EALZORyKuxKRGhXdjDJVIRP2ulZzS8cqvhas/7wI0hpOeqONLoOLL6PTOYELf3ZFIc2xawSOLvz2HfBihuFHMQ==
 
 watchpack@^1.4.0:
   version "1.6.0"
