@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06a4914dc103bb194057a8a0d998cdf5",
+    "content-hash": "b5c45cbfe8444e2325c10ee491a1a740",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -834,16 +834,16 @@
         },
         {
             "name": "johngrogg/ics-parser",
-            "version": "v2.1.7",
+            "version": "v2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/u01jmg3/ics-parser.git",
-                "reference": "acb97de72e4b88000f05652279d8d82e5bac9ecc"
+                "reference": "21402b044b85ef5d7aa97f76bf61ff49677d5e55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/acb97de72e4b88000f05652279d8d82e5bac9ecc",
-                "reference": "acb97de72e4b88000f05652279d8d82e5bac9ecc",
+                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/21402b044b85ef5d7aa97f76bf61ff49677d5e55",
+                "reference": "21402b044b85ef5d7aa97f76bf61ff49677d5e55",
                 "shasum": ""
             },
             "require": {
@@ -885,7 +885,7 @@
                 "ics-parser",
                 "ifb"
             ],
-            "time": "2018-11-04T18:04:52+00:00"
+            "time": "2019-02-02T00:39:59+00:00"
         },
         {
             "name": "monolog/monolog",
