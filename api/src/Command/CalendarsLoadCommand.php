@@ -35,8 +35,9 @@ class CalendarsLoadCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        if (!$this->lock()) {
+        if (! $this->lock()) {
             $io->writeln('The command is already running in another process.');
+
             return 0;
         }
 
