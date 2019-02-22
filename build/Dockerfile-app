@@ -1,8 +1,0 @@
-FROM node:9
-
-# Configure yarn
-ENV YARN_CACHE='/var/cache/yarn'
-ENV PATH=/root/.yarn/bin:$PATH
-
-# Install yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash

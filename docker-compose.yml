@@ -14,12 +14,11 @@ services:
       - app-assets:${WORKDIR}/public/assets:delegated
     environment:
       - APP_ENV
+    tmpfs:
+      - ${WORKDIR}/var
 
   app:
-    build:
-      context: ./build
-      dockerfile: Dockerfile-app
-    image: stijink/homescreen-app
+    image: node:lts-alpine
     working_dir: ${WORKDIR}
     command: node_modules/webpack/bin/webpack.js --watch
     volumes:
