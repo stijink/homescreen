@@ -5,3 +5,8 @@
 .env
 build/logs/
 api/config/config.json
+
+app/assets/*.css
+app/assets/*.js
+app/assets/*.json
+

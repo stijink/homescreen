@@ -31,7 +31,7 @@ config:
 	-cp -n api/config/config.dist.json api/config/config.json
 
 build-app:
-	docker-compose run --rm app node_modules/webpack/bin/webpack.js -p
+	docker-compose run --rm app yarn encore production
 
 tail-logs:
 	docker-compose logs --follow
