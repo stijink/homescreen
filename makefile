@@ -13,8 +13,9 @@ docker-rebuild:
 start-dev: stop
 	docker-compose up -d
 
-start-prod: start-dev
+start-prod: stop
 	# We do not need a running instance of the app
+	APP_ENV=PROD docker-compose up -d
 	docker-compose stop app
 
 stop:
