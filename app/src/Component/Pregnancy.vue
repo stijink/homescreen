@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid class="pregnancy pa-0 text-xs-center">
+    <v-container v-if="data" fluid class="pregnancy pa-0 text-xs-center">
         <v-layout row>
 
             <v-flex xs4>

@@ -1,6 +1,6 @@
 <template>
 
-    <v-container v-if="items.length > 0" fluid grid-list-xs class="ma-0 pa-0 shopping-list">
+    <v-container v-if="items" fluid grid-list-xs class="ma-0 pa-0 shopping-list">
         <v-layout row wrap>
             <v-flex v-for="item  in items" :key="item.name" xs6>
                 <v-list-tile :key="item.name" class="shopping-item">

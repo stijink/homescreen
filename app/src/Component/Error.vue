@@ -21,8 +21,15 @@
         },
         mounted() {
             EventBus.$on('error', function (response) {
-                this.message  = response.message;
-                this.hasError = true;
+                if (response.message) {
+                    this.message  = response.message;
+                    this.hasError = true;
+                }
+                else {
+                    this.message  = 'Unbekannter Fehler im Backend';
+                    this.hasError = true;
+                }
+
                 setTimeout(this.resetError, this.timeout)
             }.bind(this));
         }
