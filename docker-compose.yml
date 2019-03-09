@@ -14,8 +14,6 @@ services:
       - app-assets:${WORKDIR}/public/assets:delegated
     environment:
       - APP_ENV
-    tmpfs:
-      - ${WORKDIR}/var
 
   app:
     image: node:lts-alpine
