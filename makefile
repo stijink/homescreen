@@ -15,7 +15,7 @@ start-dev: stop
 
 start-prod: stop
 	# We do not need a running instance of the app
-	APP_ENV=PROD docker-compose up -d
+	APP_ENV=prod docker-compose up -d
 	docker-compose stop app
 
 stop:
