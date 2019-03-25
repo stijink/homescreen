@@ -17,8 +17,6 @@
       <v-layout row justify-space-between>
 
         <v-flex xs8>
-
-          <pregnancy class="spacing-bottom"></pregnancy>
           <calendar class="spacing-bottom-2x"></calendar>
           <shopping-list class="spacing-bottom"></shopping-list>
           <presence></presence>
