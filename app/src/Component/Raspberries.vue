@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid class="pa-0">
+    <v-container fluid class="pa-0" v-if="raspberries">
 
         <v-layout row v-for="raspberry in raspberries" :key="raspberry.hostname" class="mb-5">
 
