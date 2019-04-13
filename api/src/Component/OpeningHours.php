@@ -7,8 +7,6 @@ use App\ApiException;
 
 class OpeningHours implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
 
     /**
@@ -20,7 +18,6 @@ class OpeningHours implements ComponentInterface
     }
 
     /**
-     * @throws ApiException
      * @return array
      */
     public function load(): array

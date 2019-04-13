@@ -2,32 +2,27 @@
 
 namespace App\Component;
 
+use App\ApiException;
 use App\Configuration;
 use GuzzleHttp\Client;
-use Psr\Log\LoggerInterface;
 
 class Petrol implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
-    private $logger;
     private $httpClient;
 
     /**
      * @param Configuration $configuration
-     * @param LoggerInterface $logger
      * @param Client $httpClient
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
+    public function __construct(Configuration $configuration, Client $httpClient)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->httpClient = $httpClient;
     }
 
     /**
-     * @throws \App\ApiException
+     * @throws ApiException
      * @return array
      */
     public function load(): array
@@ -58,7 +53,7 @@ class Petrol implements ComponentInterface
                 'products' => $products,
             ];
         } catch (\Exception $e) {
-            $this->handleException($e, 'Spritpreise konnten nicht bezogen werden');
+            throw new ApiException('Spritpreise konnten nicht bezogen werden');
         }
     }
 }

@@ -11,10 +11,7 @@ use Psr\Log\LoggerInterface;
 
 class Presence implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
-    private $logger;
     private $httpClient;
 
     // Used in "isPersonPresent"
@@ -30,13 +27,11 @@ class Presence implements ComponentInterface
 
     /**
      * @param $configuration
-     * @param $logger
      * @param $httpClient
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
+    public function __construct(Configuration $configuration, Client $httpClient)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->httpClient = $httpClient;
     }
 
@@ -62,7 +57,7 @@ class Presence implements ComponentInterface
 
             return $presentPersons;
         } catch (\Exception $e) {
-            $this->handleException($e, 'Anwesende/Abwesende Personen konnten nicht bestimmt werden');
+            throw new ApiException('Anwesende/Abwesende Personen konnten nicht bestimmt werden');
         }
     }
 

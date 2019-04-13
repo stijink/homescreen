@@ -5,25 +5,19 @@ namespace App\Component;
 use App\Configuration;
 use App\ApiException;
 use GuzzleHttp\Client;
-use Psr\Log\LoggerInterface;
 
 class Raspberries implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
-    private $logger;
     private $httpClient;
 
     /**
      * @param $configuration
-     * @param $logger
      * @param $httpClient
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
+    public function __construct(Configuration $configuration, Client $httpClient)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->httpClient = $httpClient;
     }
 
@@ -42,7 +36,7 @@ class Raspberries implements ComponentInterface
 
             return $raspberries;
         } catch (\Exception $e) {
-            $this->handleException($e, 'Der Status der Raspberries konnte nicht bestimmt werden');
+            throw new ApiException('Der Status der Raspberries konnte nicht bestimmt werden');
         }
     }
 

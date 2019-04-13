@@ -6,25 +6,19 @@ use App\Configuration;
 use App\ApiException;
 use GuzzleHttp\Client;
 use function GuzzleHttp\json_decode;
-use Psr\Log\LoggerInterface;
 
 class Weather implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
-    private $logger;
     private $httpClient;
 
     /**
      * @param Configuration $configuration
-     * @param LoggerInterface $logger
      * @param Client $httpClient
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
+    public function __construct(Configuration $configuration, Client $httpClient)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->httpClient = $httpClient;
     }
 
@@ -60,7 +54,7 @@ class Weather implements ComponentInterface
                 'icon_code'   => $weather['weather'][0]['id'],
             ];
         } catch (\Exception $e) {
-            $this->handleException($e, 'Wetterinformationen konnten nicht bestimmt werden');
+            throw new ApiException('Wetterinformationen konnten nicht bestimmt werden');
         }
     }
 }

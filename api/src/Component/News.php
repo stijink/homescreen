@@ -4,26 +4,20 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use Psr\Log\LoggerInterface;
 use Zend\Feed\Reader\Reader;
 
 class News implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
-    private $logger;
     private $feedReader;
 
     /**
      * @param Configuration $configuration
-     * @param LoggerInterface $logger
      * @param Reader $feedReader
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, Reader $feedReader)
+    public function __construct(Configuration $configuration, Reader $feedReader)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->feedReader = $feedReader;
     }
 
@@ -44,7 +38,7 @@ class News implements ComponentInterface
 
             return $news;
         } catch (\Exception $e) {
-            $this->handleException($e, 'Nachrichten konnten nicht bezogen werden');
+            throw new ApiException('Nachrichten konnten nicht bezogen werden');
         }
     }
 

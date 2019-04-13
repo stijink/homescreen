@@ -5,25 +5,19 @@ namespace App\Component;
 use App\Configuration;
 use App\ApiException;
 use GuzzleHttp\Client;
-use Psr\Log\LoggerInterface;
 
 class Traffic implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
-    private $logger;
     private $httpClient;
 
     /**
      * @param Configuration $configuration
-     * @param LoggerInterface $logger
      * @param Client $httpClient
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, Client $httpClient)
+    public function __construct(Configuration $configuration, Client $httpClient)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->httpClient = $httpClient;
     }
 
@@ -42,7 +36,7 @@ class Traffic implements ComponentInterface
 
             return $traffic;
         } catch (\Exception $e) {
-            $this->handleException($e, 'Verkehrsinformationen konnten nicht bestimmt werden');
+            throw new ApiException('Verkehrsinformationen konnten nicht bestimmt werden');
         }
     }
 

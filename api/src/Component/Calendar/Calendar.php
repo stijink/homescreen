@@ -3,29 +3,23 @@
 namespace App\Component\Calendar;
 
 use App\Component\ComponentInterface;
-use App\Component\ComponentTrait;
 use App\Configuration;
 use App\ApiException;
 use ICal\ICal;
-use Psr\Log\LoggerInterface;
 
 class Calendar implements ComponentInterface
 {
-    use ComponentTrait;
-
     private $configuration;
     private $logger;
     private $calendarLoader;
 
     /**
      * @param Configuration $configuration
-     * @param LoggerInterface $logger
      * @param CalendarLoader $calendarLoader
      */
-    public function __construct(Configuration $configuration, LoggerInterface $logger, CalendarLoader $calendarLoader)
+    public function __construct(Configuration $configuration,CalendarLoader $calendarLoader)
     {
         $this->configuration = $configuration;
-        $this->logger = $logger;
         $this->calendarLoader = $calendarLoader;
     }
 
@@ -50,7 +44,7 @@ class Calendar implements ComponentInterface
 
             return $events;
         } catch (\Exception $e) {
-            $this->handleException($e, 'Kalender-Einträge konnten nicht bezogen werden');
+            throw new ApiException('Kalender-Einträge konnten nicht bezogen werden');
         }
     }
 
