@@ -124,33 +124,17 @@ class Calendar implements ComponentInterface
     private function getEventParticipants(array $calendar): array
     {
         $participants = [];
+        $persons = [];
 
         foreach ($this->configuration['persons'] as $person) {
-            // If a spcific person is bound to a calendar we add the person
-            if (array_key_exists('person', $calendar) && $person['name'] == $calendar['person']) {
-                $participants[] = $person;
-                break;
-            }
+            $persons[$person['name']] = $person;
         }
 
-        if (count($participants) === 0) {
-            $participants = $this->filterResidentPersons($this->configuration['persons']);
+        foreach ($calendar['persons'] as $participant) {
+                $participants[] = $persons[$participant];
         }
 
         return $participants;
-    }
-
-    /**
-     * Filter only that persons that are of type "resident"
-     *
-     * @param   array $persons
-     * @return  array
-     */
-    private function filterResidentPersons(array $persons): array
-    {
-        return array_filter($persons, function ($person) {
-            return $person['type'] == 'resident';
-        });
     }
 
     /**
