@@ -7,8 +7,14 @@ let ApiRequest = {
             EventBus.$emit('start-loading');
 
             axios.get(url).then(response => {
-                EventBus.$emit('stop-loading', { success: true });
-                callback(response.data);
+                if (response.headers['content-type'] === 'application/json') {
+                    EventBus.$emit('stop-loading', { success: true });
+                    callback(response.data);
+                }
+                else {
+                    EventBus.$emit('error', '');
+                    EventBus.$emit('stop-loading', { success: false });
+                }
             })
             .catch (error => {
                 EventBus.$emit('error', error.response.data);
