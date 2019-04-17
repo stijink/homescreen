@@ -17,7 +17,7 @@ class Calendar implements ComponentInterface
      * @param Configuration $configuration
      * @param CalendarLoader $calendarLoader
      */
-    public function __construct(Configuration $configuration,CalendarLoader $calendarLoader)
+    public function __construct(Configuration $configuration, CalendarLoader $calendarLoader)
     {
         $this->configuration = $configuration;
         $this->calendarLoader = $calendarLoader;
@@ -131,7 +131,7 @@ class Calendar implements ComponentInterface
         }
 
         foreach ($calendar['persons'] as $participant) {
-                $participants[] = $persons[$participant];
+            $participants[] = $persons[$participant];
         }
 
         return $participants;

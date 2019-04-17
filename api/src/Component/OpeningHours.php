@@ -3,7 +3,6 @@
 namespace App\Component;
 
 use App\Configuration;
-use App\ApiException;
 
 class OpeningHours implements ComponentInterface
 {

@@ -7,7 +7,6 @@ use App\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
-use Psr\Log\LoggerInterface;
 
 class Presence implements ComponentInterface
 {
