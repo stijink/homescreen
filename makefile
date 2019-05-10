@@ -3,12 +3,10 @@ build-dev: stop config docker-build install-dev start-dev
 build-prod: stop config docker-build install-prod build-app start-prod calendars
 
 docker-build:
-	docker-compose build
+	docker-compose build --pull
 
 docker-rebuild:
-	docker pull php:7.3-apache
-	docker pull node:9
-	docker-compose build --nocache
+	docker-compose build --pull --nocache
 
 start-dev: stop
 	docker-compose up -d
