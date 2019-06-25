@@ -4,7 +4,8 @@ namespace App\Component\Calendar;
 
 use App\Configuration;
 use Psr\Log\LoggerInterface;
-use Psr\SimpleCache\CacheInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
 
 class CalendarLoader
 {
@@ -34,76 +35,48 @@ class CalendarLoader
     /**
      * Download and cache the contents of all calendars
      */
-    public function load()
+    public function populateCache()
     {
         foreach ($this->calendarConfig['calendars'] as $calendar) {
-            $content = $this->download($calendar);
-            $content = $this->calendarShrink->shrink($content, $this->calendarConfig['max_days']);
-            $this->set($calendar, $content);
+            $this->get($calendar);
         }
     }
 
     /**
      * Clear the cache
      */
-    public function clearCaches()
+    public function clearCache()
     {
-        $this->cache->clear();
+        foreach ($this->calendarConfig['calendars'] as $calendar) {
+            $cacheName = 'calendar_' . $calendar['name'];
+            $this->cache->delete($cacheName);
+        }
     }
 
     /**
-     * Get the contents of one calendar from the cache
+     * Get the contents of one calendar
      *
-     * @param   array $calendar
+     * @param array $calendar
      * @return  string|null
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function get(array $calendar): ?string
     {
         $cacheName = 'calendar_' . $calendar['name'];
 
-        if (! $this->cache->has($cacheName)) {
-            $content = $this->load($calendar);
-            $this->set($calendar, $content);
-        }
+        $content = $this->cache->get($cacheName, function (ItemInterface $item) use ($calendar) {
+            $content = file_get_contents($calendar['url']);
+            $content = $this->calendarShrink->shrink($content, $this->calendarConfig['max_days']);
 
-        $content = $this->cache->get($cacheName);
+            $this->logger->debug(sprintf(
+                'Calendar Cache SET: %s (%d kBytes)',
+                $calendar['name'],
+                (strlen($content) / 1024)
+            ));
 
-        $this->logger->debug(sprintf(
-            'Calendar Cache GET: %s (%d kBytes)',
-            $calendar['name'],
-            (strlen($content) / 1024)
-        ));
+            return $content;
+        });
 
-        return $this->cache->get($cacheName);
-    }
-
-    /**
-     * Populate one calendar to the cache
-     *
-     * @param array $calendar
-     * @param string $content
-     */
-    public function set(array $calendar, string $content)
-    {
-        $cacheName = 'calendar_' . $calendar['name'];
-
-        $this->logger->debug(sprintf(
-            'Calendar Cache SET: %s (%d kBytes)',
-            $calendar['name'],
-            (strlen($content) / 1024)
-        ));
-
-        $this->cache->set($cacheName, $content);
-    }
-
-    /**
-     * Download the content of one calendar
-     *
-     * @param   array $calendar
-     * @return  string|null
-     */
-    public function download(array $calendar): ?string
-    {
-        return file_get_contents($calendar['url']);
+        return $content;
     }
 }

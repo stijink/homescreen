@@ -41,8 +41,8 @@ class CalendarsLoadCommand extends Command
             return 0;
         }
 
-        $this->calendarLoader->clearCaches();
-        $this->calendarLoader->load();
+        $this->calendarLoader->clearCache();
+        $this->calendarLoader->populateCache();
 
         $io->success('Successfully loaded the calendars contents');
         $this->release();

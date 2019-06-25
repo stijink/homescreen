@@ -27,9 +27,3 @@ services:
     # Third party services we want to use with autowiring
     GuzzleHttp\Client: ~
     Zend\Feed\Reader\Reader: ~
-
-    # Cache (Using PSR-16 SimpleCache)
-    Symfony\Component\Cache\Simple\FilesystemCache:
-      arguments: ['homescreen', 0, '%kernel.project_dir%/var/cache']
-
-    Psr\SimpleCache\CacheInterface: '@Symfony\Component\Cache\Simple\FilesystemCache'

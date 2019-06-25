@@ -1,8 +1,8 @@
 <template>
-    <table id="calendar">
-        <tr v-for="event in events">
+    <table id="calendar" v-if="events.length > 0">
+        <tr v-for="event in events" :key="event">
             <td valign="middle">
-                <img v-for="person in event.persons" v-bind:src="person['image_url']" width="20" height="20"/>
+                <img v-for="person in event.persons" :key="person" :src="person['image_url']" width="20" height="20"/>
             </td>
             <td>{{ event.description }}</td>
             <td class="pull-right">{{ event.time }}</td>
