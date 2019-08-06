@@ -19,23 +19,23 @@
                 </div>
 
                 <!-- Memory -->
-                <div class="mb-1">
+                <div class="mb-3">
                     <v-icon dark class="icon mr-1">memory</v-icon>
                     {{ raspberry.memory.percent.toFixed(2) }}% RAM
                     &#8211; {{ raspberry.uptime }} Tage Uptime
                     &#8211; {{ raspberry.temperature }} &deg;C
                 </div>
 
-                <!-- Disk -->
-                <div class="mt-3" v-if="raspberry.disk">
+                <!-- Disks -->
+                <div class="mt-1" v-for="disk in raspberry.disks" :key="disk">
                     <div>
                         <v-icon dark class="icon mr-1">storage</v-icon>
-                        {{ raspberry.disk.label }}
-                        &#8211; {{ raspberry.disk.free }} GB / {{ raspberry.disk.size }} GB verfügbar
+                        {{ disk.label }}
+                        &#8211; {{ disk.free }} GB / {{ disk.size }} GB verfügbar
                     </div>
 
                     <div class="disk-total">
-                        <div class="disk-used" v-bind:style="{ width: raspberry.disk.percent + '%' }"></div>
+                        <div class="disk-used" v-bind:style="{ width: disk.percent + '%' }"></div>
                     </div>
 
                 </div>

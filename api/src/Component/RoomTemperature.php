@@ -3,7 +3,7 @@
 namespace App\Component;
 
 use App\Configuration;
-use GuzzleHttp\Client;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class RoomTemperature implements ComponentInterface
 {
@@ -12,9 +12,9 @@ class RoomTemperature implements ComponentInterface
 
     /**
      * @param Configuration $configuration
-     * @param Client $httpClient
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Configuration $configuration, Client $httpClient)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
     {
         $this->configuration = $configuration;
         $this->httpClient = $httpClient;
@@ -22,8 +22,8 @@ class RoomTemperature implements ComponentInterface
 
     public function load(): array
     {
-        $response = $this->httpClient->get($this->configuration['room_temperature']['api_url']);
-        $temperature = (string) $response->getBody();
+        $response = $this->httpClient->request('GET', $this->configuration['room_temperature']['api_url']);
+        $temperature = $response->getContent();
 
         return [
             'temperature' => floatval($temperature),

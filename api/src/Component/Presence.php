@@ -4,9 +4,7 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Psr7\Request;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Presence implements ComponentInterface
 {
@@ -25,10 +23,10 @@ class Presence implements ComponentInterface
             </s:Envelope>';
 
     /**
-     * @param $configuration
-     * @param $httpClient
+     * @param Configuration $configuration
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Configuration $configuration, Client $httpClient)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
     {
         $this->configuration = $configuration;
         $this->httpClient = $httpClient;

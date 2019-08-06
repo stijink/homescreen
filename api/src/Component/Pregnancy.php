@@ -3,19 +3,16 @@
 namespace App\Component;
 
 use App\Configuration;
-use GuzzleHttp\Client;
 
 class Pregnancy implements ComponentInterface
 {
     private $configuration;
 
     /**
-     * @param Client $client
      * @param Configuration $configuration
      */
-    public function __construct(Client $client, Configuration $configuration)
+    public function __construct(Configuration $configuration)
     {
-        $this->client = $client;
         $this->configuration = $configuration;
     }
 

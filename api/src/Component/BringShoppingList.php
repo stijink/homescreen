@@ -3,21 +3,21 @@
 namespace App\Component;
 
 use App\Configuration;
-use GuzzleHttp\Client;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class BringShoppingList implements ComponentInterface
 {
-    private $client;
+    private $httpClient;
     private $configuration;
     private $userDefinedItems;
 
     /**
-     * @param Client $client
+     * @param HttpClientInterface $client
      * @param Configuration $configuration
      */
-    public function __construct(Client $client, Configuration $configuration)
+    public function __construct(HttpClientInterface $client, Configuration $configuration)
     {
-        $this->client = $client;
+        $this->httpClient = $client;
         $this->configuration = $configuration;
     }
 
@@ -34,19 +34,19 @@ class BringShoppingList implements ComponentInterface
      */
     private function authenticate(): array
     {
-        $response = $this->client->post('https://api.getbring.com/rest/v2/bringauth', [
-            'form_params' => [
+        $response = $this->httpClient->request('POST', 'https://api.getbring.com/rest/v2/bringauth', [
+            'body' => [
                 'email'     => $this->configuration['shopping_list']['email'],
                 'password'  => $this->configuration['shopping_list']['password'],
             ],
         ]);
 
-        return json_decode((string) $response->getBody(), true);
+        return json_decode($response->getContent(), true);
     }
 
     private function loadUserDefinedItems(array $user)
     {
-        $response = $this->client->get('https://api.getbring.com/rest/v2/bringlists/' . $user['bringListUUID'] . '/details', [
+        $response = $this->httpClient->request('GET', 'https://api.getbring.com/rest/v2/bringlists/' .$user['bringListUUID'] . '/details', [
             'headers' => [
                 'Authorization'              => 'Bearer ' . $user['access_token'],
                 'X-BRING-API-KEY'            => 'cof4Nc6D8saplXjE3h3HXqHH8m7VU2i1Gs0g85Sp',
@@ -58,7 +58,7 @@ class BringShoppingList implements ComponentInterface
             ],
         ]);
 
-        $this->userDefinedItems = json_decode((string) $response->getBody(), true);
+        $this->userDefinedItems = json_decode($response->getContent(), true);
     }
 
     /**
@@ -69,7 +69,8 @@ class BringShoppingList implements ComponentInterface
     {
         // https://web.getbring.com/assets/images/items/hundesnack.png
 
-        $response = $this->client->get(
+        $response = $this->httpClient->request(
+            'GET',
             'https://api.getbring.com/rest/v2/bringlists/' . $user['bringListUUID'],
             [
                 'headers' => [
@@ -84,7 +85,7 @@ class BringShoppingList implements ComponentInterface
             ]
         );
 
-        $items = json_decode((string) $response->getBody(), true);
+        $items = json_decode($response->getContent(), true);
         $purchases = $items['purchase'];
 
         for ($i = 0; $i < count($purchases); $i++) {

@@ -4,7 +4,7 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use GuzzleHttp\Client;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Traffic implements ComponentInterface
 {
@@ -13,9 +13,9 @@ class Traffic implements ComponentInterface
 
     /**
      * @param Configuration $configuration
-     * @param Client $httpClient
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Configuration $configuration, Client $httpClient)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
     {
         $this->configuration = $configuration;
         $this->httpClient = $httpClient;
@@ -42,7 +42,7 @@ class Traffic implements ComponentInterface
 
     private function loadRoute(string $origin, string $destination)
     {
-        $response = $this->httpClient->get($this->configuration['traffic']['api_url'], [
+        $response = $this->httpClient->request('GET', $this->configuration['traffic']['api_url'], [
             'query' => [
                 'key'            => $this->configuration['traffic']['api_key'],
                 'language'       => $this->configuration['locale'],
@@ -53,7 +53,7 @@ class Traffic implements ComponentInterface
             ],
         ]);
 
-        $traffic = json_decode((string) $response->getBody(), true);
+        $traffic = json_decode($response->getContent(), true);
 
         return [
             'origin'      => $origin,

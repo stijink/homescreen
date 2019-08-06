@@ -50,15 +50,6 @@
             "ref": "81dee417d2cc60cd1c9d6208dff2ec22a1103e93"
         }
     },
-    "guzzlehttp/guzzle": {
-        "version": "6.3.0"
-    },
-    "guzzlehttp/promises": {
-        "version": "v1.3.1"
-    },
-    "guzzlehttp/psr7": {
-        "version": "1.4.2"
-    },
     "jean85/pretty-package-versions": {
         "version": "1.2"
     },
@@ -167,14 +158,8 @@
     "psr/container": {
         "version": "1.0.0"
     },
-    "psr/http-message": {
-        "version": "1.0.1"
-    },
     "psr/log": {
         "version": "1.0.2"
-    },
-    "ralouphie/getallheaders": {
-        "version": "2.0.5"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
@@ -280,6 +265,12 @@
             "version": "3.3",
             "ref": "18f6fdceb63737d991efbb37ae9619a6f6c978c8"
         }
+    },
+    "symfony/http-client": {
+        "version": "v4.3.2"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.5"
     },
     "symfony/http-foundation": {
         "version": "v4.0.2"

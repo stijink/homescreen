@@ -4,7 +4,7 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use GuzzleHttp\Client;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class WeatherForcast implements ComponentInterface
 {
@@ -13,9 +13,9 @@ class WeatherForcast implements ComponentInterface
 
     /**
      * @param Configuration $configuration
-     * @param Client $httpClient
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Configuration $configuration, Client $httpClient)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
     {
         $this->configuration = $configuration;
         $this->httpClient = $httpClient;
@@ -55,7 +55,7 @@ class WeatherForcast implements ComponentInterface
      */
     private function loadWeatherForcast(): array
     {
-        $response = $this->httpClient->get($this->configuration['weather_forcast']['api_url'], [
+        $response = $this->httpClient->request('GET', $this->configuration['weather_forcast']['api_url'], [
             'query' => [
                 'q'     => $this->configuration['weather_forcast']['city'],
                 'APPID' => $this->configuration['weather_forcast']['api_key'],
@@ -65,6 +65,6 @@ class WeatherForcast implements ComponentInterface
             ],
         ]);
 
-        return json_decode((string) $response->getBody(), true);
+        return json_decode($response->getContent(), true);
     }
 }

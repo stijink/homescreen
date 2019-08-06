@@ -4,7 +4,7 @@ namespace App\Component;
 
 use App\ApiException;
 use App\Configuration;
-use GuzzleHttp\Client;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Petrol implements ComponentInterface
 {
@@ -13,9 +13,9 @@ class Petrol implements ComponentInterface
 
     /**
      * @param Configuration $configuration
-     * @param Client $httpClient
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Configuration $configuration, Client $httpClient)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
     {
         $this->configuration = $configuration;
         $this->httpClient = $httpClient;
@@ -30,12 +30,11 @@ class Petrol implements ComponentInterface
         try {
             $products = [];
 
-            $response = $this->httpClient->get(
-                $this->configuration['petrol']['api_url'],
-                ['query' => ['stationId' => $this->configuration['petrol']['station_id']]]
-            );
+            $response = $this->httpClient->request('GET', $this->configuration['petrol']['api_url'], [
+                'query' => ['stationId' => $this->configuration['petrol']['station_id']]
+            ]);
 
-            $petrol = json_decode((string) $response->getBody(), true);
+            $petrol = json_decode($response->getContent(), true);
 
             foreach ($petrol['response']['prices'] as $product) {
                 if (! in_array($product['name'], $this->configuration['petrol']['prefered_petrol'])) {

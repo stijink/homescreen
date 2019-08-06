@@ -3,10 +3,12 @@
 namespace App;
 
 use Psr\Log\LoggerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
-class ExceptionListener
+class ExceptionSubscriber implements EventSubscriberInterface
 {
     private $logger;
 
@@ -18,14 +20,24 @@ class ExceptionListener
         $this->logger = $logger;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            ExceptionEvent::class => 'onException',
+        ];
+    }
+
     /**
      * Handle exceptions
      *
      * @param GetResponseForExceptionEvent $event
      */
-    public function onKernelException(GetResponseForExceptionEvent $event)
+    public function onException(ExceptionEvent $event)
     {
         $exception = $event->getException();
+
+        dump($exception);
+
         $publicMessage = 'Ein unbekannter Fehler ist aufgetreten';
 
         if ($exception instanceof ApiException) {

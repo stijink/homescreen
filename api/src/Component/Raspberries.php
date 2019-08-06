@@ -4,7 +4,7 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use GuzzleHttp\Client;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Raspberries implements ComponentInterface
 {
@@ -12,10 +12,10 @@ class Raspberries implements ComponentInterface
     private $httpClient;
 
     /**
-     * @param $configuration
-     * @param $httpClient
+     * @param Configuration $configuration
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Configuration $configuration, Client $httpClient)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
     {
         $this->configuration = $configuration;
         $this->httpClient = $httpClient;
@@ -47,22 +47,23 @@ class Raspberries implements ComponentInterface
     private function handleDevice(array $device)
     {
         try {
-            $response = $this->httpClient->get($device['url']);
-            $raspberry = json_decode((string) $response->getBody(), true);
+            $response = $this->httpClient->request('GET', $device['url']);
+            $raspberry = json_decode($response->getContent(), true);
 
             $raspberry['is_online'] = true;
 
-            if ($device['volumes'] !== null) {
-                $raspberry['disk'] = $raspberry['disks'][$device['volumes']['device']];
-
-                $raspberry['disk']['label'] = $device['volumes']['label'];
-                $raspberry['disk']['free'] = $this->convertDiskSize($raspberry['disk']['free']);
-                $raspberry['disk']['size'] = $this->convertDiskSize($raspberry['disk']['size']);
-                $raspberry['disk']['used'] = $this->convertDiskSize($raspberry['disk']['used']);
-                $raspberry['disk']['percent'] = floatval(number_format($raspberry['disk']['percent'] * 100, 0));
+            foreach ($raspberry['disks'] as $diskName => $disk) {
+                if (! in_array($diskName, $device['volumes'])) {
+                    unset($raspberry['disks'][$diskName]);
+                }
+                else {
+                    $raspberry['disks'][$diskName]['label'] = $diskName;
+                    $raspberry['disks'][$diskName]['free'] = $this->convertDiskSize($raspberry['disks'][$diskName]['free']);
+                    $raspberry['disks'][$diskName]['size'] = $this->convertDiskSize($raspberry['disks'][$diskName]['size']);
+                    $raspberry['disks'][$diskName]['used'] = $this->convertDiskSize($raspberry['disks'][$diskName]['used']);
+                    $raspberry['disks'][$diskName]['percent'] = floatval(number_format($raspberry['disks'][$diskName]['percent'] * 100, 0));
+                }
             }
-
-            unset($raspberry['disks']);
 
             $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
 
@@ -87,5 +88,10 @@ class Raspberries implements ComponentInterface
         $sizeInGigaBytes = number_format($sizeInGigaBytes, 0, '.', '');
 
         return floatval($sizeInGigaBytes);
+    }
+
+    private function mapVolumeLabel(string $diskName): string
+    {
+
     }
 }
