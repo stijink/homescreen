@@ -149,11 +149,13 @@ class Presence implements ComponentInterface
                 'SoapAction'   => 'urn:dslforum-org:service:Hosts:1#GetSpecificHostEntry',
             ];
 
-            $request = new Request('POST', $this->configuration['presence']['api_url'], $headers, $body);
-            $response = $this->httpClient->send($request);
+            $response = $this->httpClient->request('POST', $this->configuration['presence']['api_url'], [
+                'headers' => $headers,
+                'body'    => $body,
+            ]);
 
             if ($response->getStatusCode() == 500) {
-                throw new ServerException('error', $request, $response);
+                throw new \Exception('error');
             }
 
             preg_match(
@@ -163,7 +165,7 @@ class Presence implements ComponentInterface
             );
 
             return boolval($matches[1]);
-        } catch (ServerException $e) {
+        } catch (\Exception $e) {
             return false;
         }
     }
