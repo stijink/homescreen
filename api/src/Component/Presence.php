@@ -160,7 +160,7 @@ class Presence implements ComponentInterface
 
             preg_match(
                 '/<NewActive>([0|1])<\/NewActive>/',
-                (string) $response->getBody(),
+                $response->getContent(),
                 $matches
             );
 
