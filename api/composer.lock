@@ -514,16 +514,16 @@
         },
         {
             "name": "johngrogg/ics-parser",
-            "version": "v2.1.14",
+            "version": "v2.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/u01jmg3/ics-parser.git",
-                "reference": "183c649b0a47e4342bb51a7618440139951d5867"
+                "reference": "7c6b7056b2ebc4023666c13c60fa1af4f744afe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/183c649b0a47e4342bb51a7618440139951d5867",
-                "reference": "183c649b0a47e4342bb51a7618440139951d5867",
+                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/7c6b7056b2ebc4023666c13c60fa1af4f744afe2",
+                "reference": "7c6b7056b2ebc4023666c13c60fa1af4f744afe2",
                 "shasum": ""
             },
             "require": {
@@ -552,8 +552,8 @@
                 },
                 {
                     "name": "John Grogg",
-                    "role": "Developer/Prior Owner",
-                    "email": "john.grogg@gmail.com"
+                    "email": "john.grogg@gmail.com",
+                    "role": "Developer/Prior Owner"
                 }
             ],
             "description": "ICS Parser",
@@ -566,7 +566,7 @@
                 "ics-parser",
                 "ifb"
             ],
-            "time": "2019-08-15T16:42:42+00:00"
+            "time": "2019-09-10T09:48:10+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3120,13 +3120,13 @@
             "authors": [
                 {
                     "name": "Benjamin Eberlei",
-                    "role": "Lead Developer",
-                    "email": "kontakt@beberlei.de"
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Richard Quadling",
-                    "role": "Collaborator",
-                    "email": "rquadling@gmail.com"
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
                 }
             ],
             "description": "Thin assertion library for input validation in business models.",
@@ -4264,18 +4264,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -4809,8 +4809,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -5082,8 +5082,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
