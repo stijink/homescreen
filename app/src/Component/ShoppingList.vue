@@ -4,7 +4,7 @@
         <v-layout row wrap>
             <v-flex v-for="item  in items" :key="item.name" xs6>
                 <v-list-tile :key="item.name" class="shopping-item">
-                    <v-list-tile-avatar size="30" tile="true">
+                    <v-list-tile-avatar size="30" :tile="true">
                         <img :src="item.icon" :onerror="alternativeIcon(item)">
                     </v-list-tile-avatar>
 
