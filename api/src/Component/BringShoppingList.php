@@ -38,8 +38,7 @@ class BringShoppingList implements ComponentInterface
             'body' => [
                 'email'     => $this->configuration['shopping_list']['email'],
                 'password'  => $this->configuration['shopping_list']['password'],
-            ],
-            ['timeout' => 1]
+            ]
         ]);
 
         return json_decode($response->getContent(), true);
