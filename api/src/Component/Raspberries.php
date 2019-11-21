@@ -84,14 +84,9 @@ class Raspberries implements ComponentInterface
      */
     private function convertDiskSize(string $sizeInBytes): float
     {
-        $sizeInGigaBytes = $sizeInBytes / (1024 * 1014);
+        $sizeInGigaBytes = intval($sizeInBytes) / (1024 * 1014);
         $sizeInGigaBytes = number_format($sizeInGigaBytes, 0, '.', '');
 
         return floatval($sizeInGigaBytes);
-    }
-
-    private function mapVolumeLabel(string $diskName): string
-    {
-
     }
 }

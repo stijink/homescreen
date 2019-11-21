@@ -30,14 +30,11 @@ class ExceptionSubscriber implements EventSubscriberInterface
     /**
      * Handle exceptions
      *
-     * @param GetResponseForExceptionEvent $event
+     * @param ExceptionEvent $event
      */
-    public function onException(ExceptionEvent $event)
+    public function onException(ExceptionEvent $event): void
     {
         $exception = $event->getException();
-
-        dump($exception);
-
         $publicMessage = 'Ein unbekannter Fehler ist aufgetreten';
 
         if ($exception instanceof ApiException) {

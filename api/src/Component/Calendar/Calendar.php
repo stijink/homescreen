@@ -10,7 +10,6 @@ use ICal\ICal;
 class Calendar implements ComponentInterface
 {
     private $configuration;
-    private $logger;
     private $calendarLoader;
 
     /**

@@ -31,7 +31,7 @@ class CalendarsLoadCommand extends Command
             ->setDescription('Preload and cache the calendars contents');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
@@ -46,5 +46,7 @@ class CalendarsLoadCommand extends Command
 
         $io->success('Successfully loaded the calendars contents');
         $this->release();
+
+        return 0;
     }
 }

@@ -56,11 +56,5 @@ require-dev:
 calendars:
 	docker-compose exec api bin/console calendars:load --env=prod
 
-php-cs-fixer:
-	docker-compose run --rm api vendor/bin/php-cs-fixer fix --verbose
-
-php-stan:
-	docker-compose run api vendor/bin/phpstan analyse src/ --level 7
-
 test:
 	docker-compose run --rm -e APP_ENV=test api vendor/bin/phpunit --debug

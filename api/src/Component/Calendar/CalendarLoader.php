@@ -58,13 +58,12 @@ class CalendarLoader
      *
      * @param array $calendar
      * @return  string|null
-     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function get(array $calendar): ?string
     {
         $cacheName = 'calendar_' . $calendar['name'];
 
-        $content = $this->cache->get($cacheName, function (ItemInterface $item) use ($calendar) {
+        $content = $this->cache->get($cacheName, function (ItemInterface $item) use ($calendar): string {
             $content = file_get_contents($calendar['url']);
             $content = $this->calendarShrink->shrink($content, $this->calendarConfig['max_days']);
 

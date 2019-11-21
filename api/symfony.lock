@@ -1,13 +1,4 @@
 {
-    "beberlei/assert": {
-        "version": "v2.9.6"
-    },
-    "composer/semver": {
-        "version": "1.4.2"
-    },
-    "composer/xdebug-handler": {
-        "version": "1.3.1"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -17,15 +8,6 @@
             "ref": "cb4152ebcadbe620ea2261da1a1c5a9b8cea7672"
         }
     },
-    "doctrine/cache": {
-        "version": "v1.7.1"
-    },
-    "doctrine/collections": {
-        "version": "v1.5.0"
-    },
-    "doctrine/event-manager": {
-        "version": "v1.0.0"
-    },
     "doctrine/inflector": {
         "version": "v1.2.0"
     },
@@ -34,24 +16,6 @@
     },
     "doctrine/lexer": {
         "version": "v1.0.1"
-    },
-    "doctrine/persistence": {
-        "version": "v1.0.0"
-    },
-    "doctrine/reflection": {
-        "version": "v1.0.0"
-    },
-    "friendsofphp/php-cs-fixer": {
-        "version": "2.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.2",
-            "ref": "81dee417d2cc60cd1c9d6208dff2ec22a1103e93"
-        }
-    },
-    "jean85/pretty-package-versions": {
-        "version": "1.2"
     },
     "johngrogg/ics-parser": {
         "version": "v2.1.2"
@@ -65,50 +29,14 @@
     "nesbot/carbon": {
         "version": "1.22.1"
     },
-    "nette/bootstrap": {
-        "version": "v2.4.6"
-    },
-    "nette/di": {
-        "version": "v2.4.14"
-    },
-    "nette/finder": {
-        "version": "v2.4.2"
-    },
-    "nette/neon": {
-        "version": "v2.4.3"
-    },
-    "nette/php-generator": {
-        "version": "v3.0.5"
-    },
-    "nette/robot-loader": {
-        "version": "v3.1.0"
-    },
-    "nette/schema": {
-        "version": "v1.0.0"
-    },
-    "nette/utils": {
-        "version": "v2.5.3"
-    },
     "nikic/php-parser": {
         "version": "v4.0.0"
-    },
-    "ocramius/package-versions": {
-        "version": "1.3.0"
     },
     "phar-io/manifest": {
         "version": "1.0.1"
     },
     "phar-io/version": {
         "version": "1.0.1"
-    },
-    "php-cs-fixer/diff": {
-        "version": "v1.3.0"
-    },
-    "php-vcr/php-vcr": {
-        "version": "1.4.4"
-    },
-    "php-vcr/phpunit-testlistener-vcr": {
-        "version": "3.2.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -121,12 +49,6 @@
     },
     "phpspec/prophecy": {
         "version": "1.7.3"
-    },
-    "phpstan/phpdoc-parser": {
-        "version": "0.3.1"
-    },
-    "phpstan/phpstan": {
-        "version": "0.11.1"
     },
     "phpunit/php-code-coverage": {
         "version": "6.0.1"
@@ -156,6 +78,9 @@
         "version": "1.0.1"
     },
     "psr/container": {
+        "version": "1.0.0"
+    },
+    "psr/event-dispatcher": {
         "version": "1.0.0"
     },
     "psr/log": {
@@ -227,9 +152,6 @@
             "ref": "9f94d3ea453cd8a3b95db7f82592d7344fe3a76a"
         }
     },
-    "symfony/debug": {
-        "version": "v4.0.2"
-    },
     "symfony/dependency-injection": {
         "version": "v4.0.2"
     },
@@ -238,6 +160,9 @@
     },
     "symfony/dotenv": {
         "version": "v4.0.2"
+    },
+    "symfony/error-handler": {
+        "version": "v4.4.0"
     },
     "symfony/event-dispatcher": {
         "version": "v4.0.2"
@@ -308,9 +233,6 @@
             "ref": "c24944bd87dacf0bb8fa218dc21e4a70fff56882"
         }
     },
-    "symfony/options-resolver": {
-        "version": "v4.2.2"
-    },
     "symfony/phpunit-bridge": {
         "version": "4.1",
         "recipe": {
@@ -335,9 +257,6 @@
     "symfony/polyfill-php73": {
         "version": "v1.11.0"
     },
-    "symfony/process": {
-        "version": "v4.2.2"
-    },
     "symfony/routing": {
         "version": "4.0",
         "recipe": {
@@ -349,9 +268,6 @@
     },
     "symfony/service-contracts": {
         "version": "v1.1.2"
-    },
-    "symfony/stopwatch": {
-        "version": "v4.2.2"
     },
     "symfony/translation": {
         "version": "3.3",

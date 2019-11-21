@@ -40,7 +40,12 @@ class Traffic implements ComponentInterface
         }
     }
 
-    private function loadRoute(string $origin, string $destination)
+    /**
+     * @param string $origin
+     * @param string $destination
+     * @return array
+     */
+    private function loadRoute(string $origin, string $destination): array
     {
         $response = $this->httpClient->request('GET', $this->configuration['traffic']['api_url'], [
             'query' => [
