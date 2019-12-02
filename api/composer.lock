@@ -3174,18 +3174,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -4476,16 +4476,16 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "v5.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "f792c081821f9e20d42f07a15146ce7c7f57d66f"
+                "reference": "55a0afb9bf641e4cff66a0bc14918a9d9f6ecf2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/f792c081821f9e20d42f07a15146ce7c7f57d66f",
-                "reference": "f792c081821f9e20d42f07a15146ce7c7f57d66f",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/55a0afb9bf641e4cff66a0bc14918a9d9f6ecf2f",
+                "reference": "55a0afb9bf641e4cff66a0bc14918a9d9f6ecf2f",
                 "shasum": ""
             },
             "require": {
@@ -4529,7 +4529,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2019-11-18T17:27:11+00:00"
+            "time": "2019-11-26T23:25:11+00:00"
         },
         {
             "name": "symfony/maker-bundle",
