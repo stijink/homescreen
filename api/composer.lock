@@ -1700,16 +1700,16 @@
         },
         {
             "name": "symfony/lock",
-            "version": "v5.0.0",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/lock.git",
-                "reference": "527620c4b6105d28acbc32d29238a075e94bf889"
+                "reference": "7ccaee23cc5b8884c9700eef4ccee03f85ff7821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/lock/zipball/527620c4b6105d28acbc32d29238a075e94bf889",
-                "reference": "527620c4b6105d28acbc32d29238a075e94bf889",
+                "url": "https://api.github.com/repos/symfony/lock/zipball/7ccaee23cc5b8884c9700eef4ccee03f85ff7821",
+                "reference": "7ccaee23cc5b8884c9700eef4ccee03f85ff7821",
                 "shasum": ""
             },
             "require": {
@@ -1762,7 +1762,7 @@
                 "redlock",
                 "semaphore"
             ],
-            "time": "2019-11-18T17:27:11+00:00"
+            "time": "2019-12-03T16:35:18+00:00"
         },
         {
             "name": "symfony/mime",
@@ -3174,18 +3174,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
