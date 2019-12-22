@@ -3,6 +3,7 @@ build-dev: stop config docker-build install-dev start-dev
 build-prod: stop config docker-build install-prod build-app start-prod calendars
 
 docker-build:
+	docker pull node:lts-alpine
 	docker-compose build --pull
 
 docker-rebuild:
