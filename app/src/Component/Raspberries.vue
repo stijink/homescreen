@@ -10,6 +10,7 @@
             <!-- Raspberry is online -->
             <v-flex xs10 class="raspberry-meta-online" v-if="raspberry.is_online === true">
                 <h4 class="mb-1">{{ raspberry.hostname }}</h4>
+                <h4 v-if="raspberry.description" class="mb-1">"{{ raspberry.description }}"</h4>
 
                 <!-- CPU / Speed -->
                 <div class="mb-1">
@@ -44,6 +45,7 @@
             <!-- Raspberry is offline -->
             <v-flex xs10 class="raspberry-meta-offline" v-if="raspberry.is_online === false">
                 <h4 class="mb-1">{{ raspberry.hostname }}</h4>
+                <h4 v-if="raspberry.description" class="mb-1">"{{ raspberry.description }}"</h4>
 
                 <!-- CPU / Speed -->
                 <div class="mb-1">

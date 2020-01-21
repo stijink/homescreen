@@ -70,8 +70,9 @@ class Raspberries implements ComponentInterface
             return $raspberry;
         } catch (\Exception $e) {
             return [
-                'hostname'  => $device['name'],
-                'is_online' => false,
+                'hostname'    => $device['name'],
+                'description' => $device['description'],
+                'is_online'   => false,
             ];
         }
     }
