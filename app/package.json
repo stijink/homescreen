@@ -13,7 +13,7 @@
     "moment": "^2.2",
     "style-loader": "^0.23",
     "vue": "^2.6",
-    "vuetify": "^1.4"
+    "vuetify": "^2.2"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.28.0",
