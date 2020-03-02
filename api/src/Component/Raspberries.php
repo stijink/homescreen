@@ -51,6 +51,7 @@ class Raspberries implements ComponentInterface
             $raspberry = json_decode($response->getContent(), true);
 
             $raspberry['is_online'] = true;
+            $raspberry['description'] = $device['description'];
 
             foreach ($raspberry['disks'] as $diskName => $disk) {
                 if (! in_array($diskName, $device['volumes'])) {

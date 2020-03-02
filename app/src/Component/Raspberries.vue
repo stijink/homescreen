@@ -47,7 +47,6 @@
                 <h4 class="mb-1">{{ raspberry.hostname }}</h4>
                 <h4 v-if="raspberry.description" class="mb-1">"{{ raspberry.description }}"</h4>
 
-                <!-- CPU / Speed -->
                 <div class="mb-1">
                     <v-icon dark class="icon mr-1">warning</v-icon>
                     Das Gerät ist zur Zeit nicht erreichbar
