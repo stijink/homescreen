@@ -2,7 +2,6 @@
 .idea
 .vscode/
 
-.env
 build/logs/
 api/config/config.json
 

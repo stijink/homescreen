@@ -1,5 +1,3 @@
-.env
 /public/assets/
-/var/cache/
-/var/log/
+/var/**/
 /vendor/

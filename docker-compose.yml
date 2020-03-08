@@ -6,22 +6,22 @@ services:
       context: ./build
       dockerfile: Dockerfile-api
     image: stijink/homescreen-api
-    working_dir: ${WORKDIR}
+    working_dir: /var/www
     ports:
-      - "${PORT}:80"
+      - "5000:80"
     volumes:
-      - ./api/:${WORKDIR}:delegated
-      - app-assets:${WORKDIR}/public/assets:delegated
+      - ./api/:/var/www:delegated
+      - app-assets:/var/www/public/assets:delegated
     environment:
-      - APP_ENV
+      - APP_ENV=dev
 
   app:
     image: node:lts-alpine
-    working_dir: ${WORKDIR}
+    working_dir: /var/www
     command: yarn encore dev --watch
     volumes:
-      - ./app/:${WORKDIR}:delegated
-      - app-assets:${WORKDIR}/assets:delegated
+      - ./app/:/var/www:delegated
+      - app-assets:/var/www/assets:delegated
 
 volumes:
   app-assets:

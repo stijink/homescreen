@@ -27,7 +27,6 @@ clean: stop
 	rm -rf app/node_modules
 
 config:
-	-cp -n .env.dist .env
 	-cp -n api/config/config.dist.json api/config/config.json
 
 build-app:
