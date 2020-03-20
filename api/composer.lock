@@ -138,16 +138,16 @@
         },
         {
             "name": "johngrogg/ics-parser",
-            "version": "v2.1.17",
+            "version": "v2.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/u01jmg3/ics-parser.git",
-                "reference": "2307a0fddd0b11975ce01b5d80c355a28d8654f1"
+                "reference": "32b3f30f2ed6026d9d11fb6d66c3995d18917156"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/2307a0fddd0b11975ce01b5d80c355a28d8654f1",
-                "reference": "2307a0fddd0b11975ce01b5d80c355a28d8654f1",
+                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/32b3f30f2ed6026d9d11fb6d66c3995d18917156",
+                "reference": "32b3f30f2ed6026d9d11fb6d66c3995d18917156",
                 "shasum": ""
             },
             "require": {
@@ -190,7 +190,7 @@
                 "ics-parser",
                 "ifb"
             ],
-            "time": "2020-01-27T16:10:28+00:00"
+            "time": "2020-03-10T10:10:01+00:00"
         },
         {
             "name": "monolog/monolog",
