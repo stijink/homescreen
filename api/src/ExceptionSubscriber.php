@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 class ExceptionSubscriber implements EventSubscriberInterface
 {
@@ -22,9 +22,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return [
-            ExceptionEvent::class => 'onException',
-        ];
+        return [KernelEvents::EXCEPTION => 'onException'];
     }
 
     /**
@@ -34,7 +32,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
      */
     public function onException(ExceptionEvent $event): void
     {
-        $exception = $event->getException();
+        $exception = $event->getThrowable();
         $publicMessage = 'Ein unbekannter Fehler ist aufgetreten';
 
         if ($exception instanceof ApiException) {
