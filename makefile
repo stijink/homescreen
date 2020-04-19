@@ -1,60 +1,32 @@
-build-dev: stop config docker-build install-dev start-dev
-
-build-prod: stop config docker-build install-prod build-app start-prod calendars
-
-docker-build:
-	docker pull node:lts-alpine
-	docker-compose build --pull
-
-docker-rebuild:
-	docker-compose build --pull --nocache
-
-start-dev: stop
+start: stop
 	docker-compose up -d
 
-start-prod: stop
-	# We do not need a running instance of the app
-	APP_ENV=prod docker-compose up -d
-	docker-compose stop app
-
 stop:
-	docker-compose down --remove-orphans
-	docker-compose rm --force
+	docker-compose down
 
-clean: stop
-	rm -rf api/var/*
-	rm -rf api/vendor
-	rm -rf app/node_modules
+start-prod: stop-prod
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
-config:
-	-cp -n api/config/config.dist.json api/config/config.json
+stop-prod:
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
 
-build-app:
-	docker-compose run --rm app yarn encore production
+build-dev:
+	docker-compose build
+	docker-compose run --rm homescreen composer install --no-suggest --working-dir=api/
+	docker-compose run --rm homescreen npm install --cwd app/ --prefix app/
 
-tail-logs:
-	docker-compose logs --follow
-
-install-dev:
-	docker-compose run --rm api composer install --no-suggest
-	docker-compose run --rm app yarn install
-
-install-prod:
-	docker-compose run --rm -e APP_ENV=prod api composer install --classmap-authoritative --no-dev --no-suggest
-	docker-compose run --rm app yarn install
-
-update:
-	docker-compose run --rm api composer update --with-dependencies
-	docker-compose run --rm app yarn upgrade
-
-require:
-	docker-compose run --rm api composer require
-
-require-dev:
-	docker-compose run --rm api composer require --dev
+build-prod:
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache
 
 calendars:
-	docker-compose exec api bin/console calendars:load --env=prod
+	docker exec homescreen api/bin/console calendars:load --env=prod
 
-test:
-	docker-compose run --rm -e APP_ENV=test api vendor/bin/phpunit --debug
+update:
+	docker-compose run --rm homescreen composer update -o --no-suggest --with-dependencies --working-dir=api/
+	docker-compose run --rm homescreen npm update --cwd app/ --prefix app/
+
+logs:
+	docker-compose logs --follow
+
+clean: stop
+	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/

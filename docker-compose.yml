@@ -1,27 +1,12 @@
-version: '2'
+version: '3.4'
 services:
-
-  api:
-    build:
-      context: ./build
-      dockerfile: Dockerfile-api
-    image: stijink/homescreen-api
-    working_dir: /var/www
-    ports:
-      - "5000:80"
-    volumes:
-      - ./api/:/var/www:delegated
-      - app-assets:/var/www/public/assets:delegated
-    environment:
-      - APP_ENV=dev
-
-  app:
-    image: node:lts-alpine
-    working_dir: /var/www
-    command: yarn encore dev --watch
-    volumes:
-      - ./app/:/var/www:delegated
-      - app-assets:/var/www/assets:delegated
-
-volumes:
-  app-assets:
+    homescreen:
+        build:
+            context: .
+            target: development
+        image: stijink/homescreen:dev
+        working_dir: /var/www
+        environment:
+            - APP_ENV=dev
+        ports:
+            - "5000:80"

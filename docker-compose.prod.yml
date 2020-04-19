@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+    homescreen:
+        build:
+            context: .
+            target: production
+        image: stijink/homescreen:prod
+        environment:
+            - APP_ENV=prod
