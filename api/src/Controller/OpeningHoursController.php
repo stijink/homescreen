@@ -20,7 +20,7 @@ class OpeningHoursController extends AbstractController
     }
 
     /**
-     * @Route("/opening-hours", name="opening-hours")
+     * @Route("/opening-hours", name="opening-hours", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

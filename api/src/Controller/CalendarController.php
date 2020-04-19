@@ -20,7 +20,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/calendar", name="calendar")
+     * @Route("/calendar", name="calendar", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

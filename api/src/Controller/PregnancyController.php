@@ -20,7 +20,7 @@ class PregnancyController extends AbstractController
     }
 
     /**
-     * @Route("/pregnancy", name="pregnancy")
+     * @Route("/pregnancy", name="pregnancy", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

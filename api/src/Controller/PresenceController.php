@@ -20,7 +20,7 @@ class PresenceController extends AbstractController
     }
 
     /**
-     * @Route("/presence", name="presence")
+     * @Route("/presence", name="presence", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

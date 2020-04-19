@@ -20,7 +20,7 @@ class PetrolController extends AbstractController
     }
 
     /**
-     * @Route("/petrol", name="petrol")
+     * @Route("/petrol", name="petrol", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

@@ -20,7 +20,7 @@ class ShoppingListController extends AbstractController
     }
 
     /**
-     * @Route("/shopping-list", name="shopping_list")
+     * @Route("/shopping-list", name="shopping_list", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

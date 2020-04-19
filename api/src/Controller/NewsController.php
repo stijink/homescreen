@@ -20,7 +20,7 @@ class NewsController extends AbstractController
     }
 
     /**
-     * @Route("/news", name="news")
+     * @Route("/news", name="news", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

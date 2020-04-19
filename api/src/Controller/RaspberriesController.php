@@ -20,7 +20,7 @@ class RaspberriesController extends AbstractController
     }
 
     /**
-     * @Route("/raspberries", name="raspberries")
+     * @Route("/raspberries", name="raspberries", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

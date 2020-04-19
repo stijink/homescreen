@@ -20,7 +20,7 @@ class TemperatureController extends AbstractController
     }
 
     /**
-     * @Route("/temperature", name="temperature")
+     * @Route("/temperature", name="temperature", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse

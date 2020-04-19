@@ -20,7 +20,7 @@ class TrafficController extends AbstractController
     }
 
     /**
-     * @Route("/traffic", name="traffic")
+     * @Route("/traffic", name="traffic", format="json")
      *
      * @throws \App\ApiException
      * @return JsonResponse
