@@ -5,10 +5,11 @@ stop:
 	docker-compose down
 
 start-prod: stop-prod
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+	docker run -d --restart always --name=homescreen -e APP_ENV=prod -p 5000:80 stijink/homescreen:prod
 
 stop-prod:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
+	docker stop homescreen
+	docker rm homescreen
 
 build-dev:
 	docker-compose build
