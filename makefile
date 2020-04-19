@@ -16,7 +16,7 @@ build-dev:
 	docker-compose run --rm homescreen npm install --cwd app/ --prefix app/
 
 build-prod:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
 
 calendars:
 	docker exec homescreen api/bin/console calendars:load --env=prod
