@@ -4,7 +4,7 @@ start: stop
 stop:
 	docker-compose down
 
-start-prod: stop-prod
+start-prod:
 	docker run -d --restart always --name=homescreen -e APP_ENV=prod -p 5000:80 stijink/homescreen:prod
 
 stop-prod:
