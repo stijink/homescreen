@@ -6,6 +6,7 @@ stop:
 
 start-prod:
 	docker run -d --restart always --name=homescreen -e APP_ENV=prod -p 5000:80 stijink/homescreen:prod
+	docker exec homescreen api/bin/console calendars:load --env=prod
 
 stop-prod:
 	docker stop homescreen
