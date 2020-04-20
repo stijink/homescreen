@@ -1,7 +1,8 @@
-start: stop
+start-dev: stop-dev
 	docker-compose up -d
+	docker-compose run --rm homescreen yarn --cwd app/ encore dev --watch
 
-stop:
+stop-dev:
 	docker-compose down
 
 start-prod:
@@ -15,7 +16,7 @@ stop-prod:
 build-dev:
 	docker-compose build
 	docker-compose run --rm homescreen composer install --no-suggest --working-dir=api/
-	docker-compose run --rm homescreen npm install --cwd app/ --prefix app/
+	docker-compose run --rm homescreen yarn --cwd app/ install
 
 build-prod:
 	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
