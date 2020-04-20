@@ -31,5 +31,11 @@ update:
 logs:
 	docker-compose logs --follow
 
+refresh:
+	export DISPLAY=:"0.0"
+	XAUTHORITY=/home/pi/.Xauthority
+	xdotool getactivewindow
+	xdotool key F5
+
 clean: stop
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
