@@ -1,6 +1,6 @@
 start-dev: stop-dev
 	docker-compose up -d
-	docker-compose run --rm homescreen yarn --cwd app/ encore dev --watch
+	docker-compose exec homescreen yarn --cwd app/ encore dev --watch
 
 stop-dev:
 	docker-compose down
