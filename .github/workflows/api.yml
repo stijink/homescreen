@@ -55,4 +55,7 @@ jobs:
     - name: Install dependencies
       if: steps.yarn-cache.outputs.cache-hit != 'true'
       run: yarn --cwd app/ install
+      
+    - name: yarn check
+      run: yarn --cwd app/ check
           
