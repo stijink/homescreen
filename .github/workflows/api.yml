@@ -29,14 +29,9 @@ jobs:
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest --working-dir=api/
-      
-  lint:
-    
-    runs-on: ubuntu-latest
-    
-    steps:
+
     - name: Lint symfony container
       run: api/bin/console lint:container
 
     - name: Lint YAML Files
-      run: api/bin/console lint:yaml api/config      
+      run: api/bin/console lint:yaml api/config
