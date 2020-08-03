@@ -1,4 +1,4 @@
-name: Homescreen Api
+name: build and lint
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  php api:
 
     runs-on: ubuntu-latest
 
@@ -35,3 +35,24 @@ jobs:
 
     - name: Lint YAML Files
       run: api/bin/console lint:yaml api/config
+      
+  javascript frontend:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2      
+      
+    - name: Cache node_modules
+      id: yarn-cache
+      uses: actions/cache@v2
+      with:
+        path: app/node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-      
+          
+    - name: Install dependencies
+      if: steps.yarn-cache.outputs.cache-hit != 'true'
+      run: yarn --cwd app/ install
+          
