@@ -8,11 +8,20 @@ on:
 
 jobs:
   build:
+    
+    strategy:
+      matrix:
+        php: ['7.3', '7.4']    
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+      
+    - name: Setup PHP
+      uses: nanasess/setup-php@master
+      with:
+        php-version: ${{ matrix.php }}      
 
     - name: Validate composer.json and composer.lock
       run: composer validate --working-dir=api/
