@@ -32,3 +32,6 @@ jobs:
 
     - name: Lint symfony container
       run: api/bin/console lint:container
+
+    - name: Lint YAML Files
+      run: api/bin/console lint:yaml api/config
