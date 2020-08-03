@@ -31,6 +31,11 @@ update:
 logs:
 	docker-compose logs --follow
 
+lint:
+	docker-compose run --rm homescreen composer validate --working-dir=api/
+	docker-compose run --rm homescreen api/bin/console lint:container
+	docker-compose run --rm homescreen api/bin/console lint:yaml api/config
+
 refresh:
 	export DISPLAY=:"0.0"
 	XAUTHORITY=/home/pi/.Xauthority
