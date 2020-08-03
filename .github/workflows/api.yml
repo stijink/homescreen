@@ -58,4 +58,7 @@ jobs:
       
     - name: yarn check
       run: yarn --cwd app/ check
+      
+    - name: build production
+      run: yarn --cwd app/ encore production 
           
