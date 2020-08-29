@@ -28,6 +28,7 @@
                 </div>
 
                 <!-- Disks -->
+                <!--
                 <div class="mt-1" v-for="disk in raspberry.disks" :key="disk.label">
                     <div>
                         <v-icon dark class="icon mr-1">storage</v-icon>
@@ -40,6 +41,7 @@
                     </div>
 
                 </div>
+                -->
             </v-flex>
 
             <!-- Raspberry is offline -->
