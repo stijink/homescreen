@@ -50,7 +50,7 @@ class Temperature implements ComponentInterface
             ]);
 
             $temperature = json_decode($temperatureResponse->getContent(), true);
-            $temperatureInside = floatval($temperature['state']);
+            $temperatureInside = sprintf('%.1f', $temperature['state']);
         } catch (\Exception $e) {
             throw new ApiException('Die Zimmertemperatur konnte nicht bestimmt werden');
         }
