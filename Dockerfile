@@ -51,7 +51,7 @@ FROM development as preproduction
     RUN yarn --cwd app/ install
 
     # Build the frontend and copy it to the apache webroot
-    RUN yarn --cwd app/ encore production && cp -r app/assets api/public/
+    RUN yarn --cwd app/ encore production
 
     # Warmup symfony cache
     RUN APP_ENV=prod api/bin/console --no-debug cache:warmup
