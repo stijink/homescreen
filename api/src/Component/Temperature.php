@@ -3,21 +3,27 @@
 namespace App\Component;
 
 use App\ApiException;
+use App\Configuration;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Temperature implements ComponentInterface
 {
-    private $weather;
-    private $roomTemperature;
+    private Weather $weather;
+    private Configuration $configuration;
+    private HttpClientInterface $httpClient;
+
 
     /**
-     * @param Weather $weather
-     * @param RoomTemperature $roomTemperature
+     * @param Configuration $configuration
+     * @param HttpClientInterface $httpClient
      */
-    public function __construct(Weather $weather, RoomTemperature $roomTemperature)
+    public function __construct(Configuration $configuration, HttpClientInterface $httpClient, Weather $weather)
     {
+        $this->configuration = $configuration;
+        $this->httpClient = $httpClient;
         $this->weather = $weather;
-        $this->roomTemperature = $roomTemperature;
     }
+
 
     /**
      * @throws ApiException
@@ -25,16 +31,26 @@ class Temperature implements ComponentInterface
      */
     public function load(): array
     {
+        $headers = [
+            'Authorization' =>  'Bearer ' . $this->configuration['homeassistant']['api_token'],
+            'content-type'  =>  'application/json',
+        ];
+
         try {
-            $weatherResponse = $this->weather->load();
-            $temperatureOutside = number_format($weatherResponse['temperature'], 1);
+            $weather = $this->weather->load();
+            $temperatureOutside = $weather['temperature'];
         } catch (\Exception $e) {
             throw new ApiException('Die Aussentemperatur konnte nicht bestimmt werden');
         }
 
         try {
-            $roomTemperatureResponse = $this->roomTemperature->load();
-            $temperatureInside = number_format($roomTemperatureResponse['temperature'], 1);
+            $temperatureUrl      = $this->configuration['homeassistant']['api_url'] . '/sensor.hue_motion_sensor_1_temperature_2';
+            $temperatureResponse = $this->httpClient->request('GET', $temperatureUrl, [
+                'headers' => $headers
+            ]);
+
+            $temperature = json_decode($temperatureResponse->getContent(), true);
+            $temperatureInside = floatval($temperature['state']);
         } catch (\Exception $e) {
             throw new ApiException('Die Zimmertemperatur konnte nicht bestimmt werden');
         }
