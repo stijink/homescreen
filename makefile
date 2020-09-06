@@ -44,3 +44,8 @@ clean-prod:
 	docker stop homescreen
 	docker system prune -f
 	docker rmi stijink/homescreen:prod
+
+rebuild-prod:
+	git pull
+	sudo make clean-prod
+	sudo make build-prod
