@@ -36,11 +36,10 @@ lint:
 	docker-compose run --rm homescreen api/bin/console lint:container
 	docker-compose run --rm homescreen api/bin/console lint:yaml api/config
 
-refresh:
-	export DISPLAY=:"0.0"
-	XAUTHORITY=/home/pi/.Xauthority
-	xdotool getactivewindow
-	xdotool key F5
-
-clean: stop
+clean-dev: stop
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
+	docker rmi stijink/homescreen:dev
+
+clean-prod: stop
+	docker system prune -f
+	docker rmi stijink/homescreen:prod
