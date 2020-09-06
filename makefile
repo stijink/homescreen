@@ -36,10 +36,11 @@ lint:
 	docker-compose run --rm homescreen api/bin/console lint:container
 	docker-compose run --rm homescreen api/bin/console lint:yaml api/config
 
-clean-dev: stop
+clean-dev: stop-dev
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
 	docker rmi stijink/homescreen:dev
 
-clean-prod: stop
+clean-prod:
+	docker stop homescreen
 	docker system prune -f
 	docker rmi stijink/homescreen:prod
