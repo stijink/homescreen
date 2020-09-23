@@ -26,9 +26,6 @@
     "myclabs/deep-copy": {
         "version": "1.7.0"
     },
-    "nesbot/carbon": {
-        "version": "1.22.1"
-    },
     "nikic/php-parser": {
         "version": "v4.0.0"
     },
@@ -277,18 +274,6 @@
     },
     "symfony/string": {
         "version": "v5.1.2"
-    },
-    "symfony/translation": {
-        "version": "3.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "6bcd6c570c017ea6ae5a7a6a027c929fd3542cd8"
-        }
-    },
-    "symfony/translation-contracts": {
-        "version": "v1.1.2"
     },
     "symfony/var-dumper": {
         "version": "v4.0.2"
