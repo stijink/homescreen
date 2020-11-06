@@ -44,7 +44,7 @@ class Temperature implements ComponentInterface
         }
 
         try {
-            $temperatureUrl      = $this->configuration['homeassistant']['api_url'] . '/sensor.hue_motion_sensor_1_temperature_2';
+            $temperatureUrl      = $this->configuration['homeassistant']['api_url'] . '/sensor.temperature_4';
             $temperatureResponse = $this->httpClient->request('GET', $temperatureUrl, [
                 'headers' => $headers
             ]);
