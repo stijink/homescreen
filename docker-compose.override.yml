@@ -3,3 +3,5 @@ services:
     homescreen:
         volumes:
             - ./:/var/www
+        ports:
+            - "8080:8080"
