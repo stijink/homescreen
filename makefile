@@ -1,5 +1,6 @@
 start-dev: stop-dev
 	docker-compose up -d
+	docker-compose exec homescreen ln -f -s ../../app/assets api/public/assets
 	docker-compose exec homescreen yarn --cwd app/ encore dev --watch
 
 stop-dev:
