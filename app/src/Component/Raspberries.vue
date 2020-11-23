@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="pa-0" v-if="raspberries">
 
-        <v-layout row v-for="raspberry in raspberries" :key="raspberry.hostname" class="mb-5">
+        <v-layout row v-for="raspberry in raspberries" :key="raspberry.hostname" class="mb-4">
 
             <v-flex xs2>
                 <img class="pi-icon" src="/fa-raspberry-pi.svg">
