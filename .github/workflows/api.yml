@@ -9,7 +9,7 @@ on:
 jobs:
   php-api:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
       
   javascript-frontend:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2      
