@@ -3,8 +3,11 @@
     "description": "Personal smart mirror project",
     "type": "project",
     "license": "MIT",
+
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+
     "require": {
-        "php": "^7.3",
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
@@ -18,7 +21,7 @@
         "symfony/lock": "5.2.*",
         "symfony/monolog-bundle": "^3.2",
         "symfony/yaml": "5.2.*",
-        "zendframework/zend-feed": "^2.10"
+        "laminas/laminas-feed": "2.14.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.3",
