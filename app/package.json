@@ -11,12 +11,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "moment": "^2.2",
-    "style-loader": "^0.23",
+    "style-loader": "^2.0",
     "vue": "^2.6",
     "vuetify": "^1.4"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.28.0",
+    "@symfony/webpack-encore": "^0.33.0",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.7"
   }
