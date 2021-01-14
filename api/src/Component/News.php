@@ -47,7 +47,7 @@ class News implements ComponentInterface
         foreach ($feed as $item) {
             $news[] = [
                 'title'       => $item->getTitle(),
-                'description' => $this->getExcerpt($item->getDescription()),
+                'description' => $this->getExcerpt(description: $item->getDescription()),
                 'date'        => $item->getDateModified()->format('d.m.Y H:m'),
                 'visible'     => false,
             ];

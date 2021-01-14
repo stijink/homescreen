@@ -70,7 +70,7 @@ class Presence implements ComponentInterface
         return [
             'person'      => $person,
             'is_present'  => $isPresent,
-            'status_text' => $this->getStatusText($person, $isPresent),
+            'status_text' => $this->getStatusText(person: $person, isPresent: $isPresent),
         ];
     }
 

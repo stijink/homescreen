@@ -22,7 +22,7 @@ class Traffic implements ComponentInterface
             $traffic = [];
 
             foreach ($this->configuration['traffic']['routes'] as $route) {
-                $traffic[] = $this->loadRoute($route['origin'], $route['destination']);
+                $traffic[] = $this->loadRoute(origin: $route['origin'], destination: $route['destination']);
             }
 
             return $traffic;

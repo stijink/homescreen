@@ -53,7 +53,7 @@ class CalendarLoader
 
         $content = $this->cache->get($cacheName, function (ItemInterface $item) use ($calendar): string {
             $content = file_get_contents($calendar['url']);
-            $content = $this->calendarShrink->shrink($content, $this->calendarConfig['max_days']);
+            $content = $this->calendarShrink->shrink(content: $content, maxdays: $this->calendarConfig['max_days']);
 
             $this->logger->debug(sprintf(
                 'Calendar Cache SET: %s (%d kBytes)',
