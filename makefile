@@ -42,9 +42,9 @@ clean-dev: stop-dev
 	docker rmi stijink/homescreen:dev
 
 clean-prod:
-	docker stop homescreen
+	docker stop homescreen || true
 	docker system prune -f
-	docker rmi stijink/homescreen:prod
+	docker rmi stijink/homescreen:prod || true
 
 rebuild-prod:
 	git pull
