@@ -6,14 +6,8 @@ use App\Configuration;
 
 class OpeningHours implements ComponentInterface
 {
-    private $configuration;
-
-    /**
-     * @param Configuration $configuration
-     */
-    public function __construct(Configuration $configuration)
+    public function __construct(private Configuration $configuration)
     {
-        $this->configuration = $configuration;
     }
 
     /**

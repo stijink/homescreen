@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class NewsController extends AbstractController
 {
-    private $newsComponent;
-
-    /**
-     * @param $newsComponent
-     */
-    public function __construct(News $newsComponent)
+    public function __construct(private News $newsComponent)
     {
-        $this->newsComponent = $newsComponent;
     }
 
     /**

@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RaspberriesController extends AbstractController
 {
-    private $raspberriesComponent;
-
-    /**
-     * @param $raspberriesComponent
-     */
-    public function __construct(Raspberries $raspberriesComponent)
+    public function __construct(private Raspberries $raspberriesComponent)
     {
-        $this->raspberriesComponent = $raspberriesComponent;
     }
 
     /**

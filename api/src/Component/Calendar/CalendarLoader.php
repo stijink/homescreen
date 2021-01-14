@@ -9,27 +9,15 @@ use Symfony\Contracts\Cache\ItemInterface;
 
 class CalendarLoader
 {
-    private $calendarConfig;
-    private $calendarShrink;
-    private $cache;
-    private $logger;
+    private array $calendarConfig;
 
-    /**
-     * @param Configuration $configuration
-     * @param CalendarShrink $calendarShrink
-     * @param CacheInterface $cache
-     * @param LoggerInterface $logger
-     */
     public function __construct(
-        Configuration $configuration,
-        CalendarShrink $calendarShrink,
-        CacheInterface $cache,
-        LoggerInterface $logger
+        private Configuration $configuration,
+        private CalendarShrink $calendarShrink,
+        private CacheInterface $cache,
+        private LoggerInterface $logger
     ) {
         $this->calendarConfig = $configuration['calendar'];
-        $this->calendarShrink = $calendarShrink;
-        $this->cache = $cache;
-        $this->logger = $logger;
     }
 
     /**

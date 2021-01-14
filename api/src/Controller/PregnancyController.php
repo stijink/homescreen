@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PregnancyController extends AbstractController
 {
-    private $pregnancyComponent;
-
-    /**
-     * @param Pregnancy $pregnancyComponent
-     */
-    public function __construct(Pregnancy $pregnancyComponent)
+    public function __construct(private Pregnancy $pregnancyComponent)
     {
-        $this->pregnancyComponent = $pregnancyComponent;
     }
 
     /**

@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PetrolController extends AbstractController
 {
-    private $petrolComponent;
-
-    /**
-     * @param Petrol $petrolComponent
-     */
-    public function __construct(Petrol $petrolComponent)
+    public function __construct(private Petrol $petrolComponent)
     {
-        $this->petrolComponent = $petrolComponent;
     }
 
     /**

@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TemperatureController extends AbstractController
 {
-    private $temperatureComponent;
-
-    /**
-     * @param $temperatureComponent
-     */
-    public function __construct(Temperature $temperatureComponent)
+    public function __construct(private Temperature $temperatureComponent)
     {
-        $this->temperatureComponent = $temperatureComponent;
     }
 
     /**

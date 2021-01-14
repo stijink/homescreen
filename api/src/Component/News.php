@@ -4,21 +4,12 @@ namespace App\Component;
 
 use App\Configuration;
 use App\ApiException;
-use Zend\Feed\Reader\Reader;
+use Laminas\Feed\Reader\Reader;
 
 class News implements ComponentInterface
 {
-    private $configuration;
-    private $feedReader;
-
-    /**
-     * @param Configuration $configuration
-     * @param Reader $feedReader
-     */
-    public function __construct(Configuration $configuration, Reader $feedReader)
+    public function __construct(private Configuration $configuration, private Reader $feedReader)
     {
-        $this->configuration = $configuration;
-        $this->feedReader = $feedReader;
     }
 
     /**

@@ -21,5 +21,4 @@ services:
       arguments: ['%kernel.project_dir%/config/config.json']
 
     # Third party services we want to use with autowiring
-    GuzzleHttp\Client: ~
-    Zend\Feed\Reader\Reader: ~
+    Laminas\Feed\Reader\Reader: ~

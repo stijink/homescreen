@@ -8,17 +8,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Weather implements ComponentInterface
 {
-    private $configuration;
-    private $httpClient;
-
-    /**
-     * @param Configuration $configuration
-     * @param HttpClientInterface $httpClient
-     */
-    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
+    public function __construct(private Configuration $configuration, private HttpClientInterface $httpClient)
     {
-        $this->configuration = $configuration;
-        $this->httpClient = $httpClient;
     }
 
     /**

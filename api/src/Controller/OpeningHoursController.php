@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OpeningHoursController extends AbstractController
 {
-    private $openingHoursComponent;
-
-    /**
-     * @param $openingHoursComponent
-     */
-    public function __construct(OpeningHours $openingHoursComponent)
+    public function __construct(private OpeningHours $openingHoursComponent)
     {
-        $this->openingHoursComponent = $openingHoursComponent;
     }
 
     /**

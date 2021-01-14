@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TrafficController extends AbstractController
 {
-    private $trafficComponent;
-
-    /**
-     * @param $trafficComponent
-     */
-    public function __construct(Traffic $trafficComponent)
+    public function __construct(private Traffic $trafficComponent)
     {
-        $this->trafficComponent = $trafficComponent;
     }
 
     /**

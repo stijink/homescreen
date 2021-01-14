@@ -11,7 +11,7 @@ The backend was build using the PHP Framework [Symfony](https://symfony.com/).
 ## Requirements
 
 * Node.js
-* PHP 7+
+* PHP 8+
 
 ## Configuration
 

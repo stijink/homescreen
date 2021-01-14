@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ShoppingListController extends AbstractController
 {
-    private $shoppingListComponent;
-
-    /**
-     * @param BringShoppingList $shoppingListComponent
-     */
-    public function __construct(BringShoppingList $shoppingListComponent)
+    public function __construct(private BringShoppingList $shoppingListComponent)
     {
-        $this->shoppingListComponent = $shoppingListComponent;
     }
 
     /**

@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PresenceController extends AbstractController
 {
-    private $presenceComponent;
-
-    /**
-     * @param Presence $presenceComponent
-     */
-    public function __construct(Presence $presenceComponent)
+    public function __construct(private Presence $presenceComponent)
     {
-        $this->presenceComponent = $presenceComponent;
     }
 
     /**

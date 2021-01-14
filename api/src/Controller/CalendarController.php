@@ -9,14 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CalendarController extends AbstractController
 {
-    private $calendarComponent;
-
-    /**
-     * @param Calendar $calendarComponent
-     */
-    public function __construct(Calendar $calendarComponent)
+    public function __construct(private Calendar $calendarComponent)
     {
-        $this->calendarComponent = $calendarComponent;
     }
 
     /**

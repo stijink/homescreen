@@ -2,31 +2,29 @@
 
 namespace App\Component;
 
+use App\ApiException;
 use App\Configuration;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class BringShoppingList implements ComponentInterface
 {
-    private $httpClient;
-    private $configuration;
-    private $userDefinedItems;
+    private array $userDefinedItems;
 
-    /**
-     * @param HttpClientInterface $client
-     * @param Configuration $configuration
-     */
-    public function __construct(HttpClientInterface $client, Configuration $configuration)
+    public function __construct(private HttpClientInterface $httpClient, private Configuration $configuration)
     {
-        $this->httpClient = $client;
-        $this->configuration = $configuration;
     }
 
     public function load(): array
     {
-        $user = $this->authenticate();
-        $this->loadUserDefinedItems($user);
+        try {
+            $user = $this->authenticate();
+            $this->loadUserDefinedItems($user);
 
-        return $this->getShoppingListItems($user);
+            return $this->getShoppingListItems($user);
+        }
+        catch (\Exception $e) {
+            throw new ApiException('Einkaufsliste konnten nicht bezogen werden');
+        }
     }
 
     /**

@@ -9,17 +9,8 @@ use ICal\ICal;
 
 class Calendar implements ComponentInterface
 {
-    private $configuration;
-    private $calendarLoader;
-
-    /**
-     * @param Configuration $configuration
-     * @param CalendarLoader $calendarLoader
-     */
-    public function __construct(Configuration $configuration, CalendarLoader $calendarLoader)
+    public function __construct(private Configuration $configuration, private CalendarLoader $calendarLoader)
     {
-        $this->configuration = $configuration;
-        $this->calendarLoader = $calendarLoader;
     }
 
     /**

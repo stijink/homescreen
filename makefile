@@ -16,7 +16,7 @@ stop-prod:
 
 build-dev:
 	docker-compose build
-	docker-compose run --rm homescreen composer install --no-suggest --working-dir=api/
+	docker-compose run --rm homescreen composer install --working-dir=api/
 	docker-compose run --rm homescreen yarn --cwd app/ install
 
 build-prod:
@@ -26,7 +26,7 @@ calendars:
 	docker exec homescreen api/bin/console calendars:load --env=prod
 
 update:
-	docker-compose run --rm homescreen composer update -o --no-suggest --with-dependencies --working-dir=api/
+	docker-compose run --rm homescreen composer update -o --with-dependencies --working-dir=api/
 	docker-compose run --rm homescreen npm update --cwd app/ --prefix app/
 
 logs:

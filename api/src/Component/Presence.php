@@ -8,11 +8,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Presence implements ComponentInterface
 {
-    private $configuration;
-    private $httpClient;
-
     // Used in "isPersonPresent"
-    private $soapBodyTemplate = '<?xml version="1.0" encoding="utf-8"?>
+    private string $soapBodyTemplate = '<?xml version="1.0" encoding="utf-8"?>
             <s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
               xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" >
               <s:Body>
@@ -22,14 +19,8 @@ class Presence implements ComponentInterface
               </s:Body>
             </s:Envelope>';
 
-    /**
-     * @param Configuration $configuration
-     * @param HttpClientInterface $httpClient
-     */
-    public function __construct(Configuration $configuration, HttpClientInterface $httpClient)
+    public function __construct(private Configuration $configuration, private HttpClientInterface $httpClient)
     {
-        $this->configuration = $configuration;
-        $this->httpClient = $httpClient;
     }
 
     /**

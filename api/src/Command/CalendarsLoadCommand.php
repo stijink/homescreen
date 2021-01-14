@@ -13,15 +13,9 @@ class CalendarsLoadCommand extends Command
 {
     use LockableTrait;
 
-    private $calendarLoader;
-
-    /**
-     * @param CalendarLoader $calendarLoader
-     */
-    public function __construct(CalendarLoader $calendarLoader)
+    public function __construct(private CalendarLoader $calendarLoader)
     {
         parent::__construct();
-        $this->calendarLoader = $calendarLoader;
     }
 
     protected function configure()
