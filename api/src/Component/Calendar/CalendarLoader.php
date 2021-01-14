@@ -51,7 +51,7 @@ class CalendarLoader
     {
         $cacheName = 'calendar_' . $calendar['name'];
 
-        $content = $this->cache->get($cacheName, function (ItemInterface $item) use ($calendar): string {
+        return $this->cache->get($cacheName, function (ItemInterface $item) use ($calendar): string {
             $content = file_get_contents($calendar['url']);
             $content = $this->calendarShrink->shrink(content: $content, maxdays: $this->calendarConfig['max_days']);
 
@@ -63,7 +63,5 @@ class CalendarLoader
 
             return $content;
         });
-
-        return $content;
     }
 }

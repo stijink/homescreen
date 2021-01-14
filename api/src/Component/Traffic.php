@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\Configuration;
 use App\ApiException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -26,7 +27,7 @@ class Traffic implements ComponentInterface
             }
 
             return $traffic;
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Verkehrsinformationen konnten nicht bestimmt werden');
         }
     }

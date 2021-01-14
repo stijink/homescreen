@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\ApiException;
 use App\Configuration;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -30,7 +31,7 @@ class Temperature implements ComponentInterface
         try {
             $weather = $this->weather->load();
             $temperatureOutside = $weather['temperature'];
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Die Aussentemperatur konnte nicht bestimmt werden');
         }
 
@@ -42,7 +43,7 @@ class Temperature implements ComponentInterface
 
             $temperature = json_decode($temperatureResponse->getContent(), true);
             $temperatureInside = sprintf('%.1f', $temperature['state']);
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Die Zimmertemperatur konnte nicht bestimmt werden');
         }
 

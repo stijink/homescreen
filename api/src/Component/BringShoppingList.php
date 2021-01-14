@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\ApiException;
 use App\Configuration;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -22,7 +23,7 @@ class BringShoppingList implements ComponentInterface
 
             return $this->getShoppingListItems($user);
         }
-        catch (\Exception $e) {
+        catch (Exception) {
             throw new ApiException('Einkaufsliste konnten nicht bezogen werden');
         }
     }

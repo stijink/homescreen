@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\Configuration;
 use App\ApiException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -41,7 +42,7 @@ class Weather implements ComponentInterface
                 'sunset'      => $weather['sys']['sunset'],
                 'icon_code'   => $weather['weather'][0]['id'],
             ];
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Wetterinformationen konnten nicht bestimmt werden');
         }
     }

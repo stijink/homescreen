@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\Configuration;
 use App\ApiException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -41,10 +42,9 @@ class Presence implements ComponentInterface
             }
 
             $presentPersons = $this->sortByPersonType($presentPersons);
-            $presentPersons = $this->sortByPresence($presentPersons);
 
-            return $presentPersons;
-        } catch (\Exception $e) {
+            return $this->sortByPresence($presentPersons);
+        } catch (Exception) {
             throw new ApiException('Anwesende/Abwesende Personen konnten nicht bestimmt werden');
         }
     }
@@ -146,7 +146,7 @@ class Presence implements ComponentInterface
             ]);
 
             if ($response->getStatusCode() == 500) {
-                throw new \Exception('error');
+                throw new Exception('error');
             }
 
             preg_match(
@@ -156,7 +156,7 @@ class Presence implements ComponentInterface
             );
 
             return boolval($matches[1]);
-        } catch (\Exception $e) {
+        } catch (Exception) {
             return false;
         }
     }

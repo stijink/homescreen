@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use DateTime;
 use App\Configuration;
 
 class Pregnancy implements ComponentInterface
@@ -12,9 +13,9 @@ class Pregnancy implements ComponentInterface
 
     public function load(): array
     {
-        $currentDate = new \DateTime();
-        $dateStart = new \DateTime($this->configuration['pregnancy']['date_start']);
-        $dateExpected = new \DateTime($this->configuration['pregnancy']['date_expected']);
+        $currentDate = new DateTime();
+        $dateStart = new DateTime($this->configuration['pregnancy']['date_start']);
+        $dateExpected = new DateTime($this->configuration['pregnancy']['date_expected']);
 
         $dateDiffStart = $dateStart->diff($currentDate);
         $dateDiffUntil = $currentDate->diff($dateExpected);

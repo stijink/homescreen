@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\Configuration;
 use App\ApiException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -26,7 +27,7 @@ class Raspberries implements ComponentInterface
             }
 
             return $raspberries;
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Der Status der Raspberries konnte nicht bestimmt werden');
         }
     }
@@ -60,7 +61,7 @@ class Raspberries implements ComponentInterface
             $raspberry['temperature'] = floatval(number_format($raspberry['temperature'], 1));
 
             return $raspberry;
-        } catch (\Exception $e) {
+        } catch (Exception) {
             return [
                 'hostname'    => $device['name'],
                 'description' => $device['description'],

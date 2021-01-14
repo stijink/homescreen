@@ -13,12 +13,7 @@ class OpeningHoursController extends AbstractController
     {
     }
 
-    /**
-     * @Route("/opening-hours", name="opening-hours", format="json")
-     *
-     * @throws \App\ApiException
-     * @return JsonResponse
-     */
+    #[Route(path: '/opening-hours', name: 'opening-hours')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->openingHoursComponent->load());

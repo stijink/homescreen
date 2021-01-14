@@ -13,12 +13,7 @@ class CalendarController extends AbstractController
     {
     }
 
-    /**
-     * @Route("/calendar", name="calendar", format="json")
-     *
-     * @throws \App\ApiException
-     * @return JsonResponse
-     */
+    #[Route(path: '/calendar', name: 'calendar')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->calendarComponent->load());

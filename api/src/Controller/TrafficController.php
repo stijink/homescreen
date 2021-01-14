@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\ApiException;
 use App\Component\Traffic;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,11 +15,16 @@ class TrafficController extends AbstractController
     }
 
     /**
-     * @Route("/traffic", name="traffic", format="json")
      *
-     * @throws \App\ApiException
+     * @throws ApiException
      * @return JsonResponse
      */
+    /**
+     *
+     * @throws ApiException
+     * @return JsonResponse
+     */
+    #[Route(path: '/traffic', name: 'traffic')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->trafficComponent->load());

@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class StatusController extends AbstractController
 {
     /**
-     * @Route("/status", name="status", format="json")
      * @return Response
      */
+    #[Route(path: '/status', name: 'status')]
     public function index(): Response
     {
         return new Response('ok');

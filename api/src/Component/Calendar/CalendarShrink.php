@@ -2,6 +2,8 @@
 
 namespace App\Component\Calendar;
 
+use DateTime;
+use DateInterval;
 use ICal\Event;
 use ICal\ICal;
 
@@ -28,8 +30,8 @@ END:VCALENDAR';
         $ical = new ICal();
         $ical->initString($content);
 
-        $endDate = new \DateTime();
-        $endDate->add(new \DateInterval('P' . $maxdays . 'D'));
+        $endDate = new DateTime();
+        $endDate->add(new DateInterval('P' . $maxdays . 'D'));
 
         // Remove past events and  pnly keep future events of the upcoming x days
         $interval = $ical->eventsFromRange(date('Y-m-d'), $endDate->format('Y-m-d'));

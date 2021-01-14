@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\ApiException;
 use App\Component\Pregnancy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,11 +15,16 @@ class PregnancyController extends AbstractController
     }
 
     /**
-     * @Route("/pregnancy", name="pregnancy", format="json")
      *
-     * @throws \App\ApiException
+     * @throws ApiException
      * @return JsonResponse
      */
+    /**
+     *
+     * @throws ApiException
+     * @return JsonResponse
+     */
+    #[Route(path: '/pregnancy', name: 'pregnancy')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->pregnancyComponent->load());

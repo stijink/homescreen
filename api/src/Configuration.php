@@ -2,7 +2,8 @@
 
 namespace App;
 
-class Configuration implements \ArrayAccess
+use ArrayAccess;
+class Configuration implements ArrayAccess
 {
     /**
      * @var array

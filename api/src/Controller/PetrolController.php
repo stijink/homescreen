@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\ApiException;
 use App\Component\Petrol;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,11 +15,16 @@ class PetrolController extends AbstractController
     }
 
     /**
-     * @Route("/petrol", name="petrol", format="json")
      *
-     * @throws \App\ApiException
+     * @throws ApiException
      * @return JsonResponse
      */
+    /**
+     *
+     * @throws ApiException
+     * @return JsonResponse
+     */
+    #[Route(path: '/petrol', name: 'petrol')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->petrolComponent->load());

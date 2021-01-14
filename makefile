@@ -37,6 +37,9 @@ lint:
 	docker-compose run --rm homescreen api/bin/console lint:container
 	docker-compose run --rm homescreen api/bin/console lint:yaml api/config
 
+ractor:
+	docker-compose run --rm homescreen vendor/bin/rector process src/ --debug
+
 clean-dev: stop-dev
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
 	docker rmi stijink/homescreen:dev

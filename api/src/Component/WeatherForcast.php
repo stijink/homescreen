@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\Configuration;
 use App\ApiException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -34,7 +35,7 @@ class WeatherForcast implements ComponentInterface
             }
 
             return $forcast;
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Wettervorhersage konnte nicht bestimmt werden');
         }
     }

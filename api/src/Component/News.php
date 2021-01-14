@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\Configuration;
 use App\ApiException;
 use Laminas\Feed\Reader\Reader;
@@ -28,7 +29,7 @@ class News implements ComponentInterface
             shuffle($news);
 
             return $news;
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Nachrichten konnten nicht bezogen werden');
         }
     }
@@ -70,8 +71,7 @@ class News implements ComponentInterface
         $description = trim($description);
 
         $description = preg_replace('/&#?[a-z0-9]{2,8};/i', '', $description);
-        $description = mb_strimwidth($description, 0, $maxLength, '...');
 
-        return $description;
+        return mb_strimwidth($description, 0, $maxLength, '...');
     }
 }

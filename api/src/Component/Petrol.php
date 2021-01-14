@@ -2,6 +2,7 @@
 
 namespace App\Component;
 
+use Exception;
 use App\ApiException;
 use App\Configuration;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -42,7 +43,7 @@ class Petrol implements ComponentInterface
                 'location' => $this->configuration['petrol']['location'],
                 'products' => $products,
             ];
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Spritpreise konnten nicht bezogen werden');
         }
     }

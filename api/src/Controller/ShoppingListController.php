@@ -13,12 +13,7 @@ class ShoppingListController extends AbstractController
     {
     }
 
-    /**
-     * @Route("/shopping-list", name="shopping_list", format="json")
-     *
-     * @throws \App\ApiException
-     * @return JsonResponse
-     */
+    #[Route(path: '/shopping-list', name: 'shopping_list')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->shoppingListComponent->load());

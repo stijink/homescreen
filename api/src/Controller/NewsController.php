@@ -13,12 +13,7 @@ class NewsController extends AbstractController
     {
     }
 
-    /**
-     * @Route("/news", name="news", format="json")
-     *
-     * @throws \App\ApiException
-     * @return JsonResponse
-     */
+    #[Route(path: '/news', name: 'news')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->newsComponent->load());

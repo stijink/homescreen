@@ -2,6 +2,7 @@
 
 namespace App\Component\Calendar;
 
+use Exception;
 use App\Component\ComponentInterface;
 use App\Configuration;
 use App\ApiException;
@@ -33,7 +34,7 @@ class Calendar implements ComponentInterface
             $events = array_slice($events, 0, $this->configuration['calendar']['max_events']);
 
             return $events;
-        } catch (\Exception $e) {
+        } catch (Exception) {
             throw new ApiException('Kalender-Einträge konnten nicht bezogen werden');
         }
     }
@@ -54,7 +55,7 @@ class Calendar implements ComponentInterface
         $icalendar = new ICal();
         $icalendar->initString($content);
 
-        foreach ((array) $icalendar->events() as $iCalEvent) {
+        foreach ($icalendar->events() as $iCalEvent) {
             $timestampStart = strtotime($iCalEvent->dtstart);
             $timestampEnd = strtotime($iCalEvent->dtend);
             $checksum = md5($iCalEvent->summary . $iCalEvent->dtstart . $iCalEvent->dtend);
@@ -100,9 +101,8 @@ class Calendar implements ComponentInterface
 
         // Match Dingbats
         $regexDingbats = '/[\x{2700}-\x{27BF}]/u';
-        $summary = preg_replace($regexDingbats, '', $summary);
 
-        return $summary;
+        return preg_replace($regexDingbats, '', $summary);
     }
 
     /**

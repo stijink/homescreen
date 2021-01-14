@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\ApiException;
 use App\Component\Presence;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,11 +15,16 @@ class PresenceController extends AbstractController
     }
 
     /**
-     * @Route("/presence", name="presence", format="json")
      *
-     * @throws \App\ApiException
+     * @throws ApiException
      * @return JsonResponse
      */
+    /**
+     *
+     * @throws ApiException
+     * @return JsonResponse
+     */
+    #[Route(path: '/presence', name: 'presence')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->presenceComponent->load());

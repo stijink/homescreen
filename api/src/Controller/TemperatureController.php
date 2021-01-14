@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\ApiException;
 use App\Component\Temperature;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,11 +15,16 @@ class TemperatureController extends AbstractController
     }
 
     /**
-     * @Route("/temperature", name="temperature", format="json")
      *
-     * @throws \App\ApiException
+     * @throws ApiException
      * @return JsonResponse
      */
+    /**
+     *
+     * @throws ApiException
+     * @return JsonResponse
+     */
+    #[Route(path: '/temperature', name: 'temperature')]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->temperatureComponent->load());
