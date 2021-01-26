@@ -15,7 +15,7 @@
                 <!-- CPU / Speed -->
                 <div class="mb-1">
                     <v-icon dark class="icon mr-1">timeline</v-icon>
-                    {{ raspberry.cpu.cores }}x {{ raspberry.cpu.speed }} MHz
+                    {{ raspberry.cpu.cores }}x {{ raspberry.cpu.max_speed }} MHz
                     &#8211; Load: {{ raspberry.load }}
                 </div>
 
