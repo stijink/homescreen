@@ -14,9 +14,9 @@ volumes:
 
 steps:
 
-    -name: Download configuration
-    image: plugins/download
-    settings:
+    - name: Download configuration
+      image: plugins/download
+      settings:
         source: http://pi-hub:5002/homescreen/config.json
         destination: api/config/config.json
 
