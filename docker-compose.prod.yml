@@ -1,9 +1,12 @@
 version: '3.4'
 services:
     homescreen:
-        build:
-            context: .
-            target: production
-        image: stijink/homescreen:prod
+        image: stijink/homescreen:latest
         environment:
             - APP_ENV=prod
+        ports:
+            - "5001:80"
+        deploy:
+            replicas: 1
+            placement:
+                constraints: [node.hostname == homescreen]

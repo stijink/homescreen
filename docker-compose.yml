@@ -9,4 +9,4 @@ services:
         environment:
             - APP_ENV=dev
         ports:
-            - "5000:80"
+            - "5001:80"

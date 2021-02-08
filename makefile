@@ -19,9 +19,6 @@ build-dev:
 	docker-compose run --rm homescreen composer install --working-dir=api/
 	docker-compose run --rm homescreen yarn --cwd app/ install
 
-build-prod:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
-
 calendars:
 	docker exec homescreen api/bin/console calendars:load --env=prod
 
@@ -43,13 +40,3 @@ ractor:
 clean-dev: stop-dev
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
 	docker rmi stijink/homescreen:dev
-
-clean-prod:
-	docker stop homescreen || true
-	docker system prune -f
-	docker rmi stijink/homescreen:prod || true
-
-rebuild-prod:
-	git pull
-	sudo make clean-prod
-	sudo make build-prod

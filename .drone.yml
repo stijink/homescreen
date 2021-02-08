@@ -1,0 +1,44 @@
+kind: pipeline
+type: docker
+name: build and deploy
+
+platform:
+    os: linux
+    arch: arm
+
+# Mount the docker socket from the host so we can access the local docker registry
+volumes:
+    - name: docker-socket
+      host:
+          path: /var/run/docker.sock
+
+steps:
+
+    # build
+    - name: build
+      when:
+          branch: master
+          event: push
+      image: plugins/docker
+      pull: if-not-exists
+      environment:
+          APP_ENV: prod
+      volumes:
+          - name: docker-socket
+            path: /var/run/docker.sock
+      settings:
+          repo: 127.0.0.1:5000/homescreen
+          tags: latest
+          target: production
+          registry: 127.0.0.1:5000
+          purge: false
+
+    # deploy
+    - name: deploy into swarm
+      image: docker
+      pull: if-not-exists
+      volumes:
+          - name: docker-socket
+            path: /var/run/docker.sock
+      commands:
+          - docker stack deploy -c docker-compose.prod.yml homescreen
