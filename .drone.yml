@@ -36,6 +36,34 @@ steps:
           registry: 127.0.0.1:5000
           purge: false
 
+    - name: lint PHP files
+      image: 127.0.0.1:5000/backup-notifier
+      commands:
+          - find /var/www/src -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n
+      depends_on:
+          - build
+
+    - name: lint yaml files
+      image: 127.0.0.1:5000/homescreen
+      commands:
+          - php /var/www/bin/console lint:yaml /var/www/config/
+      depends_on:
+          - build
+
+    - name: lint container
+      image: 127.0.0.1:5000/homescreen
+      commands:
+          - php /var/www/bin/console lint:container
+      depends_on:
+          - build
+
+    - name: validate composer.json
+      image: composer
+      commands:
+          - composer validate
+      depends_on:
+          - build
+
     # deploy
     - name: deploy into swarm
       image: docker
@@ -45,3 +73,8 @@ steps:
             path: /var/run/docker.sock
       commands:
           - docker stack deploy -c docker-compose.prod.yml homescreen
+      depends_on:
+        - lint PHP files
+        - lint yaml files
+        - lint container
+        - validate composer.json
