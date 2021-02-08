@@ -47,6 +47,8 @@ steps:
 
     - name: lint yaml files
       image: 127.0.0.1:5000/homescreen
+      environment:
+          APP_ENV: prod
       commands:
           - php /var/www/api/bin/console lint:yaml /var/www/config/
       depends_on:
@@ -54,6 +56,8 @@ steps:
 
     - name: lint container
       image: 127.0.0.1:5000/homescreen
+      environment:
+          APP_ENV: prod
       commands:
           - php /var/www/api/bin/console lint:container
       depends_on:
