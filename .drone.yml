@@ -14,11 +14,14 @@ volumes:
 
 steps:
 
+    -name: Download configuration
+    image: plugins/download
+    settings:
+        source: http://pi-hub:5002/homescreen/config.json
+        destination: api/config/config.json
+
     # build
     - name: build
-      when:
-          branch: master
-          event: push
       image: plugins/docker
       pull: if-not-exists
       environment:
