@@ -35,6 +35,8 @@ steps:
           target: production
           registry: 127.0.0.1:5000
           purge: false
+      depends_on:
+          - Download configuration
 
     - name: lint PHP files
       image: 127.0.0.1:5000/backup-notifier
