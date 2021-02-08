@@ -50,7 +50,7 @@ steps:
       environment:
           APP_ENV: prod
       commands:
-          - php /var/www/api/bin/console lint:yaml /var/www/config/
+          - php /var/www/api/bin/console lint:yaml /var/www/api/config/
       depends_on:
           - build
 
@@ -66,7 +66,7 @@ steps:
     - name: validate composer.json
       image: composer
       commands:
-          - composer --workdir=/var/www/api/ validate
+          - composer validate --working-dir=/var/www/api/
       depends_on:
           - build
 
