@@ -34,7 +34,7 @@ steps:
           tags: latest
           target: production
           registry: 127.0.0.1:5000
-          purge: false
+          purge: true
       depends_on:
           - Download configuration
 
