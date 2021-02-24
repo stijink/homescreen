@@ -44,7 +44,8 @@
 
     <error></error>
     <loading-indicator id="loading-indicator"></loading-indicator>
-    <snow />
+
+    <!-- <snow /> -->
 
   </v-app>
 
