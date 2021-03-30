@@ -383,6 +383,9 @@
     "symplify/rule-doc-generator": {
         "version": "9.0.34"
     },
+    "symplify/rule-doc-generator-contracts": {
+        "version": "v9.2.14"
+    },
     "symplify/set-config-resolver": {
         "version": "9.0.34"
     },
