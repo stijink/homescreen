@@ -11,23 +11,23 @@
         "johngrogg/ics-parser": "^2.1",
         "laminas/laminas-feed": "2.14.*",
         "sensio/framework-extra-bundle": "^5.1",
-        "symfony/console": "5.2.*",
-        "symfony/error-handler": "5.2.*",
+        "symfony/console": "5.3.*",
+        "symfony/error-handler": "5.3.*",
         "symfony/flex": "^1.0",
-        "symfony/framework-bundle": "5.2.*",
-        "symfony/http-client": "5.2.*",
-        "symfony/lock": "5.2.*",
+        "symfony/framework-bundle": "5.3.*",
+        "symfony/http-client": "5.3.*",
+        "symfony/lock": "5.3.*",
         "symfony/monolog-bundle": "^3.2",
-        "symfony/yaml": "5.2.*"
+        "symfony/yaml": "5.3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "9.*",
         "rector/rector": "^0.9.7",
-        "symfony/browser-kit": "5.2.*",
-        "symfony/dotenv": "5.2.*",
+        "symfony/browser-kit": "5.3.*",
+        "symfony/dotenv": "5.3.*",
         "symfony/maker-bundle": "^1.5",
-        "symfony/phpunit-bridge": "5.2.*",
-        "symfony/var-dumper": "5.2.*"
+        "symfony/phpunit-bridge": "5.3.*",
+        "symfony/var-dumper": "5.3.*"
     },
     "config": {
         "preferred-install": {
@@ -70,7 +70,7 @@
         "symfony": {
             "id": "01C2BPPB7BT194247EJKJ2WTXM",
             "allow-contrib": false,
-            "require": "5.2.*"
+            "require": "5.3.*"
         }
     },
     "minimum-stability": "dev",
