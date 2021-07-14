@@ -8,3 +8,5 @@ services:
             - "5001:80"
         deploy:
             replicas: 1
+            placement:
+                constraints: [node.hostname == homescreen]
