@@ -1,20 +1,14 @@
-start-dev: stop-dev
+.PHONY: build
+
+start: stop
 	docker-compose up -d
 	docker-compose exec homescreen ln -f -s ../../app/assets api/public/assets
 	docker-compose exec homescreen yarn --cwd app/ encore dev --watch
 
-stop-dev:
+stop:
 	docker-compose down
 
-start-prod:
-	docker run -d --restart always --name=homescreen -e APP_ENV=prod -p 5000:80 stijink/homescreen:prod
-	docker exec homescreen api/bin/console calendars:load --env=prod
-
-stop-prod:
-	docker stop homescreen
-	docker rm homescreen
-
-build-dev:
+build:
 	docker-compose build
 	docker-compose run --rm homescreen composer install --working-dir=api/
 	docker-compose run --rm homescreen yarn --cwd app/ install
@@ -37,6 +31,6 @@ lint:
 ractor:
 	docker-compose run --rm homescreen vendor/bin/rector process src/ --debug
 
-clean-dev: stop-dev
+clean: stop
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
 	docker rmi stijink/homescreen:dev
