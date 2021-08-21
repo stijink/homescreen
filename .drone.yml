@@ -72,7 +72,7 @@ steps:
 
     # deploy
     - name: deploy into swarm
-      image: docker
+      image: arm32v7/docker
       pull: if-not-exists
       volumes:
           - name: docker-socket
