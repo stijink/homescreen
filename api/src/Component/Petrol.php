@@ -20,28 +20,27 @@ class Petrol implements ComponentInterface
     public function load(): array
     {
         try {
-            $products = [];
+            $filteredProducts = [];
 
-            $response = $this->httpClient->request('GET', $this->configuration['petrol']['api_url'], [
-                'query' => ['stationId' => $this->configuration['petrol']['station_id']]
-            ]);
+            $response = $this->httpClient->request('GET', $this->configuration['petrol']['api_url']);
+            $petrol   = json_decode($response->getContent(), true);
+            $products = $petrol['fuel_pricing']['prices'];
 
-            $petrol = json_decode($response->getContent(), true);
+            foreach ($products as $productName => $productPrice) {
 
-            foreach ($petrol['response']['prices'] as $product) {
-                if (! in_array($product['name'], $this->configuration['petrol']['prefered_petrol'])) {
+                if (! in_array($productName, $this->configuration['petrol']['prefered_petrol'])) {
                     continue;
                 }
 
-                $product['price'] = (float) $product['price'] / 100;
-                $product['price'] = number_format($product['price'], 2, '.', ',');
-
-                $products[] = $product;
+                $filteredProducts[] = [
+                    'name'  => $productName,
+                    'price' => substr($productPrice, 0, 4),
+                ];
             }
 
             return [
                 'location' => $this->configuration['petrol']['location'],
-                'products' => $products,
+                'products' => $filteredProducts,
             ];
         } catch (Exception) {
             throw new ApiException('Spritpreise konnten nicht bezogen werden');
