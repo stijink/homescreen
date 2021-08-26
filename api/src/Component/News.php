@@ -48,7 +48,7 @@ class News implements ComponentInterface
         foreach ($feed as $item) {
             $news[] = [
                 'title'       => $item->getTitle(),
-                'description' => $this->getExcerpt(description: $item->getDescription()),
+                'description' => $this->getExcerpt($item->getDescription()),
                 'date'        => $item->getDateModified()->format('d.m.Y H:m'),
                 'visible'     => false,
             ];
@@ -64,8 +64,12 @@ class News implements ComponentInterface
      * @param   int $maxLength
      * @return  string
      */
-    private function getExcerpt(string $description, int $maxLength = 250): string
+    private function getExcerpt(?string $description, int $maxLength = 250): ?string
     {
+        if (strlen($description) === 0) {
+            return null;
+        }
+
         $description = strip_tags($description);
         $description = str_replace('\n', '', $description);
         $description = trim($description);
