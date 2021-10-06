@@ -1,11 +1,9 @@
 <template>
-    <div id="weather">
-        <h1 class="pull-right"><i class="fa fa-thermometer-three-quarters"></i>&nbsp; {{ temperature }} °</h1>
-        <h4>
-            <span>
-                <i class="owf owf-lg" v-bind:class="icon"></i> {{ description }}
-            </span>
-        </h4>
+    <div id="covid19" class="text-xs-right pr-4">
+
+        <h1>{{ weekIncidence }}</h1>
+        <strong>Covid 19 Inzidenz für den {{ location }} </strong>
+
     </div>
 </template>
 
@@ -17,19 +15,17 @@
         mixins: [ApiRequest, DataUpdater],
         data() {
             return {
-                api_url: '/api.php/weather',
-                api_update_interval: 5,
+                api_url: '/api.php/covid19',
+                api_update_interval: 60,
 
-                temperature: null,
-                description: null,
-                icon: null,
+                location: null,
+                weekIncidence: null,
             }
         },
         methods: {
             process(data) {
-                this.temperature = data.temperature;
-                this.description = data.description;
-                this.icon = 'owf-' + data.icon_code;
+                this.location = data.name;
+                this.weekIncidence = Math.round(data.weekIncidence);
             }
         }
     }
@@ -37,15 +33,7 @@
 
 <style scoped>
 
-    h4 {
-        position: relative;
-    }
 
-    H4>span {
-        position: absolute;
-        top: 85px;
-        right: 47px;
-    }
 
 </style>
 

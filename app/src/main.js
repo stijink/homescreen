@@ -10,6 +10,7 @@ import Snow from './Component/Snow.vue';
 
 import Clock from './Component/Clock.vue';
 import Weather from './Component/Weather.vue';
+import Covid19 from './Component/Covid19.vue';
 import Temperature from './Component/Temperature.vue';
 import WeatherForcast from './Component/WeatherForcast.vue';
 import Traffic from './Component/Traffic.vue';
@@ -20,7 +21,6 @@ import Presence from './Component/Presence.vue';
 import Raspberries from './Component/Raspberries.vue';
 import OpeningHours from './Component/OpeningHours.vue';
 import ShoppingList from './Component/ShoppingList.vue';
-import Pregnancy from './Component/Pregnancy.vue';
 
 Vue.use(Vuetify);
 
@@ -42,7 +42,7 @@ Vue.component('presence', Presence);
 Vue.component('raspberries', Raspberries);
 Vue.component('opening-hours', OpeningHours);
 Vue.component('shopping-list', ShoppingList);
-Vue.component('pregnancy', Pregnancy);
+Vue.component('covid19', Covid19);
 
 new Vue({
   el: '#app',
