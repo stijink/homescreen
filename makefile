@@ -18,7 +18,7 @@ calendars:
 
 update:
 	docker-compose run --rm homescreen composer update -o --with-dependencies --working-dir=api/
-	docker-compose run --rm homescreen npm update --cwd app/ --prefix app/
+	docker-compose run --rm homescreen yarn upgrade --cwd app/ --prefix app/
 
 logs:
 	docker-compose logs --follow
