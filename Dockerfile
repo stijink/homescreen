@@ -36,16 +36,18 @@ FROM base as development
     # Install yarn
     RUN npm install -g yarn
 
-    # Install composer (PHP)
-    RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Stage: Proproduction
-FROM development as preproduction
+# Stage: composer_install
+FROM development AS composer_install
+
+    COPY composer.* /var/www/
+    RUN APP_ENV=prod composer install --prefer-dist --no-scripts --no-dev --no-autoloader --working-dir=api
+
+# Stage: Preproduction
+FROM composer_install as preproduction
 
     COPY . .
-
-    # Install PHP dependencies
-    RUN APP_ENV=prod composer install --no-dev --classmap-authoritative --working-dir=api/
 
     # Install nodejs dependencies
     RUN yarn --cwd app/ install
@@ -53,12 +55,20 @@ FROM development as preproduction
     # Build the frontend and copy it to the apache webroot
     RUN yarn --cwd app/ encore production && cp -r app/assets api/public/
 
+    # Make sure we do not have any garbage in the var/ directory
+    RUN rm -rf /var/www/var/*
+
+    # Dump Composer Autoloader
+    RUN APP_ENV=prod composer dump-autoload --no-dev --classmap-authoritative --working-dir=api/
+
+    # Dump .env file into (much faster) php file
+    RUN APP_ENV=prod composer dump-env prod --working-dir=api/
+
     # Warmup symfony cache
     RUN APP_ENV=prod api/bin/console --no-debug cache:warmup
 
     # Load the calendars
     RUN  APP_ENV=prod api/bin/console calendars:load
-
 
 # Stage: Proproduction
 FROM base as production
