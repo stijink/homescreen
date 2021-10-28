@@ -61,9 +61,6 @@ FROM composer_install as preproduction
     # Dump Composer Autoloader
     RUN APP_ENV=prod composer dump-autoload --no-dev --classmap-authoritative --working-dir=api/
 
-    # Dump .env file into (much faster) php file
-    RUN APP_ENV=prod composer dump-env prod --working-dir=api/
-
     # Warmup symfony cache
     RUN APP_ENV=prod api/bin/console --no-debug cache:warmup
 
