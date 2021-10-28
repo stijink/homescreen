@@ -41,7 +41,7 @@ FROM base as development
 # Stage: composer_install
 FROM development AS composer_install
 
-    COPY composer.* /var/www/
+    COPY api/composer.* /var/www/api/
     RUN APP_ENV=prod composer install --prefer-dist --no-scripts --no-dev --no-autoloader --working-dir=api
 
 # Stage: Preproduction
