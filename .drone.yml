@@ -30,23 +30,23 @@ steps:
           - name: docker-socket
             path: /var/run/docker.sock
       settings:
-          repo: 127.0.0.1:5000/homescreen
+          repo: registry.tijink.de/homescreen
           tags: latest
           target: production
-          registry: 127.0.0.1:5000
+          registry: registry.tijink.de
           purge: true
       depends_on:
           - Download configuration
 
     - name: lint PHP files
-      image: 127.0.0.1:5000/homescreen
+      image: registry.tijink.de/homescreen
       commands:
           - find /var/www/api/src -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n
       depends_on:
           - build
 
     - name: lint yaml files
-      image: 127.0.0.1:5000/homescreen
+      image: registry.tijink.de/homescreen
       environment:
           APP_ENV: prod
       commands:
@@ -55,7 +55,7 @@ steps:
           - build
 
     - name: lint container
-      image: 127.0.0.1:5000/homescreen
+      image: registry.tijink.de/homescreen
       environment:
           APP_ENV: prod
       commands:

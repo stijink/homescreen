@@ -1,7 +1,7 @@
 version: '3.4'
 services:
     homescreen:
-        image: 127.0.0.1:5000/homescreen:latest
+        image: registry.tijink.de/homescreen:latest
         environment:
             - APP_ENV=prod
         ports:
