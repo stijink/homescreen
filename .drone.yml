@@ -30,7 +30,7 @@ steps:
           - name: docker-socket
             path: /var/run/docker.sock
       settings:
-          repo: registry.tijink.de/homescreen
+          repo: registry.tijink.de/${DRONE_REPO_NAME}
           tags: latest
           target: production
           registry: registry.tijink.de
@@ -39,14 +39,14 @@ steps:
           - Download configuration
 
     - name: lint PHP files
-      image: registry.tijink.de/homescreen
+      image: registry.tijink.de/${DRONE_REPO_NAME}
       commands:
           - find /var/www/api/src -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n
       depends_on:
           - build
 
     - name: lint yaml files
-      image: registry.tijink.de/homescreen
+      image: registry.tijink.de/${DRONE_REPO_NAME}
       environment:
           APP_ENV: prod
       commands:
@@ -55,7 +55,7 @@ steps:
           - build
 
     - name: lint container
-      image: registry.tijink.de/homescreen
+      image: registry.tijink.de/${DRONE_REPO_NAME}
       environment:
           APP_ENV: prod
       commands:
@@ -78,7 +78,7 @@ steps:
           - name: docker-socket
             path: /var/run/docker.sock
       commands:
-          - docker stack deploy -c docker-compose.prod.yml homescreen
+          - docker stack deploy -c docker-compose.prod.yml ${DRONE_REPO_NAME}
       depends_on:
         - lint PHP files
         - lint yaml files
