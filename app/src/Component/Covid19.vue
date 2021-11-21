@@ -1,7 +1,7 @@
 <template>
-    <div id="covid19" class="text-xs-right pr-4">
+    <div id="covid19" class="text-xs-right" style="padding-right: 40px;">
 
-        <h1 :style="incidenceColor">{{ weekIncidence }}</h1>
+        <h1>{{ weekIncidence }}</h1>
         <strong>Covid 19 Inzidenz für den {{ location }} </strong>
 
     </div>
@@ -76,7 +76,12 @@
 
 <style scoped>
 
-
+    h1 {
+        font-size: 7rem;
+        padding-bottom: 3px;
+        line-height: 7rem;
+        font-weight: 600;
+    }
 
 </style>
 
