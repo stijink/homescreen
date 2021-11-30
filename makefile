@@ -17,8 +17,11 @@ calendars:
 	docker exec homescreen api/bin/console calendars:load --env=prod
 
 update:
-	docker-compose run --rm homescreen composer update -o --with-dependencies --working-dir=api/
+	docker-compose run --rm homescreen composer update -o --with-all-dependencies --working-dir=api/
 	docker-compose run --rm homescreen yarn upgrade --cwd app/ --prefix app/
+
+shell:
+	docker-compose exec homescreen /bin/bash
 
 logs:
 	docker-compose logs --follow
