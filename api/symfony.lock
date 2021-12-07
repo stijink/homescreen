@@ -2,15 +2,6 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
-    "composer/semver": {
-        "version": "3.2.4"
-    },
-    "composer/xdebug-handler": {
-        "version": "1.4.5"
-    },
-    "danielstjules/stringy": {
-        "version": "3.1.0"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -29,9 +20,6 @@
     "doctrine/lexer": {
         "version": "v1.0.1"
     },
-    "jean85/pretty-package-versions": {
-        "version": "1.5.1"
-    },
     "johngrogg/ics-parser": {
         "version": "v2.1.2"
     },
@@ -44,26 +32,11 @@
     "laminas/laminas-stdlib": {
         "version": "3.3.1"
     },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.1.1"
-    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
     "myclabs/deep-copy": {
         "version": "1.7.0"
-    },
-    "nette/finder": {
-        "version": "v2.5.2"
-    },
-    "nette/neon": {
-        "version": "v3.2.1"
-    },
-    "nette/robot-loader": {
-        "version": "v3.3.1"
-    },
-    "nette/utils": {
-        "version": "v3.2.1"
     },
     "nikic/php-parser": {
         "version": "v4.0.0"
@@ -89,14 +62,8 @@
     "phpspec/prophecy": {
         "version": "1.7.3"
     },
-    "phpstan/phpdoc-parser": {
-        "version": "0.4.10"
-    },
     "phpstan/phpstan": {
         "version": "0.12.66"
-    },
-    "phpstan/phpstan-phpunit": {
-        "version": "0.12.17"
     },
     "phpunit/php-code-coverage": {
         "version": "6.0.1"
@@ -133,9 +100,6 @@
     },
     "psr/log": {
         "version": "1.0.2"
-    },
-    "psr/simple-cache": {
-        "version": "1.0.1"
     },
     "rector/rector": {
         "version": "0.9.7"
@@ -239,9 +203,6 @@
     "symfony/event-dispatcher-contracts": {
         "version": "v1.1.1"
     },
-    "symfony/expression-language": {
-        "version": "v5.2.3"
-    },
     "symfony/filesystem": {
         "version": "v4.0.2"
     },
@@ -332,9 +293,6 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
-    "symfony/process": {
-        "version": "v5.2.2"
-    },
     "symfony/routing": {
         "version": "4.0",
         "recipe": {
@@ -358,57 +316,6 @@
     },
     "symfony/yaml": {
         "version": "v4.0.2"
-    },
-    "symplify/astral": {
-        "version": "9.0.46"
-    },
-    "symplify/autowire-array-parameter": {
-        "version": "9.0.34"
-    },
-    "symplify/composer-json-manipulator": {
-        "version": "9.0.34"
-    },
-    "symplify/console-color-diff": {
-        "version": "9.0.34"
-    },
-    "symplify/console-package-builder": {
-        "version": "9.0.34"
-    },
-    "symplify/easy-testing": {
-        "version": "9.0.34"
-    },
-    "symplify/markdown-diff": {
-        "version": "9.0.34"
-    },
-    "symplify/package-builder": {
-        "version": "9.0.34"
-    },
-    "symplify/php-config-printer": {
-        "version": "9.0.34"
-    },
-    "symplify/rule-doc-generator": {
-        "version": "9.0.34"
-    },
-    "symplify/rule-doc-generator-contracts": {
-        "version": "v9.2.14"
-    },
-    "symplify/set-config-resolver": {
-        "version": "9.0.34"
-    },
-    "symplify/simple-php-doc-parser": {
-        "version": "9.0.34"
-    },
-    "symplify/skipper": {
-        "version": "9.0.34"
-    },
-    "symplify/smart-file-system": {
-        "version": "9.0.34"
-    },
-    "symplify/symfony-php-config": {
-        "version": "9.0.34"
-    },
-    "symplify/symplify-kernel": {
-        "version": "9.0.34"
     },
     "theseer/tokenizer": {
         "version": "1.1.0"
