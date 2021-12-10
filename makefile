@@ -31,8 +31,8 @@ lint:
 	docker-compose run --rm homescreen api/bin/console lint:container
 	docker-compose run --rm homescreen api/bin/console lint:yaml api/config
 
-ractor:
-	docker-compose run --rm homescreen vendor/bin/rector process src/ --debug
+rector:
+	docker-compose run --rm homescreen api/vendor/bin/rector process api/src/ --debug
 
 clean: stop
 	docker-compose run --rm homescreen rm -rf api/vendor/ api/var/ app/node_modules/
