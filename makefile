@@ -20,6 +20,10 @@ update:
 	docker-compose run --rm homescreen composer update -o --with-all-dependencies --working-dir=api/
 	docker-compose run --rm homescreen yarn upgrade --cwd app/ --prefix app/
 
+# Show outdated composer dependencies
+outdated:
+	docker-compose run --rm homescreen composer outdated --working-dir=api/
+
 shell:
 	docker-compose exec homescreen /bin/bash
 
