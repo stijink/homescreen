@@ -9,14 +9,14 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24",
     "moment": "^2.2",
     "style-loader": "^2.0",
     "vue": "^2.6",
     "vuetify": "^1.4"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.33.0",
+    "@symfony/webpack-encore": "^1.7",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.7"
   }
