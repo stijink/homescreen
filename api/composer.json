@@ -34,7 +34,10 @@
             "*": "dist"
         },
         "sort-packages": true,
-        "classmap-authoritative": true
+        "classmap-authoritative": true,
+        "allow-plugins": {
+            "symfony/flex": true
+        }
     },
     "autoload": {
         "psr-4": {
