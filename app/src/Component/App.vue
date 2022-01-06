@@ -46,7 +46,7 @@
     <loading-indicator id="loading-indicator"></loading-indicator>
 
     <!-- Merry Christmas -->
-    <snow />
+    <!-- <snow /> -->
 
   </v-app>
 
