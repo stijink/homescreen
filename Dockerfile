@@ -1,5 +1,5 @@
 # Stage: base
-FROM php:8.0.14-apache-buster AS base
+FROM php:8.0.15-apache-buster AS base
 
     WORKDIR /var/www
 
