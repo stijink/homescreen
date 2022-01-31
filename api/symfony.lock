@@ -101,6 +101,9 @@
     "psr/log": {
         "version": "1.0.2"
     },
+    "react/event-loop": {
+        "version": "v1.2.0"
+    },
     "rector/rector": {
         "version": "0.9.7"
     },
