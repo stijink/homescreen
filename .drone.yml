@@ -31,7 +31,9 @@ steps:
             path: /var/run/docker.sock
       settings:
           repo: registry.tijink.de/${DRONE_REPO_NAME}
-          tags: latest
+          tags:
+            - latest
+            - ${DRONE_COMMIT}
           target: production
           registry: registry.tijink.de
           purge: true
