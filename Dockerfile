@@ -1,5 +1,5 @@
 # Stage: base
-FROM php:8.0.15-apache AS base
+FROM php:8.0.16-apache AS base
 
     WORKDIR /var/www
 
