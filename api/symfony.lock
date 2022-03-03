@@ -1,7 +1,4 @@
 {
-    "composer/package-versions-deprecated": {
-        "version": "1.11.99.1"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -46,9 +43,6 @@
     },
     "phar-io/version": {
         "version": "1.0.1"
-    },
-    "php": {
-        "version": "8.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
