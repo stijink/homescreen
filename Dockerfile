@@ -1,5 +1,5 @@
 # Stage: base
-FROM php:8.0.16-apache-bullseye AS base
+FROM php:8.0.17-apache-bullseye AS base
 
     WORKDIR /var/www
 
