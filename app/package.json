@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.24",
-    "moment": "^2.2",
+    "moment": "^2.29",
     "style-loader": "^2.0",
     "vue": "^2.6",
     "vuetify": "^1.4"
