@@ -28,7 +28,7 @@ FROM php:8.1.7-apache-bullseye AS base
 FROM base as development
 
     # Install node.js apt repository
-    RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+    RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 
     # Needed by composer / yarn
     RUN apt-get update && apt-get install -y unzip nodejs
