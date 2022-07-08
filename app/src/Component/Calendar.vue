@@ -52,7 +52,10 @@
                         event.time = 'in ' + diffInDays + ' Tagen';
                     }
 
-                    events[index] = event;
+                    if (event.timestamp_end > Math.floor(Date.now() / 1000)) {
+                        events[index] = event;
+                    }
+
                 });
             }
         }
